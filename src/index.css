@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'FZSSKSJ';
+  src: url('/fonts/fzssksj_z.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-chinese: "FZSSKSJ", serif;
+}
+
+/* Explicit class-based dark mode strategy for Tailwind 4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Color tokens ── */
+:root {
+  --bg-page:     #f2f4f7;
+  --bg-card:     #fafbfc;   /* lighter card for better contrast */
+  --bg-sunken:   #eceef2;   /* inputs, table header */
+  --bg-hover:    #e8eaef;   /* row hover, menu hover */
+  --border:      #d8dbe2;
+  --border-strong: #c4c7d0;
+  --text-1:      #1e2028;   /* headings */
+  --text-2:      #4a4f5e;   /* body */
+  --text-3:      #7c8291;   /* muted / labels */
+}
+
+.dark {
+  --bg-page:     #2c2d32;
+  --bg-card:     #35363c;
+  --bg-sunken:   #2a2b30;
+  --bg-hover:    #3d3e45;
+  --border:      #46474f;
+  --border-strong: #56575f;
+  --text-1:      #e8eaf0;
+  --text-2:      #b0b4c2;
+  --text-3:      #6e7180;
+}
+
+@layer base {
+  html {
+    @apply transition-colors duration-300 overflow-x-hidden;
+    scrollbar-gutter: stable;
+  }
+  body {
+    background-color: #333333;
+    color: var(--text-1);
+    @apply transition-colors duration-300 min-h-screen overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  /* Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background-color: var(--border-strong); border-radius: 9999px; }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background-color: var(--bg-sunken); }
+  ::-webkit-scrollbar-thumb { background-color: var(--border-strong); border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background-color: #f59e0b; }
+}
