@@ -119,3 +119,11 @@
   -webkit-text-fill-color: transparent;
   animation: shimmer-sweep 5s linear infinite;
 }
+
+/* ── Fix flickering menu khi modal video đang mở ──
+   Khi iframe YouTube steal mouse events trên màn hình lớn,
+   navbar bị trigger mouseleave/mouseenter liên tục gây flickering.
+   Disable pointer-events trên navbar khi modal đang mở. */
+body.video-modal-open nav {
+  pointer-events: none;
+}

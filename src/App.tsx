@@ -46,7 +46,7 @@ const categoryTitles: Record<string, string> = {
   'ky-nang-cuu-linh': 'Kỹ năng Cửu Linh',
   'ky-nang-hong-am': 'Kỹ năng Hồng Âm',
   'ky-nang-long-ngam': 'Kỹ năng Long Ngâm',
-  'ky-nang-than-tuong': 'Kỹ năng Thần Tượng',
+  'ky-nang-than-tuong': 'Kỹ năng Thần Tương',
   'ky-nang-thuong-lan': 'Kỹ năng Thương Lan',
   'ky-nang-toai-mong': 'Kỹ năng Toái Mộng',
   'ky-nang-quan-hiep': 'Kỹ năng quần hiệp',

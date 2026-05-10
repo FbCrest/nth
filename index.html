@@ -3,7 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
+    <title>Nghịch Thuỷ Hàn Mobile</title>
+    <script>
+      (function () {
+        const name = 'Nghịch Thuỷ Hàn Mobile';
+        // 2 icon luôn có mặt 2 bên, chỉ đổi qua lại giữa ✦ và ✧
+        const frames = [
+          '✦ ' + name + ' ✦',
+          '✦ ' + name + ' ✧',
+          '✧ ' + name + ' ✧',
+          '✧ ' + name + ' ✦',
+        ];
+        let i = 0;
+        function tick() {
+          document.title = frames[i % frames.length];
+          i++;
+          setTimeout(tick, 700);
+        }
+        window.addEventListener('DOMContentLoaded', tick);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

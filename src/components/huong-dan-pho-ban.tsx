@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Play, X, Loader2 } from 'lucide-react';
 
@@ -108,6 +108,19 @@ export default function DungeonGuide({ type }: DungeonGuideProps) {
   const [activeSeason, setActiveSeason] = useState(1);
   const [selectedVideo, setSelectedVideo] = useState<DungeonVideo | null>(null);
   const [isIframeLoading, setIsIframeLoading] = useState(true);
+
+  // Khi modal video mở, thêm class vào body để disable pointer-events trên navbar
+  // Tránh lỗi flickering menu do iframe YouTube steal mouse events trên màn hình lớn
+  useEffect(() => {
+    if (selectedVideo) {
+      document.body.classList.add('video-modal-open');
+    } else {
+      document.body.classList.remove('video-modal-open');
+    }
+    return () => {
+      document.body.classList.remove('video-modal-open');
+    };
+  }, [selectedVideo]);
 
   const handleVideoSelect = (video: DungeonVideo) => {
     setIsIframeLoading(true);
