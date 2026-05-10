@@ -201,7 +201,7 @@ export default function ClassChangeCommand() {
             >
               <img src={c.icon} alt={c.vn} className="w-10 h-10 object-contain" referrerPolicy="no-referrer" />
               <div className="text-center">
-                <div className="text-[16px] font-black leading-tight select-text" style={{ color: 'var(--text-1)' }}>{c.vn}</div>
+                <div className="text-[20px] leading-tight select-text" style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 100, fontStyle: 'normal' }}>{c.vn}</div>
                 <div className="font-chinese text-[16px] leading-tight mt-0.5 select-text" style={{ color: 'var(--text-1)' }}>{c.zh}</div>
               </div>
             </motion.div>

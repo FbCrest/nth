@@ -70,7 +70,6 @@ export default function Navbar({
     { id: 'noi-cong',           label: 'Nội Công',            isLabel: false },
     { id: 'dac-tinh',           label: 'Đặc Tính',            isLabel: false },
     { id: 'tuyet-ky',           label: 'Tuyệt Kỹ',            isLabel: false },
-    { id: 'ky-nang-quan-hiep',  label: 'Kỹ Năng Quần Hiệp',  isLabel: false },
     { id: 'ky-nang-bach-gia',   label: 'Kỹ Năng Giang Hồ',   isLabel: false },
     { id: 'ky-nang-mon-phai',   label: 'Kỹ Năng Môn Phái',   isLabel: true  },
     { id: 'cau-lenh-doi-phai',  label: 'Câu Lệnh Đổi Phái',  isLabel: false },

@@ -33,9 +33,6 @@ const mockData: Record<string, GameItem[]> = {
   'ky-nang-than-tuong': kyNangThanTuongData,
   'ky-nang-thuong-lan': kyNangThuongLanData,
   'ky-nang-toai-mong': kyNangToaiMongData,
-  'ky-nang-quan-hiep': [
-    { id: 'qh1', name: 'Bát Quái Chưởng', category: 'Quần hiệp', details: 'Kỹ năng từ giang hồ, biến hóa khôn lường.', icon: '🖐️' },
-  ],
   'ky-nang-bach-gia': kyNangGiangHoData,
 };
 
@@ -49,7 +46,6 @@ const categoryTitles: Record<string, string> = {
   'ky-nang-than-tuong': 'Kỹ năng Thần Tương',
   'ky-nang-thuong-lan': 'Kỹ năng Thương Lan',
   'ky-nang-toai-mong': 'Kỹ năng Toái Mộng',
-  'ky-nang-quan-hiep': 'Kỹ năng quần hiệp',
   'ky-nang-bach-gia': 'Kỹ Năng Giang Hồ',
 };
 

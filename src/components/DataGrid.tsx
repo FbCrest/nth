@@ -451,7 +451,7 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
                     </td>
                     <td className="px-5 py-4 text-center" style={{ borderRight: '1px solid var(--border)' }}>
                       <div className="flex flex-col items-center gap-0.5">
-                        <span className="font-bold text-base tracking-tight" style={{ color: 'var(--text-1)' }}>{item.name}</span>
+                        <span className="text-xl tracking-tight" style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 100, fontStyle: 'normal' }}>{item.name}</span>
                         {item.nameZh && <span className="text-base font-chinese" style={{ color: 'var(--text-1)' }}>{item.nameZh}</span>}
                       </div>
                     </td>
@@ -598,7 +598,7 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
                   {selectedItem.imageUrl ? <img src={selectedItem.imageUrl} alt={selectedItem.name} className="w-full h-full object-contain" /> : <span className="text-4xl">{selectedItem.icon || '📜'}</span>}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-xl font-bold leading-tight" style={{ color: 'var(--text-1)' }}>{selectedItem.name}</h3>
+                  <h3 className="text-xl leading-tight" style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 'normal', fontStyle: 'normal' }}>{selectedItem.name}</h3>
                   {selectedItem.nameZh && <span className="text-base font-chinese" style={{ color: 'var(--text-3)' }}>{selectedItem.nameZh}</span>}
                   <div className="mt-2.5 flex gap-1.5 items-center flex-nowrap overflow-x-auto" style={{ width: 'max-content' }}>
                     {isNoiCongPage ? (
@@ -704,7 +704,7 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
                   <X size={18} />
                 </button>
               </div>
-              <div className="p-6">
+              <div className="p-6 overflow-hidden">
                 {/* Tabs */}
                 {(selectedItem.detail || selectedItem.upgrade) && (
                   <div className="flex gap-2 mb-4">
@@ -788,13 +788,13 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
                 )}
                 
                 {/* Tab Content */}
-                <AnimatePresence mode="wait">
+                <AnimatePresence mode="popLayout">
                   <motion.div
                     key={activeModalTab}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.18 }}
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
                     className="grid grid-cols-1 lg:grid-cols-2 gap-6"
                   >
                   {activeModalTab === 'detail' ? (
