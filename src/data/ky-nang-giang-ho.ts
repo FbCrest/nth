@@ -53,17 +53,17 @@ export const kyNangGiangHoData: GameItem[] = [
     itemType: 'PVE',
     stats: ['Bạo Phát', 'Tầm Xa'],
     tags: ['Bạo Phát', 'Tầm Xa'],
-    details: `Vung song đao thực hiện nhiều lần trảm kích, mỗi đòn đều phóng ra Băng/Hỏa gây sát thương lên mục tiêu trúng đòn.
-• Song Phong: Sát thương gây lên quái tăng. Đồng thời tăng khắc chế thủ lĩnh của bản thân.`,
-    detail: `• Trảm kích 1: 110.473 nội công Hỏa thương
-• Trảm kích 2: 110.473 nội công Băng thương
-• Trảm kích 3: 110.473 nội công Hỏa thương
-• Trảm kích 4: 110.473 nội công Băng thương
-• Trảm kích 5 (Hỏa): 138.092 nội công Hỏa thương
-• Trảm kích 5 (Băng): 138.092 nội công Băng thương
-• Sát thương lên quái tăng: 200%
-• Khắc chế thủ lĩnh tăng: 4%
-• Thời gian duy trì buff: 40 giây`,
+    details: `Vung song đao thực hiện nhiều lần trảm kích, mỗi đòn đều phóng ra {Băng/Hỏa} gây sát thương lên mục tiêu trúng đòn.
+• Song Phong: {Sát thương gây lên quái tăng}. Đồng thời tăng {khắc chế thủ lĩnh} của bản thân.`,
+    detail: `• Trảm kích 1: {110.473} nội công Hỏa thương
+• Trảm kích 2: {110.473} nội công Băng thương
+• Trảm kích 3: {110.473} nội công Hỏa thương
+• Trảm kích 4: {110.473} nội công Băng thương
+• Trảm kích 5 (Hỏa): {138.092} nội công Hỏa thương
+• Trảm kích 5 (Băng): {138.092} nội công Băng thương
+• Sát thương lên quái tăng: {200%}
+• Khắc chế thủ lĩnh tăng: {4%}
+• Thời gian duy trì buff: {40 giây}`,
     upgrade: ``,
     imageUrl: '/images/ky-nang-bach-gia/sdtp.png',
   },
@@ -75,26 +75,26 @@ export const kyNangGiangHoData: GameItem[] = [
     itemType: 'PVE',
     stats: ['Quần Thể', 'Cường Hóa', 'Trị Liệu', 'Hỗ Trợ', 'Hội Tâm', 'Toàn Kỹ Năng Tăng Cường'],
     tags: ['Quần Thể', 'Cường Hóa', 'Trị Liệu', 'Hỗ Trợ', 'Hội Tâm', 'Toàn Kỹ Năng Tăng Cường'],
-    details: `Triệu hồi bích họa và cùng với nó gây sát thương. Mỗi lần thi triển kỹ năng bất kỳ sẽ tiếp tục gây sát thương, tích lũy tối đa 10 lần sẽ kích hoạt sát thương kết thúc.
-• Khi Tố Tâm / Diệu Âm thi triển: Tăng hội tâm và toàn kỹ năng tăng cường cho tổ đội. Hiệu ứng tấn công chuyển thành hồi máu cho đồng đội. Buff tổ đội (quần hiệp) chỉ có thể tồn tại 1 loại.
-• Di Huyền: Có thể thi triển lần nữa để di chuyển bích họa đến vị trí chỉ định và kích hoạt 1 lần tấn công. Khi bật liên chiêu, bích họa sẽ tự động di chuyển đến mục tiêu.
-• Hiệu ứng mùa: Trong mùa Kim Sa Di Mộng, gây thêm 20% sát thương.
+    details: `Triệu hồi bích họa và cùng với nó gây sát thương. Mỗi lần thi triển kỹ năng bất kỳ sẽ tiếp tục gây sát thương, tích lũy tối đa {10 lần} sẽ kích hoạt sát thương kết thúc.
+• Khi {Tố Tâm / Diệu Âm} thi triển: Tăng {hội tâm} và {toàn kỹ năng tăng cường} cho tổ đội. Hiệu ứng tấn công chuyển thành {hồi máu} cho đồng đội. Buff tổ đội (quần hiệp) chỉ có thể tồn tại 1 loại.
+• Di Huyền: Có thể thi triển lần nữa để di chuyển bích họa đến vị trí chỉ định và kích hoạt {1 lần} tấn công. Khi bật liên chiêu, bích họa sẽ tự động di chuyển đến mục tiêu.
+• Hiệu ứng mùa: Trong mùa {Kim Sa Di Mộng}, gây thêm {20%} sát thương.
 • Kỹ năng gây thêm sát thương lên quái không phải kiến trúc.`,
-    detail: `• Sát thương: 64.537 nội công Thổ thương × tối đa 10 lần
-• Kết thúc: 204.877 nội công Thổ thương
-• Tấn công (hồi máu): 5.548 HP × tối đa 10 lần
-• Kết thúc (hồi máu): 16.644 HP
-• Sát thương lên quái không phải kiến trúc: +300%
-• Toàn kỹ năng tăng cường: +1560
-• Hội tâm: +520
-• Thời gian buff: 30 giây
-• Phạm vi cộng minh: 15
-• Thời gian tồn tại bích họa: 15 giây`,
-    upgrade: `• Cấp 1: Dựa theo Sức mạnh / Khí Hải, tăng sát thương khoảng 4% ~ 7%. Khi Tố Tâm / Diệu Âm dùng → thời gian buff +5 giây
-• Cấp 2: Khi thi triển, nhận 35% giảm sát thương và miễn khống chế 1 giây
-• Cấp 3: Khi thi triển, nhận 500 điểm hội tâm trong 35 giây. Khi Tố Tâm / Diệu Âm dùng → phạm vi hồi máu +100%
-• Cấp 4: Nếu sát thương kết thúc không trúng, hoàn lại 5 giây hồi chiêu. Khi Tố Tâm / Diệu Âm dùng → giảm 5 giây hồi chiêu
-• Cấp 5: Sát thương kết thúc +30%. Đồng thời nhận 700 toàn kỹ năng tăng cường. Khi Tố Tâm / Diệu Âm dùng → hiệu quả buff tăng thêm 10%`,
+    detail: `• Sát thương: {64.537} nội công Thổ thương × tối đa {10 lần}
+• Kết thúc: {204.877} nội công Thổ thương
+• Tấn công (hồi máu): {5.548} HP × tối đa {10 lần}
+• Kết thúc (hồi máu): {16.644} HP
+• Sát thương lên quái không phải kiến trúc: {+300%}
+• Toàn kỹ năng tăng cường: {+1560}
+• Hội tâm: {+520}
+• Thời gian buff: {30 giây}
+• Phạm vi cộng minh: {15}
+• Thời gian tồn tại bích họa: {15 giây}`,
+    upgrade: `• Cấp 1: Dựa theo Sức mạnh / Khí Hải, tăng sát thương khoảng {4% ~ 7%}. Khi {Tố Tâm / Diệu Âm} dùng → thời gian buff +{5 giây}
+• Cấp 2: Khi thi triển, nhận {35%} giảm sát thương và miễn khống chế {1 giây}
+• Cấp 3: Khi thi triển, nhận {500} điểm hội tâm trong {35 giây}. Khi {Tố Tâm / Diệu Âm} dùng → phạm vi hồi máu +{100%}
+• Cấp 4: Nếu sát thương kết thúc không trúng, hoàn lại {5 giây} hồi chiêu. Khi {Tố Tâm / Diệu Âm} dùng → giảm {5 giây} hồi chiêu
+• Cấp 5: Sát thương kết thúc +{30%}. Đồng thời nhận {700} toàn kỹ năng tăng cường. Khi {Tố Tâm / Diệu Âm} dùng → hiệu quả buff tăng thêm {10%}`,
     imageUrl: '/images/ky-nang-quan-hiep/kslk.png',
   },
   {
@@ -105,23 +105,23 @@ export const kyNangGiangHoData: GameItem[] = [
     itemType: 'PVE',
     stats: ['Duy Trì', 'Giảm Sát Thương'],
     tags: ['Duy Trì', 'Giảm Sát Thương'],
-    details: `• Tụ lực xoay người rồi ném phi lai cốt gây sát thương. Trong thời gian này nhận được hiệu ứng giảm sát thương và tăng tốc độ. Phi lai cốt sau khi bay đến điểm cuối sẽ bay ngược trở lại, trong lúc quay về sẽ tiếp tục bay trúng mục tiêu, tối đa 3 lượt bay.
-• Quy Hồng: Trong mùa giải Quan Sơn Phi Hồng, Hiệp Cốt Thành Phong gây thêm sát thương.
-• Hổ Phong: Trong quá trình bay ra, cứ sau một khoảng thời gian ngắn sẽ đánh dấu Manh Hổ lên kẻ địch trúng chiêu, khi bay trở về, nếu trúng kẻ địch đang có dấu ấn Manh Hổ, sẽ gây thêm sát thương.
+    details: `• Tụ lực xoay người rồi ném phi lai cốt gây sát thương. Trong thời gian này nhận được hiệu ứng {giảm sát thương} và {tăng tốc độ}. Phi lai cốt sau khi bay đến điểm cuối sẽ bay ngược trở lại, trong lúc quay về sẽ tiếp tục bay trúng mục tiêu, tối đa {3 lượt} bay.
+• Quy Hồng: Trong mùa giải {Quan Sơn Phi Hồng}, Hiệp Cốt Thành Phong gây thêm sát thương.
+• Hổ Phong: Trong quá trình bay ra, cứ sau một khoảng thời gian ngắn sẽ đánh dấu {Manh Hổ} lên kẻ địch trúng chiêu, khi bay trở về, nếu trúng kẻ địch đang có dấu ấn {Manh Hổ}, sẽ gây thêm sát thương.
 • Trấn Ác: Kỹ năng tăng sát thương lên quái vật, không phải kiến trúc.`,
-    detail: `• Sát thương khi phi lai cốt bay ra: 85.219 nội công Kim thương.
-• Sát thương khi phi lai cốt bay về: 76.697 nội công Kim thương.
-• Tăng sát thương lên kẻ địch có dấu ấn Manh Hổ: 30%
-• Số lần phi lai cốt bay tối đa: 4 lần.
-• Tăng sát thương lên quái vật: 150%
-• Giảm sát thương khi tụ lực: 30%
-• Tăng tốc độ di chuyển khi tụ lực: 30%
-• Tăng sát thương trong mùa giải Quan Sơn Phi Hồng: 20%`,
-    upgrade: `• Cấp 1: tăng sát thương, khoảng 4% – 7% dựa theo Sức Mạnh, Khí Hải.
-• Cấp 2: Khi phi lai cốt bay về, mỗi khi gây sát thương lên một kẻ địch có dấu ấn Manh Hổ, thời gian hồi chiêu của kỹ năng giảm 1 giây.
-• Cấp 3: Sau khi thi triển kỹ năng, nhận 450 Hội Tâm, duy trì 30 giây.
-• Cấp 4: Khi thi triển kỹ năng, nhận 20% Phòng Ngự Thủ Lĩnh, duy trì 3 giây, mỗi lần đánh ra phi lai cốt sẽ gia hạn thời gian hiệu lực, không cộng dồn.
-• Cấp 5: Tăng 10% sát thương trong quá trình phi lai cốt bay về và tăng 10% sát thương khi kích hoạt dấu ấn Manh Hổ. Sau khi thi triển kỹ năng, nhận 600 điểm tăng cường toàn bộ kỹ năng, duy trì 30 giây.`,
+    detail: `• Sát thương khi phi lai cốt bay ra: {85.219} nội công Kim thương
+• Sát thương khi phi lai cốt bay về: {76.697} nội công Kim thương
+• Tăng sát thương lên kẻ địch có dấu ấn Manh Hổ: {30%}
+• Số lần phi lai cốt bay tối đa: {4 lần}
+• Tăng sát thương lên quái vật: {150%}
+• Giảm sát thương khi tụ lực: {30%}
+• Tăng tốc độ di chuyển khi tụ lực: {30%}
+• Tăng sát thương trong mùa giải Quan Sơn Phi Hồng: {20%}`,
+    upgrade: `• Cấp 1: tăng sát thương, khoảng {4% – 7%} dựa theo Sức Mạnh, Khí Hải
+• Cấp 2: Khi phi lai cốt bay về, mỗi khi gây sát thương lên kẻ địch có dấu ấn Manh Hổ, thời gian hồi chiêu của kỹ năng giảm {1 giây}
+• Cấp 3: Sau khi thi triển kỹ năng, nhận {450} Hội Tâm, duy trì {30 giây}
+• Cấp 4: Khi thi triển kỹ năng, nhận {20%} Phòng Ngự Thủ Lĩnh, duy trì {3 giây}, mỗi lần đánh ra phi lai cốt sẽ gia hạn thời gian hiệu lực, không cộng dồn
+• Cấp 5: Tăng {10%} sát thương trong quá trình phi lai cốt bay về và tăng {10%} sát thương khi kích hoạt dấu ấn Manh Hổ. Sau khi thi triển kỹ năng, nhận {600} điểm tăng cường toàn bộ kỹ năng, duy trì {30 giây}`,
     imageUrl: '/images/ky-nang-quan-hiep/hctp.png',
   },
   {
@@ -132,22 +132,22 @@ export const kyNangGiangHoData: GameItem[] = [
     itemType: 'PVE',
     stats: ['Kỹ Năng Bạo Phát', 'Giảm Sát Thương'],
     tags: ['Kỹ Năng Bạo Phát', 'Giảm Sát Thương'],
-    details: `• Ngưng tụ sức mạnh trong từng tấc kiếm rồi tung ra đòn chém, đồng thời phát ra kiếm khí gây nhiều lần sát thương chém liên tục. Sau đó kỹ năng kích nổ, gây sát thương bạo phát. Trong thời gian thi triển, nhận hiệu quả giảm sát thương từ quái vật. Nếu không đánh trúng mục tiêu gây sát thương chém, sẽ được hoàn lại một phần thời gian hồi chiêu.
-• Vấn Lan: Khi ở Tư thế Thiết Y là Ngự hoặc Tư thế Thương Lan là Trấn Hải, Thi triển kỹ năng sẽ nhận hiệu quả giảm sát thương từ Thủ Lĩnh, kéo dài trong một khoảng thời gian nhất định.
+    details: `• Ngưng tụ sức mạnh trong từng tấc kiếm rồi tung ra đòn chém, đồng thời phát ra kiếm khí gây nhiều lần sát thương chém liên tục. Sau đó kỹ năng kích nổ, gây sát thương bạo phát. Trong thời gian thi triển, nhận hiệu quả {giảm sát thương} từ quái vật. Nếu không đánh trúng mục tiêu gây sát thương chém, sẽ được hoàn lại một phần thời gian hồi chiêu.
+• Vấn Lan: Khi ở Tư thế {Thiết Y - Ngự} hoặc Tư thế {Thương Lan - Trấn Hải}, Thi triển kỹ năng sẽ nhận hiệu quả {giảm sát thương từ Thủ Lĩnh}, kéo dài trong một khoảng thời gian nhất định.
 • Quán Thông: Trong thời gian thi triển kỹ năng, hồi lại mana của hệ phái (ví dụ: nội lực, khí, kiếm ý…).
 • Thừa Phong: Tăng sát thương gây lên quái vật khi sử dụng kỹ năng.`,
-    detail: `• Sát thương 6 lần cắt: 37.167 nội công Thuỷ thương.
-• Sát thương nổ (bạo phát sau khi chém): 251.298 nội công Thuỷ thương.
-• Hoàn trả hồi chiêu khi không trúng: 3 giây.
-• Hiệu quả giảm sát thương từ Thủ Lĩnh: 6% + 3.000 điểm, kéo dài mỗi 3 giây
-• Giảm sát thương nhận từ quái vật: 35% trong thời gian thi triển kỹ năng.
-• Tăng sát thương gây lên quái vật: 60%.
+    detail: `• Sát thương 6 lần cắt: {37.167} nội công Thuỷ thương
+• Sát thương nổ (bạo phát sau khi chém): {251.298} nội công Thuỷ thương
+• Hoàn trả hồi chiêu khi không trúng: {3 giây}
+• Hiệu quả giảm sát thương từ Thủ Lĩnh: {6%} + {3.000} điểm, kéo dài mỗi {3 giây}
+• Giảm sát thương nhận từ quái vật: {35%} trong thời gian thi triển kỹ năng
+• Tăng sát thương gây lên quái vật: {60%}
 • Giảm sát thương khi nhiều người trúng cùng một mục tiêu người chơi (PvP).`,
-    upgrade: `• Cấp 1: Dựa trên Sức Mạnh hoặc Khí Hải để tăng sát thương khoảng 4$ đến 7%
-• Cấp 2: Mỗi lần kiếm khí gây sát thương, sẽ tăng 3% sát thương của vụ nổ cuối cùng, cộng dồn tối đa 18%.
-• Cấp 3: Sau khi thi triển kỹ năng, tăng thêm 350 Hội Tâm trong 30 giây.
-• Cấp 4: Khi đòn chém không trúng, thời gian hồi chiêu hoàn trả tăng thêm 1 giây. Tổng cộng có thể hoàn lại tối đa 20 giây hồi chiêu.
-• Cấp 5: Sau khi tung kỹ năng, tăng thêm 500 điểm sát thương toàn bộ kỹ năng trong 30 giây.`,
+    upgrade: `• Cấp 1: Dựa trên Sức Mạnh hoặc Khí Hải để tăng sát thương khoảng {4% đến 7%}
+• Cấp 2: Mỗi lần kiếm khí gây sát thương, sẽ tăng {3%} sát thương của vụ nổ cuối cùng, cộng dồn tối đa {18%}
+• Cấp 3: Sau khi thi triển kỹ năng, tăng thêm {350} Hội Tâm trong {30 giây}
+• Cấp 4: Khi đòn chém không trúng, thời gian hồi chiêu hoàn trả tăng thêm {1 giây}. Tổng cộng có thể hoàn lại tối đa {20 giây} hồi chiêu
+• Cấp 5: Sau khi tung kỹ năng, tăng thêm {500} điểm sát thương toàn bộ kỹ năng trong {30 giây}`,
     imageUrl: '/images/ky-nang-quan-hiep/xdkd.png',
   },
   {
@@ -156,27 +156,27 @@ export const kyNangGiangHoData: GameItem[] = [
     category: 'Kỹ năng',
     monPhai: 'Quần Hiệp',
     itemType: 'PVE - PVP',
-    stats: ['Nhóm', 'Vô Địch', 'Bá Thể', 'Kỹ Năng Di Chuyển', 'Khắc Chế Thủ Lĩnh', 'Giảm Sát Thương', 'Tăng Sát Thương'],
-    tags: ['Nhóm', 'Vô Địch', 'Bá Thể', 'Kỹ Năng Di Chuyển', 'Khắc Chế Thủ Lĩnh', 'Giảm Sát Thương', 'Tăng Sát Thương'],
-    details: `• Khi thi triển nhận được trạng thái bá thể ngắn hạn và giảm sát thương, liên tục phóng ám khí ra xung quanh gây sát thương. Sau đó nhận trạng thái vô địch và Khắc Chế Thủ Lĩnh, kết thúc chiêu có thể ấn Yến Hồi Phong để di chuyển một khoảng ngắn.
-• Phất Y: Sau khi thi triển, trong một khoảng thời gian, nếu bản thân bị khống chế mạnh và xung quanh có ít nhất 2 người chơi địch, sẽ tự động né tránh, nhận được bá thể ngắn hạn, không thể bị chọn làm mục tiêu và giảm sát thương, đồng thời gây sát thương xung quanh và hồi một lượng nhỏ khí huyết. Trong thời gian hồi chiêu, toàn đội chỉ được kích hoạt tối đa 2 lần hiệu ứng này.
-• Phong Duệ: Tăng sát thương gây lên quái (không phải kiến trúc) và người chơi đang ở trạng thái bá thể.`,
-    detail: `• Sát thương ám khí: 24.781 nội công Lôi thương, tổng cộng 6 lần.
-• Hiệu quả giảm sát thương: 35% trong 0.4 giây.
-• Thời gian duy trì vô địch: 1,6 giây.
-• Tăng tốc độ di chuyển khi thi triển: 100% trong 1.5 giây.
-• Khắc Chế Thủ Lĩnh tăng: 2,5% + 540, kéo dài 40 giây.
-• Sát thương khi lướt né: 34.417 nội công Lôi thương.
-• Giảm sát thương sau khi lướt: 40% trong 3 giây.
-• Hồi phục sau khi lướt: 2.000 điểm khí huyết.
-• Tăng sát thương lên quái vật: 300%
-• Tăng sát thương lên người chơi có bá thể: 50%
+    stats: ['Nhóm', 'Vô Địch', 'Bá Thể', 'Dịch Chuyển', 'Khắc Chế Thủ Lĩnh', 'Giảm Sát Thương', 'Tăng Sát Thương'],
+    tags: ['Nhóm', 'Vô Địch', 'Bá Thể', 'Dịch Chuyển', 'Khắc Chế Thủ Lĩnh', 'Giảm Sát Thương', 'Tăng Sát Thương'],
+    details: `• Khi thi triển nhận được trạng thái {bá thể} ngắn hạn và {giảm sát thương}, liên tục phóng ám khí ra xung quanh gây sát thương. Sau đó nhận trạng thái {vô địch} và {khắc chế thủ lĩnh}, kết thúc chiêu có thể ấn Yến Hồi Phong để di chuyển một khoảng ngắn.
+• Phất Y: Sau khi thi triển, trong một khoảng thời gian, nếu bản thân bị khống chế mạnh và xung quanh có ít nhất {2} người chơi địch, sẽ tự động né tránh, nhận được {bá thể} ngắn hạn, {không thể bị chọn làm mục tiêu} và {giảm sát thương}, đồng thời gây sát thương xung quanh và {hồi một lượng nhỏ khí huyết}. Trong thời gian hồi chiêu, toàn đội chỉ được kích hoạt tối đa {2 lần} hiệu ứng này.
+• Phong Duệ: Tăng sát thương gây lên quái (không phải kiến trúc) và người chơi đang ở trạng thái {bá thể}.`,
+    detail: `• Sát thương ám khí: {24.781} nội công Lôi thương, tổng cộng {6 lần}
+• Hiệu quả {giảm sát thương}: {35%} trong {0.4 giây}
+• Thời gian duy trì {vô địch}: {1,6 giây}
+• Tăng tốc độ di chuyển khi thi triển: {100%} trong {1.5 giây}
+• {Khắc Chế Thủ Lĩnh} tăng: {2,5%} + {540}, kéo dài {40 giây}
+• Sát thương khi lướt né: {34.417} nội công Lôi thương
+• Giảm sát thương sau khi lướt: {40%} trong {3 giây}
+• Hồi phục sau khi lướt: {2.000} điểm khí huyết
+• Tăng sát thương lên quái vật: {300%}
+• Tăng sát thương lên người chơi có {bá thể}: {50%}
 • Khi nhiều người chơi đánh trúng cùng một mục tiêu người chơi thì sát thương bị giảm mạnh.`,
-    upgrade: `• Cấp 1: Tăng 50% tốc độ di chuyển sau khi lướt, duy trì 1 giây.
-• Cấp 2: Giảm thời gian hồi chiêu đi 3 giây.
-• Cấp 3: Dựa theo Thân Pháp, tăng sát thương kỹ năng khoảng 4% đến 7%.
-• Cấp 4: Sau khi lướt, sát thương nhận vào từ mục tiêu có bá thể/miễn khống chế giảm thêm 25%.
-• Cấp 5: Số lần lướt tăng lên thành 3 lần.`,
+    upgrade: `• Cấp 1: Tăng {50%} tốc độ di chuyển sau khi lướt, duy trì {1 giây}
+• Cấp 2: Giảm thời gian hồi chiêu đi {3 giây}
+• Cấp 3: Dựa theo Thân Pháp, tăng sát thương kỹ năng khoảng {4% đến 7%}
+• Cấp 4: Sau khi lướt, sát thương nhận vào từ mục tiêu có {bá thể}/{miễn khống chế} giảm thêm {25%}
+• Cấp 5: Số lần lướt tăng lên thành {3 lần}`,
     imageUrl: '/images/ky-nang-quan-hiep/lnvn.png',
   },
   {
