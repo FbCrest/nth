@@ -116,9 +116,19 @@ export default function DungeonGuide({ type }: DungeonGuideProps) {
       document.body.classList.add('video-modal-open');
     } else {
       document.body.classList.remove('video-modal-open');
+      // Cleanup các element YouTube inject vào body
+      document.querySelectorAll('iframe[src*="youtube"]').forEach(el => el.remove());
+      document.querySelectorAll('div[id^="ytp"], div[class*="ytp"]').forEach(el => el.remove());
+      // Force reset pointer-events trên toàn bộ trang sau khi đóng modal
+      // YouTube đôi khi để lại overlay vô hình chặn mouse events
+      document.body.style.pointerEvents = 'none';
+      requestAnimationFrame(() => {
+        document.body.style.pointerEvents = '';
+      });
     }
     return () => {
       document.body.classList.remove('video-modal-open');
+      document.body.style.pointerEvents = '';
     };
   }, [selectedVideo]);
 

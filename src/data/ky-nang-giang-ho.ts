@@ -2,6 +2,29 @@ import { GameItem } from '../types';
 
 export const kyNangGiangHoData: GameItem[] = [
   {
+    name: 'Thanh Quân Nhậm Kiếm',
+    nameZh: '青筠任剑',
+    category: 'Kỹ năng',
+    monPhai: 'Quần Hiệp',
+    itemType: 'PVP',
+    stats: ['Duy Trì', 'Giải Khống', 'Dịch Chuyển', 'Đỡ Đòn', 'Hồi Máu'],
+    tags: ['Duy Trì', 'Giải Khống', 'Dịch Chuyển', 'Đỡ Đòn', 'Hồi Máu'],
+    details: `Nhảy bật lên và nhận trạng thái {đỡ đòn}, sau đó chém xuống vị trí mục tiêu và {hồi khí huyết} cho bản thân. Kết thúc bằng động tác tụ lực đập xuống, gây sát thương phạm vi và hồi một lượng lớn khí huyết. Có thể điều chỉnh vị trí đáp bằng cần điều khiển.
+• Trong mùa Sa Hải Chi Ca, khi thi triển kỹ năng sẽ {giải trừ khống chế}.
+• Khi trong đội có từ 2 người trở lên cùng sử dụng, thời gian hồi chiêu tăng thêm {20 giây}.`,
+    detail: `• Sát thương chém: {202.365} nội công Phong thương, tổng cộng {2 lần}
+• Hiệu quả hồi phục: {157.676} khí huyết, tổng cộng {2 lần}
+• Sát thương kết liễu: {344.021} nội công thương
+• Hiệu quả hồi phục cuối cùng: {394.188} khí huyết
+• Hồi chiêu: {38 giây}`,
+    upgrade: `• Cấp 1: Dựa theo thân pháp tăng sát thương và trị liệu khoảng {4%–7%}
+• Cấp 2: Sát thương đòn kết liễu tăng {20%}
+• Cấp 3: Khi ở trên không, tăng {40%} tốc độ di chuyển
+• Cấp 4: Mỗi lần kỹ năng đánh trúng, lượng hồi máu cuối cùng tăng {3%}, tối đa {15%}
+• Cấp 5: Thời gian hồi chiêu giảm {3 giây}`,
+    imageUrl: '/images/ky-nang-quan-hiep/tqnk.png',
+  },
+  {
     name: 'Quy Vân Phá Phong',
     nameZh: '归云破锋',
     category: 'Kỹ năng',
@@ -9,16 +32,16 @@ export const kyNangGiangHoData: GameItem[] = [
     itemType: 'PVE - PVP',
     stats: ['Đơn Thể', 'Dịch Chuyển', 'Phá Khiên', 'Đỡ Đòn'],
     tags: ['Đơn Thể', 'Dịch Chuyển', 'Phá Khiên', 'Đỡ Đòn'],
-    details: `Sau khi tụ lực ngắn, lao tới phía sau mục tiêu, gây sát thương lên kẻ địch trên đường đi, đồng thời gây sát thương bổ sung, hiệu ứng phá khiên và gắn dấu Phá Sơ Hở lên mục tiêu. Trong thời gian thi triển, nhận trạng thái đỡ đòn.
-• Phá Phong: Khi mục tiêu có dấu Phá Sơ Hở chịu sát thương từ Quần hiệp / Tuyệt kỹ, sẽ kích nổ gây thêm sát thương phạm vi và hiệu ứng phá khiên. Mỗi mục tiêu chỉ tồn tại 1 dấu Phá Sơ Hở.`,
-    detail: `• Sát thương trên đường (Hỏa): 85.390 nội công Hỏa thương
-• Sát thương trên đường (Băng): 85.390 nội công Băng thương
-• Sát thương lên mục tiêu (Hỏa): 160.106 nội công Hỏa thương
-• Sát thương lên mục tiêu (Băng): 160.106 nội công Băng thương
-• Giới hạn phá khiên: tối đa bằng 8% HP tối đa của mục tiêu
-• Thời gian tồn tại dấu Phá Sơ Hở: 15 giây
-• Sát thương kích nổ: 172.915 nội công Hỏa thương
-• Giới hạn phá khiên khi kích nổ: tối đa bằng 8% HP tối đa của mục tiêu`,
+    details: `Sau khi tụ lực ngắn, lao tới phía sau mục tiêu, gây sát thương lên kẻ địch trên đường đi, đồng thời gây sát thương bổ sung, hiệu ứng {phá khiên} và gắn dấu {Phá Sơ Hở} lên mục tiêu. Trong thời gian thi triển, nhận trạng thái {đỡ đòn}.
+• Phá Phong: Khi mục tiêu có dấu Phá Sơ Hở chịu sát thương từ Quần hiệp / Tuyệt kỹ, sẽ kích nổ gây thêm sát thương phạm vi và hiệu ứng phá khiên. Mỗi mục tiêu chỉ tồn tại {1} dấu Phá Sơ Hở.`,
+    detail: `• Sát thương trên đường (Hỏa): {85.390} nội công Hỏa thương
+• Sát thương trên đường (Băng): {85.390} nội công Băng thương
+• Sát thương lên mục tiêu (Hỏa): {160.106} nội công Hỏa thương
+• Sát thương lên mục tiêu (Băng): {160.106} nội công Băng thương
+• Giới hạn phá khiên: tối đa bằng {8%} HP tối đa của mục tiêu
+• Thời gian tồn tại dấu Phá Sơ Hở: {15 giây}
+• Sát thương kích nổ: {172.915} nội công Hỏa thương
+• Giới hạn phá khiên khi kích nổ: tối đa bằng {8%} HP tối đa của mục tiêu`,
     upgrade: ``,
     imageUrl: '/images/ky-nang-bach-gia/qvpp.png',
   },
