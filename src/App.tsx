@@ -6,6 +6,7 @@
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import FontPreloader from './components/FontPreloader';
 import Home from './pages/Home';
 import DataGrid from './components/DataGrid';
 import ClassChangeCommand from './components/cau-lenh-doi-phai';
@@ -105,6 +106,7 @@ function AppLayout() {
 export default function App() {
   return (
     <BrowserRouter>
+      <FontPreloader />
       <Routes>
         <Route path="/*" element={<AppLayout />} />
       </Routes>

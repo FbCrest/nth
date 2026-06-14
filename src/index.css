@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @font-face {
@@ -11,7 +10,8 @@
 
 @font-face {
   font-family: 'FzGameBr';
-  src: url('/fonts/Fz GameBr.ttf') format('truetype');
+  src: url('/fonts/Fz GameBr.woff2') format('woff2'),
+       url('/fonts/Fz GameBr.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
