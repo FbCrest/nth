@@ -8,7 +8,7 @@ export default function Home() {
         playsInline
         className="w-full h-full object-cover block"
       >
-        <source src="https://h.v.netease.com/2026/0129/674a59fc6ca1f94a7c112096cb398755.mp4" type="video/mp4" />
+        <source src="https://h.v.netease.com/2026/0618/c0b863d0de9ed6325bc21a47810a9666.mp4" />
       </video>
     </div>
   );
