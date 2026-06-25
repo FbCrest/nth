@@ -137,7 +137,6 @@ export default function MusicPlayer() {
           onStateChange: (e: { data: number; target: YT.Player }) => {
             if (destroyed) return;
             const S = window.YT.PlayerState;
-            console.log('[YT] state:', e.data, '| wasPlaying:', wasPlayingRef.current);
 
             if (e.data === S.PLAYING) {
               wasPlayingRef.current = true;
@@ -145,6 +144,10 @@ export default function MusicPlayer() {
               try { currentIdx.current = e.target.getPlaylistIndex(); } catch { /* ignore */ }
               updateMeta(e.target);
               startTick(e.target);
+
+            } else if (e.data === S.BUFFERING) {
+              // đang buffer bài mới — cập nhật meta sớm
+              updateMeta(e.target);
 
             } else if (e.data === S.PAUSED) {
               wasPlayingRef.current = false;
@@ -156,12 +159,10 @@ export default function MusicPlayer() {
               setPlaying(false);
               stopTick();
               if (repeat) { e.target.seekTo(0, true); e.target.playVideo(); }
-              else e.target.nextVideo();
+              else { e.target.nextVideo(); setTimeout(() => e.target.playVideo(), 500); }
 
             } else if (e.data === S.UNSTARTED || e.data === 5 /* CUED */) {
-              // UNSTARTED(-1) hoặc CUED(5) sau nextVideo — nếu trước đó đang play thì tự play lại
               if (wasPlayingRef.current) {
-                console.log('[YT] auto-play after track change');
                 e.target.playVideo();
               }
               if (!initialMetaLoaded.current) {
@@ -248,6 +249,7 @@ export default function MusicPlayer() {
 
   const goNext = () => {
     if (!playerRef.current || !ready) return;
+    const isPlaying = wasPlayingRef.current;
     if (shuffle) {
       const len = playlistLen.current || 1;
       let next = Math.floor(Math.random() * len);
@@ -255,17 +257,39 @@ export default function MusicPlayer() {
       playerRef.current.playVideoAt(next);
     } else {
       playerRef.current.nextVideo();
+      // force play nếu đang phát — YouTube đôi khi không tự play khi next
+      if (isPlaying) {
+        setTimeout(() => {
+          try {
+            const state = playerRef.current?.getPlayerState();
+            if (state !== window.YT.PlayerState.PLAYING) {
+              playerRef.current?.playVideo();
+            }
+          } catch { /* ignore */ }
+        }, 800);
+      }
     }
   };
 
   const goPrev = () => {
     if (!playerRef.current || !ready) return;
+    const isPlaying = wasPlayingRef.current;
     try {
       const cur = playerRef.current.getCurrentTime();
       if (cur > 3) {
         playerRef.current.seekTo(0, true);
       } else {
         playerRef.current.previousVideo();
+        if (isPlaying) {
+          setTimeout(() => {
+            try {
+              const state = playerRef.current?.getPlayerState();
+              if (state !== window.YT.PlayerState.PLAYING) {
+                playerRef.current?.playVideo();
+              }
+            } catch { /* ignore */ }
+          }, 800);
+        }
       }
     } catch { /* ignore */ }
   };
