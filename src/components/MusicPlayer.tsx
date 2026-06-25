@@ -103,25 +103,11 @@ export default function MusicPlayer() {
       const el = document.getElementById(YOUTUBE_PLAYER_ID);
       if (!el) return;
       playerRef.current = new window.YT.Player(YOUTUBE_PLAYER_ID, {
-        height: '200',
-        width: '200',
-        playerVars: {
-          autoplay: 0,
-          controls: 0,
-          disablekb: 1,
-          fs: 0,
-          iv_load_policy: 3,
-          modestbranding: 1,
-          rel: 0,
-          origin: window.location.origin,
-        },
         events: {
           onReady: (e: { target: YT.Player }) => {
             if (destroyed) return;
-            // loadPlaylist sau khi ready — đây là cách đúng
             e.target.loadPlaylist({ listType: 'playlist', list: PLAYLIST_ID });
-            e.target.stopVideo(); // load playlist nhưng chưa play
-            // khôi phục volume/muted từ localStorage
+            e.target.stopVideo();
             const savedVol = localStorage.getItem('nth-volume');
             const savedMuted = localStorage.getItem('nth-muted') === 'true';
             const vol = savedVol !== null ? Number(savedVol) : 35;
@@ -249,7 +235,6 @@ export default function MusicPlayer() {
 
   const goNext = () => {
     if (!playerRef.current || !ready) return;
-    const isPlaying = wasPlayingRef.current;
     if (shuffle) {
       const len = playlistLen.current || 1;
       let next = Math.floor(Math.random() * len);
@@ -257,40 +242,15 @@ export default function MusicPlayer() {
       playerRef.current.playVideoAt(next);
     } else {
       playerRef.current.nextVideo();
-      // force play nếu đang phát — YouTube đôi khi không tự play khi next
-      if (isPlaying) {
-        setTimeout(() => {
-          try {
-            const state = playerRef.current?.getPlayerState();
-            if (state !== window.YT.PlayerState.PLAYING) {
-              playerRef.current?.playVideo();
-            }
-          } catch { /* ignore */ }
-        }, 800);
-      }
     }
   };
 
   const goPrev = () => {
     if (!playerRef.current || !ready) return;
-    const isPlaying = wasPlayingRef.current;
     try {
       const cur = playerRef.current.getCurrentTime();
-      if (cur > 3) {
-        playerRef.current.seekTo(0, true);
-      } else {
-        playerRef.current.previousVideo();
-        if (isPlaying) {
-          setTimeout(() => {
-            try {
-              const state = playerRef.current?.getPlayerState();
-              if (state !== window.YT.PlayerState.PLAYING) {
-                playerRef.current?.playVideo();
-              }
-            } catch { /* ignore */ }
-          }, 800);
-        }
-      }
+      if (cur > 3) playerRef.current.seekTo(0, true);
+      else playerRef.current.previousVideo();
     } catch { /* ignore */ }
   };
 
