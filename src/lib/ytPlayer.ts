@@ -25,6 +25,7 @@ let _player: YT.Player | null = null;
 let _ready = false;
 let _progressTimer: ReturnType<typeof setInterval> | null = null;
 let _listeners: Listener[] = [];
+let _navigating = false; // đang chuyển bài — bỏ qua PAUSED/UNSTARTED
 
 let _state: PlayerState = {
   playing: false,
@@ -121,26 +122,41 @@ export function initPlayer(elementId: string) {
           const S = (window as any).YT.PlayerState;
 
           if (e.data === S.PLAYING) {
+            _navigating = false;
             _state.playing = true;
             updateMeta();
             startProgress();
             emit();
 
           } else if (e.data === S.PAUSED) {
-            _state.playing = false;
-            stopProgress();
-            emit();
+            if (_navigating) {
+              // bài mới vừa load xong ở trạng thái PAUSED — tự play
+              e.target.playVideo();
+            } else {
+              _state.playing = false;
+              stopProgress();
+              emit();
+            }
 
           } else if (e.data === S.ENDED) {
+            _navigating = true;
             _state.playing = false;
             stopProgress();
-            // auto next
             try { e.target.nextVideo(); } catch { /* ignore */ }
             emit();
 
           } else if (e.data === S.UNSTARTED) {
+            if (_navigating) {
+              // bài mới chưa start — tự play
+              setTimeout(() => { try { e.target.playVideo(); } catch { /* ignore */ } }, 100);
+            }
             updateMeta();
             emit();
+
+          } else if (e.data === 5 /* CUED */) {
+            if (_navigating) {
+              e.target.playVideo();
+            }
           }
         },
       },
@@ -153,12 +169,17 @@ export function togglePlay() {
   if (!_player || !_ready) return;
   const S = (window as any).YT.PlayerState;
   const state = _player.getPlayerState();
-  if (state === S.PLAYING) _player.pauseVideo();
-  else _player.playVideo();
+  if (state === S.PLAYING) {
+    _navigating = false; // user chủ động pause
+    _player.pauseVideo();
+  } else {
+    _player.playVideo();
+  }
 }
 
 export function nextTrack() {
   if (!_player || !_ready) return;
+  _navigating = _state.playing; // chỉ cần auto-play nếu đang phát
   _player.nextVideo();
 }
 
@@ -166,8 +187,13 @@ export function prevTrack() {
   if (!_player || !_ready) return;
   try {
     const cur = _player.getCurrentTime();
-    if (cur > 3) _player.seekTo(0, true);
-    else _player.previousVideo();
+    if (cur > 3) {
+      _navigating = false;
+      _player.seekTo(0, true);
+    } else {
+      _navigating = _state.playing;
+      _player.previousVideo();
+    }
   } catch { /* ignore */ }
 }
 
