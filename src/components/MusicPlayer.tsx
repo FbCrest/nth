@@ -112,7 +112,7 @@ export default function MusicPlayer() {
     >
       {/* YouTube iframe target — ẩn hoàn toàn */}
       <div id={PLAYER_ELEMENT_ID}
-        style={{ position: 'absolute', top: -9999, left: -9999, width: 1, height: 1, pointerEvents: 'none', overflow: 'hidden' }}
+        style={{ position: 'absolute', top: -9999, left: -9999, width: 320, height: 180, pointerEvents: 'none', overflow: 'hidden', opacity: 0 }}
       />
 
       {/* Album art / thumbnail / viz */}

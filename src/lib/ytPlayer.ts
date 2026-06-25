@@ -93,8 +93,10 @@ export function initPlayer(elementId: string) {
     const el = document.getElementById(elementId);
     if (!el) return;
 
-    // Đúng y hệt meodibui: CHỈ truyền events, không có playerVars/height/width
     _player = new (window as any).YT.Player(elementId, {
+      playerVars: {
+        origin: 'https://nth-wiki.vercel.app',
+      },
       events: {
         onReady: (e: any) => {
           _ready = true;
