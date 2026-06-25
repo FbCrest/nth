@@ -136,3 +136,49 @@
 body.video-modal-open nav {
   pointer-events: none;
 }
+
+/* ── Announcement Panel — scrollbar ── */
+.nth-ann-body::-webkit-scrollbar { width: 3px; }
+.nth-ann-body::-webkit-scrollbar-thumb { background: rgba(192,57,43,0.35); border-radius: 0; }
+.nth-ann-body::-webkit-scrollbar-track { background: transparent; }
+
+/* ── Announcement Panel — markdown content ── */
+.nth-ann-md h1,
+.nth-ann-md h2,
+.nth-ann-md h3 {
+  font-weight: 700;
+  color: #d4a055;
+  letter-spacing: 0.02em;
+  margin: 10px 0 4px;
+  line-height: 1.35;
+  padding-left: 8px;
+  border-left: 2px solid #c0392b;
+}
+.nth-ann-md h1:first-child,
+.nth-ann-md h2:first-child,
+.nth-ann-md h3:first-child { margin-top: 0; }
+.nth-ann-md h1 { font-size: 13px; }
+.nth-ann-md h2 { font-size: 12px; }
+.nth-ann-md h3 { font-size: 11.5px; }
+.nth-ann-md p, .nth-ann-md li { margin-bottom: 3px; }
+.nth-ann-md strong { color: #d4a055; font-weight: 700; }
+
+/* ── Music player loading spin ── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Heartbeat animation cho icon trong thông báo ── */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15%       { transform: scale(1.35); }
+  30%       { transform: scale(1); }
+  45%       { transform: scale(1.2); }
+  60%       { transform: scale(1); }
+}
+.nth-heartbeat {
+  display: inline-block;
+  animation: heartbeat 2s ease-in-out infinite;
+  transform-origin: center;
+}

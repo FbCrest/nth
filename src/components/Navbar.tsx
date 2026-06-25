@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useRef } from 'react';
-import { Menu, X, Home, BookOpen, Swords, ChevronRight } from 'lucide-react';
+import { Menu, X, Home, BookOpen, Swords, ChevronRight, ExternalLink, Video, Monitor } from 'lucide-react';
 
 const NAV_BG = '#333333';
 const SUBMENU_BG = '#333333';
@@ -79,6 +79,11 @@ export default function Navbar({
   const dungeonItems = [
     { id: 'pho-ban-12', label: 'Phó Bản 12 Người' },
     { id: 'pho-ban-6',  label: 'Phó Bản 6 Người'  },
+  ];
+
+  const toolItems = [
+    { label: 'Web Dịch Video Douyin',      url: 'https://nyra-translate.vercel.app/',                                                                                    icon: <Video size={15} className="opacity-80 shrink-0" /> },
+    { label: 'Tool Quét & Dịch Màn Hình', url: 'https://drive.google.com/file/d/1TqwMUEQZzNL1AzoRRbBlYmXVAS4SjOWZ/view?usp=drive_link', icon: <Monitor size={15} className="opacity-80 shrink-0" /> },
   ];
 
   const handleNavigate = (id: string) => {
@@ -239,9 +244,21 @@ export default function Navbar({
               </AnimatePresence>
             </div>
 
-          </div>
+            {/* Công Cụ — 2 link riêng biệt */}
+            {toolItems.map(item => (
+              <a
+                key={item.url}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link flex items-center gap-1.5 px-4 py-3 text-sm font-medium cursor-pointer"
+              >
+                {item.icon}
+                {item.label}
+              </a>
+            ))}
 
-          {/* Mobile toggle */}
+          </div>
           <div className="flex items-center">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -329,6 +346,24 @@ export default function Navbar({
                   </div>
                 );
               })}
+
+              {/* Công Cụ — mobile */}
+              <p className="px-3 pt-3 pb-1 text-[10px] font-black uppercase tracking-widest" style={{ color: ACCENT }}>
+                Công Cụ
+              </p>
+              {toolItems.map(item => (
+                <a
+                  key={item.url}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-link w-full text-left px-3 py-2.5 text-sm cursor-pointer flex items-center gap-2"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {item.icon}
+                  {item.label}
+                </a>
+              ))}
             </div>
           </motion.div>
         )}
