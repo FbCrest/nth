@@ -40,6 +40,8 @@ export default function Navbar({
   };
 
   const closeDropdownDelayed = () => {
+    // clear timer cũ trước khi tạo timer mới
+    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
     dropdownTimerRef.current = setTimeout(() => {
       setOpenDropdown(null);
       setMonPhaiHovered(false);
@@ -47,7 +49,10 @@ export default function Navbar({
   };
 
   const cancelCloseDropdown = () => {
-    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+    if (dropdownTimerRef.current) {
+      clearTimeout(dropdownTimerRef.current);
+      dropdownTimerRef.current = null;
+    }
   };
 
   const openMonPhai = () => {
@@ -70,6 +75,8 @@ export default function Navbar({
     { id: 'noi-cong',           label: 'Nội Công',            isLabel: false },
     { id: 'dac-tinh',           label: 'Đặc Tính',            isLabel: false },
     { id: 'tuyet-ky',           label: 'Tuyệt Kỹ',            isLabel: false },
+    { id: 'chu-thien',          label: 'Chu Thiên Nội Công',  isLabel: false },
+    { id: 'vu-khi-thua-anh',   label: 'Vũ Khí Thừa Ảnh',    isLabel: false },
     { id: 'ky-nang-bach-gia',   label: 'Kỹ Năng Giang Hồ',   isLabel: false },
     { id: 'ky-nang-mon-phai',   label: 'Kỹ Năng Môn Phái',   isLabel: true  },
     { id: 'cau-lenh-doi-phai',  label: 'Câu Lệnh Đổi Phái',  isLabel: false },
@@ -131,8 +138,8 @@ export default function Navbar({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.15, ease: 'easeOut' }}
-                    className="absolute left-0 top-full z-[100] shadow-lg"
-                    style={{ backgroundColor: SUBMENU_BG }}
+                    className="absolute left-0 z-[100] shadow-lg"
+                    style={{ backgroundColor: SUBMENU_BG, top: 'calc(100% - 4px)', paddingTop: 4 }}
                     onMouseEnter={cancelCloseDropdown}
                     onMouseLeave={closeDropdownDelayed}
                   >
@@ -224,8 +231,8 @@ export default function Navbar({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.15, ease: 'easeOut' }}
-                    className="absolute left-0 top-full z-[100] min-w-[200px] list-none shadow-lg"
-                    style={{ backgroundColor: SUBMENU_BG }}
+                    className="absolute left-0 z-[100] min-w-[200px] list-none shadow-lg"
+                    style={{ backgroundColor: SUBMENU_BG, top: 'calc(100% - 4px)', paddingTop: 4 }}
                     onMouseEnter={cancelCloseDropdown}
                     onMouseLeave={closeDropdownDelayed}
                   >
