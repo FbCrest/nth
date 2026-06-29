@@ -27,7 +27,7 @@ const ANN = {
   tag: 'Phiên Bản 4.0',
   date: '25/06/2026',
   content: `## Cập nhật trang chủ
-- Thêm bảng thông báo bên trái với hiệu ứng thu/mở
+- Cập nhật danh sách **nội công phiên bản 4.0** mới nhât
 - Thêm trình chơi nhạc nền playlist **Nhạc Trung**
 - Thêm menu **Web Dịch Video Douyin** và **Tool Quét & Dịch Màn Hình**
 
