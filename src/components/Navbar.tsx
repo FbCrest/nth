@@ -76,6 +76,7 @@ export default function Navbar({
     { id: 'dac-tinh',           label: 'Đặc Tính',            isLabel: false },
     { id: 'tuyet-ky',           label: 'Tuyệt Kỹ',            isLabel: false },
     { id: 'chu-thien',          label: 'Chu Thiên Nội Công',  isLabel: false },
+    { id: 'thien-phu',          label: 'Thiên Phú Lĩnh Ngộ',  isLabel: false },
     { id: 'vu-khi-thua-anh',   label: 'Vũ Khí Thừa Ảnh',    isLabel: false },
     { id: 'ky-nang-bach-gia',   label: 'Kỹ Năng Giang Hồ',   isLabel: false },
     { id: 'ky-nang-mon-phai',   label: 'Kỹ Năng Môn Phái',   isLabel: true  },

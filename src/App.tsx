@@ -14,6 +14,7 @@ import DungeonGuide from './components/huong-dan-pho-ban';
 import CauLenhDoiGioi from './components/cau-lenh-doi-gioi';
 import ChuThien from './pages/ChuThien';
 import VuKhiThuaAnh from './pages/VuKhiThuaAnh';
+import ThienPhu from './pages/ThienPhu';
 import { GameItem } from './types';
 import { noiCongData } from './data/noi-cong';
 import { dacTinhData } from './data/dac-tinh';
@@ -81,6 +82,7 @@ function AppLayout() {
                 <Route path="/cau-lenh-doi-gioi" element={<CauLenhDoiGioi />} />
                 <Route path="/chu-thien" element={<ChuThien />} />
                 <Route path="/vu-khi-thua-anh" element={<VuKhiThuaAnh />} />
+                <Route path="/thien-phu" element={<ThienPhu />} />
                 <Route path="/pho-ban-12" element={<DungeonGuide type="12-player" />} />
                 <Route path="/pho-ban-6" element={<DungeonGuide type="6-player" />} />
                 {Object.keys(mockData).map(key => (
