@@ -2,6 +2,65 @@ import { GameItem } from '../types';
 
 export const kyNangGiangHoData: GameItem[] = [
   {
+    name: 'Thanh Thỉ Minh Giản',
+    nameZh: '青矢鸣涧',
+    category: 'Kỹ năng',
+    monPhai: 'Bách Gia',
+    itemType: 'PVP',
+    stats: ['Thừa Ảnh Cung', 'Dịch Chuyển'],
+    tags: ['Thừa Ảnh Cung', 'Dịch Chuyển'],
+    details: `Tiêu hao khinh công để Hóa Vũ Xung Kích, dịch chuyển theo hướng điều khiển và bắn tên về phía mục tiêu, gây sát thương. Có thể dịch chuyển tối đa {5 lần}.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, bắn thêm mũi tên để tăng sát thương.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.
+• {Giao tranh}: Khi xung quanh có từ 5 người chơi đối địch trở lên, số lần dịch chuyển tối đa giảm còn 4 lần, nhưng sát thương của mỗi lần tăng lên.`,
+    detail: `• Sát thương mỗi lần: {2.376} sát thương Nội Công.
+• Tổng sát thương: 11.879 sát thương Nội Công.
+• Sát thương bắn của Thừa Ảnh Cung: {1.588} sát thương Nội Công.
+• Tiêu hao khinh công mỗi lần dịch chuyển: {20}.
+• Sát thương mỗi lần trong trạng thái giao tranh: {3.180} sát thương Nội Công.
+• Hồi chiêu: {25 giây}.`,
+    upgrade: ``,
+    imageUrl: '/images/ky-nang-bach-gia/thanh-thi-minh-gian.png',
+  },
+  {
+    name: 'Diệp Vũ Xuyên Vân',
+    nameZh: '叶雨穿云',
+    category: 'Kỹ năng',
+    monPhai: 'Bách Gia',
+    itemType: 'PVE - PVP',
+    stats: ['Thừa Ảnh Cung', 'Phá Khiên'],
+    tags: ['Thừa Ảnh Cung', 'Phá Khiên'],
+    details: `Vận khí cuốn lá rơi, nhảy lên và bắn một mũi tên lên không trung, tạo một trận mưa tên phủ đầy lá rụng tại vị trí mục tiêu, gây sát thương duy trì và hiệu ứng Phá Khiên. Mưa tên sẽ tự động truy đuổi mục tiêu.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, triệu hồi tàn ảnh cùng tham gia bắn tên, gây thêm hiệu ứng Phá Khiên.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.`,
+    detail: `• Tổng sát thương Mưa Tên: {12.112} sát thương Nội Công.
+• Phá Khiên Tương đương {3%} giới hạn máu tối đa của mục tiêu × {5 lần}.
+• Sát thương bắn của Thừa Ảnh Cung: {3.028} sát thương Nội Công.
+• Sát thương lên quái vật tăng: {145%}.
+• Hồi chiêu: {20 giây}.`,
+    upgrade: ``,
+    imageUrl: '/images/ky-nang-bach-gia/diep-vu-xuyen-van.png',
+  },
+  {
+    name: 'Minh Kiêu Chỉ · Cung',
+    nameZh: '鸣枭指·弓',
+    category: 'Kỹ năng',
+    monPhai: 'Bách Gia',
+    itemType: 'PVP',
+    stats: ['Thừa Ảnh Cung', 'Phá Khiên'],
+    tags: ['Thừa Ảnh Cung', 'Phá Khiên'],
+    details: `Bắn 4 mũi tên về phía mục tiêu được chỉ định. Mỗi mũi tên khi trúng đích sẽ gây sát thương và hiệu ứng {Phá Khiên}.
+• {Lệ Thiên}: Khi gây hiệu ứng Phá Khiên, thời gian hồi của kỹ năng này được giảm.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, triệu hồi huyễn ảnh bắn thêm 2 mũi tên.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.`,
+    detail: `• Sát thương mỗi mũi tên: {1.582} sát thương Nội Công.
+• Giới hạn Phá Khiên: Tương đương {36%} giới hạn máu tối đa của mục tiêu.
+• Khi gây hiệu ứng Phá Khiên, thời gian hồi tối đa được giảm: {4 giây}.
+• Hồi chiêu: {18 giây}.`,
+    upgrade: ``,
+    imageUrl: '/images/ky-nang-bach-gia/minh-kieu-chi-cung.png',
+  },
+  {
     name: 'Thanh Quân Nhậm Kiếm',
     nameZh: '青筠任剑',
     category: 'Kỹ năng',

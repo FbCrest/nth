@@ -1,6 +1,32 @@
 import { GameItem } from '../types';
 
 export const tuyetKyData: GameItem[] = [
+  {
+    name: 'Thương Loan Kinh Vũ',
+    nameZh: '苍峦惊羽',
+    category: 'Tuyệt kỹ',
+    monPhai: 'Gacha',
+    itemType: 'PVE - PVP',
+    stats: ['Thừa Ảnh Cung', 'Vô Địch'],
+    tags: ['Thừa Ảnh Cung', 'Vô Địch'],
+    details: `Gây nhiều đợt sát thương lên mục tiêu đã khóa, đòn kết thúc gây lượng lớn sát thương lên mục tiêu và kẻ địch xung quanh.
+• {Kinh Vũ}: Khi sử dụng lên quái vật có máu dưới {40%} hoặc người chơi đối địch có máu dưới {20%}, chuyển sang trạng thái Bắn Cường Hóa và nhận Vô địch trong thời gian hiệu lực.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, triệu hồi tàn ảnh phối hợp thực hiện nhiều đợt bắn.
+• {Giao Tranh}: Khi xung quanh có từ {5 người chơi} đối địch trở lên, Bắn Cường Hóa sẽ được kích hoạt khi tấn công người chơi có máu dưới {30%}, đồng thời sát thương tăng thêm.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.`,
+    detail: `• Tổng sát thương Bắn Thường: {24.670} sát thương nội công.
+• Tổng sát thương Bắn Cường Hóa: {32.610} sát thương nội công.
+• Tăng sát thương khi giao tranh {15%}.
+• Khi nhiều người cùng đánh trúng một mục tiêu người chơi, sát thương giảm mạnh.
+• Bắn Cường Hóa nhận {Vô địch} trong {2 giây}.
+• Sát thương lên quái vật không phải công trình tăng: {245%}.`,
+    upgrade: `• Cấp 1: Tùy theo chỉ số Thân Pháp, sát thương tăng khoảng từ {4%} đến {7%}.
+• Cấp 2: Lần gây sát thương đầu tiên khiến mục tiêu mất lượng khiên bằng {15%} giới hạn máu tối đa.
+• Cấp 3: Sau khi thi triển kỹ năng, nhận {60 Chí mạng} và {2% khắc Boss} trong {40 giây}.
+• Cấp 4: Khi đánh trúng mục tiêu, tùy theo khoảng cách giữa bản thân và mục tiêu, tối đa làm giảm {30% tốc độ di chuyển} của mục tiêu trong {2 giây}.
+• Cấp 5: Sát thương của đòn kết liễu tăng {15%}.`,
+    imageUrl: '/images/tuyet-ky/thuong-loan-kinh-vu.png',
+  },
   // ── VÔ PHONG MÔN ──
   {
     name: 'Vạn Nhẫn Quy Phong',
