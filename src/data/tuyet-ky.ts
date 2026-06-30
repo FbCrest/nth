@@ -28,34 +28,36 @@ export const tuyetKyData: GameItem[] = [
     imageUrl: '/images/tuyet-ky/thuong-loan-kinh-vu.png',
   },
   // ── VÔ PHONG MÔN ──
-  {
-    name: 'Vạn Nhẫn Quy Phong',
-    nameZh: '万刃归锋',
-    category: 'Tuyệt kỹ',
-    monPhai: 'Vô Phong Môn',
-    itemType: 'PVE - PVP',
-    stats: ['Duy Trì', 'Bá Thể', 'Tầm Xa'],
-    tags: ['Duy Trì', 'Bá Thể', 'Tầm Xa'],
-    details: `Nhảy lên không trung, nhận hiệu quả {khắc chế thủ lĩnh}. Trong thời gian này, đòn đánh thường có thể luân phiên tung ra trảm kích Băng/Hỏa, tối đa {3 lần}. Mỗi lần trảm kích sẽ gây thêm dấu {Phá Sơ Hở} lên mục tiêu đã chọn, đồng thời có thể dùng kỹ năng đoạn 2 lao xuống vị trí mục tiêu, thi triển {Vạn Nhẫn Trảm}.
-• Khi dùng lên mục tiêu quái, sẽ nhanh chóng thi triển {Vạn Nhẫn Trảm}, bỏ qua trạng thái bay lên.
-• {Vạn Nhẫn Trảm}: Gây nhiều đợt trảm kích tốc độ cao tại vị trí mục tiêu.
-• {Quy Phong}: Trong lúc đang trên không, dùng kỹ năng khác sẽ hạ xuống sớm. Nếu hạ xuống theo cách này, hoặc không dùng Vạn Nhẫn Trảm khi đang bay, sẽ tự động thi triển Vạn Nhẫn Trảm trễ tại vị trí mục tiêu.
-• {Hiệu ứng mùa}: Trong mùa Sa Hải Chi Ca, hiệu quả khắc chế thủ lĩnh tăng thêm {4%} (không hiển thị trong chỉ số).`,
-    detail: `• Trảm kích Băng trên không: {127.163} nội công Băng thương.
-• Trảm kích Hỏa trên không: {127.163} nội công Hỏa thương.
-• Vạn Nhẫn Trảm (Băng): {54.209} nội công Băng thương × {5 lần}.
-• Vạn Nhẫn Trảm (Hỏa): {54.209} nội công Hỏa thương × {5 lần}.
-• Giảm sát thương khi đang trên không (bá thể): {25%}.
-• Vạn Nhẫn Trảm gây thêm {400%} sát thương lên quái (không phải kiến trúc).
-• Tăng hiệu quả khắc chế thủ lĩnh: {6%}.
-• Khi nhiều người cùng đánh trúng mục tiêu người chơi, sát thương sẽ giảm mạnh.`,
-    upgrade: `• Cấp 1: Dựa theo {Sức mạnh / Khí Hải}, tăng sát thương khoảng {4% ~ 7%}.
-• Cấp 2: Tốc độ di chuyển trên không tăng {16.7%}.
-• Cấp 3: Sau khi thi triển, tăng {1200} điểm tấn công trong {40 giây} và tăng {650} toàn nguyên tố trong {40 giây}.
-• Cấp 4: Thời gian trên không tăng {0.5 giây}, giới hạn số lần trảm kích trên không +{1}.
-• Cấp 5: Sát thương Vạn Nhẫn Trảm tăng {20%}.`,
-    imageUrl: '/images/tuyet-ky/vnqp.png',
-  },
+{
+  name: 'Vạn Nhận Quy Phong',
+  nameZh: '万刃归锋',
+  category: 'Tuyệt kỹ',
+  monPhai: 'Vô Phong Môn',
+  itemType: 'PVP',
+  stats: ['Thông Dụng', 'Thừa Ảnh Song Đao', 'Bá Thể', 'Tầm Xa'],
+  tags: ['Thông Dụng', 'Thừa Ảnh Song Đao', 'Bá Thể', 'Tầm Xa'],
+  details: `Nhảy vọt lên không trung, nhận hiệu ứng {Khắc Chế Thủ Lĩnh}. Trong thời gian này, đòn đánh thường có thể luân phiên thi triển {Băng Trảm} và {Hỏa Trảm}, tối đa {3 lần}. Nhấn lần hai kỹ năng để lao xuống vị trí mục tiêu và thi triển {Vạn Nhận Trảm}.
+• Khi sử dụng lên mục tiêu quái, sẽ trực tiếp thi triển {Vạn Nhận Trảm}.
+• {Vạn Nhận Trảm}: Gây nhiều đợt chém tốc độ cao lên vị trí mục tiêu.
+• {Quy Phong}: Có thể sử dụng bất kỳ kỹ năng nào để hạ xuống sớm. Nếu chưa thi triển {Vạn Nhận Trảm}, kỹ năng sẽ tự động được kích hoạt tại vị trí mục tiêu sau một khoảng thời gian.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Thừa Ảnh Phá Cảnh, triệu hồi thêm {Thừa Ảnh Song Đao} truy kích mục tiêu. Sát thương của Thừa Ảnh không thể đỡ đòn.
+• {Võ học Thừa Ảnh}: Sau khi thi triển tuyệt kỹ sẽ kích hoạt đòn {Truy Kích Thừa Ảnh} của vũ khí đang trang bị.`,
+  detail: `• Sát thương Băng Trảm trên không: {2.932} nội công thương.
+• Sát thương Hỏa Trảm trên không: {2.932} nội công thương.
+• Sát thương Băng của {Vạn Nhận Trảm}: {932} nội công thương mỗi đòn, tổng {5} đòn.
+• Sát thương Hỏa của {Vạn Nhận Trảm}: {932} nội công thương mỗi đòn, tổng {5} đòn.
+• Tổng sát thương từ {Thừa Ảnh Song Đao}: {7.780} nội công thương.
+• Trong trạng thái trên không, nhận {25%} giảm sát thương.
+• Sát thương lên quái không phải công trình tăng {200%}.
+• Hiệu quả {Khắc Chế Thủ Lĩnh}: tăng {6%}.
+• Khi nhiều người cùng đánh trúng một mục tiêu người chơi, sát thương sẽ giảm mạnh.`,
+  upgrade: `• Cấp 1: Dựa theo {Sức Mạnh} hoặc {Khí Hải}, tăng sát thương khoảng {4% - 7%}.
+• Cấp 2: Tốc độ di chuyển khi ở trên không tăng {16,7%}.
+• Cấp 3: Sau khi thi triển kỹ năng, tăng {30} điểm tấn công trong {40 giây}.
+• Cấp 4: Thời gian duy trì trạng thái trên không tăng {0,5 giây}; số lần chém trên không tối đa tăng thêm {1}.
+• Cấp 5: Sát thương của {Vạn Nhận Trảm} tăng {20%}.`,
+  imageUrl: '/images/tuyet-ky/van-nhan-quy-phong.png',
+},
   // ── GIANG HỒ ──
   {
     name: 'Dạ Du Hoa Đăng',
@@ -255,28 +257,89 @@ export const tuyetKyData: GameItem[] = [
     nameZh: '剑破乾坤',
     category: 'Tuyệt kỹ',
     monPhai: 'Tiêu Dao',
-    itemType: 'PVP',
-    stats: ['Nhóm', 'Bạo Phát', 'Bá Thể', 'Giảm Sát Thương'],
-    tags: ['Nhóm', 'Bạo Phát', 'Bá Thể', 'Giảm Sát Thương'],
-    details: `Nhận hiệu ứng {bá thể} và {giảm sát thương} trong thời gian ngắn. Các thanh tiểu kiếm tụ lại, kéo nhẹ kẻ địch xung quanh lại gần và áp dấu ấn {Vạn Quân} lên người chơi và quái Thủ lĩnh. Sau đó, Tiểu Kiếm hội tụ thành đại kiếm rơi xuống gây sát thương cực lớn.
-• {Vạn Quân}: Trong thời gian bị đánh dấu, mục tiêu sẽ ghi lại một phần sát thương đã nhận. Khi đại kiếm rơi xuống, toàn bộ dấu ấn {Vạn Quân} sẽ bị kích nổ, gây sát thương tích lũy tương ứng lên từng mục tiêu. Sát thương này có giới hạn, không thể đỡ đòn hoặc bạo kích. Với kẻ địch có yếu điểm hệ Kim, gây thêm lượng lớn sát thương phụ. Giới hạn sát thương được xác định bởi tấn công nội công và ngoại công của người thi triển.`,
-    detail: `• Sát thương duy trì từ tiểu kiếm hội tụ: {64.752} nội công Kim thương.
-• Sát thương bùng nổ khi đại kiếm rơi xuống: {223.142} nội công Kim thương.
-• Giảm sát thương ban đầu: {25%}
-• Thời gian bá thể và giảm sát thương ban đầu: {1.5 giây}.
-• Tỷ lệ tích lũy sát thương mỗi lần từ Vạn Quân: {50%}
-• Giới hạn sát thương Vạn Quân lên Thủ Lĩnh: {812.422}
-• Giới hạn sát thương Vạn Quân lên mục tiêu thường: {295.068}
-• Sát thương Vạn Quân không thể vượt quá {30%} giới hạn sinh lực của mục tiêu.
-• Sát thương Vạn Quân lên kẻ địch có điểm yếu hệ Kim: tăng {50%}`,
-    upgrade: `• Cấp 1: Dựa theo {Sức Mạnh} hoặc {Khí Hải}, tăng sát thương đại kiếm khoảng {8% - 14%}
-• Cấp 2: Khi kéo kẻ địch ban đầu, gây thêm hiệu ứng {Phong Mạch} trong {2 giây}. Đại kiếm gây thêm {12%} sát thương lên mục tiêu trung tâm.
-• Cấp 3: Hiệu quả {giảm sát thương} tăng thêm {10%}.
-• Cấp 4: Sau khi thi triển kỹ năng, tăng {3%} sát thương kỹ năng {Nhóm} trong {8 giây}.
-• Cấp 5: Sát thương Vạn Quân tăng dần theo lượng máu còn lại của mục tiêu – bắt đầu tăng khi máu dưới {75%}, và đạt tối đa khi máu dưới {30%} (tăng tối đa thêm {30%} sát thương).`,
-    imageUrl: '/images/tuyet-ky/kpck.png',
+    itemType: 'PVE - PVP',
+    stats: ['Thông Dụng', 'Thừa Ảnh Kiếm', 'Bá Thể'],
+    tags: ['Thông Dụng', 'Thừa Ảnh Kiếm', 'Bá Thể'],
+    details: `Nhận hiệu ứng {bá thể} trong thời gian ngắn, khóa mục tiêu đơn và áp dấu ấn {Vạn Quân}. Các tiểu kiếm hội tụ thành đại kiếm giáng xuống, gây một phần sát thương {bỏ qua giảm sát thương}.
+• {Vạn Quân}: Trong thời gian tồn tại, mục tiêu sẽ ghi lại {50%} lượng sát thương đã nhận. Khi đại kiếm giáng xuống, dấu ấn sẽ phát nổ, gây lượng sát thương đã tích lũy lên mục tiêu. Sát thương này có giới hạn, không thể đỡ đòn và không thể bạo kích.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Thừa Ảnh Phá Cảnh, khi đại kiếm giáng xuống sẽ triệu hồi hàng loạt {Thừa Ảnh Kiếm} tiếp tục gây sát thương.
+• {Võ học Thừa Ảnh}: Sau khi thi triển tuyệt kỹ sẽ kích hoạt đòn {Truy Kích Thừa Ảnh} của vũ khí đang trang bị.`,
+    detail: `• Sát thương duy trì khi tiểu kiếm hội tụ: {9.860} nội công thương.
+• Sát thương bùng nổ khi đại kiếm giáng xuống: {13.077} nội công thương.
+• Tổng sát thương từ {Thừa Ảnh Kiếm}: {7.275} nội công thương.
+• Khi nhiều người cùng đánh trúng một mục tiêu người chơi, sát thương sẽ giảm mạnh.
+• Giới hạn sát thương của {Vạn Quân}: khoảng {900%} hệ số sát thương.
+• Sát thương lên quái không phải công trình và sát thương {Vạn Quân}: tăng {100%}.
+• Bỏ qua giảm sát thương: {15%}.
+• Nhận {15%} giảm sát thương trong {1 giây}.
+• Sát thương gây lên các mục tiêu khác ngoài mục tiêu đã khóa giảm còn {30%}.`,
+    upgrade: `• Cấp 1: Dựa theo {Sức Mạnh} hoặc {Khí Hải}, tăng sát thương đại kiếm khoảng {8% - 14%}.
+• Cấp 2: Đại kiếm gây thêm {12%} sát thương.
+• Cấp 3: Hiệu quả giảm sát thương tăng thêm {10%}.
+• Cấp 4: Sát thương của {Thừa Ảnh Kiếm} giáng xuống tăng thêm {75%}.
+• Cấp 5: Sát thương {Vạn Quân} tăng theo lượng máu còn lại của mục tiêu – bắt đầu tăng khi máu dưới {75%}, và đạt tối đa khi máu dưới {30%} (tăng tối đa thêm {30%} sát thương).`,
+    imageUrl: '/images/tuyet-ky/kiem-pha-can-khon.png',
   },
+{
+  name: 'Vạn Kiếm Quyết - Lạc Anh',
+  nameZh: '万剑诀 落英',
+  category: 'Tuyệt kỹ',
+  monPhai: 'Tương Tư Môn',
+  itemType: 'PVP',
+  stats: ['Đấu Trường', 'Thừa Ảnh Kiếm', 'Trên Không'],
+  tags: ['Đấu Trường', 'Thừa Ảnh Kiếm', 'Trên Không'],
+  details: `Nhận hiệu ứng {đỡ đòn} và tiến vào trạng thái {lơ lửng trên không}, liên tục tiêu hao điểm khinh công. Trong thời gian này, gây sát thương sẽ hồi phục điểm khinh công.
+• {Vạn Kiếm Phi Hoa}: Đòn đánh thường được thay thế bằng tối đa {3 thức phi kiếm}. Khi thi triển thức cuối sẽ nhận {bá thể} và kết thúc trạng thái lơ lửng. Có thể nhấn lần hai kỹ năng để kích hoạt sớm thức cuối.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Thừa Ảnh Phá Cảnh, mỗi thức sẽ triệu hồi hàng loạt {Thừa Ảnh Kiếm} tấn công.
+• {Võ học Thừa Ảnh}: Sau khi kết thúc trạng thái lơ lửng sẽ kích hoạt đòn {Truy Kích Thừa Ảnh} của vũ khí đang trang bị.
+• {Quần chiến}: Khi xung quanh có từ {5} người chơi phe địch trở lên, sát thương gây lên người chơi tăng lên, đồng thời có thể thi triển thêm một lượt {phi kiếm} nữa.`,
+  detail: `• Sát thương khi kích hoạt Vạn Kiếm Quyết: {6.098} nội công thương.
+• Sát thương Phi Kiếm thức 1: {2.183} nội công thương.
+• Sát thương Phi Kiếm thức 2: {2.183} nội công thương.
+• Sát thương Phi Kiếm thức 3: {8.614} nội công thương.
+• Sát thương mỗi đòn của {Thừa Ảnh Kiếm}: {1.091} nội công thương.
+• Trong quần chiến, sát thương gây lên người chơi tăng lên {256%}.
+• Khi nhiều người cùng đánh trúng một mục tiêu người chơi, sát thương sẽ giảm mạnh.
+• Tiêu hao khinh công khi lơ lửng: {40} điểm mỗi giây.`,
+  upgrade: `• Cấp 1: Dựa theo {Thân Pháp}, tăng sát thương khoảng {4% - 7%}.
+• Cấp 2: Khi kích hoạt kỹ năng, khiến mục tiêu nhận thêm {5%} sát thương trong {5 giây}. Mỗi lần phi kiếm đánh trúng mục tiêu đang chịu hiệu ứng sẽ làm mới thời gian duy trì lên {5 giây}.
+• Cấp 3: Trong thời gian lơ lửng, tốc độ di chuyển tăng {25%}.
+• Cấp 4: Sát thương của {Phi Kiếm} thức thứ ba tăng {10%}.
+• Cấp 5: Tiêu hao khinh công khi lơ lửng giảm {5} điểm mỗi giây.`,
+  imageUrl: '/images/tuyet-ky/van-kiem-quyet-lac-anh.png',
+},
   // ── GIANG HỒ - HỖ TRỢ ──
+{
+  name: 'Tinh Hỏa Mạn Thiên',
+  nameZh: '星火漫天',
+  category: 'Tuyệt kỹ',
+  monPhai: 'Giang Hồ',
+  itemType: 'Hỗ Trợ',
+  stats: ['Thông Dụng', 'Hỗ Trợ', 'Bá Thể'],
+  tags: ['Thông Dụng', 'Hỗ Trợ', 'Bá Thể'],
+  details: `Sau khi thi triển, tạo một {Kết Giới Tinh Hỏa} tồn tại trong một khoảng thời gian. Trong thời gian kết giới tồn tại, bản thân và các thành viên trong tổ đội được tăng {Tỷ Lệ Bạo Kích} và {Sát Thương Bạo Kích}.
+• {Ly Thương}: Trong thời gian kết giới tồn tại, đòn đánh thường và tuyệt kỹ của bản thân cùng đồng đội gây thêm sát thương.
+• {Điệp Bộ}: Trong thời gian kết giới tồn tại, liên tục triệu hồi {Ly Hỏa Điệp} trong phạm vi kết giới. Bản thân có thể thi triển {Điệp Bộ - Yến Hồi Phong} theo hướng của Ly Hỏa Điệp để lướt đến vị trí của nó.
+• {Thiều Hoa}: Khi bản thân chạm vào {Ly Hỏa Điệp}, toàn đội nhận hiệu ứng tăng tốc độ hồi {điểm Tuyệt Kỹ} trong một khoảng thời gian. Trong mỗi lần sử dụng kỹ năng, hiệu ứng của Ly Hỏa Điệp chỉ kích hoạt {1 lần}. Nếu tốc độ hồi điểm Tuyệt Kỹ cộng thêm của bản thân hoặc đồng đội đã vượt quá {10%}, hiệu ứng {Thiều Hoa} sẽ không cộng thêm tốc độ hồi điểm Tuyệt Kỹ.
+• Kỹ năng này dùng chung thời gian hồi với {Trường Ca Hiến Quân}, {Hoa Oanh Lăng Ba} và {Tịnh Thế Liên Hoa}.
+• {Mãn Thiên}: Trong kỷ nguyên {Thiên Cơ}, hiệu quả tăng {Tỷ Lệ Bạo Kích}, {Sát Thương Bạo Kích} cùng sát thương cộng thêm từ đòn đánh thường và tuyệt kỹ của {Kết Giới Tinh Hỏa} tăng thêm {15%}.`,
+  detail: `• Tăng {20} điểm Tỷ Lệ Bạo Kích.
+• Tăng {15%} Sát Thương Bạo Kích.
+• Thời gian duy trì kết giới: {12 giây}.
+• Tốc độ hồi điểm Tuyệt Kỹ tăng {5%}.
+• Thời gian hồi hiệu ứng {Khích Lệ}: {60 giây}.
+• Thời gian hồi dùng chung của tổ đội: {60 giây}.
+• Sát thương cộng thêm từ đòn đánh thường: {1.284} nội công thương.
+• Thời gian hồi sát thương cộng thêm của đòn đánh thường: {3 giây}.
+• Sát thương cộng thêm từ tuyệt kỹ: {1.926} nội công thương.
+• Sát thương cộng thêm lên quái vật tăng {100%}.`,
+  upgrade: `• Cấp 1: Hiệu quả của {Kết Giới Tinh Hỏa} tăng thêm {5} điểm {Tỷ Lệ Bạo Kích} và {2%} {Sát Thương Bạo Kích}.
+• Cấp 2: Khi bản thân thi triển {Điệp Bộ}, nhận {30%} giảm sát thương và {bá thể}.
+• Cấp 3: {Ly Hỏa Điệp} giúp đồng đội tăng thêm {10%} sát thương; toàn bộ hiệu ứng tăng cường không còn giới hạn phạm vi tác dụng.
+• Cấp 4: Khi kết giới kết thúc, nếu vẫn còn {Ly Hỏa Điệp} chưa được chạm vào, bản thân nhận hiệu ứng {Ly Hỏa Điệp} trong {10 giây}. Hiệu ứng này chỉ có tác dụng với bản thân và cung cấp {20%} giảm sát thương.
+• Cấp 5: Mỗi loại tuyệt kỹ khác nhau mà thành viên trong đội mang theo sẽ giúp sát thương cộng thêm của {Ly Thương} tăng thêm {10%}.`,
+  imageUrl: '/images/tuyet-ky/tinh-hoa-man-thien.png',
+},
   {
     name: 'Tịnh Thế Liên Hoa',
     nameZh: '净世莲华',
@@ -334,6 +397,34 @@ export const tuyetKyData: GameItem[] = [
 • Cấp 5: Nhận thêm Tốc độ Di chuyển {30%} / {3 giây}. Phạm vi hiệu lực mở rộng thành vô hạn.`,
     imageUrl: '/images/tuyet-ky/tchq.png',
   },
+{
+  name: 'Hoa Oanh Lăng Ba',
+  nameZh: '花萦凌波',
+  category: 'Tuyệt kỹ',
+  monPhai: 'Giang Hồ',
+  itemType: 'Hỗ Trợ',
+  stats: ['Thông Dụng', 'Thừa Ảnh Cung', 'Hỗ Trợ', 'Bá Thể'],
+  tags: ['Thông Dụng', 'Thừa Ảnh Cung', 'Hỗ Trợ', 'Bá Thể'],
+  details: `Triệu hồi một {Biển Hoa}, tăng {Tấn Công} và {Phá Phòng} cho bản thân cùng các thành viên trong tổ đội ở trong phạm vi.
+• {Phục Tô}: Khi mang theo kỹ năng này và hiệu ứng của kỹ năng chưa được kích hoạt, cứ sau mỗi {3} lần trị liệu sẽ tạo một {Hoa Điền} tại vị trí của bản thân, tăng tốc độ di chuyển cho đồng đội xung quanh. Chỉ có thể tồn tại tối đa {1} Hoa Điền và không thể tồn tại đồng thời với {Biển Hoa}.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Thừa Ảnh Phá Cảnh, lần thi triển {Yến Hồi Phong} tiếp theo của bản thân sẽ được cường hóa trong một khoảng thời gian.
+• {Hồi chiêu dùng chung}: Kỹ năng này dùng chung thời gian hồi với {Trường Ca Hiến Quân}, {Tinh Hỏa Mãn Thiên}/{Điệp Vũ Thanh Mộng} và {Tịnh Thế Liên Hoa}.
+• {Võ học Thừa Ảnh}: Sau khi thi triển tuyệt kỹ sẽ kích hoạt đòn {Truy Kích Thừa Ảnh} của vũ khí đang trang bị.`,
+  detail: `• Tăng {226} điểm Tấn Công.
+• Tăng {226} điểm Phá Phòng.
+• Thời gian duy trì {Biển Hoa}: {20 giây}.
+• Tốc độ di chuyển trong {Hoa Điền}: tăng {15%}.
+• Thời gian duy trì hiệu ứng của {Hoa Điền}: {2,5 giây}.
+• Thời gian tồn tại của {Hoa Điền}: {5 giây}.
+• Thời gian hồi hiệu ứng {Khích Lệ}: {60 giây}.
+• Thời gian hồi dùng chung của tổ đội: {60 giây}.`,
+  upgrade: `• Cấp 1: Hiệu quả tăng {Tấn Công} và {Phá Phòng} từ {Biển Hoa} tăng thêm {10%}.
+• Cấp 2: {Biển Hoa} tăng thêm {3%} {Kháng Chế Lưu Phái}.
+• Cấp 3: Phạm vi hiệu lực của {Biển Hoa} mở rộng thành {không giới hạn}.
+• Cấp 4: Thời gian hồi của hiệu ứng {Khích Lệ} giảm {10 giây}.
+• Cấp 5: {Biển Hoa} tăng thêm {3%} {Khắc Chế Lưu Phái}.`,
+  imageUrl: '/images/tuyet-ky/hoa-oanh-lang-ba.png',
+},
   // ── GIANG HỒ - PVP ──
   {
     name: 'Cửu Thiên Lôi Dẫn',

@@ -1,6 +1,239 @@
 import { GameItem } from '../types';
 
 export const kyNangGiangHoData: GameItem[] = [
+{
+  name: 'Bất Công · Kiếm',
+  nameZh: '不攻·剑',
+  category: 'Kỹ năng',
+  monPhai: 'Bách Gia',
+  itemType: 'PVP',
+  stats: ['Thừa Ảnh Kiếm', 'Bá Thể', 'Giảm Sát Thương'],
+  tags: ['Thừa Ảnh Kiếm', 'Bá Thể', 'Giảm Sát Thương'],
+  details: `Nhận hiệu quả Giảm Sát Thương và Bá Thể trong thời gian ngắn, sau đó vung kiếm gây sát thương.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, nếu chịu một lượng sát thương nhất định sẽ kích hoạt nhát chém cường hóa, gây sát thương và bỏ qua một phần hiệu quả Giảm Sát Thương.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.
+• {Giao tranh}: Khi xung quanh có từ 5 người chơi đối địch trở lên, nhận hiệu quả Bá Thể trong toàn bộ thời gian kỹ năng và tăng thêm {60%} Kháng Sát Thương Tầm Xa.
+• {Hồi chiêu chung}: Trong Đại Hội Tỷ Võ và Bang Hội Liên Đấu, kỹ năng chịu thời gian hồi chiêu bổ sung khi giao tranh nhiều người.`,
+  detail: `• Giảm sát thương: {50%}.
+• Thời gian Bá Thể: {1 giây}.
+• Sát thương nhát chém: {18.130} sát thương Nội Công.
+• Sát thương nhát chém cường hóa của Thừa Ảnh: {22.823} sát thương Nội Công.
+• Bỏ qua Giảm Sát Thương của nhát chém cường hóa: {15%}.
+• Hồi chiêu: {30 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/bat-cong-kiem.png',
+},
+{
+  name: 'Phản Kích · Kiếm',
+  nameZh: '反击·剑',
+  category: 'Kỹ năng',
+  monPhai: 'Bình Thiên Môn',
+  itemType: 'PVP',
+  stats: ['Thừa Ảnh Kiếm', 'Phản Kích'],
+  tags: ['Thừa Ảnh Kiếm', 'Phản Kích'],
+  details: `Tiến vào trạng thái Phản Kích. Khi bị kẻ địch trong phạm vi nhất định tấn công, sẽ lập tức phản kích bằng Thừa Ảnh Kiếm, gây hiệu ứng Hất Tung không thể bị Đỡ Đòn và gây sát thương có khả năng bỏ qua một phần hiệu quả Giảm Sát Thương, đồng thời bản thân nhận hiệu quả Bá Thể và Giảm Sát Thương.
+• Khi phản kích thành công, thời gian hồi chiêu của kỹ năng giảm {4 giây}.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, sử dụng Thừa Ảnh Kiếm để phản kích.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.
+• {Hồi chiêu chung}: Khi đồng thời trang bị kỹ năng khác có nhãn {Phản Kích}, thời gian hồi chiêu của kỹ năng này tăng thêm {20 giây}.`,
+  detail: `• Thời gian duy trì trạng thái Phản Kích: {1 giây}.
+• Phạm vi phản kích: {6 trượng}.
+• Thời gian Hất Tung: {khoảng 2,1 giây}.
+• Giảm sát thương khi phản kích: {50%}.
+• Sát thương phản kích của Thừa Ảnh Kiếm: {11.634} sát thương Nội Công.
+• Bỏ qua Giảm Sát Thương: {15%}.
+• Hồi chiêu: {22 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/phan-kich-kiem.png',
+},
+{
+  name: 'Phản Kích · Song Đao',
+  nameZh: '反击·双刀',
+  category: 'Kỹ năng',
+  monPhai: 'Bình Thiên Môn',
+  itemType: 'PVP',
+  stats: ['Thừa Ảnh Song Đao', 'Phản Kích'],
+  tags: ['Thừa Ảnh Song Đao', 'Phản Kích'],
+  details: `Tiến vào trạng thái Phản Kích. Khi bị kẻ địch trong phạm vi nhất định tấn công, sẽ lập tức phản kích bằng Thừa Ảnh Song Đao, gây hiệu ứng Hất Tung không thể bị Đỡ Đòn và gây sát thương, đồng thời bản thân nhận hiệu quả Bá Thể và Giảm Sát Thương.
+• Khi phản kích thành công, thời gian hồi chiêu của kỹ năng giảm {4 giây}.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, sử dụng Thừa Ảnh Song Đao để phản kích.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.
+• {Hồi chiêu chung}: Khi đồng thời trang bị kỹ năng khác có nhãn {Phản Kích}, thời gian hồi chiêu của kỹ năng này tăng thêm {20 giây}.`,
+  detail: `• Thời gian duy trì trạng thái Phản Kích: {1 giây}.
+• Phạm vi phản kích: {6 trượng}.
+• Thời gian Hất Tung: {khoảng 2,1 giây}.
+• Giảm sát thương khi phản kích: {30%}.
+• Sát thương phản kích của Thừa Ảnh Song Đao: {13.573} sát thương Nội Công.
+• Hồi chiêu: {22 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/phan-kich-song-dao.png',
+},
+{
+  name: 'Phản Kích · Cung',
+  nameZh: '反击·弓',
+  category: 'Kỹ năng',
+  monPhai: 'Bình Thiên Môn',
+  itemType: 'PVP',
+  stats: ['Thừa Ảnh Cung', 'Phản Kích'],
+  tags: ['Thừa Ảnh Cung', 'Phản Kích'],
+  details: `Tiến vào trạng thái Phản Kích. Khi bị kẻ địch trong phạm vi nhất định tấn công, sẽ lập tức phản kích bằng Thừa Ảnh Cung, gây hiệu ứng Khống Chế Cứng không thể bị Đỡ Đòn, Hất Tung và gây sát thương, đồng thời bản thân nhận hiệu quả Bá Thể và Giảm Sát Thương.
+• Đối với mục tiêu ở khoảng cách xa hoặc đang trên không, thời gian Khống Chế Cứng sẽ kéo dài hơn.
+• Khi phản kích thành công, thời gian hồi chiêu của kỹ năng giảm {4 giây}.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, sử dụng Thừa Ảnh Cung để phản kích.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.
+• {Hồi chiêu chung}: Khi đồng thời trang bị kỹ năng khác có nhãn {Phản Kích}, thời gian hồi chiêu của kỹ năng này tăng thêm {20 giây}.`,
+  detail: `• Thời gian duy trì trạng thái Phản Kích: {1,2 giây}.
+• Phạm vi phản kích: {18 trượng}.
+• Phạm vi phản kích đối với mục tiêu trên không: {24 trượng}.
+• Thời gian Khống Chế Cứng: {0,3–0,7 giây}.
+• Thời gian Hất Tung: {khoảng 2,1 giây}.
+• Giảm sát thương khi phản kích: {25%}.
+• Sát thương phản kích của Thừa Ảnh Cung: {10.335} sát thương Nội Công.
+• Hồi chiêu: {22 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/phan-kich-cung.png',
+},
+{
+  name: 'Lãm Tước · Phản Kích',
+  nameZh: '揽雀·反击',
+  category: 'Kỹ năng',
+  monPhai: 'Bình Thiên Môn',
+  itemType: 'PVP',
+  stats: ['Phản Kích'],
+  tags: ['Phản Kích'],
+  details: `Tiến vào trạng thái Phản Kích. Khi bị kẻ địch trong phạm vi nhất định tấn công, sẽ lập tức phản kích, nhận hiệu quả Bá Thể và Giảm Sát Thương, đồng thời gây hiệu ứng Đánh Ngã không thể bị Đỡ Đòn.
+• Nhánh võ học này không thuộc {Võ học Thừa Ảnh}, vì vậy không thể kích hoạt Thừa Ảnh Truy Kích.
+• {Hồi chiêu chung}: Khi đồng thời trang bị kỹ năng khác có nhãn {Phản Kích}, thời gian hồi chiêu của kỹ năng này tăng thêm {20 giây}.`,
+  detail: `• Thời gian duy trì trạng thái Phản Kích: {1,8 giây}.
+• Phạm vi phản kích: {6 trượng}.
+• Bá Thể & Giảm Sát Thương khi phản kích: {50%}, duy trì {2,4 giây}.
+• Thời gian Đánh Ngã: {2,1 giây}.
+• Hồi chiêu: {22 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/lam-tuoc-phan-kich.png',
+},
+{
+  name: 'Lãm Phương Tương Huề',
+  nameZh: '揽芳相携',
+  category: 'Kỹ năng',
+  monPhai: 'Tương Tư Môn',
+  itemType: 'PVP',
+  stats: ['Thừa Ảnh Kiếm', 'Khống Chế Cứng', 'Tương Tác'],
+  tags: ['Thừa Ảnh Kiếm', 'Khống Chế Cứng', 'Tương Tác'],
+  details: `Lao tới mục tiêu chỉ định, múa kiếm gây hiệu ứng Hất Tung và gây sát thương có khả năng bỏ qua một phần hiệu quả Giảm Sát Thương.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, triệu hồi số lượng lớn Thừa Ảnh Kiếm tấn công.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.
+• {Giao tranh}: Khi xung quanh có từ 5 người chơi đối địch trở lên, sau khi lao tới sẽ đặt một dấu ấn. Nhân vật khác giới trong tổ đội có thể tương tác với dấu ấn để giải khống chế và cùng thi triển Song Nhân Kiếm Vũ. Trong thời gian này, cả hai nhận hiệu quả Bá Thể, Giảm Sát Thương và gây lượng lớn sát thương có khả năng bỏ qua một phần hiệu quả Giảm Sát Thương.`,
+  detail: `• Tổng sát thương Kiếm Vũ: {14.004} sát thương Nội Công.
+• Sát thương của Thừa Ảnh Kiếm: {6.964} sát thương Nội Công.
+• Tổng sát thương Song Nhân Kiếm Vũ: {32.676} sát thương Nội Công.
+• Tổng sát thương Hợp Bích: {23.340} sát thương Nội Công.
+• Sát thương Thừa Ảnh Kiếm của Song Nhân: {14.005} sát thương Nội Công.
+• Giảm sát thương của Song Nhân: {35%}.
+• Hồi chiêu chung của tổ đội (Song Nhân): {60 giây}.
+• Bỏ qua Giảm Sát Thương: {25%}.
+• Thời gian Hất Tung: {1 giây}.
+• Hồi chiêu: {30 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/lam-phuong-tuong-hue.png',
+},
+{
+  name: 'Tương Tư Kiếm Pháp',
+  nameZh: '相思剑法',
+  category: 'Kỹ năng',
+  monPhai: 'Tương Tư Môn',
+  itemType: 'PVP',
+  stats: ['Thừa Ảnh Kiếm'],
+  tags: ['Thừa Ảnh Kiếm'],
+  details: `Hóa thành kiếm ảnh, nhận hiệu quả Giảm Sát Thương và bám theo mục tiêu chỉ định, liên tục gây sát thương có khả năng bỏ qua một phần hiệu quả Giảm Sát Thương.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, triệu hồi thêm nhiều Thừa Ảnh Kiếm để truy kích mục tiêu.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.`,
+  detail: `• Tổng sát thương của kiếm kích bám theo: {14.413} sát thương Nội Công.
+• Tổng sát thương của Thừa Ảnh Kiếm: {4.805} sát thương Nội Công.
+• Thời gian kiếm kích bám theo: {2,5 giây}.
+• Giảm sát thương trong thời gian hiệu lực: {25%}.
+• Bỏ qua Giảm Sát Thương: {15%}.
+• Hồi chiêu: {25 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/tuong-tu-kiem-phap.png',
+},
+{
+  name: 'Tâm Phong',
+  nameZh: '心锋',
+  category: 'Kỹ năng',
+  monPhai: 'Tiêu Dao',
+  itemType: 'PVE - PVP',
+  stats: ['Thừa Ảnh Kiếm'],
+  tags: ['Thừa Ảnh Kiếm'],
+  details: `Tấn công vị trí mục tiêu, gây sát thương có khả năng bỏ qua một phần hiệu quả Giảm Sát Thương.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, triệu hồi số lượng lớn Thừa Ảnh Kiếm tấn công mục tiêu.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.`,
+  detail: `• Sát thương của Thừa Ảnh Kiếm: {16.805} sát thương Nội Công.
+• Bỏ qua Giảm Sát Thương: {15%}.
+• Sát thương gây lên quái tăng: {217%}.
+• Hồi chiêu: {15 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/tam-phong.png',
+},
+{
+  name: 'Lưu Vân Vô Khích',
+  nameZh: '流云无隙',
+  category: 'Kỹ năng',
+  monPhai: 'Bách Gia',
+  itemType: 'PVP',
+  stats: ['Cường Hóa'],
+  tags: ['Cường Hóa'],
+  details: `Tăng Giảm Sát Thương và Phòng Ngự Bạo Kích của bản thân trong một khoảng thời gian. Đồng thời thay thế đòn đánh thường bằng hình thái Thừa Ảnh hiện đang kích hoạt.
+• {Vô Khích}: Tăng Giảm Sát Thương và Phòng Ngự Bạo Kích của bản thân.
+• {Tông môn Thừa Ảnh}: Có thể thay đổi động tác thi triển kỹ năng thông qua động tác hành lễ của môn phái Thừa Ảnh.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.`,
+  detail: `• Giảm sát thương: {3%}.
+• Tăng Phòng Ngự Bạo Kích: {10%}.
+• Thời gian duy trì: {300 giây}.
+• Hồi chiêu: {30 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/luu-van-vo-khich.png',
+},
+{
+  name: 'Tâm Nhãn Vô Lượng',
+  nameZh: '心眼无量',
+  category: 'Kỹ năng',
+  monPhai: 'Bách Gia',
+  itemType: 'PVP',
+  stats: ['Thừa Ảnh Cung', 'Hỗ Trợ', 'Cường Hóa'],
+  tags: ['Thừa Ảnh Cung', 'Hỗ Trợ', 'Cường Hóa'],
+  details: `Tăng sát thương Bạo Kích của các thành viên trong tổ đội trong một khoảng thời gian, đồng thời nhận hiệu quả Tâm Nhãn. Kỹ năng này có thời gian hồi chiêu chung của tổ đội.
+• {Tâm Nhãn}: Thành viên trong tổ đội nhận hiệu quả Tâm Nhãn Vô Lượng, có thể phát hiện mục tiêu đang ở trạng thái Ẩn Thân.
+• Hiệu quả tăng sát thương Bạo Kích có thể bị xóa bỏ. Khi hiệu quả này bị xóa, khả năng phát hiện Ẩn Thân của cả tổ đội cũng sẽ đồng thời biến mất.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, thời gian duy trì hiệu quả tăng lên.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.`,
+  detail: `• Tăng sát thương Bạo Kích: {3%}.
+• Thời gian duy trì: {30 giây}.
+• Hồi chiêu chung của tổ đội: {20 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/tam-nhan-vo-luong.png',
+},
+{
+  name: 'Phong Tuyết Tải Đồ',
+  nameZh: '风雪载途',
+  category: 'Kỹ năng',
+  monPhai: 'Bách Gia',
+  itemType: 'PVP',
+  stats: ['Thừa Ảnh Cung', 'Giảm Sát Thương'],
+  tags: ['Thừa Ảnh Cung', 'Giảm Sát Thương'],
+  details: `Nhận hiệu quả giảm sát thương và tăng Kháng Sát Thương Tầm Xa trong một khoảng thời gian.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, thời gian duy trì hiệu quả tăng lên.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.
+• {Giao tranh}: Khi xung quanh có từ 5 người chơi đối địch trở lên, Kháng Sát Thương Tầm Xa tăng thêm 10%.
+• {Hồi chiêu chung}: Trong Đại Hội Tỷ Võ và Bang Hội Liên Đấu, kỹ năng chịu thời gian hồi chiêu bổ sung khi giao tranh nhiều người.`,
+  detail: `• Giảm sát thương: {10%}.
+• Kháng Sát Thương Tầm Xa: {10%}.
+• Kháng Sát Thương Tầm Xa trong trạng thái giao tranh: {20%}.
+• Thời gian duy trì: {10 giây}.
+• Hồi chiêu: {20 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/phong-tuyet-tai-do.png',
+},
   {
     name: 'Thanh Thỉ Minh Giản',
     nameZh: '青矢鸣涧',
@@ -60,6 +293,26 @@ export const kyNangGiangHoData: GameItem[] = [
     upgrade: ``,
     imageUrl: '/images/ky-nang-bach-gia/minh-kieu-chi-cung.png',
   },
+{
+  name: 'Minh Kiêu Chỉ',
+  nameZh: '鸣枭指',
+  category: 'Kỹ năng',
+  monPhai: 'Bách Gia',
+  itemType: 'PVP',
+  stats: ['Phá Khiên'],
+  tags: ['Phá Khiên'],
+  details: `Liên tiếp phóng Minh Kiêu Chỉ vào mục tiêu chỉ định. Mỗi đạo chỉ kình tạo ra hiệu ứng chỉ kình kéo dài, liên tục gây hiệu quả Phá Khiên trong một khoảng thời gian ngắn, đồng thời khi chỉ kình kết thúc sẽ gây thêm sát thương dư ba mạnh.
+• {Lệ Thiên}: Thời gian hồi chiêu của Minh Kiêu Chỉ được giảm dựa trên lượng Khiên bị phá.
+• Nhánh võ học này không thuộc {Võ học Thừa Ảnh}, vì vậy không thể kích hoạt Thừa Ảnh Truy Kích.`,
+  detail: `• Số lần phóng Minh Kiêu Chỉ: {3}.
+• Thời gian duy trì chỉ kình: {1,5 giây}.
+• Giới hạn Phá Khiên của chỉ kình: {30%} Máu tối đa của mục tiêu.
+• Tổng sát thương mỗi đạo chỉ kình: {1.746} sát thương Nội Công.
+• Giảm hồi chiêu tối đa: {4 giây}.
+• Hồi chiêu: {18 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/minh-kieu-chi.png',
+},
   {
     name: 'Thanh Quân Nhậm Kiếm',
     nameZh: '青筠任剑',
@@ -83,49 +336,51 @@ export const kyNangGiangHoData: GameItem[] = [
 • Cấp 5: Thời gian hồi chiêu giảm {3 giây}`,
     imageUrl: '/images/ky-nang-quan-hiep/tqnk.png',
   },
-  {
-    name: 'Quy Vân Phá Phong',
-    nameZh: '归云破锋',
-    category: 'Kỹ năng',
-    monPhai: 'Vô Phong Môn',
-    itemType: 'PVE - PVP',
-    stats: ['Đơn Thể', 'Dịch Chuyển', 'Phá Khiên', 'Đỡ Đòn'],
-    tags: ['Đơn Thể', 'Dịch Chuyển', 'Phá Khiên', 'Đỡ Đòn'],
-    details: `Sau khi tụ lực ngắn, lao tới phía sau mục tiêu, gây sát thương lên kẻ địch trên đường đi, đồng thời gây sát thương bổ sung, hiệu ứng {phá khiên} và gắn dấu {Phá Sơ Hở} lên mục tiêu. Trong thời gian thi triển, nhận trạng thái {đỡ đòn}.
-• Phá Phong: Khi mục tiêu có dấu Phá Sơ Hở chịu sát thương từ Quần hiệp / Tuyệt kỹ, sẽ kích nổ gây thêm sát thương phạm vi và hiệu ứng phá khiên. Mỗi mục tiêu chỉ tồn tại {1} dấu Phá Sơ Hở.`,
-    detail: `• Sát thương trên đường (Hỏa): {85.390} nội công Hỏa thương
-• Sát thương trên đường (Băng): {85.390} nội công Băng thương
-• Sát thương lên mục tiêu (Hỏa): {160.106} nội công Hỏa thương
-• Sát thương lên mục tiêu (Băng): {160.106} nội công Băng thương
-• Giới hạn phá khiên: tối đa bằng {8%} HP tối đa của mục tiêu
-• Thời gian tồn tại dấu Phá Sơ Hở: {15 giây}
-• Sát thương kích nổ: {172.915} nội công Hỏa thương
-• Giới hạn phá khiên khi kích nổ: tối đa bằng {8%} HP tối đa của mục tiêu`,
-    upgrade: ``,
-    imageUrl: '/images/ky-nang-bach-gia/qvpp.png',
-  },
-  {
-    name: 'Sương Diễm Trảm Phong',
-    nameZh: '霜焰斩锋',
-    category: 'Kỹ năng',
-    monPhai: 'Vô Phong Môn',
-    itemType: 'PVE',
-    stats: ['Bạo Phát', 'Tầm Xa'],
-    tags: ['Bạo Phát', 'Tầm Xa'],
-    details: `Vung song đao thực hiện nhiều lần trảm kích, mỗi đòn đều phóng ra {Băng/Hỏa} gây sát thương lên mục tiêu trúng đòn.
-• Song Phong: {Sát thương gây lên quái tăng}. Đồng thời tăng {khắc chế thủ lĩnh} của bản thân.`,
-    detail: `• Trảm kích 1: {110.473} nội công Hỏa thương
-• Trảm kích 2: {110.473} nội công Băng thương
-• Trảm kích 3: {110.473} nội công Hỏa thương
-• Trảm kích 4: {110.473} nội công Băng thương
-• Trảm kích 5 (Hỏa): {138.092} nội công Hỏa thương
-• Trảm kích 5 (Băng): {138.092} nội công Băng thương
-• Sát thương lên quái tăng: {200%}
-• Khắc chế thủ lĩnh tăng: {4%}
-• Thời gian duy trì buff: {40 giây}`,
-    upgrade: ``,
-    imageUrl: '/images/ky-nang-bach-gia/sdtp.png',
-  },
+{
+  name: 'Quy Vân Phá Phong',
+  nameZh: '归云破锋',
+  category: 'Kỹ năng',
+  monPhai: 'Vô Phong Môn',
+  itemType: 'PVP',
+  stats: ['Thừa Ảnh Song Đao', 'Khống Chế Cứng', 'Dịch Chuyển'],
+  tags: ['Thừa Ảnh Song Đao', 'Khống Chế Cứng', 'Dịch Chuyển'],
+  details: `Sau khi tụ lực trong chốc lát, lao xuyên đến phía sau mục tiêu, gây sát thương lên kẻ địch trên đường đi và gây sát thương lên mục tiêu.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, nếu đánh trúng mục tiêu đang ở trạng thái Đỡ Đòn sẽ triệu hồi Thừa Ảnh Song Đao. Sau một khoảng trễ ngắn, nếu mục tiêu vẫn ở trong phạm vi, sẽ gây thêm sát thương và khiến mục tiêu bị Choáng.
+• {Phá Phong}: Sát thương và hiệu ứng Choáng không thể bị Đỡ Đòn. Cùng một mục tiêu chỉ có thể bị Choáng bởi kỹ năng này tối đa 1 lần trong {15 giây}.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.`,
+  detail: `• Sát thương trên đường lao: {3.890} sát thương Nội Công.
+• Sát thương lên mục tiêu: {5.835} sát thương Nội Công.
+• Tổng sát thương của Thừa Ảnh Song Đao: {8.753} sát thương Nội Công.
+• Thời gian Choáng: {0,5 giây}.
+• Hồi chiêu: {28 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/quy-van-pha-phong.png',
+},
+{
+  name: 'Sương Diễm Trảm Phong',
+  nameZh: '霜焰斩锋',
+  category: 'Kỹ năng',
+  monPhai: 'Vô Phong Môn',
+  itemType: 'PVE',
+  stats: ['Thừa Ảnh Song Đao', 'Cường Hóa'],
+  tags: ['Thừa Ảnh Song Đao', 'Cường Hóa'],
+  details: `Vung song đao liên tục thực hiện nhiều nhát chém. Mỗi nhát chém sẽ phóng ra kiếm khí Băng Hỏa gây sát thương lên mục tiêu trúng đòn.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, triệu hồi Thừa Ảnh Song Đao tấn công.
+• {Võ học Thừa Ảnh}: Sau khi thi triển, kích hoạt Thừa Ảnh Truy Kích của vũ khí đang trang bị.
+• {Tăng sát thương lên quái}: Tăng sát thương gây lên quái vật, đồng thời tăng chỉ số Khắc Chế Thủ Lĩnh của bản thân.`,
+  detail: `• Sát thương nhát chém 1: {1.108} sát thương Nội Công.
+• Sát thương nhát chém 2: {1.108} sát thương Nội Công.
+• Sát thương nhát chém 3: {1.108} sát thương Nội Công.
+• Sát thương nhát chém 4: {1.108} sát thương Nội Công.
+• Sát thương nhát chém 5: {2.768} sát thương Nội Công.
+• Tổng sát thương của Thừa Ảnh Song Đao: {7.003} sát thương Nội Công.
+• Sát thương gây lên quái tăng: {200%}.
+• Tăng Khắc Chế Thủ Lĩnh: {3%}.
+• Thời gian duy trì: {40 giây}.
+• Hồi chiêu: {30 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-bach-gia/suong-diem-tram-phong.png',
+},
   {
     name: 'Khuynh Sa Lưu Kim',
     nameZh: '倾沙流金',
