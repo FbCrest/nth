@@ -102,7 +102,7 @@ export const thienPhuTank: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/chan-long-uyen.png',
-    description: `Khi đang trong trạng thái chiến đấu, sau khi thi triển Tuyệt Kỹ sẽ kích hoạt {Du Long}, nhận lượng lớn tốc độ di chuyển trong thời gian ngắn. Trong {10 giây} tiếp theo, {5} đòn tấn công sẽ gây thêm sát thương phạm vi với hệ số {(62.5%–122.5%)|red} / {(125%–185%|purple}) / {(187.5%–250%)|yellow}, đồng thời gây thêm sát thương lên quái vật. Thời gian hồi: {25 giây}.`,
+    description: `Khi đang trong trạng thái chiến đấu, sau khi thi triển Tuyệt Kỹ sẽ kích hoạt {Du Long}, nhận lượng lớn tốc độ di chuyển trong thời gian ngắn. Đồng đội xung quanh nhận {(1.25%–2.45%)|red} / {(2.5%–3.7%)|purple} / {(3.75%–5%)|yellow} Giảm Sát Thương, bản thân và đồng đội trong phạm vi {10 mét} nhận hiệu quả gấp đôi. Hiệu lực kéo dài {5 giây}. Thời gian hồi: {25 giây}.`,
     detail: ``,
   },
   {
@@ -112,7 +112,7 @@ export const thienPhuTank: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/bach-chien-hon.png',
-    description: `Sát thương tăng {(0.75%–1.47%)|red} / {(1.5%–2.22%)|purple} / {(2.25%–3%)|yellow}. Tốc độ hồi điểm Tuyệt Kỹ và hiệu quả sát thương/chữa trị của Tuyệt Kỹ tăng {(5%–9.8%)|red} / {(10%–14.8%)|purple} / {(15%–20%)|yellow}.`,
+    description: `Giảm Sát Thương {(1.25%–2.45%)|red} / {(2.5%–3.7%)|purple} / {(3.75%–5%)|yellow}. Tốc độ hồi điểm Tuyệt Kỹ tăng {(5%–9.8%)|red} / {(10%–14.8%)|purple} / {(15%–20%)|yellow}.`,
     detail: ``,
   },
   {
@@ -122,7 +122,7 @@ export const thienPhuTank: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/luu-quang-nhan.png',
-    description: `Khi đang trong trạng thái chiến đấu, mỗi lần thi triển kỹ năng Lưu Phái không phải Đòn Đánh Thường (mỗi kỹ năng chỉ kích hoạt tối đa 1 lần trong {6 giây}), sẽ khiến sát thương kỹ năng Lưu Phái tăng {(1.5%–2.94%)|red} / {(3%–4.44%)|purple} / {(4.5%–6%)|yellow} trong {3 giây}, cộng dồn tối đa {2 tầng}.`,
+    description: `Khi đang trong trạng thái chiến đấu, mỗi lần thi triển kỹ năng Lưu Phái không phải Đòn Đánh Thường (mỗi kỹ năng chỉ kích hoạt tối đa 1 lần trong {6 giây}), sẽ khiến sát thương phải chịu từ kỹ năng Lưu Phái giảm {(1.5%–2.94%)|red} / {(3%–4.44%)|purple} / {(4.5%–6%)|yellow} trong {3 giây}, cộng dồn tối đa {2 tầng}.`,
     detail: ``,
   },
   {
@@ -132,7 +132,7 @@ export const thienPhuTank: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/no-lang-kinh-dao.png',
-    description: `Khi tấn công có {50%} xác suất kích hoạt {Nộ Lãng Quán Địch}, mỗi giây gây Sát thương chuẩn với hệ số {(15%–29.4%)|red} / {(30%–44.4%)|purple} / {(45%–60%)|yellow} trong {5 giây} (có giới hạn sát thương, gây thêm sát thương lên quái vật hoặc mục tiêu đang chịu {Khống Chế Cứng}). Thời gian hồi: {10 giây}.`,
+    description: `Giảm Sát Thương tăng {(1%–1.98%)|red} / {(2%–2.96%)|purple} / {(3%–4%)|yellow}. Máu bản thân càng cao theo tỷ lệ phần trăm, hiệu quả này càng mạnh, tối đa Giảm Sát Thương đến {(2.5%–4.9%)|red} / {(5%–7.4%)|purple} / {(7.5%–10%)|yellow}.`,
     detail: ``,
   },
   {
@@ -142,7 +142,7 @@ export const thienPhuTank: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/to-tuyet-lang-suong.png',
-    description: `Sát thương tăng {(1%–1.98%)|red} / {(2%–2.96%)|purple} / {(3%–4%)|yellow}. Khi tấn công, cứ mỗi {10%} máu mục tiêu đã mất sẽ tăng thêm {(0.25%–0.49%)|red} / {(0.5%–0.74%)|purple} / {(0.75%–1%)|yellow} sát thương, cộng dồn tối đa {5 tầng}. Khi tấn công mục tiêu có máu dưới {4000}, có xác suất trực tiếp đánh bại mục tiêu. Thời gian hồi: {30 giây}.`,
+    description: `Giảm Sát Thương {(1%–1.98%)|red} / {(2%–2.96%)|purple} / {(3%–4%)|yellow}. Cứ mỗi {10%} máu đã mất sẽ Giảm Sát Thương thêm {(0.25%–0.49%)|red} / {(0.5%–0.74%)|purple} / {(0.75%–1%)|yellow}, cộng dồn tối đa {5 tầng}.`,
     detail: ``,
   },
   {
@@ -152,7 +152,7 @@ export const thienPhuTank: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/thi-kiem-truc-mang.png',
-    description: `Khi tấn công mục tiêu đang khóa sẽ gây thêm sát thương với hệ số {(10%–19.6%)|red} / {(20%–29.6%)|purple} / {(30%–40%)|yellow} (gây thêm sát thương lên quái vật). Thời gian hồi: {1 giây}. Sát thương này tăng theo số lần tấn công, tối đa đạt {(30%–58.8%)|red} / {(60%–88.8%)|purple} / {(90%–120%)|yellow}. Khi chuyển sang tấn công mục tiêu khóa khác, hiệu ứng sẽ được đặt lại.`,
+    description: `Khi tấn công mục tiêu đang khóa, mỗi đòn đánh sẽ cướp {(0.25%–0.49%)|red} / {(0.5%–0.74%)|purple} / {(0.75%–1%)|yellow} Phòng Ngự của mục tiêu (có giới hạn, hiệu quả giảm đối với Boss và Kiến Trúc), kéo dài {5 giây}, cộng dồn tối đa {3 tầng}.`,
     detail: ``,
   },
   {
@@ -162,7 +162,7 @@ export const thienPhuTank: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/viem-quang-chuoc-the.png',
-    description: `Khi tấn công có {50%} xác suất kích hoạt {Ngự Hỏa Chước Địch}, gây {(31.25%–61.25%)|red} / {(62.5%–92.5%)|purple} / {(93.75%–125%)|yellow} sát thương duy trì lên mục tiêu trúng đòn (gây thêm sát thương lên quái vật), đồng thời gây {25%} hiệu ứng {Trọng Thương} trong {5 giây}. Thời gian hồi: {10 giây}.`,
+    description: `Khi chịu tấn công sẽ nhận Lá Chắn bằng {(2%–3.92%)|red} / {(4%–5.92%)|purple} / {(6%–8%)|yellow} máu tối đa, kéo dài {5 giây}. Thời gian hồi: {10 giây}. Khi Lá Chắn kết thúc sẽ phát nổ, làm giảm tốc độ hồi Khinh Công của mục tiêu trúng đòn {(12.5%–24.5%)|red} / {(25%–37%)|purple} / {(37.5%–50%)|yellow} trong {3 giây}.`,
     detail: ``,
   },
   {
@@ -172,7 +172,7 @@ export const thienPhuTank: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/tuan-anh-vo-phong.png',
-    description: `Khi kích hoạt {Thừa Ảnh Cộng Minh}, sẽ tiến vào trạng thái {Hình Ý Quy Nhất}, nhận {(2.5%–4.9%)|red} / {(5%–7.4%)|purple} / {(7.5%–10%)|yellow} {Khắc Boss}, {Bỏ Qua Giảm Sát Thương}, {Xuyên Khiên}, đồng thời tăng sát thương gây lên mục tiêu đang Đỡ Đòn và Kiến Trúc. Hiệu lực kéo dài {15 giây}.`,
+    description: `Khi kích hoạt {Thừa Ảnh Cộng Minh}, sẽ tiến vào trạng thái {Hình Ý Quy Nhất}, tăng hiệu quả của các Linh Khiếu khác thuộc mùa giải {Mệnh Cổ Nguy Cục} thêm {(12.5%–24.5%)|red} / {(25%–37%)|purple} / {(37.5%–50%)|yellow} trong {15 giây}.`,
     detail: ``,
   },
 ];
@@ -185,7 +185,7 @@ export const thienPhuBuff: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/chan-long-uyen.png',
-    description: `Khi đang trong trạng thái chiến đấu, sau khi thi triển Tuyệt Kỹ sẽ kích hoạt {Du Long}, nhận lượng lớn tốc độ di chuyển trong thời gian ngắn. Trong {10 giây} tiếp theo, {5} đòn tấn công sẽ gây thêm sát thương phạm vi với hệ số {(62.5%–122.5%)|red} / {(125%–185%|purple}) / {(187.5%–250%)|yellow}, đồng thời gây thêm sát thương lên quái vật. Thời gian hồi: {25 giây}.`,
+    description: `Khi đang trong trạng thái chiến đấu, sau khi thi triển Tuyệt Kỹ sẽ kích hoạt {Du Long}, nhận lượng lớn tốc độ di chuyển trong thời gian ngắn, đồng thời tăng hiệu quả chữa trị {(2.5%–4.9%)|red} / {(5%–7.4%)|purple} / {(7.5%–10%)|yellow}. Khi chữa trị sẽ ban cho đồng đội hiệu ứng tăng {(1.25%–2.45%)|red} / {(2.5%–3.7%)|purple} / {(3.75%–5%)|yellow} sát thương trong {3 giây}, hiệu ứng kéo dài {5 giây}. Thời gian hồi: {25 giây}.`,
     detail: ``,
   },
   {
@@ -195,7 +195,7 @@ export const thienPhuBuff: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/bach-chien-hon.png',
-    description: `Sát thương tăng {(0.75%–1.47%)|red} / {(1.5%–2.22%)|purple} / {(2.25%–3%)|yellow}. Tốc độ hồi điểm Tuyệt Kỹ và hiệu quả sát thương/chữa trị của Tuyệt Kỹ tăng {(5%–9.8%)|red} / {(10%–14.8%)|purple} / {(15%–20%)|yellow}.`,
+    description: `Hiệu quả chữa trị tăng {(0.75%–1.47%)|red} / {(1.5%–2.22%)|purple} / {(2.25%–3%)|yellow}. Tốc độ hồi điểm Tuyệt Kỹ và hiệu quả sát thương/chữa trị của Tuyệt Kỹ tăng {(5%–9.8%)|red} / {(10%–14.8%)|purple} / {(15%–20%)|yellow}.`,
     detail: ``,
   },
   {
@@ -205,7 +205,7 @@ export const thienPhuBuff: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/luu-quang-nhan.png',
-    description: `Khi đang trong trạng thái chiến đấu, mỗi lần thi triển kỹ năng Lưu Phái không phải Đòn Đánh Thường (mỗi kỹ năng chỉ kích hoạt tối đa 1 lần trong {6 giây}), sẽ khiến sát thương kỹ năng Lưu Phái tăng {(1.5%–2.94%)|red} / {(3%–4.44%)|purple} / {(4.5%–6%)|yellow} trong {3 giây}, cộng dồn tối đa {2 tầng}.`,
+    description: `Khi đang trong trạng thái chiến đấu, mỗi lần thi triển kỹ năng Lưu Phái không phải Đòn Đánh Thường (mỗi kỹ năng chỉ kích hoạt tối đa 1 lần trong {6 giây}), sẽ khiến hiệu quả chữa trị của kỹ năng Lưu Phái tăng {(1.5%–2.94%)|red} / {(3%–4.44%)|purple} / {(4.5%–6%)|yellow} trong {3 giây}, cộng dồn tối đa {2 tầng}.`,
     detail: ``,
   },
   {
@@ -215,7 +215,7 @@ export const thienPhuBuff: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/no-lang-kinh-dao.png',
-    description: `Khi tấn công có {50%} xác suất kích hoạt {Nộ Lãng Quán Địch}, mỗi giây gây Sát thương chuẩn với hệ số {(15%–29.4%)|red} / {(30%–44.4%)|purple} / {(45%–60%)|yellow} trong {5 giây} (có giới hạn sát thương, gây thêm sát thương lên quái vật hoặc mục tiêu đang chịu {Khống Chế Cứng}). Thời gian hồi: {10 giây}.`,
+    description: `Hiệu quả chữa trị tăng {(1%–1.98%)|red} / {(2%–2.96%)|purple} / {(3%–4%)|yellow}. Máu bản thân càng cao theo tỷ lệ phần trăm, hiệu quả này càng mạnh, tối đa tăng đến {(2.5%–4.9%)|red} / {(5%–7.4%)|purple} / {(7.5%–10%)|yellow}.`,
     detail: ``,
   },
   {
@@ -225,7 +225,7 @@ export const thienPhuBuff: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/to-tuyet-lang-suong.png',
-    description: `Sát thương tăng {(1%–1.98%)|red} / {(2%–2.96%)|purple} / {(3%–4%)|yellow}. Khi tấn công, cứ mỗi {10%} máu mục tiêu đã mất sẽ tăng thêm {(0.25%–0.49%)|red} / {(0.5%–0.74%)|purple} / {(0.75%–1%)|yellow} sát thương, cộng dồn tối đa {5 tầng}. Khi tấn công mục tiêu có máu dưới {4000}, có xác suất trực tiếp đánh bại mục tiêu. Thời gian hồi: {30 giây}.`,
+    description: `Hiệu quả chữa trị tăng {(1%–1.98%)|red} / {(2%–2.96%)|purple} / {(3%–4%)|yellow}. Khi chữa trị đồng đội, cứ mỗi {10%} máu mục tiêu đã mất sẽ tăng thêm {(0.25%–0.49%)|red} / {(0.5%–0.74%)|purple} / {(0.75%–1%)|yellow} hiệu quả chữa trị, cộng dồn tối đa {5 tầng}.`,
     detail: ``,
   },
   {
@@ -235,7 +235,7 @@ export const thienPhuBuff: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/thi-kiem-truc-mang.png',
-    description: `Khi tấn công mục tiêu đang khóa sẽ gây thêm sát thương với hệ số {(10%–19.6%)|red} / {(20%–29.6%)|purple} / {(30%–40%)|yellow} (gây thêm sát thương lên quái vật). Thời gian hồi: {1 giây}. Sát thương này tăng theo số lần tấn công, tối đa đạt {(30%–58.8%)|red} / {(60%–88.8%)|purple} / {(90%–120%)|yellow}. Khi chuyển sang tấn công mục tiêu khóa khác, hiệu ứng sẽ được đặt lại.`,
+    description: `Khi chữa trị mục tiêu đang khóa sẽ hồi thêm máu với hệ số {(30%–58.8%)|red} / {(60%–88.8%)|purple} / {(90%–120%)|yellow}. Thời gian hồi: {1 giây}.`,
     detail: ``,
   },
   {
@@ -245,7 +245,7 @@ export const thienPhuBuff: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/viem-quang-chuoc-the.png',
-    description: `Khi tấn công có {50%} xác suất kích hoạt {Ngự Hỏa Chước Địch}, gây {(31.25%–61.25%)|red} / {(62.5%–92.5%)|purple} / {(93.75%–125%)|yellow} sát thương duy trì lên mục tiêu trúng đòn (gây thêm sát thương lên quái vật), đồng thời gây {25%} hiệu ứng {Trọng Thương} trong {5 giây}. Thời gian hồi: {10 giây}.`,
+    description: `Khi chữa trị có {50%} xác suất kích hoạt {Ngự Hỏa Sinh Huy}, hồi phục liên tục cho đồng đội trúng hiệu ứng với hệ số {(20%–39.2%)|red} / {(40%–59.2%)|purple} / {(60%–80%)|yellow}, đồng thời tăng {(0.75%–1.47%)|red} / {(1.5%–2.22%)|purple} / {(2.25%–3%)|yellow} sát thương trong {5 giây}. Thời gian hồi: {10 giây}.`,
     detail: ``,
   },
   {
@@ -255,7 +255,7 @@ export const thienPhuBuff: ThienPhuItem[] = [
     monPhai: 'Quần Hiệp',
     tags: ['Tấn Công', 'Thông Dụng'],
     imageUrl: '/images/thien-phu/tuan-anh-vo-phong.png',
-    description: `Khi kích hoạt {Thừa Ảnh Cộng Minh}, sẽ tiến vào trạng thái {Hình Ý Quy Nhất}, nhận {(2.5%–4.9%)|red} / {(5%–7.4%)|purple} / {(7.5%–10%)|yellow} {Khắc Boss}, {Bỏ Qua Giảm Sát Thương}, {Xuyên Khiên}, đồng thời tăng sát thương gây lên mục tiêu đang Đỡ Đòn và Kiến Trúc. Hiệu lực kéo dài {15 giây}.`,
+    description: `Khi kích hoạt {Thừa Ảnh Cộng Minh}, sẽ tiến vào trạng thái {Hình Ý Quy Nhất}, tăng {hiệu quả chữa trị}, {Giảm Sát Thương} và {tốc độ di chuyển} {(1%–1.98%)|red} / {(2%–2.96%)|purple} / {(3%–4%)|yellow} trong {15 giây}.`,
     detail: ``,
   },
 ];
