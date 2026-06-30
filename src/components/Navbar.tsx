@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useRef } from 'react';
-import { Menu, X, Home, BookOpen, Swords, ChevronRight, ExternalLink, Video, Monitor } from 'lucide-react';
+import { Menu, X, Home, BookOpen, Swords, ChevronRight, ExternalLink, Video, Monitor, ShieldAlert } from 'lucide-react';
 
 const NAV_BG = '#333333';
 const SUBMENU_BG = '#333333';
@@ -252,6 +252,18 @@ export default function Navbar({
               </AnimatePresence>
             </div>
 
+            {/* Xếp Team Phó Bản — external link */}
+            <a
+              href="https://raid-titanic.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-link flex items-center gap-1.5 px-4 py-3 text-sm font-medium cursor-pointer"
+              style={{ color: 'white' }}
+            >
+              <ShieldAlert size={15} style={{ opacity: 0.8, flexShrink: 0 }} />
+              Web Xếp Team Phó Bản
+            </a>
+
             {/* Công Cụ — 2 link riêng biệt */}
             {toolItems.map(item => (
               <a
@@ -260,6 +272,7 @@ export default function Navbar({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nav-link flex items-center gap-1.5 px-4 py-3 text-sm font-medium cursor-pointer"
+                style={{ color: 'white' }}
               >
                 {item.icon}
                 {item.label}
@@ -354,6 +367,21 @@ export default function Navbar({
                   </div>
                 );
               })}
+
+              {/* Xếp Team Phó Bản — mobile */}
+              <p className="px-3 pt-3 pb-1 text-[10px] font-black uppercase tracking-widest" style={{ color: ACCENT }}>
+                Xếp Team
+              </p>
+              <a
+                href="https://raid-titanic.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link w-full text-left px-3 py-2.5 text-sm cursor-pointer flex items-center gap-2"
+                onClick={() => setMobileOpen(false)}
+              >
+                <ExternalLink size={15} className="opacity-80 shrink-0" />
+                Web Xếp Team Phó Bản
+              </a>
 
               {/* Công Cụ — mobile */}
               <p className="px-3 pt-3 pb-1 text-[10px] font-black uppercase tracking-widest" style={{ color: ACCENT }}>
