@@ -5,7 +5,7 @@ export const tuyetKyData: GameItem[] = [
     name: 'Thương Loan Kinh Vũ',
     nameZh: '苍峦惊羽',
     category: 'Tuyệt kỹ',
-    monPhai: 'Gacha',
+    monPhai: 'Giang Hồ',
     itemType: 'PVE - PVP',
     stats: ['Thừa Ảnh Cung', 'Vô Địch'],
     tags: ['Thừa Ảnh Cung', 'Vô Địch'],
