@@ -107,7 +107,7 @@ export default function Navbar({
 
   return (
     <>
-      <nav className="sticky top-0 z-50 w-full" style={{ backgroundColor: NAV_BG }}>
+      <nav className="sticky top-0 z-[300] w-full" style={{ backgroundColor: NAV_BG }}>
         <div className="max-w-[1400px] mx-auto px-4 flex items-center justify-between">
 
           {/* Desktop nav */}
@@ -139,7 +139,7 @@ export default function Navbar({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.15, ease: 'easeOut' }}
-                    className="absolute left-0 z-[100] shadow-lg"
+                    className="absolute left-0 z-[400] shadow-lg"
                     style={{ backgroundColor: SUBMENU_BG, top: 'calc(100% - 4px)', paddingTop: 4 }}
                     onMouseEnter={cancelCloseDropdown}
                     onMouseLeave={closeDropdownDelayed}
@@ -189,7 +189,7 @@ export default function Navbar({
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -8 }}
                             transition={{ duration: 0.2, ease: 'easeOut' }}
-                            className="absolute top-0 left-full flex z-[110]"
+                            className="absolute top-0 left-full flex z-[410]"
                             style={{ backgroundColor: SUBMENU_BG }}
                             onMouseEnter={() => { cancelCloseMonPhai(); cancelCloseDropdown(); }}
                             onMouseLeave={closeMonPhai}
@@ -232,7 +232,7 @@ export default function Navbar({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.15, ease: 'easeOut' }}
-                    className="absolute left-0 z-[100] min-w-[200px] list-none shadow-lg"
+                    className="absolute left-0 z-[400] min-w-[200px] list-none shadow-lg"
                     style={{ backgroundColor: SUBMENU_BG, top: 'calc(100% - 4px)', paddingTop: 4 }}
                     onMouseEnter={cancelCloseDropdown}
                     onMouseLeave={closeDropdownDelayed}
@@ -305,7 +305,7 @@ export default function Navbar({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
-            className="md:hidden sticky top-14 z-40 overflow-hidden"
+            className="md:hidden sticky top-14 z-[290] overflow-hidden"
             style={{ backgroundColor: SUBMENU_BG }}
           >
             <div className="px-4 py-2 space-y-0.5">
