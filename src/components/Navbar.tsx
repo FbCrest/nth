@@ -91,7 +91,7 @@ export default function Navbar({
 
   const toolItems = [
     { label: 'Web Dịch Video Douyin',      url: 'https://nyra-translate.vercel.app/',                                                                                    icon: <Video size={15} className="opacity-80 shrink-0" /> },
-    { label: 'Tool Quét & Dịch Màn Hình', url: 'https://drive.google.com/file/d/1TqwMUEQZzNL1AzoRRbBlYmXVAS4SjOWZ/view?usp=drive_link', icon: <Monitor size={15} className="opacity-80 shrink-0" /> },
+    { label: 'Tool Quét & Dịch Màn Hình', url: 'https://drive.google.com/file/d/1RuzDaoPWJpOuszTlAeVhIrw0qAoNaNzJ/view?usp=sharing', icon: <Monitor size={15} className="opacity-80 shrink-0" /> },
   ];
 
   const handleNavigate = (id: string) => {
