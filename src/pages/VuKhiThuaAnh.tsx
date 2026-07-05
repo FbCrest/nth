@@ -13,6 +13,40 @@ type WeaponKey = typeof WEAPON_TABS[number]['key'];
 // ── Data kỹ năng vũ khí ──
 const vuKhiData: GameItem[] = [
   {
+    name: 'Thừa Ảnh Cung',
+    nameZh: '共鸣·弓',
+    category: '',
+    monPhai: '',
+    itemType: '',
+    stats: ['Thừa Ảnh Cung'],
+    tags: ['Thừa Ảnh Cung'],
+    details: `Sau khi trang bị, kích hoạt kỹ năng độc quyền {Truy Kích Thừa Ảnh Cung}. Kích hoạt 3 năng lực phó bản của trạng thái Cung
+• {Đặc tính kỹ năng}:  Sát thương phạm vi, Tốc độ di chuyển cao.
+• {Đặc tính bổ sung trong PvP}:  Phá Khiên
+• Kỹ năng Đỡ Đòn có 2 nhánh để lựa chọn. Mỗi lần Đỡ Đòn thành công hoặc Né Hoàn Hảo sẽ bắn thêm một mũi tên tấn công mục tiêu.
+• {Kích hoạt Cộng Hưởng · Cung}: Triệu hồi Thừa Ảnh Cung hỗ trợ tấn công.
+• Sau khi mở khóa và trang bị Thừa Ảnh Cung, ngoại trang hình thái Cung và khinh công Thừa Ảnh được trang bị trong giao diện Ngoại Quan sẽ đồng thời có hiệu lực.`,
+    detail: `Trang bị Thừa Ảnh Cung để kích hoạt năng lực độc quyền.`,
+    imageUrl: '/images/vu-khi-thua-anh/thua-anh-cung.png',
+  },
+  {
+    name: 'Truy Kích Thừa Ảnh · Cung',
+    nameZh: '承影追击·弓',
+    category: '',
+    monPhai: '',
+    itemType: '',
+    stats: ['Thừa Ảnh Cung'],
+    tags: ['Thừa Ảnh Cung', 'Dùng chung'],
+    details: `Nhanh chóng bắn vào mục tiêu hiện tại, gây hiệu ứng {Phá Khiên}, sau đó xoay người phóng ra vô số mũi tên gây sát thương phạm vi, đồng thời nhận trạng thái {Đỡ Đòn}. Khi sát thương phạm vi đánh trúng cùng 1 mục tiêu nhiều lần, sát thương sẽ giảm mạnh. Sau khi thi triển bất kỳ võ học Thừa Ảnh nào và kỹ năng đó bước vào hồi chiêu, hoặc sau khi Né Hoàn Hảo trong phó bản, kỹ năng Truy Kích Thừa Ảnh · Cung sẽ được kích hoạt tại ô Kỹ năng Giang Hồ.
+• {Quần chiến}: Sát thương gây lên người chơi tăng lên {830%}. Hiệu quả Phá Khiên tăng lên {12%}, nhận {4%} Khắc chế Công trình trong {5 giây}. Trong phó bản, tăng sát thương gây lên Boss.`,
+    detail: `• Sát thương phạm vi của Thừa Ảnh Cung: {6331} sát thương Nội Công.
+• Sát thương mũi tên tốc độ cao của Thừa Ảnh Cung: {7556} sát thương Nội Công.
+• Sát thương lên quái vật tăng: {252%}
+• Đỡ Đòn: {1 giây}
+• Phá Khiên: {5%}`,
+    imageUrl: '/images/vu-khi-thua-anh/truy-kich-thua-anh-cung.png',
+  },
+  {
     name: 'Cộng Hưởng · Cung',
     nameZh: '共鸣·弓',
     category: '',
