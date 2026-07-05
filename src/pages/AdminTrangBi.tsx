@@ -44,7 +44,7 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
           <div>
             <label className="text-xs font-bold uppercase tracking-wider mb-1.5 block" style={{ color: 'var(--text-3)' }}>Tên đăng nhập</label>
             <input type="text" value={email} onChange={e => setEmail(e.target.value)} required
-              placeholder="0rion24k"
+              placeholder="Tên đăng nhập"
               className="w-full rounded-xl px-4 py-2.5 text-sm border outline-none transition-colors"
               style={{ backgroundColor: 'var(--bg-sunken)', borderColor: 'var(--border)', color: 'var(--text-1)' }} />
           </div>
