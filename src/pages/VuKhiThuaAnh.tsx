@@ -1,362 +1,465 @@
-import { useState } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { ChevronDown, X } from 'lucide-react';
+import { GameItem } from '../types';
 
-// ── Dữ liệu 3 vũ khí ──
-const WEAPONS = [
+const WEAPON_TABS = [
+  { key: 'cung',     label: 'Thừa Ảnh Cung',     color: '#b45309', colorLight: 'rgba(180,83,9,0.10)',  colorBorder: 'rgba(180,83,9,0.40)'  },
+  { key: 'song-dao', label: 'Thừa Ảnh Song Đao',  color: '#dc2626', colorLight: 'rgba(220,38,38,0.10)', colorBorder: 'rgba(220,38,38,0.40)' },
+  { key: 'kiem',     label: 'Thừa Ảnh Kiếm',      color: '#1d4ed8', colorLight: 'rgba(29,78,216,0.10)', colorBorder: 'rgba(29,78,216,0.40)' },
+] as const;
+type WeaponKey = typeof WEAPON_TABS[number]['key'];
+
+// ── Data kỹ năng vũ khí ──
+const vuKhiData: GameItem[] = [
   {
-    key: 'bow',
-    name: 'Thừa Ảnh Cung',
-    nameZh: '承影弓',
-    sub: 'Kích huyền phát thỉ, có thể xa cận',
-    image: '/images/vu-khi-thua-anh/cung-bg.png',
-    thumbnail: '/images/vu-khi-thua-anh/cung-thua-anh.png',
-    color: '#b45309',
-    colorLight: 'rgba(180,83,9,0.10)',
-    colorBorder: 'rgba(180,83,9,0.40)',
-    skills: [
-      {
-        key: 'core',
-        label: 'Hạch Tâm',
-        labelZh: '核心',
-        icon: '/images/vu-khi-thua-anh/cung-core.png',
-        pos: { top: '28.5%', left: '12.5%' },
-        title: 'Thừa Ảnh Truy Kích · Cung',
-        tags: ['Phạm vi sát thương', 'Tốc độ cao'],
-        content: 'Sau khi trang bị, kích hoạt kỹ năng chuyên thuộc: Thừa Ảnh Truy Kích · Cung. Tính năng kỹ năng: Phạm vi sát thương, Tốc độ cao. Đặc tính thi triển thêm: Phá Thuẫn.',
-      },
-      {
-        key: 'passive',
-        label: 'Bị Động',
-        labelZh: '被动',
-        icon: '/images/vu-khi-thua-anh/cung-passive.png',
-        pos: { top: '50%', left: '30%' },
-        title: 'Cộng Minh · Cung',
-        tags: ['Bị động'],
-        content: 'Kích hoạt Cộng Minh · Cung: Triệu hoán Thừa Ảnh Cung hỗ trợ tấn công.',
-      },
-      {
-        key: 'sub1',
-        label: 'Phụ Bản',
-        labelZh: '副本',
-        icon: '/images/vu-khi-thua-anh/cung-sub1.png',
-        pos: { top: '63%', left: '40%' },
-        title: 'Cách Chỉ · Cung',
-        tags: ['Phụ bản'],
-        content: 'Kỹ năng Cách Chỉ có 2 nhánh có thể chọn. Mỗi lần cách chỉ thành công hoặc Tinh Chuẩn Nhấp Tránh sẽ bắn thêm mũi tên tấn công mục tiêu.',
-      },
-      {
-        key: 'sub2',
-        label: 'Phụ Bản',
-        labelZh: '副本',
-        icon: '/images/vu-khi-thua-anh/cung-sub2.png',
-        pos: { top: '74%', left: '52%' },
-        title: 'Tinh Chuẩn Nhấp Tránh · Cung',
-        tags: ['Phụ bản'],
-        content: '(Đang cập nhật nội dung chi tiết)',
-      },
-      {
-        key: 'sub3',
-        label: 'Phụ Bản',
-        labelZh: '副本',
-        icon: '/images/vu-khi-thua-anh/cung-sub3.png',
-        pos: { top: '74%', left: '67%' },
-        title: 'Liên Huề Truy Kích · Cung',
-        tags: ['Phụ bản'],
-        content: '(Đang cập nhật nội dung chi tiết)',
-      },
-    ],
+    name: 'Cộng Hưởng · Cung',
+    nameZh: '共鸣·弓',
+    category: '',
+    monPhai: '',
+    itemType: '',
+    stats: ['Thừa Ảnh Cung'],
+    tags: ['Thừa Ảnh Cung', 'Dùng chung'],
+    details: `Khi thi triển kỹ năng, Cung Thừa Ảnh sẽ phối hợp tấn công, gây sát thương lên mục tiêu. Hiệu ứng này tối đa chỉ kích hoạt {1 lần} mỗi {12 giây}.`,
+    detail: `• Sát thương Cung Thừa Ảnh: Gây {3.970} sát thương Nội Công.
+• Sát thương lên quái: Tăng {185%}.
+• Hồi chiêu: {12 giây}`,
+    imageUrl: '/images/vu-khi-thua-anh/cong-huong-cung.png',
   },
   {
-    key: 'dual',
-    name: 'Thừa Ảnh Song Đao',
-    nameZh: '承影双刀',
-    sub: 'Song đao liên hoàn, nhanh như chớp',
-    image: '/images/vu-khi-thua-anh/song-dao.png',
-    thumbnail: '/images/vu-khi-thua-anh/song-dao.png',
-    color: '#dc2626',
-    colorLight: 'rgba(220,38,38,0.10)',
-    colorBorder: 'rgba(220,38,38,0.40)',
-    skills: [
-      { key: 'core',  label: 'Hạch Tâm', labelZh: '核心', icon: '', pos: { top: '28%', left: '28%' }, title: 'Thừa Ảnh Truy Kích · Song Đao', tags: ['Sát thương liên tục'], content: '(Đang cập nhật)' },
-      { key: 'passive', label: 'Bị Động', labelZh: '被动', icon: '', pos: { top: '45%', left: '16%' }, title: 'Cộng Minh · Song Đao', tags: ['Bị động'], content: '(Đang cập nhật)' },
-      { key: 'sub1', label: 'Phụ Bản', labelZh: '副本', icon: '', pos: { top: '62%', left: '24%' }, title: 'Kỹ năng phụ 1 · Song Đao', tags: ['Phụ bản'], content: '(Đang cập nhật)' },
-      { key: 'sub2', label: 'Phụ Bản', labelZh: '副本', icon: '', pos: { top: '72%', left: '42%' }, title: 'Kỹ năng phụ 2 · Song Đao', tags: ['Phụ bản'], content: '(Đang cập nhật)' },
-      { key: 'sub3', label: 'Phụ Bản', labelZh: '副本', icon: '', pos: { top: '72%', left: '58%' }, title: 'Kỹ năng phụ 3 · Song Đao', tags: ['Phụ bản'], content: '(Đang cập nhật)' },
-    ],
+    name: 'Đỡ Đòn · Cung',
+    nameZh: '格挡·弓',
+    category: '',
+    monPhai: '',
+    itemType: '',
+    stats: ['Thừa Ảnh Cung'],
+    tags: ['Thừa Ảnh Cung', 'Phó bản'],
+    details: `Sau khi trang bị Cung Thừa Ảnh, khi đối đầu với Boss, có thể giương cung tụ lực về phía trước. Trong thời gian tụ lực, liên tục đỡ đòn các đòn tấn công của kẻ địch. Khi kết thúc tụ lực, sẽ bắn mũi tên về phía mục tiêu.
+• {Đỡ thành công đòn đánh thường}: Bỏ qua giai đoạn tụ lực, lập tức bắn tên phản kích và nhận trạng thái {Tàng Phong}, tăng sức tấn công.
+• {Đỡ thành công đòn đánh mạnh}: Bỏ qua giai đoạn tụ lực và kích hoạt Phản Kích Đỡ Đòn, bắn thêm nhiều mũi tên, gây lượng lớn sát thương.
+• {Trấn Ảnh}: Trong thời gian phản kích, nhận giảm sát thương và Bá Thể.`,
+    detail: `• Tổng sát thương khi phản kích đỡ đòn đòn đánh mạnh: {106.619} sát thương Nội Công.
+• Sát thương mũi tên sau khi kết thúc tụ lực: {1.382} sát thương Nội Công.
+• Giảm sát thương: {40%}.
+• Tăng công kích mỗi tầng Tàng Phong: {1%}.
+• Thời gian duy trì Tàng Phong: {30 giây}.
+• Số tầng Tàng Phong tối đa: {3 tầng}.
+• Khi sử dụng Liên Chiêu Tự Động, nếu hệ thống tự động đỡ đòn thì Tàng Phong chỉ có thể cộng dồn tối đa {1 tầng}.
+• Hồi chiêu: {0 giây}.`,
+    imageUrl: '/images/vu-khi-thua-anh/do-don-cung.png',
   },
   {
-    key: 'sword',
-    name: 'Thừa Ảnh Kiếm',
-    nameZh: '承影剑',
-    sub: 'Kiếm pháp tinh diệu, công thủ toàn diện',
-    image: '/images/vu-khi-thua-anh/kiem.png',
-    thumbnail: '/images/vu-khi-thua-anh/kiem.png',
-    color: '#1d4ed8',
-    colorLight: 'rgba(29,78,216,0.10)',
-    colorBorder: 'rgba(29,78,216,0.40)',
-    skills: [
-      { key: 'core',  label: 'Hạch Tâm', labelZh: '核心', icon: '', pos: { top: '28%', left: '28%' }, title: 'Thừa Ảnh Truy Kích · Kiếm', tags: ['Sát thương đơn thể'], content: '(Đang cập nhật)' },
-      { key: 'passive', label: 'Bị Động', labelZh: '被动', icon: '', pos: { top: '45%', left: '16%' }, title: 'Cộng Minh · Kiếm', tags: ['Bị động'], content: '(Đang cập nhật)' },
-      { key: 'sub1', label: 'Phụ Bản', labelZh: '副本', icon: '', pos: { top: '62%', left: '24%' }, title: 'Kỹ năng phụ 1 · Kiếm', tags: ['Phụ bản'], content: '(Đang cập nhật)' },
-      { key: 'sub2', label: 'Phụ Bản', labelZh: '副本', icon: '', pos: { top: '72%', left: '42%' }, title: 'Kỹ năng phụ 2 · Kiếm', tags: ['Phụ bản'], content: '(Đang cập nhật)' },
-      { key: 'sub3', label: 'Phụ Bản', labelZh: '副本', icon: '', pos: { top: '72%', left: '58%' }, title: 'Kỹ năng phụ 3 · Kiếm', tags: ['Phụ bản'], content: '(Đang cập nhật)' },
-    ],
+    name: 'Đỡ Đòn · Chấn Vũ Thức',
+    nameZh: '格挡·震羽式',
+    category: '',
+    monPhai: '',
+    itemType: '',
+    stats: ['Thừa Ảnh Cung'],
+    tags: ['Thừa Ảnh Cung', 'Phó bản', 'Đỡ đòn'],
+    details: `Tự động đỡ đòn, dễ dàng ứng phó. Sau khi trang bị Cung Thừa Ảnh, khi đối đầu mục tiêu Boss có thể triệu hồi Linh Điểu. Trong thời gian Linh Điểu hộ thể sẽ tự động đỡ đòn các đòn tấn công của kẻ địch. Nếu đỡ đòn thành công sẽ hoàn trả toàn bộ thời gian hồi chiêu. Khi đỡ thành công chiêu thức sẽ bắn tên phản kích tấn công kẻ địch, nhận trạng thái {Tàng Phong}, tăng Công Kích. Khi đỡ thành công chiêu thức cường lực sẽ kích hoạt phản kích đỡ đòn, bắn thêm nhiều mũi tên gây lượng lớn sát thương.
+• {Ảnh Thích}: Có thể sử dụng khi đang thi triển kỹ năng khác.
+• {Trấn Ảnh}: Trong thời gian phản kích nhận hiệu ứng giảm sát thương và Bá Thể.`,
+    detail: `• Tổng sát thương khi đỡ chiêu thường: Gây {1.377} sát thương Nội Công.
+• Tổng sát thương khi đỡ chiêu cường lực: Gây {95.601} sát thương Nội Công.
+• Thời gian Linh Điểu hộ thể: {6 giây}.
+• Giảm sát thương khi phản kích: {40%}.
+• Tăng Công Kích mỗi tầng Tàng Phong: {1%}.
+• Thời gian duy trì Tàng Phong: {30 giây}.
+• Số tầng Tàng Phong tối đa: {2}.
+• Khi dùng chế độ một phím tự động đỡ đòn, Tàng Phong chỉ cộng dồn tối đa {1 tầng}.
+• Hồi chiêu: {5.5 giây}.`,
+    imageUrl: '/images/vu-khi-thua-anh/do-don-chau-vu-thuc.png',
+  },
+  {
+    name: 'Né Tránh Chuẩn Xác · Cung',
+    nameZh: '精准闪避·弓',
+    category: '',
+    monPhai: '',
+    itemType: '',
+    stats: ['Thừa Ảnh Cung'],
+    tags: ['Thừa Ảnh Cung', 'Phó bản', 'Né tránh'],
+    details: `Sau khi trang bị Thừa Ảnh Cung, trong phó bản, nếu thi triển {Yến Hồi Phong} ngay vào khoảnh khắc sắp trúng đòn sẽ kích hoạt {Né Tránh Chuẩn Xác}, bắn một mũi tên về phía mục tiêu, đồng thời nhận hiệu ứng {vô địch} trong thời gian ngắn và {tăng tấn công}.`,
+    detail: `• Sát thương: Gây {4145} sát thương nội công.
+• Tăng tấn công: {2%}.
+• Số tầng tăng tấn công tối đa: 1.
+• Thời gian vô địch: {0,8 giây}.`,
+    imageUrl: '/images/vu-khi-thua-anh/ne-tranh-chuan-xac-cung.png',
+  },
+  {
+    name: 'Truy Kích Liên Kích · Cung',
+    nameZh: '精准闪避·弓',
+    category: '',
+    monPhai: '',
+    itemType: '',
+    stats: ['Thừa Ảnh Cung'],
+    tags: ['Thừa Ảnh Cung', 'Phó bản'],
+    details: `Trong trận chiến với Boss, khi đỡ đòn thành công hoặc xử lý thành công cơ chế đặc biệt, sẽ tích lũy điểm Liên Kích. Khi điểm Liên Kích đạt tối đa, Boss sẽ rơi vào trạng thái suy yếu. Lúc này, có thể cùng đồng đội phát động Truy Kích Liên Kích, gây lượng lớn sát thương. Mỗi người chơi tham gia Truy Kích Liên Kích sẽ tăng {10%} tổng sát thương của đòn liên kích, tối đa {80%}.`,
+    detail: `• Sát thương cơ bản: Bằng {3,5%{ máu tối đa của Boss.
+• Sát thương cộng thêm: Bằng {30%} tổng sát thương mà Boss phải chịu trong trạng thái suy yếu.
+• Mức tăng tổng sát thương mỗi người tham gia: {10%}.
+• Số người tối đa được tính tăng sát thương: {8}.`,
+    imageUrl: '/images/vu-khi-thua-anh/truy-kich-lien-kich-cung.png',
+  },
+  // ── Thừa Ảnh Song Đao ──
+  {
+    name: 'Cộng Hưởng · Song Đao',
+    nameZh: '',
+    category: '',
+    monPhai: '',
+    itemType: '',
+    stats: ['Thừa Ảnh Song Đao'],
+    tags: ['Thừa Ảnh Song Đao', 'Dùng chung'],
+    details: '(Coming soon)',
+    imageUrl: '',
+  },
+  {
+    name: 'Đỡ Đòn · Song Đao',
+    nameZh: '',
+    category: 'Kỹ năng vũ khí',
+    monPhai: 'Thừa Ảnh',
+    itemType: 'Phó bản',
+    stats: ['Thừa Ảnh Song Đao'],
+    tags: ['Thừa Ảnh Song Đao', 'Phó bản'],
+    details: '(Coming soon)',
+    imageUrl: '',
+  },
+  // ── Thừa Ảnh Kiếm ──
+  {
+    name: 'Cộng Hưởng · Kiếm',
+    nameZh: '',
+    category: 'Kỹ năng vũ khí',
+    monPhai: 'Thừa Ảnh',
+    itemType: 'Dùng chung',
+    stats: ['Thừa Ảnh Kiếm'],
+    tags: ['Thừa Ảnh Kiếm', 'Dùng chung'],
+    details: '(Coming soon)',
+    imageUrl: '',
+  },
+  {
+    name: 'Đỡ Đòn · Kiếm',
+    nameZh: '',
+    category: 'Kỹ năng vũ khí',
+    monPhai: 'Thừa Ảnh',
+    itemType: 'Phó bản',
+    stats: ['Thừa Ảnh Kiếm'],
+    tags: ['Thừa Ảnh Kiếm', 'Phó bản'],
+    details: '(Coming soon)',
+    imageUrl: '',
   },
 ];
 
-export default function VuKhiThuaAnh() {
-  const [weaponIdx, setWeaponIdx] = useState(0);
-  const [activeSkill, setActiveSkill] = useState<string | null>(null);
+const rareBadge = (type?: string): { bg: string; color: string } => {
+  if (type === 'Hiếm') return { bg: 'rgba(168,85,247,0.15)', color: '#6b21a8' };
+  return { bg: 'rgba(239,68,68,0.1)', color: '#dc2626' };
+};
 
-  const weapon = WEAPONS[weaponIdx];
-  const skill = weapon.skills.find(s => s.key === activeSkill) ?? null;
+function ScrollableContent({ children, label }: { children: React.ReactNode; label: string }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollDown, setCanScrollDown] = useState(false);
 
-  const handleWeaponChange = (idx: number) => {
-    setWeaponIdx(idx);
-    setActiveSkill(null);
+  const checkScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollDown(el.scrollTop + el.clientHeight < el.scrollHeight - 4);
   };
 
-  return (
-    <div style={{ maxWidth: 1100, margin: '0 auto', padding: '24px 20px 40px' }}>
+  useEffect(() => {
+    checkScroll();
+    const el = scrollRef.current;
+    if (!el) return;
+    el.addEventListener('scroll', checkScroll);
+    const ro = new ResizeObserver(checkScroll);
+    ro.observe(el);
+    return () => { el.removeEventListener('scroll', checkScroll); ro.disconnect(); };
+  }, [children]);
 
-      {/* Page title */}
-      <div style={{ marginBottom: 20, borderLeft: '3px solid #b45309', paddingLeft: 14 }}>
-        <h1 style={{ fontSize: 22, fontWeight: 800, color: 'var(--text-1)', fontFamily: 'var(--font-chinese, serif)', letterSpacing: '0.04em', marginBottom: 2 }}>
-          Vũ Khí Thừa Ảnh
-        </h1>
-        <p style={{ fontSize: 13, color: 'var(--text-3)' }}>
-          Ba hình thái vũ khí của Thừa Ảnh — click vào icon kỹ năng để xem mô tả chi tiết.
-        </p>
+  return (
+    <div className="lg:col-span-2">
+      <p className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: 'var(--text-3)' }}>{label}</p>
+      <div className="relative rounded-xl border" style={{ backgroundColor: 'var(--bg-sunken)', borderColor: 'var(--border)' }}>
+        <div ref={scrollRef} className="p-4 overflow-y-auto custom-scrollbar" style={{ maxHeight: '280px' }}>
+          {children}
+        </div>
+        <AnimatePresence>
+          {canScrollDown && (
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}
+              className="absolute bottom-0 left-0 right-0 flex justify-center pb-1 pt-8 rounded-b-xl pointer-events-none"
+              style={{ background: 'linear-gradient(to bottom, transparent, var(--bg-sunken))' }}
+            >
+              <motion.div animate={{ y: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.2, ease: 'easeInOut' }} className="flex flex-col items-center">
+                <ChevronDown size={14} style={{ color: 'var(--text-3)', opacity: 0.35, marginBottom: '-8px' }} />
+                <ChevronDown size={16} style={{ color: 'var(--text-3)', opacity: 0.6, marginBottom: '-8px' }} />
+                <ChevronDown size={18} style={{ color: 'var(--text-3)', opacity: 1 }} />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
+
+export default function VuKhiThuaAnh() {
+  const items: GameItem[] = vuKhiData;
+  const [activeWeapon, setActiveWeapon] = useState<WeaponKey>('cung');
+  const [selectedItem, setSelectedItem] = useState<GameItem | null>(null);
+  const [activeModalTab, setActiveModalTab] = useState<'detail' | 'stats' | 'upgrade'>('detail');
+
+  const weapon = WEAPON_TABS.find(w => w.key === activeWeapon)!;
+
+  // Mỗi tab lọc theo stats chứa tên vũ khí tương ứng
+  const WEAPON_STAT_MAP: Record<WeaponKey, string> = {
+    'cung':     'Thừa Ảnh Cung',
+    'song-dao': 'Thừa Ảnh Song Đao',
+    'kiem':     'Thừa Ảnh Kiếm',
+  };
+
+  const filteredItems = useMemo(() =>
+    items.filter(item => item.stats?.includes(WEAPON_STAT_MAP[activeWeapon])),
+    [items, activeWeapon]
+  );
+
+  useEffect(() => { setActiveModalTab('detail'); }, [selectedItem]);
+  useEffect(() => { setSelectedItem(null); }, [activeWeapon]);
+
+  const highlightText = (text: string) => {
+    if (!text) return text;
+    const pattern = /\{([^}]+)\}/g;
+    const parts = text.split(pattern);
+    const result: React.ReactNode[] = [];
+    parts.forEach((p, i) => {
+      if (i % 2 === 1) {
+        result.push(<span key={i} className="text-red-600 font-bold">{p}</span>);
+      } else {
+        const normalized = p.replace(/([^\n])•/g, '$1\n•');
+        const lines = normalized.split('\n');
+        lines.forEach((line, li) => {
+          if (li > 0) result.push(<br key={`${i}-br-${li}`} />);
+          if (line) result.push(line);
+        });
+      }
+    });
+    return result;
+  };
+
+  const colWidths = useMemo(() => {
+    const measure = (text: string, font = '14px Nunito, sans-serif') => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return text.length * 8;
+      ctx.font = font;
+      return ctx.measureText(text).width;
+    };
+    const pad = 40;
+    const nameW = Math.max(measure('TÊN', 'bold 14px Nunito'), ...filteredItems.map(i => measure(i.name, 'bold 16px Nunito')), ...filteredItems.map(i => measure(i.nameZh || '', '16px serif'))) + pad;
+    return { img: 100, name: Math.ceil(nameW) };
+  }, [filteredItems]);
+
+  return (
+    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="p-4 sm:p-6 w-full">
+
+      {/* 3 tab vũ khí */}
+      <div className="flex gap-2 mb-6">
+        {WEAPON_TABS.map(w => (
+          <button
+            key={w.key}
+            onClick={() => setActiveWeapon(w.key)}
+            style={{
+              padding: '7px 20px',
+              fontSize: 13,
+              fontWeight: 700,
+              borderRadius: 6,
+              border: `1px solid ${activeWeapon === w.key ? w.colorBorder : 'var(--border)'}`,
+              background: activeWeapon === w.key ? w.colorLight : 'var(--bg-card)',
+              color: activeWeapon === w.key ? w.color : 'var(--text-2)',
+              cursor: 'pointer',
+              transition: 'all 160ms',
+              boxShadow: activeWeapon === w.key ? `0 0 10px ${w.colorBorder}` : 'none',
+            }}
+          >{w.label}</button>
+        ))}
       </div>
 
-      {/* 3 cột layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '160px 1fr 320px', gap: 16, alignItems: 'start' }}>
+      {/* Table */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeWeapon}
+          initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.18 }}
+          className="overflow-hidden border"
+          style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
+        >
+          <div className="overflow-x-auto custom-scrollbar">
+            <table className="border-collapse text-left" style={{ width: '100%', tableLayout: 'fixed' }}>
+              <colgroup>
+                <col style={{ width: `${colWidths.img}px` }} />
+                <col style={{ width: `${colWidths.name}px` }} />
+                <col />
+              </colgroup>
+              <thead>
+                <tr style={{ backgroundColor: 'var(--bg-card)', borderBottom: '1px solid var(--border)' }}>
+                  {['Hình ảnh', 'Tên', 'Chi tiết'].map((h, idx, arr) => (
+                    <th key={h} className="px-4 py-3.5 text-sm font-black uppercase tracking-wider text-center whitespace-nowrap"
+                      style={{ color: 'var(--text-1)', borderRight: idx < arr.length - 1 ? '1px solid var(--border)' : 'none' }}>
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {filteredItems.length > 0 ? filteredItems.map(item => {
+                  return (
+                    <tr key={item.name} style={{ borderBottom: '1px solid var(--border)' }}>
+                      <td className="text-center" style={{ borderRight: '1px solid var(--border)', overflow: 'hidden' }}>
+                        <div onClick={() => setSelectedItem(item)}
+                          className="w-24 h-24 mx-auto flex items-center justify-center cursor-pointer overflow-hidden"
+                          style={{ transition: 'transform 1s cubic-bezier(.25,.8,.25,1)' }}
+                          onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = 'scale(1.06)'}
+                          onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = 'scale(1)'}>
+                          {item.imageUrl ? <img src={item.imageUrl} alt={item.name} className="w-full h-full object-contain" /> : <span className="text-3xl">📜</span>}
+                        </div>
+                      </td>
+                      <td className="px-5 py-4 text-center" style={{ borderRight: '1px solid var(--border)' }}>
+                        <div className="flex flex-col items-center gap-0.5">
+                          <span className="text-xl tracking-tight" style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 100 }}>{item.name}</span>
+                          {item.nameZh && <span className="text-base font-chinese" style={{ color: 'var(--text-1)' }}>{item.nameZh}</span>}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 font-medium leading-relaxed max-w-md" style={{ color: 'var(--text-2)', fontSize: '14px' }}>
+                        {highlightText(item.details)}
+                      </td>
+                    </tr>
+                  );
+                }) : (
+                  <tr>
+                    <td colSpan={4} className="px-6 py-16 text-center">
+                      <div className="flex flex-col items-center gap-2">
+                        <span className="text-3xl opacity-20">�</span>
+                        <p className="text-sm font-medium" style={{ color: 'var(--text-3)' }}>Chưa có dữ liệu cho vũ khí này</p>
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+      </AnimatePresence>
 
-        {/* ── CỘT TRÁI: tab vũ khí ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {WEAPONS.map((w, i) => (
-            <button
-              key={w.key}
-              onClick={() => handleWeaponChange(i)}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 6,
-                padding: '12px 8px',
-                borderRadius: 6,
-                border: `2px solid ${i === weaponIdx ? w.color : 'var(--border)'}`,
-                background: i === weaponIdx ? w.colorLight : 'var(--bg-card)',
-                cursor: 'pointer',
-                transition: 'all 180ms',
-                boxShadow: i === weaponIdx ? `0 0 12px ${w.colorBorder}` : 'none',
-              }}
-            >
-              {/* Thumbnail vũ khí */}
-              <div style={{
-                width: 72, height: 72,
-                borderRadius: 4,
-                background: 'var(--bg-sunken)',
-                border: `1px solid var(--border)`,
-                overflow: 'hidden',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                {w.thumbnail
-                  ? <img src={w.thumbnail} alt={w.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                      onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                    />
-                  : <span style={{ fontSize: 10, color: 'var(--text-3)', textAlign: 'center', padding: 4 }}>Chưa có ảnh</span>
-                }
-              </div>
-              <span style={{
-                fontSize: 12, fontWeight: 700,
-                color: i === weaponIdx ? w.color : 'var(--text-2)',
-                fontFamily: 'var(--font-chinese, serif)',
-                textAlign: 'center', lineHeight: 1.3,
-              }}>
-                {w.name}
-              </span>
-            </button>
-          ))}
-        </div>
-
-        {/* ── CỘT GIỮA: ảnh vũ khí + icon skill ── */}
-        <div style={{ position: 'relative', minHeight: 420 }}>
-          <AnimatePresence mode="wait">
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedItem && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }}
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+            onClick={() => setSelectedItem(null)}
+          >
             <motion.div
-              key={weapon.key}
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.2 }}
-              style={{ width: '100%', height: '100%', position: 'relative' }}
+              initial={{ scale: 0.96, y: 8, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} exit={{ scale: 0.96, y: 8, opacity: 0 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+              className="rounded-2xl shadow-2xl max-w-5xl w-full overflow-hidden border"
+              style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
+              onClick={e => e.stopPropagation()}
             >
-              {/* Ảnh vũ khí — full, không border riêng */}
-              <div style={{
-                width: '100%',
-                minHeight: 420,
-                borderRadius: 8,
-                border: `1px solid ${weapon.colorBorder}`,
-                overflow: 'hidden',
-                position: 'relative',
-              }}>
-                {weapon.image
-                  ? <img
-                      src={weapon.image}
-                      alt={weapon.name}
-                      style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover', minHeight: 420 }}
-                      onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                    />
-                  : <div style={{ minHeight: 420, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-sunken)' }}>
-                      <span style={{ color: 'var(--text-3)', fontSize: 13 }}>Chưa có ảnh vũ khí</span>
-                    </div>
-                }
-
-                {/* Icon kỹ năng overlay */}
-                {weapon.skills.map(sk => (
-                  <button
-                    key={sk.key}
-                    onClick={() => setActiveSkill(activeSkill === sk.key ? null : sk.key)}
-                    title={sk.title}
-                    style={{
-                      position: 'absolute',
-                      top: sk.pos.top,
-                      left: sk.pos.left,
-                      width:75, height: 75,
-                      borderRadius: '50%',
-                      border: `2px solid ${activeSkill === sk.key ? weapon.color : 'rgba(255,255,255,0.5)'}`,
-                      background: activeSkill === sk.key
-                        ? weapon.colorLight
-                        : 'rgba(0,0,0,0.55)',
-                      backdropFilter: 'blur(4px)',
-                      cursor: 'pointer',
-                      display: 'flex', flexDirection: 'column',
-                      alignItems: 'center', justifyContent: 'center',
-                      gap: 2,
-                      transition: 'all 180ms',
-                      boxShadow: activeSkill === sk.key ? `0 0 12px ${weapon.color}` : '0 2px 8px rgba(0,0,0,0.4)',
-                      transform: 'translate(-50%, -50%)',
-                      zIndex: 10,
-                    }}
-                  >
-                    {sk.icon
-                      ? <img src={sk.icon} alt={sk.label} style={{ width: 28, height: 28, objectFit: 'contain' }}
-                          onError={e => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                        />
-                      : <span style={{ fontSize: 16 }}>
-                          {sk.key === 'core' ? '⚡' : sk.key === 'passive' ? '🔮' : '⚔️'}
-                        </span>
-                    }
-                    <span style={{ fontSize: 8, color: '#fff', fontWeight: 600, whiteSpace: 'nowrap' }}>
-                      {sk.label}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* ── CỘT PHẢI: mô tả skill ── */}
-        <div style={{
-          background: 'var(--bg-card)',
-          border: `1px solid ${skill ? weapon.colorBorder : 'var(--border)'}`,
-          borderRadius: 8,
-          minHeight: 420,
-          overflow: 'hidden',
-          transition: 'border-color 200ms',
-        }}>
-          <AnimatePresence mode="wait">
-            {skill ? (
-              <motion.div
-                key={skill.key}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.18 }}
-                style={{ padding: '18px 16px' }}
-              >
-                {/* Skill header */}
-                <div style={{
-                  paddingBottom: 12,
-                  marginBottom: 12,
-                  borderBottom: `1px solid ${weapon.colorBorder}`,
-                }}>
-                  <div style={{
-                    fontSize: 15, fontWeight: 800,
-                    color: weapon.color,
-                    fontFamily: 'var(--font-chinese, serif)',
-                    marginBottom: 6,
-                  }}>
-                    {skill.title}
-                  </div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-                    {skill.tags.map(tag => (
-                      <span key={tag} style={{
-                        fontSize: 11, fontWeight: 600,
-                        color: weapon.color,
-                        background: weapon.colorLight,
-                        border: `1px solid ${weapon.colorBorder}`,
-                        borderRadius: 4,
-                        padding: '1px 7px',
-                      }}>
+              {/* Modal header */}
+              <div className="flex items-start gap-5 p-6 border-b" style={{ borderColor: 'var(--border)' }}>
+                <div className="w-20 h-20 flex items-center justify-center overflow-hidden shrink-0"
+                  style={{ transition: 'transform 1s cubic-bezier(.25,.8,.25,1)' }}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = 'scale(1.06)'}
+                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = 'scale(1)'}>
+                  {selectedItem.imageUrl ? <img src={selectedItem.imageUrl} alt={selectedItem.name} className="w-full h-full object-contain" /> : <span className="text-4xl">📜</span>}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-xl leading-tight" style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 'normal' }}>{selectedItem.name}</h3>
+                  {selectedItem.nameZh && <span className="text-base font-chinese" style={{ color: 'var(--text-3)' }}>{selectedItem.nameZh}</span>}
+                  <div className="mt-2.5 flex gap-1.5 flex-wrap">
+                    {(selectedItem.monPhai || selectedItem.category) && (
+                      <span className="inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-bold whitespace-nowrap"
+                        style={{ backgroundColor: 'rgba(239,68,68,0.1)', color: '#dc2626' }}>
+                        {selectedItem.monPhai || selectedItem.category}
+                      </span>
+                    )}
+                    {selectedItem.itemType && (
+                      <span className="inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-bold whitespace-nowrap"
+                        style={{ backgroundColor: rareBadge(selectedItem.itemType).bg, color: rareBadge(selectedItem.itemType).color }}>
+                        {selectedItem.itemType}
+                      </span>
+                    )}
+                    {selectedItem.tags?.filter(t => t).map((tag, idx) => (
+                      <span key={idx} className="inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-bold whitespace-nowrap"
+                        style={{ backgroundColor: 'rgba(239,68,68,0.1)', color: '#dc2626' }}>
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
+                <button onClick={() => setSelectedItem(null)} className="p-1.5 rounded-lg cursor-pointer transition-colors shrink-0" style={{ color: '#dc2626' }}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(239,68,68,0.1)'}
+                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'}>
+                  <X size={18} />
+                </button>
+              </div>
 
-                {/* Skill content */}
-                <p style={{
-                  fontSize: 13, color: 'var(--text-1)',
-                  lineHeight: 1.75,
-                  whiteSpace: 'pre-wrap',
-                }}>
-                  {skill.content}
-                </p>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="empty"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                style={{
-                  height: 420,
-                  display: 'flex', flexDirection: 'column',
-                  alignItems: 'center', justifyContent: 'center',
-                  gap: 8, padding: 20,
-                }}
-              >
-                {/* Weapon info khi chưa chọn skill */}
-                <div style={{
-                  width: 64, height: 64,
-                  borderRadius: 8,
-                  background: weapon.colorLight,
-                  border: `1px solid ${weapon.colorBorder}`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  marginBottom: 4,
-                }}>
-                  <span style={{ fontSize: 28 }}>⚔️</span>
-                </div>
-                <div style={{ fontSize: 16, fontWeight: 800, color: weapon.color, fontFamily: 'var(--font-chinese, serif)', textAlign: 'center' }}>
-                  {weapon.name}
-                </div>
-                <div style={{ fontSize: 12, color: 'var(--text-3)', textAlign: 'center', fontFamily: 'var(--font-chinese, serif)' }}>
-                  {weapon.nameZh}
-                </div>
-                <div style={{ fontSize: 12, color: 'var(--text-3)', textAlign: 'center', marginTop: 8, lineHeight: 1.6 }}>
-                  {weapon.sub}
-                </div>
-                <div style={{ fontSize: 11, color: 'var(--text-3)', marginTop: 12, opacity: 0.7 }}>
-                  ← Click icon kỹ năng để xem mô tả
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-      </div>
-    </div>
+              {/* Modal body */}
+              <div className="p-6 overflow-hidden">
+                {(selectedItem.detail || selectedItem.upgrade) && (
+                  <div className="flex gap-2 mb-4">
+                    {(['detail', 'stats', 'upgrade'] as const).map(tab => {
+                      const labels = { detail: 'Mô tả', stats: 'Chi tiết', upgrade: 'Nâng cấp' };
+                      const hidden = (tab === 'stats' && !selectedItem.detail) || (tab === 'upgrade' && !selectedItem.upgrade);
+                      if (hidden) return null;
+                      return (
+                        <button key={tab} onClick={() => setActiveModalTab(tab)}
+                          className="px-4 py-2 rounded-lg text-sm font-medium cursor-pointer"
+                          style={{
+                            backgroundColor: activeModalTab === tab ? 'var(--bg-sunken)' : 'transparent',
+                            color: activeModalTab === tab ? 'var(--text-1)' : 'var(--text-3)',
+                            border: activeModalTab === tab ? '1px solid var(--border)' : '1px solid transparent',
+                            transition: 'background-color 0.2s, color 0.2s, border-color 0.2s',
+                          }}
+                          onMouseEnter={e => { if (activeModalTab !== tab) { (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--bg-hover)'; (e.currentTarget as HTMLElement).style.color = 'var(--text-1)'; } }}
+                          onMouseLeave={e => { if (activeModalTab !== tab) { (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--text-3)'; } }}
+                        >{labels[tab]}</button>
+                      );
+                    })}
+                  </div>
+                )}
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={activeModalTab}
+                    initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+                  >
+                    {activeModalTab === 'detail' && (
+                      <ScrollableContent label="Mô tả chi tiết">
+                        <p className="font-medium leading-relaxed" style={{ color: 'var(--text-2)', fontSize: '14px' }}>
+                          {highlightText(selectedItem.details)}
+                        </p>
+                      </ScrollableContent>
+                    )}
+                    {activeModalTab === 'stats' && selectedItem.detail && (
+                      <ScrollableContent label="Chỉ số chi tiết">
+                        <p className="font-medium leading-relaxed" style={{ color: 'var(--text-2)', fontSize: '14px' }}>
+                          {highlightText(selectedItem.detail)}
+                        </p>
+                      </ScrollableContent>
+                    )}
+                    {activeModalTab === 'upgrade' && selectedItem.upgrade && (
+                      <ScrollableContent label="Nâng cấp">
+                        <p className="font-medium leading-relaxed" style={{ color: 'var(--text-2)', fontSize: '14px' }}>
+                          {highlightText(selectedItem.upgrade)}
+                        </p>
+                      </ScrollableContent>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
