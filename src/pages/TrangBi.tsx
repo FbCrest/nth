@@ -39,7 +39,7 @@ function highlightText(text: string): React.ReactNode[] {
   return result;
 }
 
-const SLOTS = ['Tất cả', 'Mũ', 'Áo', 'Bao tay', 'Hộ uyển', 'Giày', 'Trạc', 'Nhẫn', 'Dây chuyền', 'Vũ khí'];
+const SLOTS = ['Tất cả', 'Mũ', 'Áo', 'Đai', 'Bao tay', 'Hộ uyển', 'Giày', 'Trạc', 'Nhẫn', 'Dây chuyền', 'Vũ khí'];
 
 export default function TrangBiPage() {
   const [items, setItems] = useState<TrangBi[]>([]);

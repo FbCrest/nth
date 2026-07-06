@@ -138,7 +138,7 @@ function LoaiDropdown({ value, onChange }: { value: string; onChange: (v: string
   );
 }
 
-const SLOT_LIST = ['Mũ', 'Áo', 'Bao tay', 'Hộ uyển', 'Giày', 'Trạc', 'Nhẫn', 'Dây chuyền', 'Vũ khí'];
+const SLOT_LIST = ['Mũ', 'Áo', 'Đai', 'Bao tay', 'Hộ uyển', 'Giày', 'Trạc', 'Nhẫn', 'Dây chuyền', 'Vũ khí'];
 
 function SlotDropdown({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   const [open, setOpen] = useState(false);
@@ -402,7 +402,7 @@ function ItemModal({ item, onClose, onSaved }: {
   );
 }
 
-const SLOTS = ['Tất cả', 'Mũ', 'Áo', 'Bao tay', 'Hộ uyển', 'Giày', 'Trạc', 'Nhẫn', 'Dây chuyền', 'Vũ khí'];
+const SLOTS = ['Tất cả', 'Mũ', 'Áo', 'Đai', 'Bao tay', 'Hộ uyển', 'Giày', 'Trạc', 'Nhẫn', 'Dây chuyền', 'Vũ khí'];
 
 // ── Main Admin page ──
 export default function AdminTrangBi() {
