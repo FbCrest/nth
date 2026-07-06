@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Pencil, Trash2, X, Upload, LogOut, Eye, EyeOff, ChevronDown, Check } from 'lucide-react';
 import { supabase, TrangBi } from '../lib/supabase';
@@ -77,6 +77,7 @@ const LOAI_LIST = ['PVE', 'PVP', 'Hỗ Trợ', 'Phòng Ngự'];
 function LoaiDropdown({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   const [open, setOpen] = useState(false);
   const [maxHeight, setMaxHeight] = useState(256);
+  const [pos, setPos] = useState({ top: 0, left: 0, width: 0 });
   const ref = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
 
@@ -89,8 +90,9 @@ function LoaiDropdown({ value, onChange }: { value: string; onChange: (v: string
   const handleOpen = () => {
     if (!open && btnRef.current) {
       const rect = btnRef.current.getBoundingClientRect();
-      const spaceBelow = window.innerHeight - rect.bottom - 12;
+      const spaceBelow = window.innerHeight - rect.bottom - 8;
       setMaxHeight(Math.min(256, Math.max(80, spaceBelow)));
+      setPos({ top: rect.bottom + 4, left: rect.left, width: rect.width });
     }
     setOpen(o => !o);
   };
@@ -114,8 +116,11 @@ function LoaiDropdown({ value, onChange }: { value: string; onChange: (v: string
         {open && (
           <motion.div initial={{ opacity: 0, y: -6, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.97 }} transition={{ duration: 0.14, ease: 'easeOut' }}
-            className="absolute top-full mt-1.5 left-0 right-0 z-[500] rounded-2xl shadow-xl overflow-hidden border"
-            style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}>
+            style={{
+              position: 'fixed', top: pos.top, left: pos.left, width: pos.width,
+              zIndex: 9999, borderRadius: 16, boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+              backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)', overflow: 'hidden',
+            }}>
             <div className="p-1.5 overflow-y-auto custom-scrollbar" style={{ maxHeight }}>
               {LOAI_LIST.map(loai => {
                 const isActive = value === loai;
@@ -143,6 +148,7 @@ const SLOT_LIST = ['Mũ', 'Áo', 'Đai', 'Bao tay', 'Hộ uyển', 'Giày', 'Tr�
 function SlotDropdown({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   const [open, setOpen] = useState(false);
   const [maxHeight, setMaxHeight] = useState(256);
+  const [pos, setPos] = useState({ top: 0, left: 0, width: 0 });
   const ref = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
 
@@ -155,8 +161,9 @@ function SlotDropdown({ value, onChange }: { value: string; onChange: (v: string
   const handleOpen = () => {
     if (!open && btnRef.current) {
       const rect = btnRef.current.getBoundingClientRect();
-      const spaceBelow = window.innerHeight - rect.bottom - 12; // 12px margin
-      setMaxHeight(Math.min(256, Math.max(80, spaceBelow)));
+      const spaceBelow = window.innerHeight - rect.bottom - 8;
+      setMaxHeight(Math.min(280, Math.max(80, spaceBelow)));
+      setPos({ top: rect.bottom + 4, left: rect.left, width: rect.width });
     }
     setOpen(o => !o);
   };
@@ -188,8 +195,12 @@ function SlotDropdown({ value, onChange }: { value: string; onChange: (v: string
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.14, ease: 'easeOut' }}
-            className="absolute top-full mt-1.5 left-0 right-0 z-[500] rounded-2xl shadow-xl overflow-hidden border"
-            style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
+            style={{
+              position: 'fixed', top: pos.top, left: pos.left, width: pos.width,
+              zIndex: 9999, borderRadius: 16, boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
+              backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)',
+              overflow: 'hidden',
+            }}
           >
             <div className="p-1.5 overflow-y-auto custom-scrollbar" style={{ maxHeight }}>
               {SLOT_LIST.map(slot => {
@@ -221,8 +232,8 @@ function SlotDropdown({ value, onChange }: { value: string; onChange: (v: string
 type FormData = { ten: string; ten_zh: string; mo_ta: string; chi_tiet: string; slot: string; loai: string; cap: string; mua_giai: string; };
 const EMPTY_FORM: FormData = { ten: '', ten_zh: '', mo_ta: '', chi_tiet: '', slot: '', loai: '', cap: '', mua_giai: '' };
 
-function ItemModal({ item, onClose, onSaved }: {
-  item: TrangBi | null; onClose: () => void; onSaved: () => void;
+function ItemModal({ item, onClose, onSaved, seasons, caps }: {
+  item: TrangBi | null; onClose: () => void; onSaved: () => void; seasons: string[]; caps: string[];
 }) {
   const isEdit = !!item;
   const [form, setForm] = useState<FormData>(item ? {
@@ -330,6 +341,58 @@ function ItemModal({ item, onClose, onSaved }: {
                 <Upload size={13} /> Chọn ảnh
                 <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
               </label>
+
+              {/* Gợi ý mùa giải */}
+              {seasons.length > 0 && (
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: 'var(--text-3)' }}>Mùa giải</p>
+                  <div className="flex flex-col gap-1.5">
+                    {seasons.map(s => (
+                      <button
+                        key={s}
+                        type="button"
+                        onClick={() => setForm(p => ({ ...p, mua_giai: s }))}
+                        className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-colors"
+                        style={{
+                          backgroundColor: form.mua_giai === s ? 'rgba(239,68,68,0.1)' : 'var(--bg-sunken)',
+                          color: form.mua_giai === s ? '#dc2626' : 'var(--text-2)',
+                          border: `1px solid ${form.mua_giai === s ? 'rgba(239,68,68,0.3)' : 'var(--border)'}`,
+                        }}
+                        onMouseEnter={e => { if (form.mua_giai !== s) (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--bg-hover)'; }}
+                        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = form.mua_giai === s ? 'rgba(239,68,68,0.1)' : 'var(--bg-sunken)'; }}
+                      >
+                        {s}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Gợi ý cấp trang bị */}
+              {caps.length > 0 && (
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: 'var(--text-3)' }}>Cấp</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {caps.map(c => (
+                      <button
+                        key={c}
+                        type="button"
+                        onClick={() => setForm(p => ({ ...p, cap: c }))}
+                        className="px-2.5 py-1 rounded-lg text-xs font-bold cursor-pointer transition-colors"
+                        style={{
+                          backgroundColor: form.cap === c ? 'rgba(239,68,68,0.1)' : 'var(--bg-sunken)',
+                          color: form.cap === c ? '#dc2626' : 'var(--text-2)',
+                          border: `1px solid ${form.cap === c ? 'rgba(239,68,68,0.3)' : 'var(--border)'}`,
+                        }}
+                        onMouseEnter={e => { if (form.cap !== c) (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--bg-hover)'; }}
+                        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = form.cap === c ? 'rgba(239,68,68,0.1)' : 'var(--bg-sunken)'; }}
+                      >
+                        {c}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* CỘT 2 — tên + vị trí + loại + cấp */}
@@ -449,7 +512,14 @@ export default function AdminTrangBi() {
     fetchItems();
   };
 
-  const filteredItems = activeSlot === 'Tất cả' ? items : items.filter(i => i.slot === activeSlot);
+  const filteredItems = useMemo(() => {
+    const base = activeSlot === 'Tất cả' ? items : items.filter(i => i.slot === activeSlot);
+    return base.sort((a, b) => {
+      const ca = parseInt((a as any).cap ?? '0') || 0;
+      const cb = parseInt((b as any).cap ?? '0') || 0;
+      return cb - ca;
+    });
+  }, [items, activeSlot]);
 
   if (checking) return (
     <div className="flex items-center justify-center h-screen" style={{ backgroundColor: 'var(--bg-page)' }}>
@@ -613,7 +683,10 @@ export default function AdminTrangBi() {
       {/* Add/Edit modal */}
       <AnimatePresence>
         {modalOpen && (
-          <ItemModal item={editItem} onClose={() => { setModalOpen(false); setEditItem(null); }} onSaved={fetchItems} />
+          <ItemModal item={editItem} onClose={() => { setModalOpen(false); setEditItem(null); }} onSaved={fetchItems}
+            seasons={Array.from(new Set(items.map(i => (i as any).mua_giai).filter(Boolean))).sort()}
+            caps={Array.from(new Set(items.map(i => (i as any).cap).filter(Boolean)))
+              .sort((a, b) => parseInt(b) - parseInt(a))} />
         )}
       </AnimatePresence>
 
