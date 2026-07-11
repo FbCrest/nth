@@ -370,7 +370,7 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
                 </>
               ) : (
                 <>
-                  <DropdownFilter id="name" label="Tên Đặc Tính" value={activeFilters.name} options={uniqueValues.names} onSelect={v => setActiveFilters(p => ({ ...p, name: v }))} />
+                  <DropdownFilter id="name" label="Tên Kỹ Năng" value={activeFilters.name} options={uniqueValues.names} onSelect={v => setActiveFilters(p => ({ ...p, name: v }))} />
                   <DropdownFilter id="element" label="Môn Phái" value={activeFilters.element} options={uniqueValues.elements} onSelect={v => setActiveFilters(p => ({ ...p, element: v }))} />
                   <DropdownFilter id="stat" label="Chỉ Số" value={activeFilters.stat} options={uniqueValues.stats} onSelect={v => setActiveFilters(p => ({ ...p, stat: v }))} />
                 </>

@@ -9,7 +9,7 @@ export const kyNangLongNgamData: GameItem[] = [
     itemType: 'PVE - PVP',
     stats: ['Dịch Chuyển', 'Giảm Tốc', 'Tăng Tốc', 'Giảm Hồi Chiêu'],
     tags: ['Dịch Chuyển', 'Giảm Tốc', 'Tăng Tốc', 'Giảm Hồi Chiêu'],
-    details: `• Vung kiếm tạo Kinh Lôi nhất kích, gây sát thương lên kẻ địch trên đường lao tới. Lần thi triển thứ 3 sẽ được cường hóa, tăng sát thương và kèm hiệu ứng làm chậm. Đòn đánh gây sát thương thêm lên quái vật.
+    details: `Vung kiếm tạo Kinh Lôi nhất kích, gây sát thương lên kẻ địch trên đường lao tới. Lần thi triển thứ 3 sẽ được cường hóa, tăng sát thương và kèm hiệu ứng làm chậm. Đòn đánh gây sát thương thêm lên quái vật.
 • Thanh Long Nộ: Khi chạm vào khí kiếm, kích hoạt Thiên Lôi Cộng Minh, lập tức reset thời gian hồi chiêu của Kinh Lôi.
 • Cảm Điện: Khi thi triển Kinh Lôi, kỹ năng sẽ tự động hút các khí kiếm trong phạm vi phía trước.
 • Tấn Lôi: Sau khi dùng Kinh Lôi, nhận tăng tốc trong thời gian ngắn và giảm sát thương phải chịu.
@@ -406,5 +406,30 @@ export const kyNangLongNgamData: GameItem[] = [
 • Hồi chiêu: 12,61 giây`,
     upgrade: ``,
     imageUrl: '/images/ky-nang-mon-phai/long-ngam/cb.png',
+  },
+  {
+    name: 'Cầu Bại · Phá Tiêu',
+    nameZh: '求败·破霄',
+    category: 'Kỹ năng',
+    monPhai: 'Long Ngâm',
+    itemType: 'PVE - PVP',
+    stats: ['Thông Dụng', 'QTE', 'Bá Thể', 'Giảm Sát Thương'],
+    tags: ['Thông Dụng', 'QTE', 'Bá Thể', 'Giảm Sát Thương'],
+    details: `Chiêu thức Kiếm Đạo được kích hoạt khi có từ {3} Kiếm Tâm trở lên. Trong thời gian thi triển, nhận {giảm sát thương} và tiêu hao toàn bộ Kiếm Tâm, triệu hồi mưa kiếm gây lượng lớn sát thương. Tiêu hao Kiếm Tâm sẽ tăng sát thương gây ra. Kẻ địch bị mưa kiếm liên tục đánh trúng sẽ chịu nhiều sát thương hơn từ đòn mưa kiếm kết thúc.
+• {Kiếm Đạo}: Hiệu quả của kỹ năng Cầu Bại chịu ảnh hưởng bởi cấp độ Trảm Sương/Bất Công.
+• Gây thêm sát thương lên quái vật.
+• {Phá Tiêu}: Khi sử dụng lên quái vật hoặc mục tiêu đang chịu khống chế cứng, kỹ năng sẽ được thi triển nhanh hơn.
+• {Quần chiến}: Khi có từ {5} kẻ địch trở lên ở gần, nhận {Bá Thể} và tăng hiệu quả {giảm sát thương}.`,
+    detail: `• Sát thương mưa kiếm liên tục: {2187} sát thương nội công, tổng cộng {5 lần}.
+• Sát thương mưa kiếm kết thúc: {4379} sát thương nội công.
+• Mỗi lần mưa kiếm trúng mục tiêu tăng sát thương mưa kiếm kết thúc: {20%}, tối đa: {100%}.
+• Mỗi tầng Kiếm Tâm tăng sát thương: {30%}.
+• Sát thương lên quái vật: tăng {100%}.
+• Thời gian thi triển: {1 giây}.
+• Giảm sát thương: {30%}.
+• Giảm sát thương khi quần chiến: {60%}.
+• Hồi chiêu: {13 giây}.`,
+    upgrade: ``,
+    imageUrl: '/images/ky-nang-mon-phai/long-ngam/cau-bai-pha-tieu.png',
   },
 ];

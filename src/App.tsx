@@ -27,6 +27,7 @@ import { kyNangLongNgamData } from './data/ky-nang-long-ngam';
 import { kyNangThanTuongData } from './data/ky-nang-than-tuong';
 import { kyNangThuongLanData } from './data/ky-nang-thuong-lan';
 import { kyNangToaiMongData } from './data/ky-nang-toai-mong';
+import { kyNangHuyenCoData } from './data/ky-nang-huyen-co';
 
 const mockData: Record<string, GameItem[]> = {
   'noi-cong': noiCongData,
@@ -37,6 +38,7 @@ const mockData: Record<string, GameItem[]> = {
   'ky-nang-than-tuong': kyNangThanTuongData,
   'ky-nang-thuong-lan': kyNangThuongLanData,
   'ky-nang-toai-mong': kyNangToaiMongData,
+  'ky-nang-huyen-co': kyNangHuyenCoData,
   'ky-nang-bach-gia': kyNangGiangHoData,
 };
 
@@ -49,6 +51,7 @@ const categoryTitles: Record<string, string> = {
   'ky-nang-than-tuong': 'Kỹ năng Thần Tương',
   'ky-nang-thuong-lan': 'Kỹ năng Thương Lan',
   'ky-nang-toai-mong': 'Kỹ năng Toái Mộng',
+  'ky-nang-huyen-co': 'Kỹ năng Huyền Cơ',
   'ky-nang-bach-gia': 'Kỹ Năng Giang Hồ',
 };
 
