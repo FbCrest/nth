@@ -105,7 +105,7 @@ const vuKhiData: GameItem[] = [
     imageUrl: '/images/vu-khi-thua-anh/do-don-chau-vu-thuc.png',
   },
   {
-    name: 'Né Tránh Chuẩn Xác · Cung',
+    name: 'Né Hoàn Hảo · Cung',
     nameZh: '精准闪避·弓',
     category: '',
     monPhai: '',
@@ -117,7 +117,7 @@ const vuKhiData: GameItem[] = [
 • Tăng tấn công: {2%}.
 • Số tầng tăng tấn công tối đa: 1.
 • Thời gian vô địch: {0,8 giây}.`,
-    imageUrl: '/images/vu-khi-thua-anh/ne-tranh-chuan-xac-cung.png',
+    imageUrl: '/images/vu-khi-thua-anh/ne-hoan-hao-cung.png',
   },
   {
     name: 'Truy Kích Liên Kích · Cung',
@@ -135,51 +135,208 @@ const vuKhiData: GameItem[] = [
     imageUrl: '/images/vu-khi-thua-anh/truy-kich-lien-kich-cung.png',
   },
   // ── Thừa Ảnh Song Đao ──
-  {
-    name: 'Cộng Hưởng · Song Đao',
-    nameZh: '',
-    category: '',
-    monPhai: '',
-    itemType: '',
-    stats: ['Thừa Ảnh Song Đao'],
-    tags: ['Thừa Ảnh Song Đao', 'Dùng chung'],
-    details: '(Coming soon)',
-    imageUrl: '',
-  },
-  {
-    name: 'Đỡ Đòn · Song Đao',
-    nameZh: '',
-    category: 'Kỹ năng vũ khí',
-    monPhai: 'Thừa Ảnh',
-    itemType: 'Phó bản',
-    stats: ['Thừa Ảnh Song Đao'],
-    tags: ['Thừa Ảnh Song Đao', 'Phó bản'],
-    details: '(Coming soon)',
-    imageUrl: '',
-  },
+{
+  name: 'Thừa Ảnh Song Đao',
+  nameZh: '承影双刀',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Song Đao'],
+  tags: ['Thừa Ảnh Song Đao'],
+  details: `Sau khi trang bị, mở khóa kỹ năng độc quyền: {Thừa Ảnh Truy Kích · Song Đao}.
+• Đặc tính kỹ năng: {Đơn Thể}, {Làm Mới Truy Kích}.
+• Đặc tính bổ sung trong Đấu Trường: {Dịch Chuyển}, {Không Thể Đỡ Đòn}.
+• Kích hoạt {3} năng lực Phó Bản của hình thái {Song Đao}: Khi thi triển kỹ năng có thể {Đỡ Đòn}, tuy nhiên thời gian Đỡ Đòn khá ngắn. Liên tục {Né Chính Xác} sẽ nhận thêm hiệu ứng tăng sát thương.
+• Kích hoạt {Cộng Hưởng · Song Đao}: Triệu hồi {Thừa Ảnh Song Đao} hỗ trợ tấn công.
+• Sau khi mở khóa và trang bị {Thừa Ảnh Song Đao}, ngoại trang hình thái Song Đao và khinh công Thừa Ảnh được trang bị trong giao diện ngoại trang sẽ đồng thời có hiệu lực.`,
+  detail: `• Sau khi trang bị Thừa Ảnh Song Đao sẽ kích hoạt năng lực độc quyền.`,
+  upgrade: ``,
+  imageUrl: '/images/vu-khi-thua-anh/thua-anh-song-dao.png',
+},
+{
+  name: 'Truy Kích Thừa Ảnh · Song Đao',
+  nameZh: '承影追击·双刀',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Song Đao'],
+  tags: ['Thừa Ảnh Song Đao', 'Dùng chung'],
+  details: `Lao nhanh về phía trước, nhận trạng thái {Bá Thể} và {Giảm Sát Thương} trong thời gian ngắn, gây sát thương {Không Thể Đỡ Đòn} lên kẻ địch trên đường lướt. Trong thời gian này, nếu chặn được hiệu ứng khống chế hoặc đánh bại kẻ địch, kỹ năng sẽ được làm mới (có thể dùng cần điều khiển để lập tức thi triển). Sau khi thi triển bất kỳ võ học Thừa Ảnh nào và kỹ năng đó bước vào hồi chiêu, hoặc sau khi Né Hoàn Hảo trong phó bản, kỹ năng Truy Kích Thừa Ảnh · Song Đao sẽ được kích hoạt tại ô Kỹ năng Giang Hồ.
+• {Quần chiến}: Hiệu quả Giảm Sát Thương tăng lên {60%}, tổng hệ số sát thương gây lên người chơi tăng lên {900%}.
+• Trong phó bản, tăng sát thương gây lên Boss, nhưng sẽ không phát động hiệu ứng lướt, đồng thời chỉ được làm mới kỹ năng khi đánh bại kẻ địch.`,
+  detail: `• Sát thương của Thừa Ảnh Song Đao: {14897} sát thương Ngoại Công.
+• Sát thương lên quái vật tăng: {248%}
+• Thời gian Bá Thể: {0.6 giây}
+• Giảm Sát Thương: {30%}, duy trì {0.6 giây}`,
+  imageUrl: '/images/vu-khi-thua-anh/truy-kich-thua-anh-song-dao.png',
+},
+{
+  name: 'Cộng Hưởng · Song Đao',
+  nameZh: '共鸣·双刀',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Song Đao'],
+  tags: ['Thừa Ảnh Song Đao', 'Dùng chung'],
+  details: `Khi thi triển kỹ năng, Thừa Ảnh Song Đao sẽ phối hợp tấn công, gây sát thương lên mục tiêu. Mỗi {12 giây} tối đa kích hoạt {1 lần}.`,
+  detail: `• Sát thương của Thừa Ảnh Song Đao: {5643} sát thương Ngoại Công.
+• Sát thương lên quái vật tăng: {185%}
+• Hồi chiêu: {12 giây}`,
+  imageUrl: '/images/vu-khi-thua-anh/cong-huong-song-dao.png',
+},
+{
+  name: 'Đỡ Đòn · Song Đao',
+  nameZh: '格挡·双刀',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Song Đao'],
+  tags: ['Thừa Ảnh Song Đao', 'Phó bản'],
+  details: `Sau khi trang bị Thừa Ảnh Song Đao, khi đối đầu Boss sẽ tạo ra tàn ảnh cầm song đao, trong thời gian ngắn có thể {Đỡ Đòn} đòn tấn công của kẻ địch. Kỹ năng có thể tích trữ tối đa {3} lần. Khi Đỡ Đòn thành công sẽ hoàn trả toàn bộ số lần tích trữ. Khi Đỡ Đòn thành công một chiêu thức, nhận trạng thái {Tàng Phong}, tăng Công. Khi Đỡ Đòn thành công chiêu thức cường lực, kích hoạt {Phản Kích Đỡ Đòn}, gây sát thương lên mục tiêu. Mỗi tầng {Né Hoàn Hảo} sẽ tăng sát thương phản kích.
+• {Ảnh Thích}: Có thể sử dụng khi đang thi triển các kỹ năng khác.
+• {Trấn Ảnh}: Trong thời gian phản kích, nhận {Giảm Sát Thương} và {Bá Thể}.`,
+  detail: `• Sát thương Phản Kích: {118493} sát thương Ngoại Công.
+• Mỗi tầng Né Hoàn Hảo tăng sát thương Phản Kích: {25%}
+• Giảm Sát Thương: {40%}
+• Tàng Phong tăng Công: {1%}
+• Thời gian duy trì Tàng Phong: {30 giây}
+• Tàng Phong tối đa: {3 tầng}
+• Khi dùng Combo 1 nút tự động Đỡ Đòn, Tàng Phong tối đa chỉ cộng dồn {1 tầng}`,
+  imageUrl: '/images/vu-khi-thua-anh/do-don-song-dao.png',
+},
+{
+  name: 'Né Hoàn Hảo · Song Đao',
+  nameZh: '精准闪避·双刀',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Song Đao'],
+  tags: ['Thừa Ảnh Song Đao', 'Phó bản'],
+  details: `Sau khi trang bị Thừa Ảnh Song Đao, trong phó bản, khi thi triển {Yến Hồi Phong} ngay trước thời điểm sắp trúng đòn sẽ kích hoạt {Né Hoàn Hảo}, đồng thời nhận {Vô Địch} trong thời gian ngắn và tăng Công. Hiệu ứng này có thể cộng dồn tối đa {2 tầng}.`,
+  detail: `• Tăng Công tối đa: {2 tầng}
+• Mỗi tầng tăng Công: {2%/3%}
+• Thời gian Vô Địch: {0.8 giây}`,
+  imageUrl: '/images/vu-khi-thua-anh/ne-hoan-hao-cung.png',
+},
+{
+  name: 'Truy Kích Liên Kích · Song Đao',
+  nameZh: '连携追击·双刀',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Song Đao'],
+  tags: ['Thừa Ảnh Song Đao', 'Phó bản'],
+  details: `Trong trận chiến với Boss, khi Đỡ Đòn thành công hoặc xử lý thành công cơ chế đặc biệt sẽ tích lũy {Điểm Liên Kích}. Khi Điểm Liên Kích đầy, Boss sẽ rơi vào trạng thái {Suy Yếu}. Lúc này có thể cùng đồng đội phát động {Truy Kích Liên Kích}, gây lượng lớn sát thương. Mỗi người chơi tham gia Truy Kích Liên Kích sẽ tăng {10%} tổng sát thương, tối đa tăng {80%}.`,
+  detail: `• Sát thương cơ bản: {3.5%} Máu tối đa của Boss.
+• Sát thương cộng thêm: {30%} tổng sát thương Boss phải chịu trong trạng thái Suy Yếu.
+• Mỗi người chơi tham gia tăng tổng sát thương: {10%}
+• Số người tối đa nhận tăng sát thương: {8}`,
+  imageUrl: '/images/vu-khi-thua-anh/truy-kich-lien-kich-song-dao.png',
+},
   // ── Thừa Ảnh Kiếm ──
-  {
-    name: 'Cộng Hưởng · Kiếm',
-    nameZh: '',
-    category: 'Kỹ năng vũ khí',
-    monPhai: 'Thừa Ảnh',
-    itemType: 'Dùng chung',
-    stats: ['Thừa Ảnh Kiếm'],
-    tags: ['Thừa Ảnh Kiếm', 'Dùng chung'],
-    details: '(Coming soon)',
-    imageUrl: '',
-  },
-  {
-    name: 'Đỡ Đòn · Kiếm',
-    nameZh: '',
-    category: 'Kỹ năng vũ khí',
-    monPhai: 'Thừa Ảnh',
-    itemType: 'Phó bản',
-    stats: ['Thừa Ảnh Kiếm'],
-    tags: ['Thừa Ảnh Kiếm', 'Phó bản'],
-    details: '(Coming soon)',
-    imageUrl: '',
-  },
+{
+  name: 'Thừa Ảnh Kiếm',
+  nameZh: '承影剑',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Kiếm'],
+  tags: ['Thừa Ảnh Kiếm', 'Dùng chung'],
+  details: `Sau khi trang bị, kích hoạt kỹ năng độc quyền: {Truy Kích Thừa Ảnh · Kiếm}.
+• Đặc tính kỹ năng: {Sát thương đơn mục tiêu}.
+• {Quần chiến}: Có thêm đặc tính {Lao Tới} và {Bỏ Qua Giảm Sát Thương}.
+• Kích hoạt {3} năng lực phó bản của hình thái Kiếm. Đặc tính: Khi hoàn thành thành công {Phản Kích Đỡ Đòn}, sát thương cơ bản gây ra sẽ cao hơn.
+• Kích hoạt {Cộng Hưởng · Kiếm}: Triệu hồi Thừa Ảnh Kiếm hỗ trợ tấn công.
+• Sau khi mở khóa và trang bị Thừa Ảnh Kiếm, ngoại hình hình thái Kiếm và khinh công Thừa Ảnh được trang bị trong giao diện Ngoại Trang sẽ đồng bộ có hiệu lực.`,
+  detail: `• Sau khi trang bị Thừa Ảnh Kiếm sẽ kích hoạt các năng lực độc quyền.`,
+  imageUrl: '/images/vu-khi-thua-anh/thua-anh-kiem.png',
+},
+{
+  name: 'Truy Kích Thừa Ảnh · Kiếm',
+  nameZh: '承影追击·剑',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Kiếm'],
+  tags: ['Thừa Ảnh Kiếm', 'Dùng chung'],
+  details: `Nhận trạng thái {Bá Thể} và {Giảm Sát Thương} trong thời gian ngắn, sau đó dịch chuyển lên không trung phóng Thừa Ảnh Kiếm. Khi đánh trúng mục tiêu sẽ lập tức dịch chuyển đến vị trí của mục tiêu, gây thêm sát thương {Bỏ Qua Giảm Sát Thương}. Sau khi gây sát thương sẽ tiếp tục nhận {Bá Thể} và {Giảm Sát Thương} (sẽ kết thúc sớm nếu thi triển kỹ năng khác).
+Sau khi thi triển bất kỳ võ học Thừa Ảnh nào và kỹ năng đó bước vào hồi chiêu, hoặc sau khi Né Hoàn Hảo trong phó bản, kỹ năng Truy Kích Thừa Ảnh · Kiếm sẽ được kích hoạt tại ô Kỹ năng Giang Hồ.
+• {Quần chiến}: Hiệu quả Giảm Sát Thương tăng lên {60%}, tổng hệ số sát thương gây lên người chơi tăng lên {800%}. Sau khi kết thúc kỹ năng, nhận {6%} Khắc chế Công trình trong {5 giây}.
+• Trong phó bản, kỹ năng sẽ không phát động hiệu ứng dịch chuyển và tăng sát thương gây lên Boss.`,
+  detail: `• Sát thương của Thừa Ảnh Kiếm: {15010} sát thương Ngoại Công.
+• Sát thương lên quái vật tăng: {245%}
+• Bá Thể & Giảm Sát Thương ban đầu: {30%}, duy trì {0.6 giây}
+• Sau khi đáp đất và gây sát thương, nhận Bá Thể & Giảm Sát Thương: {30%}, duy trì {1 giây}
+• Bá Thể & Giảm Sát Thương sau khi đáp đất sẽ bị hủy khi thi triển kỹ năng khác.
+• Bỏ Qua Giảm Sát Thương: {15%}
+• Hồi {24 giây} tích lũy {1} lần, tối đa tích trữ {2} lần`,
+  imageUrl: '/images/vu-khi-thua-anh/truy-kich-thua-anh-kiem.png',
+},
+{
+  name: 'Cộng Hưởng · Kiếm',
+  nameZh: '共鸣·剑',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Kiếm'],
+  tags: ['Thừa Ảnh Kiếm', 'Dùng chung'],
+  details: `Khi thi triển kỹ năng, Thừa Ảnh Kiếm sẽ phối hợp tấn công, gây sát thương lên mục tiêu.
+Mỗi {12 giây} tối đa kích hoạt {1 lần}.`,
+  detail: `• Sát thương của Thừa Ảnh Kiếm: {5643} sát thương Ngoại Công.
+• Sát thương lên quái vật tăng: {185%}
+• Hồi chiêu: {12 giây}`,
+  imageUrl: '/images/vu-khi-thua-anh/cong-huong-kiem.png',
+},
+{
+  name: 'Đỡ Đòn · Kiếm',
+  nameZh: '格挡·剑',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Kiếm'],
+  tags: ['Thừa Ảnh Kiếm', 'Phó bản'],
+  details: `Sau khi trang bị Thừa Ảnh Kiếm, khi đối đầu Boss có thể giơ kiếm liên tục {Đỡ Đòn} các đòn tấn công của kẻ địch.
+Khi Đỡ Đòn thành công một chiêu thức, nhận trạng thái {Tàng Phong}, tăng Công.
+Khi Đỡ Đòn thành công chiêu thức cường lực, kích hoạt {Phản Kích Đỡ Đòn}, gây sát thương diện rộng về phía trước.
+• {Trấn Ảnh}: Trong thời gian phản kích, nhận {Giảm Sát Thương} và {Bá Thể}.`,
+  detail: `• Sát thương Phản Kích: {163452} sát thương Ngoại Công.
+• Giảm Sát Thương: {40%}
+• Tàng Phong tăng Công: {1%}
+• Thời gian duy trì Tàng Phong: {30 giây}
+• Tàng Phong tối đa: {3 tầng}
+• Khi dùng Combo 1 nút tự động Đỡ Đòn, Tàng Phong tối đa chỉ cộng dồn {1 tầng}`,
+  imageUrl: '/images/vu-khi-thua-anh/do-don-kiem.png',
+},
+{
+  name: 'Né Hoàn Hảo · Kiếm',
+  nameZh: '精准闪避·剑',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Kiếm'],
+  tags: ['Thừa Ảnh Kiếm', 'Phó bản'],
+  details: `Sau khi trang bị Thừa Ảnh Kiếm, trong phó bản, khi thi triển {Yến Hồi Phong} ngay trước thời điểm sắp trúng đòn sẽ kích hoạt {Né Hoàn Hảo}, đồng thời nhận {Vô Địch} trong thời gian ngắn và tăng Công.`,
+  detail: `• Tăng Công tối đa: {1 tầng}
+• Mỗi tầng tăng Công: {2%}
+• Thời gian Vô Địch: {0.8 giây}`,
+  imageUrl: '/images/vu-khi-thua-anh/ne-hoan-hao-kiem.png',
+},
+{
+  name: 'Truy Kích Liên Kích · Kiếm',
+  nameZh: '连携追击·剑',
+  category: '',
+  monPhai: '',
+  itemType: '',
+  stats: ['Thừa Ảnh Kiếm'],
+  tags: ['Thừa Ảnh Kiếm', 'Phó bản'],
+  details: `Trong trận chiến với Boss, khi Đỡ Đòn thành công hoặc xử lý thành công cơ chế đặc biệt sẽ tích lũy {Điểm Liên Kích}. Khi Điểm Liên Kích đầy, Boss sẽ rơi vào trạng thái {Suy Yếu}. Lúc này có thể cùng đồng đội phát động {Truy Kích Liên Kích}, gây lượng lớn sát thương.
+Mỗi người chơi tham gia Truy Kích Liên Kích sẽ tăng {10%} tổng sát thương, tối đa tăng {80%}.`,
+  detail: `• Sát thương cơ bản: {3.5%} Máu tối đa của Boss.
+• Sát thương cộng thêm: {30%} tổng sát thương Boss phải chịu trong trạng thái Suy Yếu.
+• Mỗi người chơi tham gia tăng tổng sát thương: {10%}
+• Số người tối đa nhận tăng sát thương: {8}`,
+  imageUrl: '/images/vu-khi-thua-anh/truy-kich-lien-kich-kiem.png',
+},
 ];
 
 const rareBadge = (type?: string): { bg: string; color: string } => {
