@@ -1,12 +1,257 @@
-import tailwindcss from '@tailwindcss/vite';
+﻿import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig, loadEnv} from 'vite';
+import fs from 'fs';
+import { defineConfig, loadEnv } from 'vite';
 
-export default defineConfig(({mode}) => {
+// ── Helper: đọc/ghi một data file TS ──
+function makeDataStore(dataFile: string, exportName: string, interfaceDef: string) {
+  const readData = (): any[] => {
+    try {
+      const content = fs.readFileSync(dataFile, 'utf-8');
+      const re = new RegExp(`export const ${exportName}[^=]*= (\\[[\\s\\S]*?\\]);`);
+      const match = content.match(re);
+      if (!match) return [];
+      return JSON.parse(match[1]);
+    } catch { return []; }
+  };
+
+  const writeData = (items: any[]) => {
+    const json = JSON.stringify(items, null, 2);
+    const content = `${interfaceDef}\nexport const ${exportName}: ${exportName.replace('Data', '').charAt(0).toUpperCase() + exportName.replace('Data', '').slice(1).replace(/([A-Z])/g, '$1')}[] = ${json};\n`;
+    fs.writeFileSync(dataFile, content, 'utf-8');
+  };
+
+  return { readData, writeData };
+}
+
+// ── Plugin: tất cả API local ──
+function localDataApiPlugin() {
+  const BASE = path.resolve(__dirname, 'src/data');
+  const PUBLIC = path.resolve(__dirname, 'public');
+
+  // Store quân cờ
+  const quanCoStore = {
+    file: path.join(BASE, 'co-nghich-quan-co.ts'),
+    read: (): any[] => {
+      try {
+        const c = fs.readFileSync(path.join(BASE, 'co-nghich-quan-co.ts'), 'utf-8');
+        const m = c.match(/export const quanCoData[^=]*= (\[[\s\S]*?\]);/);
+        return m ? JSON.parse(m[1]) : [];
+      } catch { return []; }
+    },
+    write: (items: any[]) => {
+      const content = `export interface QuanCo {
+  id: string;
+  ten: string;
+  ten_zh: string | null;
+  gia_xu: number | null;
+  loai: string | null;
+  tags: string[];
+  lien_ket_phe: string[];
+  lien_ket_phai: string[];
+  ky_nang_ten: string | null;
+  ky_nang_icon: string | null;
+  ky_nang_mo_ta: string | null;
+  image_url: string | null;
+}
+
+export const quanCoData: QuanCo[] = ${JSON.stringify(items, null, 2)};
+`;
+      fs.writeFileSync(path.join(BASE, 'co-nghich-quan-co.ts'), content, 'utf-8');
+    },
+  };
+
+  // Store trang bị
+  const trangBiStore = {
+    read: (): any[] => {
+      try {
+        const c = fs.readFileSync(path.join(BASE, 'co-nghich-trang-bi-co.ts'), 'utf-8');
+        const m = c.match(/export const trangBiCoData[^=]*= (\[[\s\S]*?\]);/);
+        return m ? JSON.parse(m[1]) : [];
+      } catch { return []; }
+    },
+    write: (items: any[]) => {
+      const content = `export interface TrangBiCo {
+  id: string;
+  ten: string;
+  ten_zh: string | null;
+  danh_muc: string | null;
+  hieu_qua: string | null;
+  image_url: string | null;
+}
+
+export const trangBiCoData: TrangBiCo[] = ${JSON.stringify(items, null, 2)};
+`;
+      fs.writeFileSync(path.join(BASE, 'co-nghich-trang-bi-co.ts'), content, 'utf-8');
+    },
+  };
+
+  // Store buff
+  const buffStore = {
+    read: (): any[] => {
+      try {
+        const c = fs.readFileSync(path.join(BASE, 'co-nghich-buff-co.ts'), 'utf-8');
+        const m = c.match(/export const buffCoData[^=]*= (\[[\s\S]*?\]);/);
+        return m ? JSON.parse(m[1]) : [];
+      } catch { return []; }
+    },
+    write: (items: any[]) => {
+      const content = `export interface BuffCo {
+  id: string;
+  ten: string;
+  ten_zh: string | null;
+  do_hiem: string | null;
+  mo_ta: string | null;
+  image_url: string | null;
+}
+
+export const buffCoData: BuffCo[] = ${JSON.stringify(items, null, 2)};
+`;
+      fs.writeFileSync(path.join(BASE, 'co-nghich-buff-co.ts'), content, 'utf-8');
+    },
+  };
+
+  // Store buff kiếm
+  const buffKiemStore = {
+    read: (): any[] => {
+      try {
+        const c = fs.readFileSync(path.join(BASE, 'co-nghich-buff-kiem.ts'), 'utf-8');
+        const m = c.match(/export const buffKiemData[^=]*= (\[[\s\S]*?\]);/);
+        return m ? JSON.parse(m[1]) : [];
+      } catch { return []; }
+    },
+    write: (items: any[]) => {
+      const content = `export interface BuffKiem {
+  id: string;
+  ten: string;
+  ten_zh: string | null;
+  do_hiem: string | null;
+  mo_ta: string | null;
+  image_url: string | null;
+}
+
+export const buffKiemData: BuffKiem[] = ${JSON.stringify(items, null, 2)};
+`;
+      fs.writeFileSync(path.join(BASE, 'co-nghich-buff-kiem.ts'), content, 'utf-8');
+    },
+  };
+
+  // CRUD handler factory
+  const makeCrudHandler = (store: { read: () => any[]; write: (items: any[]) => void }) =>
+    async (req: any, res: any) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      if (req.method === 'OPTIONS') { res.statusCode = 204; res.end(); return; }
+
+      if (req.method === 'GET') { res.end(JSON.stringify({ items: store.read() })); return; }
+
+      const bodyStr = await new Promise<string>((resolve) => {
+        let d = ''; req.on('data', (c: any) => { d += c; }); req.on('end', () => resolve(d));
+      });
+      const body = JSON.parse(bodyStr || '{}');
+
+      if (req.method === 'POST') {
+        const items = store.read();
+        const item = { ...body, id: Date.now().toString() };
+        items.push(item);
+        store.write(items);
+        res.end(JSON.stringify({ ok: true, item }));
+      } else if (req.method === 'PUT') {
+        const items = store.read();
+        const idx = items.findIndex((i: any) => i.id === body.id);
+        if (idx !== -1) { items[idx] = body; store.write(items); }
+        res.end(JSON.stringify({ ok: true }));
+      } else if (req.method === 'DELETE') {
+        store.write(store.read().filter((i: any) => i.id !== body.id));
+        res.end(JSON.stringify({ ok: true }));
+      } else {
+        res.statusCode = 405; res.end(JSON.stringify({ error: 'Method not allowed' }));
+      }
+    };
+
+  return {
+    name: 'local-data-api',
+    configureServer(server: any) {
+      // CRUD endpoints
+      server.middlewares.use('/api/quan-co', makeCrudHandler(quanCoStore));
+      server.middlewares.use('/api/trang-bi-co', makeCrudHandler(trangBiStore));
+      server.middlewares.use('/api/buff-co', makeCrudHandler(buffStore));
+      server.middlewares.use('/api/buff-kiem', makeCrudHandler(buffKiemStore));
+
+      // Browse thư mục trong public/images
+      server.middlewares.use('/api/browse-dir', async (req: any, res: any) => {
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        if (req.method === 'OPTIONS') { res.statusCode = 204; res.end(); return; }
+
+        const chunks: Buffer[] = [];
+        await new Promise<void>((resolve) => {
+          req.on('data', (c: Buffer) => chunks.push(c));
+          req.on('end', resolve);
+        });
+        const body = chunks.length ? JSON.parse(Buffer.concat(chunks).toString('utf-8')) : {};
+        const subPath = body.path || '';
+        const dirPath = path.join(PUBLIC, 'images', subPath);
+
+        try {
+          const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+          const dirs = entries.filter(e => e.isDirectory()).map(e => e.name);
+          res.end(JSON.stringify({ ok: true, dirs, current: subPath ? 'images/' + subPath : 'images' }));
+        } catch {
+          res.end(JSON.stringify({ ok: false, dirs: [], current: 'images' }));
+        }
+      });
+      server.middlewares.use('/api/upload-image', async (req: any, res: any) => {
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        if (req.method === 'OPTIONS') { res.statusCode = 204; res.end(); return; }
+        if (req.method !== 'POST') { res.statusCode = 405; res.end('{}'); return; }
+
+        const chunks: Buffer[] = [];
+        await new Promise<void>((resolve) => {
+          req.on('data', (c: Buffer) => chunks.push(c));
+          req.on('end', resolve);
+        });
+
+        try {
+          const { path: imgPath, fileName, base64 } = JSON.parse(Buffer.concat(chunks).toString('utf-8'));
+
+          if (!imgPath || !fileName || !base64) {
+            res.statusCode = 400;
+            res.end(JSON.stringify({ error: 'Missing path, fileName, or base64' }));
+            return;
+          }
+
+          // Tạo thư mục nếu chưa có
+          const dirPath = path.join(PUBLIC, imgPath);
+          if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath, { recursive: true });
+
+          // Ghi file từ base64
+          const fileBuffer = Buffer.from(base64, 'base64');
+          const fullPath = path.join(dirPath, fileName);
+          fs.writeFileSync(fullPath, fileBuffer);
+
+          // Trả về URL public với path đúng encoding
+          const publicUrl = '/' + imgPath.split(path.sep).join('/') + '/' + fileName;
+          res.end(JSON.stringify({ ok: true, url: publicUrl }));
+        } catch (e: any) {
+          res.statusCode = 500;
+          res.end(JSON.stringify({ error: e.message }));
+        }
+      });
+    },
+  };
+}
+
+export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), localDataApiPlugin()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
@@ -16,8 +261,6 @@ export default defineConfig(({mode}) => {
       },
     },
     server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
     },
   };
