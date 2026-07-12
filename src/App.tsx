@@ -13,10 +13,12 @@ import ClassChangeCommand from './components/cau-lenh-doi-phai';
 import DungeonGuide from './components/huong-dan-pho-ban';
 import CauLenhDoiGioi from './components/cau-lenh-doi-gioi';
 import ChuThien from './pages/ChuThien';
+import CoNghichThuyHan from './pages/CoNghichThuyHan';
 import VuKhiThuaAnh from './pages/VuKhiThuaAnh';
 import ThienPhu from './pages/ThienPhu';
 import TrangBiPage from './pages/TrangBi';
 import AdminTrangBi from './pages/AdminTrangBi';
+import AdminCoNghich from './pages/AdminCoNghich';
 import { GameItem } from './types';
 import { noiCongData } from './data/noi-cong';
 import { tuyetKyData } from './data/tuyet-ky';
@@ -83,10 +85,12 @@ function AppLayout() {
                 <Route path="/cau-lenh-doi-phai" element={<ClassChangeCommand />} />
                 <Route path="/cau-lenh-doi-gioi" element={<CauLenhDoiGioi />} />
                 <Route path="/chu-thien" element={<ChuThien />} />
+                <Route path="/co-nghich-thuy-han" element={<CoNghichThuyHan />} />
                 <Route path="/vu-khi-thua-anh" element={<VuKhiThuaAnh />} />
                 <Route path="/thien-phu" element={<ThienPhu />} />
                 <Route path="/trang-bi" element={<TrangBiPage />} />
                 <Route path="/admin" element={<AdminTrangBi />} />
+                <Route path="/admin-co-nghich" element={<AdminCoNghich />} />
                 <Route path="/pho-ban-12" element={<DungeonGuide type="12-player" />} />
                 <Route path="/pho-ban-6" element={<DungeonGuide type="6-player" />} />
                 {Object.keys(mockData).map(key => (

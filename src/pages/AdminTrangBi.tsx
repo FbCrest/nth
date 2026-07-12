@@ -1,7 +1,37 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Pencil, Trash2, X, Upload, LogOut, Eye, EyeOff, ChevronDown, Check } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { supabase, TrangBi } from '../lib/supabase';
+
+// ── Admin Nav Tabs ──
+function AdminNavTabs({ active }: { active: 'trang-bi' | 'co-nghich' }) {
+  const navigate = useNavigate();
+  const TABS = [
+    { key: 'trang-bi',  label: 'Trang Bị',              path: '/admin'           },
+    { key: 'co-nghich', label: 'Cờ Nghịch Thủy Hàn',    path: '/admin-co-nghich' },
+  ] as const;
+  return (
+    <div style={{ display: 'flex', gap: 4, marginBottom: 20, borderBottom: '2px solid var(--border)' }}>
+      {TABS.map(tab => {
+        const isActive = active === tab.key;
+        return (
+          <button key={tab.key} onClick={() => navigate(tab.path)}
+            style={{
+              padding: '8px 20px', fontSize: 13, fontWeight: 700,
+              color: isActive ? '#dc2626' : 'var(--text-2)',
+              background: 'transparent', border: 'none',
+              borderBottom: isActive ? '2px solid #dc2626' : '2px solid transparent',
+              marginBottom: -2, cursor: 'pointer', transition: 'all 160ms',
+            }}
+            onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = '#dc2626'; }}
+            onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-2)'; }}
+          >{tab.label}</button>
+        );
+      })}
+    </div>
+  );
+}
 
 // ── Login form ──
 function LoginForm({ onLogin }: { onLogin: () => void }) {
@@ -532,6 +562,9 @@ export default function AdminTrangBi() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="p-4 sm:p-6 w-full">
+      {/* Nav tabs — chuyển giữa các trang admin */}
+      <AdminNavTabs active="trang-bi" />
+
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>

@@ -117,3 +117,107 @@ begin
   raise notice 'Admin 0rion24k created successfully.';
 end;
 $$;
+
+-- ── 6. BẢNG CỜ NGHỊCH THỦY HÀN — TRANG BỊ ──────────────────
+create table if not exists public.co_nghich_trang_bi (
+  id         uuid default gen_random_uuid() primary key,
+  ten        text not null,
+  ten_zh     text,
+  danh_muc   text,        -- 'Tấn công' | 'Phòng thủ' | 'Đặc biệt'
+  hieu_qua   text,        -- mỗi dòng 1 chỉ số: "Tên: +20%"
+  image_url  text,
+  created_at timestamptz default now()
+);
+
+alter table public.co_nghich_trang_bi enable row level security;
+
+drop policy if exists "co_nghich_tb_select" on public.co_nghich_trang_bi;
+drop policy if exists "co_nghich_tb_insert" on public.co_nghich_trang_bi;
+drop policy if exists "co_nghich_tb_update" on public.co_nghich_trang_bi;
+drop policy if exists "co_nghich_tb_delete" on public.co_nghich_trang_bi;
+
+create policy "co_nghich_tb_select" on public.co_nghich_trang_bi for select using (true);
+create policy "co_nghich_tb_insert" on public.co_nghich_trang_bi for insert with check (auth.role() = 'authenticated');
+create policy "co_nghich_tb_update" on public.co_nghich_trang_bi for update using (auth.role() = 'authenticated');
+create policy "co_nghich_tb_delete" on public.co_nghich_trang_bi for delete using (auth.role() = 'authenticated');
+
+-- ── 7. BẢNG CỜ NGHỊCH THỦY HÀN — TÂM NGỘ (BUFF) ────────────
+create table if not exists public.co_nghich_buff (
+  id         uuid default gen_random_uuid() primary key,
+  ten        text not null,
+  ten_zh     text,
+  do_hiem    text,        -- 'Xanh' | 'Tím' | 'Vàng'
+  mo_ta      text,
+  image_url  text,
+  created_at timestamptz default now()
+);
+
+alter table public.co_nghich_buff enable row level security;
+
+drop policy if exists "co_nghich_buff_select" on public.co_nghich_buff;
+drop policy if exists "co_nghich_buff_insert" on public.co_nghich_buff;
+drop policy if exists "co_nghich_buff_update" on public.co_nghich_buff;
+drop policy if exists "co_nghich_buff_delete" on public.co_nghich_buff;
+
+create policy "co_nghich_buff_select" on public.co_nghich_buff for select using (true);
+create policy "co_nghich_buff_insert" on public.co_nghich_buff for insert with check (auth.role() = 'authenticated');
+create policy "co_nghich_buff_update" on public.co_nghich_buff for update using (auth.role() = 'authenticated');
+create policy "co_nghich_buff_delete" on public.co_nghich_buff for delete using (auth.role() = 'authenticated');
+
+-- ── 8. STORAGE BUCKET — CỜ NGHỊCH ───────────────────────────
+insert into storage.buckets (id, name, public)
+values ('co-nghich-images', 'co-nghich-images', true)
+on conflict (id) do nothing;
+
+drop policy if exists "co_nghich_storage_select" on storage.objects;
+drop policy if exists "co_nghich_storage_insert" on storage.objects;
+drop policy if exists "co_nghich_storage_delete" on storage.objects;
+
+create policy "co_nghich_storage_select" on storage.objects for select
+  using (bucket_id = 'co-nghich-images');
+
+create policy "co_nghich_storage_insert" on storage.objects for insert
+  with check (bucket_id = 'co-nghich-images' and auth.role() = 'authenticated');
+
+create policy "co_nghich_storage_delete" on storage.objects for delete
+  using (bucket_id = 'co-nghich-images' and auth.role() = 'authenticated');
+
+-- ── 9. BẢNG CỜ NGHỊCH THỦY HÀN — QUÂN CỜ ───────────────────
+create table if not exists public.co_nghich_quan_co (
+  id            uuid default gen_random_uuid() primary key,
+  ten           text not null,
+  ten_zh        text,
+  so_sao        int default 5,          -- số sao (1-5)
+  gia_xu        int,                     -- giá xu mua
+  loai          text,                    -- 'Toàn Năng Chiến Sĩ', 'Kỹ Năng Sát Thủ'...
+  tags          text[],                  -- ['Hấp Huyết', 'Phòng Ngự', 'Tấn Công']
+  -- Kích hệ (synergy icons)
+  kich_he       jsonb,                   -- [{"ten":"Minh Chiêu Hầu","icon_url":"..."}]
+  -- Kỹ năng
+  ky_nang_ten   text,
+  ky_nang_icon  text,
+  ky_nang_mo_ta text,                    -- hỗ trợ {text|color}
+  -- Chỉ số theo sao: lưu dạng JSON array [1sao, 2sao, 3sao]
+  chi_so        jsonb,
+  -- {khi_huyet:[1470,2646,14288], noi_luc:[50,50,50], tan_cong:[59,89,199], phong_thu:[105,105,105], toc_do:[0.8,0.8,0.8]}
+  image_url     text,                    -- ảnh full tướng
+  created_at    timestamptz default now()
+);
+
+alter table public.co_nghich_quan_co enable row level security;
+
+drop policy if exists "co_nghich_qc_select" on public.co_nghich_quan_co;
+drop policy if exists "co_nghich_qc_insert" on public.co_nghich_quan_co;
+drop policy if exists "co_nghich_qc_update" on public.co_nghich_quan_co;
+drop policy if exists "co_nghich_qc_delete" on public.co_nghich_quan_co;
+
+create policy "co_nghich_qc_select" on public.co_nghich_quan_co for select using (true);
+create policy "co_nghich_qc_insert" on public.co_nghich_quan_co for insert with check (auth.role() = 'authenticated');
+create policy "co_nghich_qc_update" on public.co_nghich_quan_co for update using (auth.role() = 'authenticated');
+create policy "co_nghich_qc_delete" on public.co_nghich_quan_co for delete using (auth.role() = 'authenticated');
+
+-- ── Migration: đổi kich_he → lien_ket_phe + lien_ket_phai ──
+alter table public.co_nghich_quan_co add column if not exists lien_ket_phe  text[];
+alter table public.co_nghich_quan_co add column if not exists lien_ket_phai text[];
+-- Nếu bảng chưa tồn tại, các cột này đã có trong CREATE TABLE ở mục 9
+-- Có thể xóa cột kich_he cũ nếu muốn: alter table public.co_nghich_quan_co drop column if exists kich_he;

@@ -19,3 +19,50 @@ export type TrangBi = {
   image_url: string | null;
   created_at: string;
 };
+
+export type CoNghichTrangBiRow = {
+  id: string;
+  ten: string;
+  ten_zh: string | null;
+  danh_muc: string | null;   // 'Tấn công' | 'Phòng thủ' | 'Đặc biệt'
+  hieu_qua: string | null;   // JSON array string hoặc newline-separated
+  image_url: string | null;
+  created_at: string;
+};
+
+export type CoNghichBuffRow = {
+  id: string;
+  ten: string;
+  ten_zh: string | null;
+  do_hiem: string | null;    // 'Xanh' | 'Tím' | 'Vàng'
+  mo_ta: string | null;
+  image_url: string | null;
+  created_at: string;
+};
+
+export type KichHe = { ten: string; icon_url: string | null; };
+export type ChiSo = {
+  khi_huyet?: number[];
+  noi_luc?: number[];
+  tan_cong?: number[];
+  phong_thu?: number[];
+  toc_do?: number[];
+};
+
+export type CoNghichQuanCoRow = {
+  id: string;
+  ten: string;
+  ten_zh: string | null;
+  so_sao: number | null;
+  gia_xu: number | null;
+  loai: string | null;
+  tags: string[] | null;
+  lien_ket_phe: string[] | null;   // array of slug, vd: ['bach-de-thanh']
+  lien_ket_phai: string[] | null;  // array of slug, vd: ['chien-binh']
+  ky_nang_ten: string | null;
+  ky_nang_icon: string | null;
+  ky_nang_mo_ta: string | null;
+  chi_so: ChiSo | null;
+  image_url: string | null;
+  created_at: string;
+};

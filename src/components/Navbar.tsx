@@ -72,8 +72,9 @@ export default function Navbar({
 
   // Các item bên trái — "Kỹ Năng Môn Phái" là separator/label, không navigate
   const leftItems = [
-    { id: 'chu-thien',          label: 'Chu Thiên Nội Công',  isLabel: false },
-    { id: 'noi-cong',           label: 'Nội Công',            isLabel: false },
+    { id: 'chu-thien',            label: 'Chu Thiên Nội Công',    isLabel: false },
+    { id: 'co-nghich-thuy-han',   label: 'Cờ Nghịch Thủy Hàn',   isLabel: false },
+    { id: 'noi-cong',             label: 'Nội Công',              isLabel: false },
     { id: 'trang-bi',           label: 'Trang Bị',            isLabel: false },
     { id: 'thien-phu',          label: 'Thiên Phú Lĩnh Ngộ',  isLabel: false },
     { id: 'vu-khi-thua-anh',    label: 'Vũ Khí Thừa Ảnh',    isLabel: false },
