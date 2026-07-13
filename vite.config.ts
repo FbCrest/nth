@@ -78,6 +78,7 @@ export const quanCoData: QuanCo[] = ${JSON.stringify(items, null, 2)};
   ten_zh: string | null;
   danh_muc: string | null;
   hieu_qua: string | null;
+  dac_hieu: string | null;
   image_url: string | null;
 }
 
@@ -137,7 +138,31 @@ export const buffKiemData: BuffKiem[] = ${JSON.stringify(items, null, 2)};
     },
   };
 
-  // CRUD handler factory
+  // Store icons
+  const iconStore = {
+    read: (): any[] => {
+      try {
+        const c = fs.readFileSync(path.join(BASE, 'co-nghich-icons.ts'), 'utf-8');
+        const m = c.match(/export const coNghichIcons[^=]*= (\[[\s\S]*?\]);/);
+        return m ? JSON.parse(m[1]) : [];
+      } catch { return []; }
+    },
+    write: (items: any[]) => {
+      const content = `export interface CoNghichIcon {
+  slug: string;
+  label: string;
+  image_url: string;
+}
+
+export const coNghichIcons: CoNghichIcon[] = ${JSON.stringify(items, null, 2)};
+
+export function getIcon(slug: string): CoNghichIcon | undefined {
+  return coNghichIcons.find(i => i.slug === slug);
+}
+`;
+      fs.writeFileSync(path.join(BASE, 'co-nghich-icons.ts'), content, 'utf-8');
+    },
+  };
   const makeCrudHandler = (store: { read: () => any[]; write: (items: any[]) => void }) =>
     async (req: any, res: any) => {
       res.setHeader('Content-Type', 'application/json');
@@ -180,6 +205,31 @@ export const buffKiemData: BuffKiem[] = ${JSON.stringify(items, null, 2)};
       server.middlewares.use('/api/trang-bi-co', makeCrudHandler(trangBiStore));
       server.middlewares.use('/api/buff-co', makeCrudHandler(buffStore));
       server.middlewares.use('/api/buff-kiem', makeCrudHandler(buffKiemStore));
+      server.middlewares.use('/api/icons', makeCrudHandler(iconStore));
+
+      // Store icons
+      const iconsStore = {
+        read: (): any[] => {
+          try {
+            const c = fs.readFileSync(path.join(BASE, 'co-nghich-icons.ts'), 'utf-8');
+            const m = c.match(/export const coNghichIconsData[^=]*= (\[[\s\S]*?\]);/);
+            return m ? JSON.parse(m[1]) : [];
+          } catch { return []; }
+        },
+        write: (items: any[]) => {
+          const content = `export interface CoNghichIcon {
+  id: string;
+  slug: string;
+  label: string;
+  image_url: string;
+}
+
+export const coNghichIconsData: CoNghichIcon[] = ${JSON.stringify(items, null, 2)};
+`;
+          fs.writeFileSync(path.join(BASE, 'co-nghich-icons.ts'), content, 'utf-8');
+        },
+      };
+      server.middlewares.use('/api/co-nghich-icons', makeCrudHandler(iconsStore));
 
       // Browse thư mục trong public/images
       server.middlewares.use('/api/browse-dir', async (req: any, res: any) => {
