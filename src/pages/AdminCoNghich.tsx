@@ -1,8 +1,9 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Pencil, Trash2, X, Upload, LogOut, Eye, EyeOff } from 'lucide-react';
+import { Plus, Pencil, Trash2, X, Upload, LogOut, Eye, EyeOff, Tag } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase, type CoNghichTrangBiRow, type CoNghichBuffRow, type CoNghichQuanCoRow } from '../lib/supabase';
+import { coNghichIcons } from '../data/co-nghich-icons';
 
 // ── Liên kết phe/phái constants (dùng trong admin form) ──
 const LIEN_KET_PHE_LIST = [
@@ -268,6 +269,13 @@ function ImageUploader({ preview, onChange }: { bucket?: string; preview: string
 }
 
 // ── Modal Trang Bị ──
+// Helper: chèn token tại vị trí con trỏ
+function insertAtCaret(value: string, token: string, caretPos: number | null): { newValue: string; newCaret: number } {
+  const pos = caretPos ?? value.length;
+  const newValue = value.slice(0, pos) + token + value.slice(pos);
+  return { newValue, newCaret: pos + token.length };
+}
+
 type TBForm = { ten: string; ten_zh: string; danh_muc: string; hieu_qua: string; dac_hieu: string; image_url: string; };
 const EMPTY_TB: TBForm = { ten: '', ten_zh: '', danh_muc: 'Tấn công', hieu_qua: '', dac_hieu: '', image_url: '' };
 const DANH_MUC_LIST = ['Tấn công', 'Phòng thủ', 'Đặc biệt'];
@@ -280,6 +288,8 @@ function ModalTrangBi({ item, onClose, onSaved }: { item: CoNghichTrangBiRow | n
   } : EMPTY_TB);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const hieu_quaRef = React.useRef<HTMLTextAreaElement>(null);
+  const dac_hieuRef = React.useRef<HTMLTextAreaElement>(null);
   const f = (k: keyof TBForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(p => ({ ...p, [k]: e.target.value }));
 
@@ -333,26 +343,30 @@ function ModalTrangBi({ item, onClose, onSaved }: { item: CoNghichTrangBiRow | n
               <div className="flex-1">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
                   <label className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--text-3)' }}>Thuộc Tính</label>
-                  <button type="button" onClick={() => setForm(p => ({ ...p, hieu_qua: p.hieu_qua + (p.hieu_qua && !p.hieu_qua.endsWith('\n') ? '\n' : '') + '• ' }))}
-                    style={{ fontSize: 13, padding: '1px 8px', borderRadius: 6, border: '1px solid var(--border)', background: 'var(--bg-sunken)', cursor: 'pointer', color: 'var(--text-2)', fontWeight: 700 }}>
-                    + •
-                  </button>
+                  <div style={{ display: 'flex', gap: 4 }}>
+                    <IconQuickInsert textareaRef={hieu_quaRef} onInsert={(token, pos) => setForm(p => ({ ...p, hieu_qua: insertAtCaret(p.hieu_qua, token, pos).newValue }))} />
+                    <button type="button" onClick={() => setForm(p => ({ ...p, hieu_qua: p.hieu_qua + (p.hieu_qua && !p.hieu_qua.endsWith('\n') ? '\n' : '') + '• ' }))}
+                      style={{ fontSize: 13, padding: '1px 8px', borderRadius: 6, border: '1px solid var(--border)', background: 'var(--bg-sunken)', cursor: 'pointer', color: 'var(--text-2)', fontWeight: 700 }}>
+                      + •
+                    </button>
+                  </div>
                 </div>
-                <textarea value={form.hieu_qua} onChange={f('hieu_qua')} rows={3}
+                <textarea ref={hieu_quaRef} value={form.hieu_qua} onChange={f('hieu_qua')} rows={3}
                   placeholder={"Tấn công ✗: +20%\nXuyên giáp: +5%"} style={{ ...inputStyle, resize: 'vertical' }} />
-                <IconQuickInsert onInsert={text => setForm(p => ({ ...p, hieu_qua: p.hieu_qua + text }))} />
               </div>
               <div className="flex-1">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
                   <label className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--text-3)' }}>Hiệu Ứng</label>
-                  <button type="button" onClick={() => setForm(p => ({ ...p, dac_hieu: p.dac_hieu + (p.dac_hieu && !p.dac_hieu.endsWith('\n') ? '\n' : '') + '• ' }))}
-                    style={{ fontSize: 13, padding: '1px 8px', borderRadius: 6, border: '1px solid var(--border)', background: 'var(--bg-sunken)', cursor: 'pointer', color: 'var(--text-2)', fontWeight: 700 }}>
-                    + •
-                  </button>
+                  <div style={{ display: 'flex', gap: 4 }}>
+                    <IconQuickInsert textareaRef={dac_hieuRef} onInsert={(token, pos) => setForm(p => ({ ...p, dac_hieu: insertAtCaret(p.dac_hieu, token, pos).newValue }))} />
+                    <button type="button" onClick={() => setForm(p => ({ ...p, dac_hieu: p.dac_hieu + (p.dac_hieu && !p.dac_hieu.endsWith('\n') ? '\n' : '') + '• ' }))}
+                      style={{ fontSize: 13, padding: '1px 8px', borderRadius: 6, border: '1px solid var(--border)', background: 'var(--bg-sunken)', cursor: 'pointer', color: 'var(--text-2)', fontWeight: 700 }}>
+                      + •
+                    </button>
+                  </div>
                 </div>
-                <textarea value={form.dac_hieu} onChange={f('dac_hieu')} rows={3}
+                <textarea ref={dac_hieuRef} value={form.dac_hieu} onChange={f('dac_hieu')} rows={3}
                   placeholder={"• Sử dụng được trang bị này sẽ nhận hiệu ứng..."} style={{ ...inputStyle, resize: 'vertical' }} />
-                <IconQuickInsert onInsert={text => setForm(p => ({ ...p, dac_hieu: p.dac_hieu + text }))} />
               </div>
             </div>
           </div>
@@ -384,6 +398,7 @@ function ModalBuff({ item, onClose, onSaved }: { item: CoNghichBuffRow | null; o
   } : EMPTY_BUFF);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const mo_taRef = React.useRef<HTMLTextAreaElement>(null);
   const f = (k: keyof BuffForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(p => ({ ...p, [k]: e.target.value }));
 
@@ -433,10 +448,12 @@ function ModalBuff({ item, onClose, onSaved }: { item: CoNghichBuffRow | null; o
                 </select>
               </div>
               <div className="flex-1">
-                <label className="text-xs font-bold uppercase tracking-wider mb-1 block" style={{ color: 'var(--text-3)' }}>Mô tả hiệu quả</label>
-                <textarea value={form.mo_ta} onChange={f('mo_ta')} rows={5}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+                  <label className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--text-3)' }}>Mô tả hiệu quả</label>
+                  <IconQuickInsert textareaRef={mo_taRef} onInsert={(token, pos) => setForm(p => ({ ...p, mo_ta: insertAtCaret(p.mo_ta, token, pos).newValue }))} />
+                </div>
+                <textarea ref={mo_taRef} value={form.mo_ta} onChange={f('mo_ta')} rows={5}
                   placeholder="Khi khai chiến, cứ mỗi 1 quân cờ đồng đội..." style={{ ...inputStyle, resize: 'vertical' }} />
-                <IconQuickInsert onInsert={text => setForm(p => ({ ...p, mo_ta: p.mo_ta + text }))} />
               </div>
             </div>
           </div>
@@ -768,15 +785,15 @@ function ImgTabPicker({ imageUrl, kyNangUrl, onChangeImage, onChangeKyNang }: {
     </div>
   );
 }
-type QCForm = { ten: string; ten_zh: string; gia_vang: string; loai: string; tags: string; lien_ket_phe: string[]; lien_ket_phai: string[]; ky_nang_ten: string; ky_nang_icon: string; ky_nang_icon_url: string; ky_nang_mo_ta: string; chi_so: string; image_url: string; };
-const EMPTY_QC: QCForm = { ten: '', ten_zh: '', gia_vang: '5', loai: '', tags: '', lien_ket_phe: [], lien_ket_phai: [], ky_nang_ten: '', ky_nang_icon: '', ky_nang_icon_url: '', ky_nang_mo_ta: '', chi_so: '', image_url: '' };
+type QCForm = { ten: string; ten_zh: string; gia_vang: string; loai: string; tags: string[]; lien_ket_phe: string[]; lien_ket_phai: string[]; ky_nang_ten: string; ky_nang_icon: string; ky_nang_icon_url: string; ky_nang_mo_ta: string; chi_so: string; image_url: string; };
+const EMPTY_QC: QCForm = { ten: '', ten_zh: '', gia_vang: '5', loai: '', tags: [], lien_ket_phe: [], lien_ket_phai: [], ky_nang_ten: '', ky_nang_icon: '', ky_nang_icon_url: '', ky_nang_mo_ta: '', chi_so: '', image_url: '' };
 
 function ModalQuanCo({ item, onClose, onSaved }: { item: CoNghichQuanCoRow | null; onClose: () => void; onSaved: () => void; }) {
   const isEdit = !!item;
   const [form, setForm] = useState<QCForm>(item ? {
     ten: item.ten, ten_zh: item.ten_zh ?? '',
     gia_vang: String(item.gia_xu ?? '5'), loai: item.loai ?? '',
-    tags: (item.tags ?? []).join(', '),
+    tags: item.tags ?? [],
     lien_ket_phe: item.lien_ket_phe ?? [],
     lien_ket_phai: item.lien_ket_phai ?? [],
     ky_nang_ten: item.ky_nang_ten ?? '',
@@ -788,7 +805,16 @@ function ModalQuanCo({ item, onClose, onSaved }: { item: CoNghichQuanCoRow | nul
   } : EMPTY_QC);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const [tagsModalOpen, setTagsModalOpen] = useState(false);
+  const ky_nang_mo_taRef = React.useRef<HTMLTextAreaElement>(null);
   const f = (k: keyof QCForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => setForm(p => ({ ...p, [k]: e.target.value }));
+
+  const toggleTag = (label: string) => {
+    setForm(p => ({
+      ...p,
+      tags: p.tags.includes(label) ? p.tags.filter(t => t !== label) : [...p.tags, label],
+    }));
+  };
 
   const toggleSlug = (field: 'lien_ket_phe' | 'lien_ket_phai', slug: string) => {
     setForm(p => ({
@@ -808,7 +834,7 @@ function ModalQuanCo({ item, onClose, onSaved }: { item: CoNghichQuanCoRow | nul
       so_sao: null,
       gia_xu: parseInt(form.gia_vang) || null,
       loai: form.loai.trim() || null,
-      tags: form.tags.split(',').map(t => t.trim()).filter(Boolean),
+      tags: form.tags,
       lien_ket_phe: form.lien_ket_phe,
       lien_ket_phai: form.lien_ket_phai,
       ky_nang_ten: form.ky_nang_ten.trim() || null,
@@ -867,7 +893,71 @@ function ModalQuanCo({ item, onClose, onSaved }: { item: CoNghichQuanCoRow | nul
                 </select>
               </div>
               <div><label className="text-xs font-bold uppercase tracking-wider mb-1 block" style={{ color: 'var(--text-3)' }}>Loại</label><input value={form.loai} onChange={f('loai')} placeholder="Toàn Năng Chiến Sĩ" style={inputStyle} /></div>
-              <div><label className="text-xs font-bold uppercase tracking-wider mb-1 block" style={{ color: 'var(--text-3)' }}>Tags</label><input value={form.tags} onChange={f('tags')} placeholder="Hấp Huyết, Phòng Ngự" style={inputStyle} /></div>
+              <div>
+                <label className="text-xs font-bold uppercase tracking-wider mb-1 block" style={{ color: 'var(--text-3)' }}>Tags</label>
+                {/* Nút mở modal */}
+                <button type="button" onClick={() => setTagsModalOpen(true)}
+                  style={{ ...inputStyle, display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer', justifyContent: 'space-between', paddingRight: 8 }}>
+                  <span style={{ color: 'var(--text-3)', fontSize: 12 }}>Chọn tags...</span>
+                  <Tag size={13} style={{ color: 'var(--text-3)', flexShrink: 0 }} />
+                </button>
+                {/* Tags đã chọn hiển thị bên dưới */}
+                {form.tags.length > 0 && (
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 6 }}>
+                    {form.tags.map(tag => {
+                      const icon = coNghichIcons.find(ic => ic.label === tag);
+                      return (
+                        <span key={tag} style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '2px 8px 2px 5px', borderRadius: 4, background: 'rgba(220,38,38,0.10)', border: '1px solid rgba(220,38,38,0.35)', cursor: 'pointer' }}
+                          onClick={() => toggleTag(tag)} title="Bỏ chọn">
+                          {icon && <img src={icon.image_url} alt={icon.label} style={{ width: 16, height: 16, objectFit: 'contain' }} />}
+                          <span style={{ fontSize: 11, fontWeight: 700, color: '#dc2626' }}>{tag}</span>
+                        </span>
+                      );
+                    })}
+                  </div>
+                )}
+                {/* Tags modal overlay */}
+                <AnimatePresence>
+                  {tagsModalOpen && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[200] flex items-center justify-center p-4"
+                      onClick={() => setTagsModalOpen(false)}>
+                      <motion.div initial={{ scale: 0.96, y: 8 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.96, y: 8 }}
+                        className="rounded-2xl border shadow-2xl" style={{ maxWidth: 420, width: '100%', backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
+                        onClick={e => e.stopPropagation()}>
+                        <div className="flex items-center justify-between px-5 py-3 border-b" style={{ borderColor: 'var(--border)' }}>
+                          <h3 className="font-black text-sm" style={{ color: 'var(--text-1)' }}>Chọn Tags</h3>
+                          <button type="button" onClick={() => setTagsModalOpen(false)} style={{ color: 'var(--text-3)', background: 'none', border: 'none', cursor: 'pointer' }}><X size={16} /></button>
+                        </div>
+                        <div style={{ padding: '14px 20px 18px', display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                          {coNghichIcons.map(icon => {
+                            const active = form.tags.includes(icon.label);
+                            return (
+                              <button key={icon.slug} type="button" onClick={() => toggleTag(icon.label)}
+                                style={{
+                                  display: 'flex', alignItems: 'center', gap: 6,
+                                  padding: '5px 12px 5px 6px', borderRadius: 20, cursor: 'pointer',
+                                  background: active ? 'rgba(220,38,38,0.12)' : 'var(--bg-sunken)',
+                                  border: `1px solid ${active ? 'rgba(220,38,38,0.50)' : 'var(--border)'}`,
+                                  transition: 'all 120ms',
+                                }}>
+                                {icon.image_url && <img src={icon.image_url} alt={icon.label} style={{ width: 22, height: 22, objectFit: 'contain' }} />}
+                                <span style={{ fontSize: 12, fontWeight: 700, color: active ? '#dc2626' : 'var(--text-2)' }}>{icon.label}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                        <div style={{ padding: '0 20px 16px', display: 'flex', justifyContent: 'flex-end' }}>
+                          <button type="button" onClick={() => setTagsModalOpen(false)}
+                            style={{ padding: '6px 20px', borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: 'pointer', backgroundColor: '#dc2626', color: '#fff', border: 'none' }}>
+                            Xong
+                          </button>
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
             {/* Cột liên kết + kỹ năng + chỉ số */}
             <div className="flex flex-col gap-3 flex-1 min-w-0">
@@ -902,8 +992,13 @@ function ModalQuanCo({ item, onClose, onSaved }: { item: CoNghichQuanCoRow | nul
                 </div>
               </div>
               <div><label className="text-xs font-bold uppercase tracking-wider mb-1 block" style={{ color: 'var(--text-3)' }}>Tên kỹ năng</label><input value={form.ky_nang_ten} onChange={f('ky_nang_ten')} placeholder="Thương Diệm Liệt Tâm" style={inputStyle} /></div>
-              <div><label className="text-xs font-bold uppercase tracking-wider mb-1 block" style={{ color: 'var(--text-3)' }}>Mô tả kỹ năng</label><textarea value={form.ky_nang_mo_ta} onChange={f('ky_nang_mo_ta')} rows={5} style={{ ...inputStyle, resize: 'vertical' }} />
-                <IconQuickInsert onInsert={text => setForm(p => ({ ...p, ky_nang_mo_ta: p.ky_nang_mo_ta + text }))} /></div>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+                  <label className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--text-3)' }}>Mô tả kỹ năng</label>
+                  <IconQuickInsert textareaRef={ky_nang_mo_taRef} onInsert={(token, pos) => setForm(p => ({ ...p, ky_nang_mo_ta: insertAtCaret(p.ky_nang_mo_ta, token, pos).newValue }))} />
+                </div>
+                <textarea ref={ky_nang_mo_taRef} value={form.ky_nang_mo_ta} onChange={f('ky_nang_mo_ta')} rows={5} style={{ ...inputStyle, resize: 'vertical' }} />
+              </div>
             </div>
           </div>
           {error && <p className="text-xs text-red-500 px-5 pb-2">{error}</p>}
@@ -1152,6 +1247,7 @@ function ModalBuffKiem({ item, onClose, onSaved }: { item: any; onClose: () => v
   const [form, setForm] = useState({ ten: item?.ten ?? '', ten_zh: item?.ten_zh ?? '', do_hiem: item?.do_hiem ?? 'Xanh', mo_ta: item?.mo_ta ?? '', image_url: item?.image_url ?? '' });
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const mo_taRef = React.useRef<HTMLTextAreaElement>(null);
   const f = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => setForm(p => ({ ...p, [k]: e.target.value }));
 
   const handleSubmit = async (ev: React.FormEvent) => {
@@ -1186,9 +1282,13 @@ function ModalBuffKiem({ item, onClose, onSaved }: { item: any; onClose: () => v
             <div className="flex flex-col gap-3 flex-1">
               <div><label className="text-xs font-bold uppercase tracking-wider mb-1 block" style={{ color: 'var(--text-3)' }}>Tên *</label><input value={form.ten} onChange={f('ten')} placeholder="Tên buff kiếm" style={inputStyle} /></div>
               <div><label className="text-xs font-bold uppercase tracking-wider mb-1 block" style={{ color: 'var(--text-3)' }}>Tên chữ Hán</label><input value={form.ten_zh} onChange={f('ten_zh')} style={inputStyle} /></div>
-              <div className="flex-1"><label className="text-xs font-bold uppercase tracking-wider mb-1 block" style={{ color: 'var(--text-3)' }}>Mô tả hiệu quả</label>
-                <textarea value={form.mo_ta} onChange={f('mo_ta')} rows={5} style={{ ...inputStyle, resize: 'vertical' }} />
-                <IconQuickInsert onInsert={text => setForm(p => ({ ...p, mo_ta: p.mo_ta + text }))} /></div>
+              <div className="flex-1">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+                  <label className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--text-3)' }}>Mô tả hiệu quả</label>
+                  <IconQuickInsert textareaRef={mo_taRef} onInsert={(token, pos) => setForm(p => ({ ...p, mo_ta: insertAtCaret(p.mo_ta, token, pos).newValue }))} />
+                </div>
+                <textarea ref={mo_taRef} value={form.mo_ta} onChange={f('mo_ta')} rows={5} style={{ ...inputStyle, resize: 'vertical' }} />
+              </div>
             </div>
           </div>
           {error && <p className="text-xs text-red-500 px-5 pb-2">{error}</p>}
@@ -1203,23 +1303,71 @@ function ModalBuffKiem({ item, onClose, onSaved }: { item: any; onClose: () => v
 }
 
 // ── IconQuickInsert ──
-function IconQuickInsert({ onInsert }: { onInsert: (text: string) => void }) {
+// textareaRef: ref đến textarea cần chèn; onInsert nhận token + vị trí con trỏ
+function IconQuickInsert({ textareaRef, onInsert }: {
+  textareaRef?: React.RefObject<HTMLTextAreaElement>;
+  onInsert: (token: string, caretPos: number | null) => void;
+}) {
   const [icons, setIcons] = useState<{ id: string; slug: string; label: string; image_url: string }[]>([]);
+  const [open, setOpen] = useState(false);
+  // Lưu vị trí con trỏ ngay khi bấm nút mở modal (trước khi textarea mất focus)
+  const savedCaret = React.useRef<number | null>(null);
+
   useEffect(() => {
     window.fetch('/api/icons').then(r => r.json()).then(d => setIcons(d.items ?? [])).catch(() => {});
   }, []);
+
   if (icons.length === 0) return null;
+
+  const handleOpen = () => {
+    // Lưu vị trí con trỏ trước khi mở modal
+    if (textareaRef?.current) {
+      savedCaret.current = textareaRef.current.selectionStart ?? null;
+    } else {
+      savedCaret.current = null;
+    }
+    setOpen(true);
+  };
+
+  const handlePick = (icon: { slug: string }) => {
+    onInsert('{icon:' + icon.slug + '}', savedCaret.current);
+    setOpen(false);
+  };
+
   return (
-    <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', marginTop: 4 }}>
-      {icons.map(icon => (
-        <button key={icon.slug} type="button" title={icon.label}
-          onClick={() => onInsert('{icon:' + icon.slug + '}')}
-          style={{ padding: '2px 6px', borderRadius: 6, border: '1px solid var(--border)', background: 'var(--bg-sunken)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4 }}>
-          {icon.image_url && <img src={icon.image_url} alt={icon.label} style={{ width: 16, height: 16, objectFit: 'contain' }} />}
-          <span style={{ fontSize: 11, color: 'var(--text-2)' }}>{icon.label}</span>
-        </button>
-      ))}
-    </div>
+    <>
+      <button type="button" onClick={handleOpen}
+        style={{ padding: '3px 9px', borderRadius: 6, border: '1px solid var(--border)', background: 'var(--bg-sunken)', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, color: 'var(--text-2)', fontWeight: 700 }}>
+        <span style={{ fontSize: 13, lineHeight: 1 }}>⊕</span> Icon
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[300] flex items-center justify-center p-4"
+            onClick={() => setOpen(false)}>
+            <motion.div initial={{ scale: 0.96, y: 8 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.96, y: 8 }}
+              className="rounded-2xl border shadow-2xl" style={{ maxWidth: 420, width: '100%', backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
+              onClick={e => e.stopPropagation()}>
+              <div className="flex items-center justify-between px-5 py-3 border-b" style={{ borderColor: 'var(--border)' }}>
+                <h3 className="font-black text-sm" style={{ color: 'var(--text-1)' }}>Chèn Icon</h3>
+                <button type="button" onClick={() => setOpen(false)} style={{ color: 'var(--text-3)', background: 'none', border: 'none', cursor: 'pointer' }}><X size={16} /></button>
+              </div>
+              <div style={{ padding: '14px 20px 18px', display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                {icons.map(icon => (
+                  <button key={icon.slug} type="button" onClick={() => handlePick(icon)}
+                    style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '5px 12px 5px 6px', borderRadius: 20, cursor: 'pointer', background: 'var(--bg-sunken)', border: '1px solid var(--border)', transition: 'all 120ms' }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(220,38,38,0.08)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(220,38,38,0.4)'; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'var(--bg-sunken)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)'; }}>
+                    {icon.image_url && <img src={icon.image_url} alt={icon.label} style={{ width: 22, height: 22, objectFit: 'contain' }} />}
+                    <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-2)' }}>{icon.label}</span>
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 

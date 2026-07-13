@@ -462,25 +462,34 @@ function QuanCoModal({ item, onClose }: { item: typeof quanCoData[0]; onClose: (
                 {item.ten_zh}
               </div>
             )}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-              {item.loai && <span style={{ fontSize: 12, fontWeight: 700, padding: '2px 10px', borderRadius: 20, background: 'rgba(220,38,38,0.1)', color: '#dc2626', border: '1px solid rgba(220,38,38,0.3)' }}>{item.loai}</span>}
-            </div>
-            {item.tags && item.tags.length > 0 && (
-              <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                {item.tags.map((tag, i) => (
-                  <span key={i} style={{ fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: 'rgba(239,68,68,0.1)', color: '#dc2626', border: '1px solid rgba(239,68,68,0.25)' }}>{tag}</span>
-                ))}
+            {/* Loại + Tags cùng 1 hàng: loại bên trái, tags canh phải */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, minHeight: 26 }}>
+              <div style={{ flexShrink: 0 }}>
+                {item.loai && <span style={{ fontSize: 12, fontWeight: 700, padding: '2px 10px', borderRadius: 20, background: 'rgba(220,38,38,0.1)', color: '#dc2626', border: '1px solid rgba(220,38,38,0.3)' }}>{item.loai}</span>}
               </div>
-            )}
+              {item.tags && item.tags.length > 0 && (
+                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+                  {item.tags.map((tag, i) => {
+                    const icon = coNghichIcons.find(ic => ic.label === tag);
+                    return (
+                      <span key={i} style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, fontWeight: 700, padding: '2px 8px 2px 5px', borderRadius: 4, background: 'rgba(239,68,68,0.1)', color: '#dc2626', border: '1px solid rgba(239,68,68,0.25)' }}>
+                        {icon && <img src={icon.image_url} alt={icon.label} style={{ width: 22, height: 22, objectFit: 'contain' }} />}
+                        {tag}
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </div>
           <button onClick={onClose} style={{ color: 'var(--text-3)', background: 'none', border: 'none', cursor: 'pointer', fontSize: 22, padding: 4, position: 'absolute', top: 12, right: 12 }}>×</button>
         </div>
         <div style={{ padding: '10px 24px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {/* Khu vực 2: Liên kết phe + phái */}
+          {/* Khu vực 2: Liên kết phe + phái — cùng 1 hàng */}
           {((item.lien_ket_phe && item.lien_ket_phe.length > 0) || (item.lien_ket_phai && item.lien_ket_phai.length > 0)) && (
-            <div style={{ borderTop: '1px solid var(--border)', paddingTop: 8 }}>
+            <div style={{ borderTop: '1px solid var(--border)', paddingTop: 8, display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
               {item.lien_ket_phe && item.lien_ket_phe.length > 0 && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
                   <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', flexShrink: 0 }}>Liên kết phe:</span>
                   {item.lien_ket_phe.map(slug => {
                     const info = LIEN_KET_PHE.find(p => p.slug === slug);
@@ -493,6 +502,9 @@ function QuanCoModal({ item, onClose }: { item: typeof quanCoData[0]; onClose: (
                     );
                   })}
                 </div>
+              )}
+              {item.lien_ket_phe && item.lien_ket_phe.length > 0 && item.lien_ket_phai && item.lien_ket_phai.length > 0 && (
+                <div style={{ width: 1, alignSelf: 'stretch', background: 'var(--border)', flexShrink: 0 }} />
               )}
               {item.lien_ket_phai && item.lien_ket_phai.length > 0 && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
@@ -540,36 +552,109 @@ function QuanCoTab() {
   const [items, setItems] = useState(quanCoData);
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState<typeof quanCoData[0] | null>(null);
+  const [goldFilter, setGoldFilter] = useState<number | null>(null); // null = tất cả
 
-  // Reload khi có thay đổi (HMR sẽ tự reload file)
   useEffect(() => { setItems(quanCoData); }, []);
+
+  const filtered = goldFilter === null ? items : items.filter(i => i.gia_xu === goldFilter);
+
+  const GOLD_TABS: { label: string; value: number | null }[] = [
+    { label: 'Tất cả', value: null },
+    { label: '5', value: 5 },
+    { label: '4', value: 4 },
+    { label: '3', value: 3 },
+    { label: '2', value: 2 },
+    { label: '1', value: 1 },
+  ];
+
+  const ICON_VANG = '/images/co-nghich-thuy-han/icon-vang.png';
 
   return (
     <div style={{ padding: '16px 0 0' }}>
-      {loading ? <Spinner /> : items.length === 0 ? (
+      {/* Filter tabs */}
+      <div style={{ display: 'flex', gap: 4, marginBottom: 16, borderBottom: '1px solid var(--border)' }}>
+        {GOLD_TABS.map(tab => {
+          const isActive = goldFilter === tab.value;
+          return (
+            <button key={String(tab.value)} onClick={() => setGoldFilter(tab.value)}
+              style={{
+                padding: '6px 14px', fontSize: 13, fontWeight: 700, cursor: 'pointer',
+                background: 'transparent', border: 'none',
+                color: isActive ? ACCENT : 'var(--text-2)',
+                borderBottom: isActive ? `2px solid ${ACCENT}` : '2px solid transparent',
+                marginBottom: -1, transition: 'all 140ms',
+                display: 'flex', alignItems: 'center', gap: 4,
+              }}
+              onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = ACCENT; }}
+              onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-2)'; }}
+            >
+              {tab.label}
+              {tab.value !== null && (
+                <img src={ICON_VANG} alt="vàng" style={{ width: 20, height: 20, objectFit: 'contain', display: 'block' }} />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {loading ? <Spinner /> : filtered.length === 0 ? (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '60px 20px', gap: 12 }}>
           <span style={{ fontSize: 40, opacity: 0.12 }}>♟️</span>
-          <p style={{ fontSize: 13, color: 'var(--text-3)' }}>Chưa có dữ liệu quân cờ</p>
+          <p style={{ fontSize: 13, color: 'var(--text-3)' }}>Không có quân cờ nào</p>
         </div>
       ) : (
-        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}
+        <motion.div key={String(goldFilter)} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}
           style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
-          {items.map(item => (
+          {filtered.map(item => (
             <button key={item.id} onClick={() => setSelected(item)}
               style={{
                 padding: 0, border: 'none', borderRadius: 10,
-                overflow: 'hidden', cursor: 'pointer',
-                height: 200,
+                overflow: 'visible',
+                cursor: 'pointer',
                 background: 'var(--bg-sunken)',
-                display: 'block', width: '100%',
+                display: 'flex', flexDirection: 'column', width: '100%',
+                position: 'relative',
+              }}
+              onMouseEnter={e => {
+                const img = (e.currentTarget as HTMLElement).querySelector('img.card-img') as HTMLImageElement;
+                if (img) img.style.transform = 'scale(1.04)';
+              }}
+              onMouseLeave={e => {
+                const img = (e.currentTarget as HTMLElement).querySelector('img.card-img') as HTMLImageElement;
+                if (img) img.style.transform = 'scale(1)';
               }}>
-              {item.image_url
-                ? <img src={item.image_url} alt={item.ten}
-                    style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', transition: 'transform 0.4s ease' }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1.04)'; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = 'scale(1)'; }} />
-                : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 48, opacity: 0.1 }}>♟️</div>
-              }
+              <div style={{ position: 'relative', height: 200, width: '100%', flexShrink: 0, overflow: 'hidden', borderRadius: '10px 10px 0 0' }}>
+                {item.image_url
+                  ? <img className="card-img" src={item.image_url} alt={item.ten}
+                      style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', transition: 'transform 0.4s ease' }} />
+                  : <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 48, opacity: 0.1 }}>♟️</div>
+                }
+                {/* Tag icons overlay — góc dưới phải ảnh */}
+                {item.tags && item.tags.length > 0 && (
+                  <div style={{
+                    position: 'absolute', bottom: 10, right: 10,
+                    display: 'flex', gap: 6,
+                    background: 'rgba(0,0,0,0.45)',
+                    backdropFilter: 'blur(4px)',
+                    borderRadius: 8,
+                    padding: '5px 7px',
+                  }}>
+                    {item.tags.map((tag, i) => {
+                      const icon = coNghichIcons.find(ic => ic.label === tag);
+                      if (!icon) return null;
+                      return (
+                        <img key={i} src={icon.image_url} alt={icon.label}
+                          style={{ width: 28, height: 28, objectFit: 'contain', transition: 'transform 0.4s ease' }}
+                          className="card-img" />
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+              {/* Tên quân cờ */}
+              <div style={{ padding: '6px 10px 8px', textAlign: 'center', fontSize: 26, fontWeight: 400, color: 'var(--text-1)', fontFamily: 'var(--font-skill)', letterSpacing: '0.02em', lineHeight: 1.3 }}>
+                {item.ten}
+              </div>
             </button>
           ))}
         </motion.div>

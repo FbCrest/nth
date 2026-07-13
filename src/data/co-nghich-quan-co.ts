@@ -36,5 +36,29 @@ export const quanCoData: QuanCo[] = [
     "chi_so": null,
     "image_url": "/images/co-nghich-thuy-han/quan-co/phuong-thua-y.png",
     "id": "1783878603881"
+  },
+  {
+    "ten": "Trương Thúc Dạ",
+    "ten_zh": "张叔夜",
+    "so_sao": null,
+    "gia_xu": 5,
+    "loai": "Đấu Sĩ Toàn Năng",
+    "tags": [
+      "Phòng Thủ",
+      "Khí Huyết",
+      "Hồi Phục Nội Lực"
+    ],
+    "lien_ket_phe": [
+      "bich-huyet-doanh"
+    ],
+    "lien_ket_phai": [
+      "phong-thu"
+    ],
+    "ky_nang_ten": null,
+    "ky_nang_icon": null,
+    "ky_nang_mo_ta": null,
+    "chi_so": null,
+    "image_url": "/images/co-nghich-thuy-han/quan-co/truong-thuc-da.png",
+    "id": "1783937034216"
   }
 ];
