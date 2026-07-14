@@ -55,8 +55,8 @@ export const lienKetPhaiData: LienKetPhai[] = [
     "id": "1784017501426"
   },
   {
-    "ten": "Trùng Minh",
-    "slug": "trung-minh",
+    "ten": "Trong Minh",
+    "slug": "trong-minh",
     "image_url": "/images/co-nghich-thuy-han/lien-ket-chuc-nghiep/trung-minh.png",
     "id": "1784017569662"
   },

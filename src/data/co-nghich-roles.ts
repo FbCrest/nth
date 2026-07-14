@@ -8,15 +8,15 @@ export const quanCoRoles: QuanCoRole[] = [
   {
     "id": "1",
     "label": "Chiến Binh Toàn Năng",
-    "color": "#dc2626"
+    "color": "#a65443"
   },
   {
     "id": "2",
     "label": "Đỡ Đòn Toàn Năng",
-    "color": "#2563eb"
+    "color": "#49678e"
   },
   {
-    "label": "Đánh Thường Ưu Tiên Đứng Sau",
+    "label": "Hậu Phương Đánh Thường",
     "color": "#8d823a",
     "id": "1784012083269"
   },
@@ -29,5 +29,15 @@ export const quanCoRoles: QuanCoRole[] = [
     "label": "Kỹ Năng Hỗ Trợ",
     "color": "#3d803e",
     "id": "1784013442558"
+  },
+  {
+    "label": "Hậu Phương Toàn Năng",
+    "color": "#8d823a",
+    "id": "1784053916613"
+  },
+  {
+    "label": "Kỹ Năng Chiến Sĩ",
+    "color": "#a65443",
+    "id": "1784054073870"
   }
 ];

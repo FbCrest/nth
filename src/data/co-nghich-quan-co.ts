@@ -52,7 +52,6 @@ export const quanCoData: QuanCo[] = [
       "bich-huyet-doanh"
     ],
     "lien_ket_phai": [
-      "phong-thu",
       "co-thu"
     ],
     "ky_nang_ten": "Huyết Kỵ Đan Tâm",
@@ -78,7 +77,7 @@ export const quanCoData: QuanCo[] = [
     ],
     "lien_ket_phai": [
       "Tri-lieu",
-      "ho-tro",
+      "phu-tran",
       "hoi-nguyen"
     ],
     "ky_nang_ten": "Thần Nữ Hiện Thế",
@@ -93,7 +92,7 @@ export const quanCoData: QuanCo[] = [
     "ten_zh": "无情",
     "so_sao": null,
     "gia_xu": 5,
-    "loai": "Đánh Thường Ưu Tiên Đứng Sau",
+    "loai": "Hậu Phương Đánh Thường",
     "tags": [],
     "lien_ket_phe": [
       "bach-de-thanh"
@@ -152,5 +151,85 @@ export const quanCoData: QuanCo[] = [
     "chi_so": null,
     "image_url": "/images/co-nghich-thuy-han/quan-co/phuong-trieu-ca.png",
     "id": "1784013670563"
+  },
+  {
+    "ten": "Toàn Cơ Tinh",
+    "ten_zh": "璇玑星",
+    "so_sao": null,
+    "gia_xu": 5,
+    "loai": "Hậu Phương Toàn Năng",
+    "tags": [],
+    "lien_ket_phe": [
+      "tieu-sung-lien-manh"
+    ],
+    "lien_ket_phai": [
+      "pha-quan"
+    ],
+    "ky_nang_ten": null,
+    "ky_nang_icon": null,
+    "ky_nang_mo_ta": null,
+    "chi_so": null,
+    "image_url": "/images/co-nghich-thuy-han/quan-co/toan-co-tinh.png",
+    "id": "1784053937874"
+  },
+  {
+    "ten": "Hàn Phi Anh",
+    "ten_zh": "韩飞瑛",
+    "so_sao": null,
+    "gia_xu": 5,
+    "loai": "Kỹ Năng Chiến Sĩ",
+    "tags": [],
+    "lien_ket_phe": [
+      "thien-ha-song-the"
+    ],
+    "lien_ket_phai": [
+      "chien-si"
+    ],
+    "ky_nang_ten": null,
+    "ky_nang_icon": null,
+    "ky_nang_mo_ta": null,
+    "chi_so": null,
+    "image_url": "/images/co-nghich-thuy-han/quan-co/han-phi-anh.png",
+    "id": "1784054118138"
+  },
+  {
+    "ten": "Phong Thiếu Vi",
+    "ten_zh": "风少微",
+    "so_sao": null,
+    "gia_xu": 5,
+    "loai": "Hậu Phương Đánh Thường",
+    "tags": [],
+    "lien_ket_phe": [
+      "thien-ha-song-the"
+    ],
+    "lien_ket_phai": [
+      "muu-si"
+    ],
+    "ky_nang_ten": null,
+    "ky_nang_icon": null,
+    "ky_nang_mo_ta": null,
+    "chi_so": null,
+    "image_url": "/images/co-nghich-thuy-han/quan-co/phong-thieu-vi.png",
+    "id": "1784054420260"
+  },
+  {
+    "ten": "Liễu Thương Hải",
+    "ten_zh": "柳沧海",
+    "so_sao": null,
+    "gia_xu": 5,
+    "loai": "Hậu Phương Toàn Năng",
+    "tags": [],
+    "lien_ket_phe": [
+      "kinh-thien-cac"
+    ],
+    "lien_ket_phai": [
+      "trong-minh"
+    ],
+    "ky_nang_ten": null,
+    "ky_nang_icon": null,
+    "ky_nang_mo_ta": null,
+    "chi_so": null,
+    "image_url": "/images/co-nghich-thuy-han/quan-co/lieu-thuong-hai.png",
+    "id": "1784054530725"
   }
 ];

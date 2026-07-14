@@ -395,5 +395,257 @@ export const trangBiCoData: TrangBiCo[] = [
     "dac_hieu": "• Khi hạ gục mục tiêu, {90%} sát thương dư sẽ được chia đều cho tối đa {3} kẻ địch gần mục tiêu nhất.",
     "image_url": "/images/co-nghich-thuy-han/trang-bi/phong-thieu-vi-no-trieu-trung-lang-thuc.png",
     "id": "1784004306427"
+  },
+  {
+    "ten": "Tô Chấn Y · Lưu Quang Thí Nguyệt",
+    "ten_zh": "苏振衣·流光弑月",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +50%\n• Tỷ lệ Né Tránh{icon:ty-le-ne-tranh}: +30%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/to-chan-y-luu-quang-thi-nguyet.png",
+    "id": "1784047647597"
+  },
+  {
+    "ten": "Lỗ Ban · Càn Khôn Hóa Nhận",
+    "ten_zh": "鲁班·乾坤化刃",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +40%\n• Tốc Độ Tấn Công{icon:toc-do-tan-cong}: +40%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/lo-ban-can-khong-hoa-nhan.png",
+    "id": "1784047893638"
+  },
+  {
+    "ten": "Mục Quế Anh · Bạo Vũ Lê Hoa",
+    "ten_zh": "穆桂英·暴雨梨花",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +30%\n• Khí Huyết{icon:khi-huyet}: +30%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/muc-que-anh-bao-vu-le-hoa.png",
+    "id": "1784048016797"
+  },
+  {
+    "ten": "Sư Khoáng · Huyền Phượng Lai Nghi",
+    "ten_zh": "师旷·玄凤来仪",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +50%\n• Tiêu Hao Nội Lực: -40%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/su-khoang-huyen-phuong-lai-nghi.png",
+    "id": "1784048145264"
+  },
+  {
+    "ten": "Lý Bạch · Thương Hải Hiệp Đào",
+    "ten_zh": "李白·沧海挟涛",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +40%\n• Phá Phòng{icon:pha-phong}: +40%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/ly-bach-thuong-hai-hiep-dao.png",
+    "id": "1784048277055"
+  },
+  {
+    "ten": "Hồng Đà La · Vạn Kiếp Phần Nhụy",
+    "ten_zh": "红陀罗·万劫焚蕊",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +40%\n• Sát Thương Chí Mạng{icon:sat-thuong-chi-mang}: +50%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/hong-da-la-van-kiep-phan-nhuy.png",
+    "id": "1784048392985"
+  },
+  {
+    "ten": "Lã Động Tân · Khuynh Ba Hám Lãng",
+    "ten_zh": "吕洞宾·倾波撼浪",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "Trong chiến đấu, cứ mỗi {6 giây} toàn bộ quân cờ nhận cộng dồn:\n• Tấn Công{icon:tan-cong}: +7%\n• Phòng Thủ{icon:phong-thu}: +7%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/la-dong-tan-khuynh-ba-ham-lang.png",
+    "id": "1784048572753"
+  },
+  {
+    "ten": "Phù Khảm · Thương Xuyên Quyển Lãng",
+    "ten_zh": "符坎·沧川卷浪",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +50%\n• Phòng Thủ{icon:phong-thu}: +50%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/phu-kham-thuong-xuyen-quyen-lang.png",
+    "id": "1784048710223"
+  },
+  {
+    "ten": "Trạm Lô",
+    "ten_zh": "湛卢",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +5%",
+    "dac_hieu": "• Toàn bộ quân cờ phe ta được tăng sát thương{icon:tang-sat-thuong} bằng {1% × tổng số sao của các quân cờ đang ra trận}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/tram-lo.png",
+    "id": "1784049000799"
+  },
+  {
+    "ten": "Thuần Quân",
+    "ten_zh": "纯钧",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Nhận {5% × bậc sao} tăng sát thương{icon:tang-sat-thuong} và giảm sát thương{icon:giam-sat-thuong}",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/thuan-quan.png",
+    "id": "1784049291199"
+  },
+  {
+    "ten": "Can Tương",
+    "ten_zh": "干将",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Đánh dấu kẻ địch có Khí Huyết cao nhất. Toàn bộ quân cờ phe ta gây thêm {20%} sát thương lên mục tiêu đó, riêng quân cờ trang bị {Can Tương} gây thêm {20%} sát thương nữa.",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/can-tuong.png",
+    "id": "1784050199030"
+  },
+  {
+    "ten": "Thắng Tà",
+    "ten_zh": "胜邪",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Mỗi giây giảm {5%} Tấn Công của mục tiêu và tăng {4%} Tấn Công cho bản thân. Khi thắng {1} vòng đấu, hồi {8} điểm Khí Huyết cho kỳ thủ.",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/thang-ta.png",
+    "id": "1784050308549"
+  },
+  {
+    "ten": "Mạc Tà",
+    "ten_zh": null,
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Phòng Thủ{icon:phong-thu}: +20%",
+    "dac_hieu": "• Cứ mỗi {10} Linh Hồn, toàn bộ quân cờ phe ta nhận {3%} Hút Máu{icon:hut-mau}",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/mac-ta.png",
+    "id": "1784050423708"
+  },
+  {
+    "ten": "Tiêu Luyện",
+    "ten_zh": "宵练",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Chí Mạng{icon:chi-mang}: +20%",
+    "dac_hieu": "• Khi hạ gục một quân cờ, có {50%} xác suất nhận {1} vàng.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/tieu-luyen.png",
+    "id": "1784050556981"
+  },
+  {
+    "ten": "Thái A",
+    "ten_zh": "泰阿",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Nếu được trang bị cho quân cờ {5} vàng, nhận {15%} tăng sát thương{icon:tang-sat-thuong} và {15%} giảm sát thương{icon:giam-sat-thuong}",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/thai-a.png",
+    "id": "1784050934324"
+  },
+  {
+    "ten": "Ngư Trường",
+    "ten_zh": "鱼肠",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tốc Độ Tấn Công{icon:toc-do-tan-cong}: +10%\n• Chí Mạng{icon:chi-mang}: +10%",
+    "dac_hieu": "• Khi hạ gục mục tiêu, hồi {10%} Khí Huyết cho bản thân. Nếu Khí Huyết của kỳ thủ đang thấp nhất trong tất cả người chơi, toàn bộ quân cờ phe ta hồi thêm {15%} Khí Huyết.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/ngu-truong.png",
+    "id": "1784051126083"
+  },
+  {
+    "ten": "Thiên Ngoại Vẫn Thiết",
+    "ten_zh": "天外陨铁",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Sau {5} vòng đấu với kỳ thủ, sẽ rèn thành {Long Tuyền Kiếm} dựa trên bên có số trận thắng hoặc thua nhiều hơn.\n• Thắng: {0}\n• Thua: {0}",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/thien-ngoai-van-thiet.png",
+    "id": "1784051252491"
+  },
+  {
+    "ten": "Long Tuyền",
+    "ten_zh": "龙泉",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "Nếu số trận thắng nhiều hơn số trận thua, {Long Tuyền} trở nên sắc bén hơn:\n• Tăng sát thương{icon:tang-sat-thuong}: +30%\n• Khí Huyết{icon:khi-huyet}: -10%\n• Trong {3} vòng đấu tiếp theo, mỗi khi thắng nhận thêm {5} vàng.\nNếu số trận thua nhiều hơn số trận thắng, {Long Tuyền} trở nên ôn nhuận hơn:\n• Giảm sát thương{icon:giam-sat-thuong}: +30%\n• Tấn Công{icon:tan-cong}: -10%\n• Trong {3} vòng đấu tiếp theo, mỗi vòng hồi {4} điểm Khí Huyết cho kỳ thủ.",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/long-tuyen.png",
+    "id": "1784051596089"
+  },
+  {
+    "ten": "Hàm Quang",
+    "ten_zh": "含光",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Nhận {0,4% × số liên kết đã kích hoạt} Toàn Thuộc Tính.\n• Sau lần đầu tham gia chiến đấu, ngẫu nhiên nhận {1} Vạn Chức Thư phù hợp hơn với quân cờ trang bị.",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/ham-quang.png",
+    "id": "1784051830170"
+  },
+  {
+    "ten": "Xích Tiêu",
+    "ten_zh": "赤霄",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +20%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/xich-tieu.png",
+    "id": "1784051914856"
+  },
+  {
+    "ten": "Thu Thủy",
+    "ten_zh": "秋水",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Hồi Phục Nội Lực{icon:hoi-phuc-noi-luc}: +20%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/thu-thuy.png",
+    "id": "1784051987385"
+  },
+  {
+    "ten": "Công Bố",
+    "ten_zh": "工布",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Phá Phòng{icon:pha-phong}: +15%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/cong-bo.png",
+    "id": "1784052062011"
+  },
+  {
+    "ten": "Tru Tiên",
+    "ten_zh": "诛仙",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +16%\n• Khí Huyết{icon:khi-huyet}: +16%\n• Phòng Thủ{icon:phong-thu}: +16%\n• Tốc Độ Tấn Công{icon:toc-do-tan-cong}: +16%\n• Hồi Phục Nội Lực{icon:hoi-phuc-noi-luc}: +16%\n• Chí Mạng{icon:chi-mang}: +16%\n• Hút Máu{icon:hut-mau}: +16%",
+    "dac_hieu": "• Người trang bị sẽ chịu sự phản phệ của {Sát Khí}.\n• Sát Khí hiện tại: {0}\n• Sát Thương Chuẩn mỗi giây: {0}",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/tru-tien.png",
+    "id": "1784052236881"
+  },
+  {
+    "ten": "Lục Tiên",
+    "ten_zh": "戮仙",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "Thôn phệ quân cờ và căn cứ vào liên kết chức nghiệp đầu tiên của quân cờ đó để tăng thuộc tính tương ứng cho người trang bị:\n• Lực Sĩ: +5% Khí Huyết{icon:khi-huyet}\n• Cố Thủ: +5% Phòng Thủ{icon:phong-thu}\n• Phá Quân, Chiến Sĩ: +5% Hút Máu{icon:hut-mau}\n• Thích Khách, Mưu Sĩ: +5% Chí Mạng{icon:chi-mang}\n• Trọng Minh, Hồi Nguyên: +5% Hồi PhụcNội Lực{icon:hoi-phuc-noi-luc}\n• Xạ Thủ, Phụ Trận: +5% Tấn Công{icon:tan-cong}\n• Ngự Kiếm: +5% Tốc Độ Tấn Công{icon:toc-do-tan-cong}",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/luc-tien.png",
+    "id": "1784052376725"
+  },
+  {
+    "ten": "Tuyệt Tiên",
+    "ten_zh": "绝仙",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: -5%",
+    "dac_hieu": "Khi quân cờ trang bị {Tuyệt Tiên} tích lũy hạ gục {7/14/28/52/70} quân cờ, sẽ ngẫu nhiên nhận {1} Tâm Ngộ.\n• Số lần hạ gục hiện tại: {0}",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/tuyet-tien.png",
+    "id": "1784052925039"
+  },
+  {
+    "ten": "Ỷ Thiên",
+    "ten_zh": "倚天",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Toàn đội tăng sát thương{icon:tang-sat-thuong}: +10%\n• Toàn đội giảm sát thương{icon:giam-sat-thuong}: +10%",
+    "dac_hieu": "• Tất cả các liên kết được tăng thêm {1} tầng.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/y-thien.png",
+    "id": "1784053069960"
+  },
+  {
+    "ten": "Hiên Viên",
+    "ten_zh": "轩辕",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "Khi trên sân có ít nhất {6} quân cờ phe ta có cùng mức phí với quân cờ trang bị, tất cả các quân cờ đó nhận:\n• Toàn Thuộc Tính: +10%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/hien-vien.png",
+    "id": "1784053161736"
+  },
+  {
+    "ten": "Tiểu Mộc Kiếm",
+    "ten_zh": "小木剑",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +10%\n• Phòng Thủ{icon:phong-thu}: +10%",
+    "dac_hieu": "Quân cờ trang bị sau khi tham gia {1/3/9} vòng đấu (tùy theo bậc sao) sẽ ngẫu nhiên biến thành một quân cờ có mức phí cao hơn {1}.\n• Số vòng đã tích lũy: {0}",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/tieu-moc-kiem.png",
+    "id": "1784053276142"
   }
 ];

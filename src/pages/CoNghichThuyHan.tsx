@@ -161,12 +161,20 @@ function TrangBiTab() {
   const filtered = activeCat === 'Tất cả' ? items : items.filter(i => i.danh_muc === activeCat);
 
   // Parse hieu_qua: newline-separated "Tên: +giá trị"
+  // Tìm dấu : cuối cùng KHÔNG nằm trong {}, để tránh split nhầm {icon:slug}
   const parseEffects = (raw: string | null): { label: string; value: string }[] => {
     if (!raw) return [];
     return raw.split('\n').filter(Boolean).map(line => {
-      const idx = line.lastIndexOf(':');
-      if (idx === -1) return { label: line.trim(), value: '' };
-      return { label: line.slice(0, idx).trim(), value: line.slice(idx + 1).trim() };
+      // Tìm dấu ':' cuối cùng nằm ngoài {...}
+      let depth = 0;
+      let lastColon = -1;
+      for (let i = 0; i < line.length; i++) {
+        if (line[i] === '{') depth++;
+        else if (line[i] === '}') depth--;
+        else if (line[i] === ':' && depth === 0) lastColon = i;
+      }
+      if (lastColon === -1) return { label: line.trim(), value: '' };
+      return { label: line.slice(0, lastColon).trim(), value: line.slice(lastColon + 1).trim() };
     });
   };
 

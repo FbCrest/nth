@@ -58,6 +58,24 @@ export const coNghichIcons: CoNghichIcon[] = [
     "label": "Phá Phòng",
     "image_url": "/images/co-nghich-thuy-han/icon-thuoc-tinh/pha-phong.png",
     "id": "1784009855671"
+  },
+  {
+    "slug": "ty-le-ne-tranh",
+    "label": "Tỷ lệ Né Tránh",
+    "image_url": "/images/co-nghich-thuy-han/icon-thuoc-tinh/ty-le-ne-tranh.png",
+    "id": "1784047711791"
+  },
+  {
+    "slug": "tang-sat-thuong",
+    "label": "Tăng Sát Thương",
+    "image_url": "/images/co-nghich-thuy-han/icon-thuoc-tinh/tang-sat-thuong.png",
+    "id": "1784049022271"
+  },
+  {
+    "slug": "giam-sat-thuong",
+    "label": "Giảm Sát Thương",
+    "image_url": "/images/co-nghich-thuy-han/icon-thuoc-tinh/giam-sat-thuong.png",
+    "id": "1784049180601"
   }
 ];
 
