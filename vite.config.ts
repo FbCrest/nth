@@ -138,6 +138,51 @@ export const buffKiemData: BuffKiem[] = ${JSON.stringify(items, null, 2)};
     },
   };
 
+  // Store lien ket phe
+  const lienKetPheStore = {
+    read: (): any[] => {
+      try {
+        const c = fs.readFileSync(path.join(BASE, 'co-nghich-lien-ket-phe.ts'), 'utf-8');
+        const m = c.match(/export const lienKetPheData[^=]*= (\[[\s\S]*?\]);/);
+        return m ? JSON.parse(m[1]) : [];
+      } catch { return []; }
+    },
+    write: (items: any[]) => {
+      const content = `export interface LienKetPhe {\n  id: string;\n  ten: string;\n  slug: string;\n  image_url: string | null;\n}\n\nexport const lienKetPheData: LienKetPhe[] = ${JSON.stringify(items, null, 2)};\n`;
+      fs.writeFileSync(path.join(BASE, 'co-nghich-lien-ket-phe.ts'), content, 'utf-8');
+    },
+  };
+
+  // Store lien ket phai
+  const lienKetPhaiStore = {
+    read: (): any[] => {
+      try {
+        const c = fs.readFileSync(path.join(BASE, 'co-nghich-lien-ket-phai.ts'), 'utf-8');
+        const m = c.match(/export const lienKetPhaiData[^=]*= (\[[\s\S]*?\]);/);
+        return m ? JSON.parse(m[1]) : [];
+      } catch { return []; }
+    },
+    write: (items: any[]) => {
+      const content = `export interface LienKetPhai {\n  id: string;\n  ten: string;\n  slug: string;\n  image_url: string | null;\n}\n\nexport const lienKetPhaiData: LienKetPhai[] = ${JSON.stringify(items, null, 2)};\n`;
+      fs.writeFileSync(path.join(BASE, 'co-nghich-lien-ket-phai.ts'), content, 'utf-8');
+    },
+  };
+
+  // Store roles
+  const rolesStore = {
+    read: (): any[] => {
+      try {
+        const c = fs.readFileSync(path.join(BASE, 'co-nghich-roles.ts'), 'utf-8');
+        const m = c.match(/export const quanCoRoles[^=]*= (\[[\s\S]*?\]);/);
+        return m ? JSON.parse(m[1]) : [];
+      } catch { return []; }
+    },
+    write: (items: any[]) => {
+      const content = `export interface QuanCoRole {\n  id: string;\n  label: string;\n  color: string;\n}\n\nexport const quanCoRoles: QuanCoRole[] = ${JSON.stringify(items, null, 2)};\n`;
+      fs.writeFileSync(path.join(BASE, 'co-nghich-roles.ts'), content, 'utf-8');
+    },
+  };
+
   // Store icons
   const iconStore = {
     read: (): any[] => {
@@ -230,6 +275,9 @@ export function getIcon(slug: string): CoNghichIcon | undefined {
       server.middlewares.use('/api/buff-co', makeCrudHandler(buffStore));
       server.middlewares.use('/api/buff-kiem', makeCrudHandler(buffKiemStore));
       server.middlewares.use('/api/icons', makeCrudHandler(iconStore));
+      server.middlewares.use('/api/roles', makeCrudHandler(rolesStore));
+      server.middlewares.use('/api/lien-ket-phe', makeCrudHandler(lienKetPheStore));
+      server.middlewares.use('/api/lien-ket-phai', makeCrudHandler(lienKetPhaiStore));
 
       // Reorder endpoints
       server.middlewares.use('/api/reorder/quan-co', makeReorderHandler(quanCoStore));
