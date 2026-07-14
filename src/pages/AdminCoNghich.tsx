@@ -502,15 +502,17 @@ function ModalBuff({ item, onClose, onSaved }: { item: CoNghichBuffRow | null; o
   );
 }
 
-// ── Section quản lý trang bị (local API) ──
+// ── Section quan ly trang bi (local API) ──
 function SectionTrangBi({ onAddNew }: { onAddNew: (trigger: () => void) => void }) {
   const [items, setItems] = useState<CoNghichTrangBiRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [editItem, setEditItem] = useState<CoNghichTrangBiRow | null>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const dragId = React.useRef<string | null>(null);
+  const [dragOverId, setDragOverId] = useState<string | null>(null);
 
-  const fetch = async () => {
+  const fetchData = async () => {
     setLoading(true);
     try {
       const res = await window.fetch('/api/trang-bi-co');
@@ -520,21 +522,35 @@ function SectionTrangBi({ onAddNew }: { onAddNew: (trigger: () => void) => void 
     setLoading(false);
   };
   useEffect(() => {
-    fetch();
+    fetchData();
     onAddNew(() => { setEditItem(null); setModalOpen(true); });
   }, []);
 
   const handleDelete = async (id: string) => {
     await window.fetch('/api/trang-bi-co', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) });
-    setDeleteId(null); fetch();
+    setDeleteId(null); fetchData();
+  };
+
+  const handleDrop = async (targetId: string) => {
+    const fromId = dragId.current;
+    if (!fromId || fromId === targetId) { setDragOverId(null); return; }
+    const ids = items.map(i => i.id);
+    const fromIdx = ids.indexOf(fromId);
+    const toIdx = ids.indexOf(targetId);
+    const newIds = [...ids];
+    newIds.splice(fromIdx, 1);
+    newIds.splice(toIdx, 0, fromId);
+    const map = new Map(items.map(i => [i.id, i]));
+    setItems(newIds.map(id => map.get(id)!));
+    setDragOverId(null);
+    await window.fetch('/api/reorder/trang-bi-co', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ids: newIds }) });
   };
 
   return (
     <div>
       <div className="flex items-center mb-4">
-        <h2 className="font-black text-base" style={{ color: 'var(--text-1)' }}>Trang Bị</h2>
+        <h2 className="font-black text-base" style={{ color: 'var(--text-1)' }}>Trang Bi</h2>
       </div>
-
       {loading ? (
         <div className="flex justify-center py-10"><motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
           style={{ width: 24, height: 24, borderRadius: '50%', border: '2px solid var(--border)', borderTopColor: '#dc2626' }} /></div>
@@ -542,13 +558,14 @@ function SectionTrangBi({ onAddNew }: { onAddNew: (trigger: () => void) => void 
         <div className="overflow-hidden rounded-xl border" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}>
           {items.length === 0 ? (
             <div className="flex flex-col items-center gap-2 py-16">
-              <span className="text-4xl opacity-20">⚔️</span>
-              <p className="text-sm" style={{ color: 'var(--text-3)' }}>Chưa có trang bị nào. Nhấn "Thêm mới" để bắt đầu.</p>
+              <span className="text-4xl opacity-20">&#9876;</span>
+              <p className="text-sm" style={{ color: 'var(--text-3)' }}>Chua co trang bi nao.</p>
             </div>
           ) : (
             <div className="overflow-x-auto custom-scrollbar">
               <table className="border-collapse text-left" style={{ width: '100%', tableLayout: 'fixed' }}>
                 <colgroup>
+                  <col style={{ width: 36 }} />
                   <col style={{ width: 100 }} />
                   <col />
                   <col style={{ width: 130 }} />
@@ -556,31 +573,43 @@ function SectionTrangBi({ onAddNew }: { onAddNew: (trigger: () => void) => void 
                 </colgroup>
                 <thead>
                   <tr style={{ backgroundColor: 'var(--bg-card)', borderBottom: '1px solid var(--border)' }}>
-                    {['Hình ảnh', 'Tên', 'Danh Mục', ''].map((h, i, arr) => (
-                      <th key={i} className="px-4 py-3.5 text-sm font-black uppercase tracking-wider text-center whitespace-nowrap"
-                        style={{ color: 'var(--text-1)', borderRight: i < arr.length - 1 ? '1px solid var(--border)' : 'none' }}>
-                        {h}
-                      </th>
+                    {['', 'Hinh anh', 'Ten', 'Danh Muc', ''].map((h, i, arr) => (
+                      <th key={i} className="px-4 py-3.5 text-xs font-black uppercase tracking-wider text-center whitespace-nowrap"
+                        style={{ color: 'var(--text-3)', borderRight: i < arr.length - 1 ? '1px solid var(--border)' : 'none' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {items.map(item => (
-                    <tr key={item.id} style={{ borderBottom: '1px solid var(--border)' }}>
+                    <tr key={item.id}
+                      draggable
+                      onDragStart={() => { dragId.current = item.id; }}
+                      onDragOver={e => { e.preventDefault(); setDragOverId(item.id); }}
+                      onDragLeave={() => setDragOverId(null)}
+                      onDrop={() => handleDrop(item.id)}
+                      style={{ borderBottom: '1px solid var(--border)', transition: 'background 120ms',
+                        backgroundColor: dragOverId === item.id ? 'rgba(220,38,38,0.06)' : 'transparent',
+                        outline: dragOverId === item.id ? '2px solid rgba(220,38,38,0.3)' : 'none',
+                      }}
+                      onMouseEnter={e => { if (dragOverId !== item.id) (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--bg-sunken)'; }}
+                      onMouseLeave={e => { if (dragOverId !== item.id) (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'; }}>
+                      <td style={{ borderRight: '1px solid var(--border)', textAlign: 'center', cursor: 'grab', padding: '0 4px' }}>
+                        <GripVertical size={14} style={{ color: 'var(--text-3)', opacity: 0.5, margin: 'auto' }} />
+                      </td>
                       <td className="text-center" style={{ borderRight: '1px solid var(--border)', overflow: 'hidden' }}>
                         <div onClick={() => { setEditItem(item); setModalOpen(true); }}
                           className="w-24 h-24 mx-auto flex items-center justify-center cursor-pointer overflow-hidden"
-                          style={{ transition: 'transform 1s cubic-bezier(.25,.8,.25,1)' }}
+                          style={{ transition: 'transform 0.4s ease' }}
                           onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = 'scale(1.06)'}
                           onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = 'scale(1)'}>
                           {item.image_url
-                            ? <img src={item.image_url} alt={item.ten} className="w-full h-full object-cover" />
-                            : <div className="w-full h-full flex items-center justify-center text-3xl opacity-20" style={{ backgroundColor: 'var(--bg-sunken)' }}>⚔️</div>}
+                            ? <img src={item.image_url} alt={item.ten} className="w-full h-full object-contain" />
+                            : <div className="w-full h-full flex items-center justify-center text-3xl opacity-20" style={{ backgroundColor: 'var(--bg-sunken)' }}>&#9876;</div>}
                         </div>
                       </td>
                       <td className="px-5 py-4 text-center" style={{ borderRight: '1px solid var(--border)' }}>
                         <div className="flex flex-col items-center gap-0.5">
-                          <span className="text-base tracking-tight" style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 400 }}>{item.ten}</span>
+                          <span style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 400, fontSize: 16 }}>{item.ten}</span>
                           {item.ten_zh && <span style={{ color: 'var(--text-3)', fontFamily: 'var(--font-chinese)', fontSize: 13 }}>{item.ten_zh}</span>}
                         </div>
                       </td>
@@ -590,7 +619,7 @@ function SectionTrangBi({ onAddNew }: { onAddNew: (trigger: () => void) => void 
                               style={{ backgroundColor: 'rgba(239,68,68,0.1)', color: '#dc2626', border: '1px solid rgba(239,68,68,0.2)' }}>
                               {item.danh_muc}
                             </span>
-                          : <span style={{ color: 'var(--text-3)' }}>—</span>}
+                          : <span style={{ color: 'var(--text-3)' }}>&#8212;</span>}
                       </td>
                       <td className="px-4 py-4">
                         <div className="flex justify-center gap-1">
@@ -616,21 +645,20 @@ function SectionTrangBi({ onAddNew }: { onAddNew: (trigger: () => void) => void 
           )}
         </div>
       )}
-
       <AnimatePresence>
-        {modalOpen && <ModalTrangBi item={editItem} onClose={() => setModalOpen(false)} onSaved={fetch} />}
+        {modalOpen && <ModalTrangBi item={editItem} onClose={() => setModalOpen(false)} onSaved={fetchData} />}
         {deleteId && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4" onClick={() => setDeleteId(null)}>
             <motion.div initial={{ scale: 0.96 }} animate={{ scale: 1 }} exit={{ scale: 0.96 }}
               className="rounded-2xl border p-6 w-full max-w-sm" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
               onClick={e => e.stopPropagation()}>
-              <p className="text-sm font-semibold mb-4" style={{ color: 'var(--text-1)' }}>Xác nhận xóa trang bị này?</p>
+              <p className="text-sm font-semibold mb-4" style={{ color: 'var(--text-1)' }}>Xac nhan xoa trang bi nay?</p>
               <div className="flex gap-2">
                 <button onClick={() => setDeleteId(null)} className="flex-1 py-2.5 rounded-xl text-sm font-semibold border cursor-pointer"
-                  style={{ borderColor: 'var(--border)', color: 'var(--text-2)', backgroundColor: 'var(--bg-sunken)' }}>Hủy</button>
+                  style={{ borderColor: 'var(--border)', color: 'var(--text-2)', backgroundColor: 'var(--bg-sunken)' }}>Huy</button>
                 <button onClick={() => handleDelete(deleteId!)} className="flex-1 py-2.5 rounded-xl text-sm font-bold cursor-pointer"
-                  style={{ backgroundColor: '#dc2626', color: '#fff' }}>Xóa</button>
+                  style={{ backgroundColor: '#dc2626', color: '#fff' }}>Xoa</button>
               </div>
             </motion.div>
           </motion.div>
@@ -647,8 +675,10 @@ function SectionBuff({ onAddNew }: { onAddNew: (trigger: () => void) => void }) 
   const [modalOpen, setModalOpen] = useState(false);
   const [editItem, setEditItem] = useState<CoNghichBuffRow | null>(null);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const dragId = React.useRef<string | null>(null);
+  const [dragOverId, setDragOverId] = useState<string | null>(null);
 
-  const fetch = async () => {
+  const fetchData = async () => {
     setLoading(true);
     try {
       const res = await window.fetch('/api/buff-co');
@@ -658,28 +688,42 @@ function SectionBuff({ onAddNew }: { onAddNew: (trigger: () => void) => void }) 
     setLoading(false);
   };
   useEffect(() => {
-    fetch();
+    fetchData();
     onAddNew(() => { setEditItem(null); setModalOpen(true); });
   }, []);
 
   const handleDelete = async (id: string) => {
     await window.fetch('/api/buff-co', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) });
-    setDeleteId(null); fetch();
+    setDeleteId(null); fetchData();
+  };
+
+  const handleDrop = async (targetId: string) => {
+    const fromId = dragId.current;
+    if (!fromId || fromId === targetId) { setDragOverId(null); return; }
+    const ids = items.map(i => i.id);
+    const fromIdx = ids.indexOf(fromId);
+    const toIdx = ids.indexOf(targetId);
+    const newIds = [...ids];
+    newIds.splice(fromIdx, 1);
+    newIds.splice(toIdx, 0, fromId);
+    const map = new Map(items.map(i => [i.id, i]));
+    setItems(newIds.map(id => map.get(id)!));
+    setDragOverId(null);
+    await window.fetch('/api/reorder/buff-co', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ids: newIds }) });
   };
 
   const rarityColor = (r: string | null) => {
     if (r === 'Xanh') return '#1d4ed8';
-    if (r === 'Tím')  return '#7c3aed';
-    if (r === 'Vàng') return '#b45309';
+    if (r === 'Tim')  return '#7c3aed';
+    if (r === 'Vang') return '#b45309';
     return '#6b7280';
   };
 
   return (
     <div>
       <div className="flex items-center mb-4">
-        <h2 className="font-black text-base" style={{ color: 'var(--text-1)' }}>Tâm Ngộ ({items.length})</h2>
+        <h2 className="font-black text-base" style={{ color: 'var(--text-1)' }}>Tam Ngo ({items.length})</h2>
       </div>
-
       {loading ? (
         <div className="flex justify-center py-10"><motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
           style={{ width: 24, height: 24, borderRadius: '50%', border: '2px solid var(--border)', borderTopColor: '#dc2626' }} /></div>
@@ -687,13 +731,14 @@ function SectionBuff({ onAddNew }: { onAddNew: (trigger: () => void) => void }) 
         <div className="overflow-hidden rounded-xl border" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}>
           {items.length === 0 ? (
             <div className="flex flex-col items-center gap-2 py-16">
-              <span className="text-4xl opacity-20">✦</span>
-              <p className="text-sm" style={{ color: 'var(--text-3)' }}>Chưa có tâm ngộ nào. Nhấn "Thêm mới" để bắt đầu.</p>
+              <span className="text-4xl opacity-20">&#10022;</span>
+              <p className="text-sm" style={{ color: 'var(--text-3)' }}>Chua co tam ngo nao.</p>
             </div>
           ) : (
             <div className="overflow-x-auto custom-scrollbar">
               <table className="border-collapse text-left" style={{ width: '100%', tableLayout: 'fixed' }}>
                 <colgroup>
+                  <col style={{ width: 36 }} />
                   <col style={{ width: 100 }} />
                   <col />
                   <col style={{ width: 130 }} />
@@ -701,11 +746,9 @@ function SectionBuff({ onAddNew }: { onAddNew: (trigger: () => void) => void }) 
                 </colgroup>
                 <thead>
                   <tr style={{ backgroundColor: 'var(--bg-card)', borderBottom: '1px solid var(--border)' }}>
-                    {['Hình ảnh', 'Tên', 'Độ Hiếm', ''].map((h, i, arr) => (
-                      <th key={i} className="px-4 py-3.5 text-sm font-black uppercase tracking-wider text-center whitespace-nowrap"
-                        style={{ color: 'var(--text-1)', borderRight: i < arr.length - 1 ? '1px solid var(--border)' : 'none' }}>
-                        {h}
-                      </th>
+                    {['', 'Hinh anh', 'Ten', 'Do Hiem', ''].map((h, i, arr) => (
+                      <th key={i} className="px-4 py-3.5 text-xs font-black uppercase tracking-wider text-center whitespace-nowrap"
+                        style={{ color: 'var(--text-3)', borderRight: i < arr.length - 1 ? '1px solid var(--border)' : 'none' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -713,21 +756,35 @@ function SectionBuff({ onAddNew }: { onAddNew: (trigger: () => void) => void }) 
                   {items.map(item => {
                     const rc = rarityColor(item.do_hiem);
                     return (
-                      <tr key={item.id} style={{ borderBottom: '1px solid var(--border)' }}>
+                      <tr key={item.id}
+                        draggable
+                        onDragStart={() => { dragId.current = item.id; }}
+                        onDragOver={e => { e.preventDefault(); setDragOverId(item.id); }}
+                        onDragLeave={() => setDragOverId(null)}
+                        onDrop={() => handleDrop(item.id)}
+                        style={{ borderBottom: '1px solid var(--border)', transition: 'background 120ms',
+                          backgroundColor: dragOverId === item.id ? 'rgba(220,38,38,0.06)' : 'transparent',
+                          outline: dragOverId === item.id ? '2px solid rgba(220,38,38,0.3)' : 'none',
+                        }}
+                        onMouseEnter={e => { if (dragOverId !== item.id) (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--bg-sunken)'; }}
+                        onMouseLeave={e => { if (dragOverId !== item.id) (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'; }}>
+                        <td style={{ borderRight: '1px solid var(--border)', textAlign: 'center', cursor: 'grab', padding: '0 4px' }}>
+                          <GripVertical size={14} style={{ color: 'var(--text-3)', opacity: 0.5, margin: 'auto' }} />
+                        </td>
                         <td className="text-center" style={{ borderRight: '1px solid var(--border)', overflow: 'hidden' }}>
                           <div onClick={() => { setEditItem(item); setModalOpen(true); }}
                             className="w-24 h-24 mx-auto flex items-center justify-center cursor-pointer overflow-hidden"
-                            style={{ transition: 'transform 1s cubic-bezier(.25,.8,.25,1)' }}
+                            style={{ transition: 'transform 0.4s ease' }}
                             onMouseEnter={e => (e.currentTarget as HTMLElement).style.transform = 'scale(1.06)'}
                             onMouseLeave={e => (e.currentTarget as HTMLElement).style.transform = 'scale(1)'}>
                             {item.image_url
-                              ? <img src={item.image_url} alt={item.ten} className="w-full h-full object-cover" />
-                              : <div className="w-full h-full flex items-center justify-center text-3xl opacity-20" style={{ backgroundColor: 'var(--bg-sunken)' }}>✦</div>}
+                              ? <img src={item.image_url} alt={item.ten} className="w-full h-full object-contain" />
+                              : <div className="w-full h-full flex items-center justify-center text-3xl opacity-20" style={{ backgroundColor: 'var(--bg-sunken)' }}>&#10022;</div>}
                           </div>
                         </td>
                         <td className="px-5 py-4 text-center" style={{ borderRight: '1px solid var(--border)' }}>
                           <div className="flex flex-col items-center gap-0.5">
-                            <span className="text-base tracking-tight" style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 400 }}>{item.ten}</span>
+                            <span style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 400, fontSize: 16 }}>{item.ten}</span>
                             {item.ten_zh && <span style={{ color: 'var(--text-3)', fontFamily: 'var(--font-chinese)', fontSize: 13 }}>{item.ten_zh}</span>}
                           </div>
                         </td>
@@ -737,7 +794,7 @@ function SectionBuff({ onAddNew }: { onAddNew: (trigger: () => void) => void }) 
                                 style={{ backgroundColor: `${rc}18`, color: rc, border: `1px solid ${rc}44` }}>
                                 {item.do_hiem}
                               </span>
-                            : <span style={{ color: 'var(--text-3)' }}>—</span>}
+                            : <span style={{ color: 'var(--text-3)' }}>&#8212;</span>}
                         </td>
                         <td className="px-4 py-4">
                           <div className="flex justify-center gap-1">
@@ -764,21 +821,20 @@ function SectionBuff({ onAddNew }: { onAddNew: (trigger: () => void) => void }) 
           )}
         </div>
       )}
-
       <AnimatePresence>
-        {modalOpen && <ModalBuff item={editItem} onClose={() => setModalOpen(false)} onSaved={fetch} />}
+        {modalOpen && <ModalBuff item={editItem} onClose={() => setModalOpen(false)} onSaved={fetchData} />}
         {deleteId && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4" onClick={() => setDeleteId(null)}>
             <motion.div initial={{ scale: 0.96 }} animate={{ scale: 1 }} exit={{ scale: 0.96 }}
               className="rounded-2xl border p-6 w-full max-w-sm" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
               onClick={e => e.stopPropagation()}>
-              <p className="text-sm font-semibold mb-4" style={{ color: 'var(--text-1)' }}>Xác nhận xóa tâm ngộ này?</p>
+              <p className="text-sm font-semibold mb-4" style={{ color: 'var(--text-1)' }}>Xac nhan xoa tam ngo nay?</p>
               <div className="flex gap-2">
                 <button onClick={() => setDeleteId(null)} className="flex-1 py-2.5 rounded-xl text-sm font-semibold border cursor-pointer"
-                  style={{ borderColor: 'var(--border)', color: 'var(--text-2)', backgroundColor: 'var(--bg-sunken)' }}>Hủy</button>
+                  style={{ borderColor: 'var(--border)', color: 'var(--text-2)', backgroundColor: 'var(--bg-sunken)' }}>Huy</button>
                 <button onClick={() => handleDelete(deleteId!)} className="flex-1 py-2.5 rounded-xl text-sm font-bold cursor-pointer"
-                  style={{ backgroundColor: '#dc2626', color: '#fff' }}>Xóa</button>
+                  style={{ backgroundColor: '#dc2626', color: '#fff' }}>Xoa</button>
               </div>
             </motion.div>
           </motion.div>
@@ -787,7 +843,6 @@ function SectionBuff({ onAddNew }: { onAddNew: (trigger: () => void) => void }) 
     </div>
   );
 }
-
 // ── Image tab picker cho ModalQuanCo ──
 function ImgTabPicker({ imageUrl, kyNangUrl, onChangeImage, onChangeKyNang }: {
   imageUrl: string; kyNangUrl: string;

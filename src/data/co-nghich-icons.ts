@@ -46,6 +46,18 @@ export const coNghichIcons: CoNghichIcon[] = [
     "label": "Chí Mạng",
     "image_url": "/images/co-nghich-thuy-han/icon-thuoc-tinh/chi-mang.png",
     "id": "1783999355322"
+  },
+  {
+    "slug": "sat-thuong-chi-mang",
+    "label": "Sát Thương Chí Mạng",
+    "image_url": "/images/co-nghich-thuy-han/icon-thuoc-tinh/sat-thuong-chi-mang.png",
+    "id": "1784009348950"
+  },
+  {
+    "slug": "pha-phong",
+    "label": "Phá Phòng",
+    "image_url": "/images/co-nghich-thuy-han/icon-thuoc-tinh/pha-phong.png",
+    "id": "1784009855671"
   }
 ];
 
