@@ -200,12 +200,41 @@ export function getIcon(slug: string): CoNghichIcon | undefined {
   return {
     name: 'local-data-api',
     configureServer(server: any) {
+      // Helper: reorder endpoint cho 1 store
+      const makeReorderHandler = (store: { read: () => any[]; write: (items: any[]) => void }) =>
+        async (req: any, res: any) => {
+          res.setHeader('Content-Type', 'application/json');
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          res.setHeader('Access-Control-Allow-Methods', 'PUT, OPTIONS');
+          res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+          if (req.method === 'OPTIONS') { res.statusCode = 204; res.end(); return; }
+          if (req.method !== 'PUT') { res.statusCode = 405; res.end('{}'); return; }
+          const bodyStr = await new Promise<string>((resolve) => {
+            let d = ''; req.on('data', (c: any) => { d += c; }); req.on('end', () => resolve(d));
+          });
+          const { ids } = JSON.parse(bodyStr || '{}');
+          if (!Array.isArray(ids)) { res.statusCode = 400; res.end(JSON.stringify({ error: 'ids required' })); return; }
+          const items = store.read();
+          const map = new Map(items.map((i: any) => [i.id, i]));
+          const reordered = ids.map((id: string) => map.get(id)).filter(Boolean);
+          // append any items not in ids at end
+          const idsSet = new Set(ids);
+          items.forEach((i: any) => { if (!idsSet.has(i.id)) reordered.push(i); });
+          store.write(reordered);
+          res.end(JSON.stringify({ ok: true }));
+        };
+
       // CRUD endpoints
       server.middlewares.use('/api/quan-co', makeCrudHandler(quanCoStore));
       server.middlewares.use('/api/trang-bi-co', makeCrudHandler(trangBiStore));
       server.middlewares.use('/api/buff-co', makeCrudHandler(buffStore));
       server.middlewares.use('/api/buff-kiem', makeCrudHandler(buffKiemStore));
       server.middlewares.use('/api/icons', makeCrudHandler(iconStore));
+
+      // Reorder endpoints
+      server.middlewares.use('/api/reorder/quan-co', makeReorderHandler(quanCoStore));
+      server.middlewares.use('/api/reorder/trang-bi-co', makeReorderHandler(trangBiStore));
+      server.middlewares.use('/api/reorder/buff-co', makeReorderHandler(buffStore));
 
       // Store icons
       const iconsStore = {
