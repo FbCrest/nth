@@ -148,7 +148,7 @@ export const buffKiemData: BuffKiem[] = ${JSON.stringify(items, null, 2)};
       } catch { return []; }
     },
     write: (items: any[]) => {
-      const content = `export interface LienKetPhe {\n  id: string;\n  ten: string;\n  slug: string;\n  image_url: string | null;\n}\n\nexport const lienKetPheData: LienKetPhe[] = ${JSON.stringify(items, null, 2)};\n`;
+      const content = `export interface LienKetPhe {\n  id: string;\n  ten: string;\n  ten_zh: string | null;\n  slug: string;\n  image_url: string | null;\n  phan_thuong: string | null;\n  hieu_ung_lien_ket: string | null;\n  quan_co_images: string[] | null;\n}\n\nexport const lienKetPheData: LienKetPhe[] = ${JSON.stringify(items, null, 2)};\n`;
       fs.writeFileSync(path.join(BASE, 'co-nghich-lien-ket-phe.ts'), content, 'utf-8');
     },
   };
@@ -163,7 +163,7 @@ export const buffKiemData: BuffKiem[] = ${JSON.stringify(items, null, 2)};
       } catch { return []; }
     },
     write: (items: any[]) => {
-      const content = `export interface LienKetPhai {\n  id: string;\n  ten: string;\n  slug: string;\n  image_url: string | null;\n}\n\nexport const lienKetPhaiData: LienKetPhai[] = ${JSON.stringify(items, null, 2)};\n`;
+      const content = `export interface LienKetPhai {\n  id: string;\n  ten: string;\n  ten_zh: string | null;\n  slug: string;\n  image_url: string | null;\n  phan_thuong: string | null;\n  hieu_ung_lien_ket: string | null;\n  quan_co_images: string[] | null;\n}\n\nexport const lienKetPhaiData: LienKetPhai[] = ${JSON.stringify(items, null, 2)};\n`;
       fs.writeFileSync(path.join(BASE, 'co-nghich-lien-ket-phai.ts'), content, 'utf-8');
     },
   };
