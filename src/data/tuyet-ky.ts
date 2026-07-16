@@ -1,6 +1,51 @@
 import { GameItem } from '../types';
 
 export const tuyetKyData: GameItem[] = [
+{
+  name: 'Thanh Kiếm Minh Hoàng · Tài',
+  nameZh: '清剑鸣篁·裁',
+  category: 'Tuyệt kỹ',
+  monPhai: 'Giang Hồ',
+  itemType: 'PVP',
+  stats: ['Giảm Sát Thương', 'Bá Thể', 'Phạm Vi'],
+  tags: ['Giảm Sát Thương', 'Bá Thể', 'Phạm Vi'],
+  details: `Cùng đồng đội (hoặc hiệp hữu) mang {Thanh Kiếm Minh Hoàng · Tế} hoặc {Thanh Kiếm Minh Hoàng} hợp lực múa kiếm, trong thời gian thi triển nhận trạng thái {bá thể} và {giảm sát thương}, đồng thời gây nhiều đợt chém lên vị trí mục tiêu ở phía xa.
+• {Thú Liệp}: Trong {Bang Hội Liên Đấu}, gây thêm {50%} sát thương lên {Thủ Lĩnh Thí Luyện} và {Thủ Lĩnh Khiêu Chiến} có dưới {10%} máu.
+• Gây thêm sát thương lên quái.`,
+  detail: `• Sát thương chém: {2 đợt}, mỗi đợt gây {2.247} sát thương nội công.
+• Sát thương liên hoàn: {4 đợt}, mỗi đợt gây {13.969} sát thương nội công.
+• Sát thương kết thúc: {31.290} sát thương nội công.
+• Giảm sát thương nhận trong khi thi triển: {20%}.
+• Sát thương lên quái tăng: {250%}.`,
+  upgrade: `• Cấp 1: Dựa theo {Sức mạnh}/{Khí Hải}, tăng sát thương khoảng {4% ~ 7%}.
+• Cấp 2: Sát thương kết thúc tăng {25%}.
+• Cấp 3: Hiệu quả {giảm sát thương} tăng {10%}.
+• Cấp 4: Sau khi thi triển, tăng {50} điểm hội tâm trong {40 giây}.
+• Cấp 5: Sát thương lên quái kiến trúc tăng {30%}.`,
+  imageUrl: '/images/tuyet-ky/thanh-kiem-minh-hoang-tai.png',
+},
+{
+  name: 'Thanh Kiếm Minh Hoàng · Tế',
+  nameZh: '清剑鸣篁·济',
+  category: 'Tuyệt kỹ',
+  monPhai: 'Giang Hồ',
+  itemType: 'PVP',
+  stats: ['Trị Liệu', 'Giảm Sát Thương', 'Bá Thể'],
+  tags: ['Trị Liệu', 'Giảm Sát Thương', 'Bá Thể'],
+  details: `Cùng đồng đội (hoặc hiệp hữu) mang {Thanh Kiếm Minh Hoàng · Tài} hoặc {Thanh Kiếm Minh Hoàng} hợp lực múa kiếm, trong thời gian thi triển nhận trạng thái {bá thể} và {giảm sát thương}, đồng thời hồi phục nhiều lần cho đồng minh tại vị trí chỉ định ở phía xa.
+• {Mãn Doanh}: Lượng hồi phục vượt mức của lần hồi phục kết thúc sẽ tiếp tục chuyển thành hồi phục máu theo thời gian cho mục tiêu.
+• {Hồi chiêu chung}: Mỗi đồng đội chỉ có thể nhận hiệu quả từ kỹ năng này hoặc Lưu Phong Khinh Vân {1 lần} trong {20 giây}.`,
+  detail: `• Hồi phục máu: {2 lần}, mỗi lần hồi {15} máu.
+• Hồi phục liên tục: {4 lần}, mỗi lần hồi {22} máu.
+• Hồi phục kết thúc: {64} máu.
+• Giảm sát thương nhận trong khi thi triển: {20%}.`,
+  upgrade: `• Cấp 1: Dựa theo {Sức mạnh}/{Khí Hải}, tăng hiệu quả hồi phục khoảng {4% ~ 7%}.
+• Cấp 2: Lượng hồi phục kết thúc tăng {25%}.
+• Cấp 3: Hiệu quả {giảm sát thương} tăng {10%}.
+• Cấp 4: Sau khi thi triển, tăng {50} điểm hội tâm trong {40 giây}.
+• Cấp 5: Hồi phục lên mục tiêu có dưới {50%} máu tăng {30%.}`,
+  imageUrl: '/images/tuyet-ky/thanh-kiem-minh-hoang-te.png',
+},
   {
     name: 'Thương Loan Kinh Vũ',
     nameZh: '苍峦惊羽',
