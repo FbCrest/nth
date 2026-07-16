@@ -60,7 +60,7 @@ export const trangBiCoData: TrangBiCo[] = [
     "danh_muc": "Đặc biệt",
     "hieu_qua": "• Tấn Công{icon:tan-cong}: +20%",
     "dac_hieu": "• Quân cờ được trang bị nhận {Liên Kết Ma Thiên}. Khi tham gia hạ gục, nhận {tăng sát thương} và {giảm sát thương}.",
-    "image_url": "/images/co-nghich-thuy-han/trang-bi/ma-thien-van-chuc-thu.png",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/ma-thien-van-chuc-thu.png",
     "id": "1783928282684"
   },
   {
@@ -69,7 +69,7 @@ export const trangBiCoData: TrangBiCo[] = [
     "danh_muc": "Đặc biệt",
     "hieu_qua": "• Phòng Thủ{icon:phong-thu}: +20%",
     "dac_hieu": "• Quân cờ trang bị nhận {Liên Kết Bạch Đế Thành}.",
-    "image_url": "/images/co-nghich-thuy-han/trang-bi/bach-de-thanh-van-chuc-thu.png",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/bach-de-thanh-van-chuc-thu.png",
     "id": "1783935574730"
   },
   {
@@ -854,5 +854,266 @@ export const trangBiCoData: TrangBiCo[] = [
     "dac_hieu": null,
     "image_url": "/images/co-nghich-thuy-han/trang-bi/phong-thu/tich-lu.png",
     "id": "1784103640297"
+  },
+  {
+    "ten": "Bích Huyết Doanh Vạn Chức Thư",
+    "ten_zh": "碧血营万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Bích Huyết Doanh}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/bich-huyet-doanh-van-chuc-thu.png",
+    "id": "1784183854386"
+  },
+  {
+    "ten": "Minh Uyên Vạn Chức Thư",
+    "ten_zh": "冥渊万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Khí Huyết{icon:khi-huyet}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Minh Uyên}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/minh-uyen-van-chuc-thu.png",
+    "id": "1784184035281"
+  },
+  {
+    "ten": "Phượng Thành Vạn Chức Thư",
+    "ten_zh": "凤城万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Phượng Thành}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/phuong-thanh-van-chuc-thu.png",
+    "id": "1784184183267"
+  },
+  {
+    "ten": "Võ Lâm Phong Vân Lục Vạn Chức Thư",
+    "ten_zh": "武林风云录万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tốc Độ Đánh{icon:tan-cong}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Võ Lâm Phong Vân Lục}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/vo-lam-phong-van-luc-van-chuc-thu.png",
+    "id": "1784184308997"
+  },
+  {
+    "ten": "Sơ Thiệp Giang Hồ Vạn Chức Thư",
+    "ten_zh": "初涉江湖万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Sơ Thiệp Giang Hồ}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/so-thiep-giang-ho-van-chuc-thu.png",
+    "id": "1784184421026"
+  },
+  {
+    "ten": "Tiểu Sủng Liên Manh Vạn Chức Thư",
+    "ten_zh": "小宠联萌万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Khí Huyết{icon:khi-huyet}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Tiểu Sủng Liên Manh}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/tieu-sung-lien-manh-van-chuc-thu.png",
+    "id": "1784184511675"
+  },
+  {
+    "ten": "Thiên Hạ Song Thế Vạn Chức Thư",
+    "ten_zh": "天下双势万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Thiên Hạ Song Thế}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/thien-ha-song-the-van-chuc-thu.png",
+    "id": "1784184596988"
+  },
+  {
+    "ten": "Kính Thiên Các Vạn Chức Thư",
+    "ten_zh": "镜天阁万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Khí Huyết{icon:khi-huyet}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Kính Thiên Các}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/kinh-thien-cac-van-chuc-thu.png",
+    "id": "1784184679076"
+  },
+  {
+    "ten": "Cố Thủ Vạn Chức Thư",
+    "ten_zh": "固守万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Phòng Thủ{icon:phong-thu}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Cố Thủ}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/co-thu-van-chuc-thu.png",
+    "id": "1784184811020"
+  },
+  {
+    "ten": "Lực Sĩ Vạn Chức Thư",
+    "ten_zh": "力士万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Khí Huyết{icon:khi-huyet}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Lực Sĩ}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/luc-si-van-chuc-thu.png",
+    "id": "1784184905197"
+  },
+  {
+    "ten": "Phá Quân Vạn Chức Thư",
+    "ten_zh": "破军万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +20%",
+    "dac_hieu": "Quân cờ trang bị nhận liên kết {Phá Quân}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/pha-quan-van-chuc-thu.png",
+    "id": "1784184993398"
+  },
+  {
+    "ten": "Chiến Sĩ Vạn Chức Thư",
+    "ten_zh": "战士万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Hút Máu{icon:hut-mau}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Chiến Sĩ}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/chien-si-van-chuc-thu.png",
+    "id": "1784185077375"
+  },
+  {
+    "ten": "Thích Khách Vạn Chức Thư",
+    "ten_zh": "刺客万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Thích Khách}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/thich-khach-van-chuc-thu.png",
+    "id": "1784185193325"
+  },
+  {
+    "ten": "Trọng Minh Vạn Chức Thư",
+    "ten_zh": "重鸣万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Hồi Phục Nội Lực{icon:hoi-phuc-noi-luc}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Trọng Minh}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/trong-minh-van-chuc-thu.png",
+    "id": "1784185340503"
+  },
+  {
+    "ten": "Hồi Nguyên Vạn Chức Thư",
+    "ten_zh": "回元万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Hồi Phục Nội Lực{icon:hoi-phuc-noi-luc}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Hồi Nguyên}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/hoi-nguyen-van-chuc-thu.png",
+    "id": "1784185435205"
+  },
+  {
+    "ten": "Mưu Sĩ Vạn Chức Thư",
+    "ten_zh": "谋士万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Chí Mạng{icon:chi-mang}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Mưu Sĩ}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/muu-si-van-chuc-thu.png",
+    "id": "1784185526141"
+  },
+  {
+    "ten": "Ngự Kiếm Vạn Chức Thư",
+    "ten_zh": "御剑万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tốc Độ Tấn Công: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Ngự Kiếm}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/ngu-kiem-van-chuc-thu.png",
+    "id": "1784185618108"
+  },
+  {
+    "ten": "Xạ Thủ Vạn Chức Thư",
+    "ten_zh": "射手万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +20%",
+    "dac_hieu": "• Quân cờ trang bị nhận liên kết {Xạ Thủ}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/xa-thu-van-chuc-thu.png",
+    "id": "1784185711865"
+  },
+  {
+    "ten": "Đàn Gia Chỉ Hoàn",
+    "ten_zh": "檀家指环",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +5%\n• Phòng Thủ{icon:phong-thu}: +5%\n• Khí Huyết{icon:khi-huyet}: +5%",
+    "dac_hieu": "• Chỉ {Đàn Thấm} có thể trang bị.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/dan-ga-chi-hoan.png",
+    "id": "1784185892640"
+  },
+  {
+    "ten": "Phổ Thông Đồng Tâm Kính",
+    "ten_zh": "普通同心镜",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Kéo lên quân cờ bậc {1~3} phí để nhận {1} bản sao {1} sao của quân cờ đó.",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/pho-thong-dong-tam-kinh.png",
+    "id": "1784186001849"
+  },
+  {
+    "ten": "Phúc Bảo Điệp Điệp Lạc",
+    "ten_zh": "福宝叠叠乐",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "Sử dụng lên quân cờ để một {Phúc Bảo} ngẫu nhiên đứng trên đầu, cung cấp {8%} thuộc tính tương ứng. Các quân cờ đồng minh khác cũng nhận {50%} hiệu quả này.\n• Kim Sắc Truyền Thuyết: Tấn Công{icon:tan-cong}\n• Kim Tiểu Hoa: Phòng Thủ{icon:phong-thu}\n• Phúc Phúc: Khí Huyết{icon:khi-huyet}\n• Thảo Linh Đang: Tốc Độ Tấn Công{icon:toc-do-tan-cong}\n• Vân Thanh Thanh: Hồi Phục Nội Lực{icon:hoi-phuc-noi-luc}\n• Mộ Mộ Yên: Tăng Sát Thương{icon:tang-sat-thuong}\n• Tuyết Lạc Anh: Giảm Sát Thương{icon:giam-sat-thuong}",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/phuc-bao-diep-diep-lac.png",
+    "id": "1784186242680"
+  },
+  {
+    "ten": "Hỏa Linh Châu",
+    "ten_zh": "火灵珠",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +20%\n• Hút Máu{icon:hut-mau}: +20%",
+    "dac_hieu": "• Khi thu thập đủ {5} Linh Châu trong khu vực trang bị (cần tháo các Linh Châu khỏi quân cờ), sẽ tự động hợp thành {Ngũ Linh Bảo Châu}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/hoa-linh-chau.png",
+    "id": "1784186356205"
+  },
+  {
+    "ten": "Thủy Linh Châu",
+    "ten_zh": "水灵珠",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +30%\n• Hồi Phục Nội Lực{icon:hoi-phuc-noi-luc}: +20%",
+    "dac_hieu": "• Khi thu thập đủ {5} Linh Châu trong khu vực trang bị (cần tháo các Linh Châu khỏi quân cờ), sẽ tự động hợp thành {Ngũ Linh Bảo Châu}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/thuy-linh-chau.png",
+    "id": "1784186460950"
+  },
+  {
+    "ten": "Thổ Linh Châu",
+    "ten_zh": "土灵珠",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Khí Huyết{icon:khi-huyet}: +50%\n• Phòng Thủ{icon:phong-thu}: +25%",
+    "dac_hieu": "• Khi thu thập đủ {5} Linh Châu trong khu vực trang bị (cần tháo các Linh Châu khỏi quân cờ), sẽ tự động hợp thành {Ngũ Linh Bảo Châu}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/tho-linh-chau.png",
+    "id": "1784186542988"
+  },
+  {
+    "ten": "Phong Linh Châu",
+    "ten_zh": "风灵珠",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +30%\n• Tốc Độ Tấn Công{icon:toc-do-tan-cong}: +30%",
+    "dac_hieu": "• Khi thu thập đủ {5} Linh Châu trong khu vực trang bị (cần tháo các Linh Châu khỏi quân cờ), sẽ tự động hợp thành {Ngũ Linh Bảo Châu}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/phong-linh-chau.png",
+    "id": "1784186631130"
+  },
+  {
+    "ten": "Lôi Linh Châu",
+    "ten_zh": "雷灵珠",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +40%\n• Chí Mạng{icon:chi-mang}: +40%",
+    "dac_hieu": "• Khi thu thập đủ {5} Linh Châu trong khu vực trang bị (cần tháo các Linh Châu khỏi quân cờ), sẽ tự động hợp thành {Ngũ Linh Bảo Châu}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/loi-linh-chau.png",
+    "id": "1784186721805"
+  },
+  {
+    "ten": "Dao Lâm Ngưng Trạch Cao",
+    "ten_zh": "瑶林凝泽膏",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Ở hiệp kế tiếp, nhận Giảm Sát Thương{icon:giam-sat-thuong}: +40%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/dao-lam-ngung-trach-cao.png",
+    "id": "1784186904804"
+  },
+  {
+    "ten": "Tiềm Uyên Diệu Dạ Châu",
+    "ten_zh": "潜渊耀夜珠",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Ở hiệp kế tiếp, nhận Tăng Sát Thương{icon:tang-sat-thuong}: +40%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/tiem-uyen-dieu-da-chau.png",
+    "id": "1784187060467"
+  },
+  {
+    "ten": "Võ Lâm Cựu Sự",
+    "ten_zh": "武林旧事",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Kéo lên bất kỳ quân cờ nào để đọc, có thể làm mới hiệu ứng. Toàn bộ quân cờ thuộc liên kết {Võ Lâm Phong Vân Lục} nhận:",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/vo-lam-cuu-su.png",
+    "id": "1784187347495"
   }
 ];
