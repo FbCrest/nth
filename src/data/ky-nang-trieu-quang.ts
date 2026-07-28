@@ -66,13 +66,13 @@ export const kyNangTrieuQuangData: GameItem[] = [
   details: `Đúc tạo {2} mặt {Thủy Kính} phía trước. Khi ở gần Thủy Kính, nhấn lại kỹ năng để xuyên qua đến mặt Thủy Kính còn lại.
 • {Hóa Giao}: Khi kỹ năng chưa hồi chiêu, sau khi sử dụng Yến Hồi Phong hoặc xuyên qua Thủy Kính, đẩy cần điều khiển sẽ thi triển {Linh Giao Nhập Hải}, nhận {Bá Thể} và {Giảm Sát Thương}, đồng thời điều khiển nước hóa thành {Thủy Linh} mang hình thái giao nhân. Thi triển kỹ năng khác sẽ hủy Linh Giao Nhập Hải và đưa kỹ năng vào hồi chiêu.
 • {Tịch Lưu}: Sau khi thi triển, nhận {1} tầng Tịch Lưu.
-• {Kính Trung Hoa}: Khi ở gần Thủy Kính, cứ mỗi {2 giây} nhận một lớp {Lá Chắn}.
+• {Kính Trung Hoa}: Khi ở gần Thủy Kính, cứ mỗi {2 giây} nhận một lớp {Khiên}.
 • {Quần Chiến}: Khi xung quanh có không dưới {5} người chơi phe địch, thời gian hồi chiêu giảm {6 giây}.`,
   detail: `• Thời gian tồn tại của Chú Kính: {200 giây}.
 • Thời gian duy trì Linh Giao Nhập Hải: {2.4/3.0 (Quần Chiến) giây}.
 • Tốc độ di chuyển tăng lên: {14}, duy trì {1.5 giây}.
 • Giảm sát thương của Linh Giao Nhập Hải: {25%}.
-• Giá trị Lá Chắn: {3%/10% (Quần Chiến)} giới hạn khí huyết tối đa.
+• Giá trị Khiên: {3%/10% (Quần Chiến)} giới hạn khí huyết tối đa.
 • Hồi chiêu: {18 giây}.`,
   upgrade: ``,
   imageUrl: '/images/ky-nang-mon-phai/trieu-quang/chu-kinh.png',
@@ -217,5 +217,165 @@ Có thể thi triển đòn {2} để dùng {Thu Thủy Kiếm} chém vỡ thủ
 • Hồi chiêu: {17 giây}.`,
   upgrade: ``,
   imageUrl: '/images/ky-nang-mon-phai/trieu-quang/linh-don-no-cau.png',
+},
+{
+  name: 'Thanh Tuyền',
+  nameZh: '清泉',
+  category: 'Kỹ năng',
+  monPhai: 'Triều Quang',
+  itemType: 'PVE - PVP',
+  stats: ['Thông Dụng', 'Hí Ngư', 'Hỗ Trợ'],
+  tags: ['Thông Dụng', 'Hí Ngư', 'Hỗ Trợ'],
+  details: `Triệu hồi Thủy Linh bảo hộ bản thân, nhận hiệu ứng {Linh Hựu} và {Phù Mộng}. Hiệu ứng {Phù Mộng} sẽ có hiệu lực sau một khoảng thời gian trì hoãn.
+• {Phù Mộng}: Khi đang trong trạng thái {Phù Mộng}, nếu chịu sát thương chí mạng dẫn đến tử vong, sẽ được Thủy Cầu bảo vệ. Trong thời gian này, bản thân ở trạng thái {Vô Địch}, {Không Thể Bị Chọn Làm Mục Tiêu} và có thể di chuyển chậm (trong {Luận Võ Công Bằng} và {Đại Hội Tỷ Võ}, thời gian duy trì ngắn hơn). Khi Khí Huyết hồi phục đến một tỷ lệ nhất định, hiệu ứng {Phù Mộng} sẽ kết thúc sớm. Hiệu ứng này dùng chung thời gian hồi với cả đội, trong {Phó Bản} và một số khu vực đặc biệt, thời gian hồi sẽ dài hơn.
+• {Linh Hựu}: Tăng sát thương gây ra.
+• {Thanh Tuyền · Ngộ}: Sau khi học kỹ năng, đồng đội xung quanh tăng một lượng nhỏ {Thân Pháp}.
+• {Thiên Trạch}: Sau khi thi triển, sát thương bản thân tăng {2%} trong {30 giây}.
+• {Tịch Lưu}: Sau khi thi triển, nhận {1} tầng {Tịch Lưu} và {Khiên}.`,
+  detail: `• Thời gian duy trì Linh Hựu/Phù Mộng: {30 giây}.
+• Sát thương tăng từ Linh Hựu: {3%}.
+• Giới hạn hồi máu trong thời gian Phù Mộng: {30%} Khí Huyết tối đa.
+• Thời gian hồi dùng chung của đội: {60 giây}.
+• Thời gian hồi dùng chung trong {Đại Hội Tỷ Võ}/{Phó Bản}: {90}/{180 giây}.
+• Thanh Tuyền · Ngộ: {Thân Pháp +12}.
+• Thời gian trì hoãn trước khi Phù Mộng có hiệu lực: {10 giây}.
+• Giá trị Khiên: {5%} Khí Huyết tối đa ({10%} trong {Quần Chiến}).
+• Hồi chiêu: {20 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-mon-phai/trieu-quang/thanh-tuyen.png',
+},
+{
+  name: 'Tịch Hải Dao Ca',
+  nameZh: '汐海遥歌',
+  category: 'Kỹ năng',
+  monPhai: 'Triều Quang',
+  itemType: 'PVE - PVP',
+  stats: ['Thông Dụng', 'Hí Ngư', 'Bá Thể', 'Suy Yếu'],
+  tags: ['Thông Dụng', 'Hí Ngư', 'Bá Thể', 'Suy Yếu'],
+  details: `Triệu hồi Hải Đồn cùng cất tiếng hát, nhận {Khiên}, đồng thời khiến người chơi phe địch trong phạm vi rơi vào trạng thái {Hải Dao}. Trong thời gian này, bản thân nhận {Giảm Sát Thương}. Kỹ năng cũng gây sát thương lên quái đơn thể ở khoảng cách ngoài {10 trượng}.
+• {Hải Dao}: Giảm sát thương của mục tiêu (có thời gian hồi nội tại).
+• {Hộ Thể}: Trong thời gian thi triển, bản thân nhận {Bá Thể} trong {2,4 giây}. Khi {Bá Thể} kết thúc sẽ gây một lần {Chấn Động} lên kẻ địch xung quanh. Trong {Quần Chiến}, {Bá Thể} duy trì trong toàn bộ thời gian kỹ năng.
+• {Tịch Lưu}: Sau khi thi triển, mỗi giây nhận {1} tầng {Tịch Lưu}.`,
+  detail: `• Sát thương mỗi lần: {2808} sát thương nội công.
+• Thời gian duy trì: {5,3 giây}.
+• Giảm sát thương bản thân: {20%}.
+• Giảm sát thương của mục tiêu: {20%}.
+• Thời gian duy trì hiệu ứng giảm sát thương của mục tiêu: {9 giây}.
+• Thời gian hồi nội tại của hiệu ứng: {18 giây}.
+• Giá trị Khiên: {0,8%} Khí Huyết tối đa ({1,7%} trong {Quần Chiến}).
+• Sát thương Chấn Động khi {Bá Thể} kết thúc: {4775} sát thương nội công.
+• Hồi chiêu: {20 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-mon-phai/trieu-quang/tich-hai-dao-ca.png',
+},
+{
+  name: 'Thương Cầu Lãng Dũng',
+  nameZh: '苍虬浪涌',
+  category: 'Kỹ năng',
+  monPhai: 'Triều Quang',
+  itemType: 'PVE - PVP',
+  stats: ['Thông Dụng', 'Bá Thể', 'QTE'],
+  tags: ['Thông Dụng', 'Bá Thể', 'QTE'],
+  details: `Triệu hồi {Thương Cầu} phun hơi thở về phía trước. Sau một khoảng trì hoãn ngắn sẽ gây sát thương lên khu vực trúng đòn. Trong thời gian thi triển, bản thân nhận {Bá Thể} và {Giảm Sát Thương}. Sau khi thi triển, nhận hiệu ứng {Khắc Boss}.
+• {Kiếm Phong}: Chỉ có thể thi triển khi sở hữu {5 tầng Tịch Lưu}. Sau khi thi triển, bản thân tiến vào trạng thái {Kiếm Phong}, thay đổi phương thức tấn công và di chuyển. Khi sử dụng kỹ năng sẽ tiêu hao {Tịch Lưu} để điều khiển {Thu Thủy Kiếm} gây thêm sát thương phạm vi lên mục tiêu.`,
+  detail: `• Sát thương giai đoạn 1: {3341} sát thương nội công.
+• Sát thương giai đoạn 2: {5345} sát thương nội công.
+• Sát thương cộng thêm của 4 lần đầu: {7127} sát thương nội công mỗi lần.
+• Sát thương cộng thêm lần thứ 5: {8909} sát thương nội công.
+• Giảm sát thương: {20%}.
+• Sát thương của {Thu Thủy Kiếm} lên {Kiến Trúc} tăng: {150%}.
+• Nhận Khắc Boss: {8%} trong {20 giây}.
+• Hồi chiêu: {18 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-mon-phai/trieu-quang/thuong-cau-lang-dung.png',
+},
+{
+  name: 'Bích Hải Linh Hựu',
+  nameZh: '碧海灵佑',
+  category: 'Kỹ năng',
+  monPhai: 'Triều Quang',
+  itemType: 'PVE - PVP',
+  stats: ['Thông Dụng', 'Bá Thể', 'Hỗ Trợ', 'QTE'],
+  tags: ['Thông Dụng', 'Bá Thể', 'Hỗ Trợ', 'QTE'],
+  details: `Giơ cao {Dao Hoa Trượng} giải phóng ánh sáng, khuếch tán hiệu ứng {Linh Hựu} và {Phù Mộng} đến toàn bộ đồng đội. Hiệu ứng {Phù Mộng} đang trong thời gian trì hoãn sẽ lập tức có hiệu lực. Trong thời gian thi triển kỹ năng, bản thân nhận {Bá Thể} và {Giảm Sát Thương}.
+• {Mộc Trạch}: Chỉ có thể thi triển khi sở hữu {5 tầng Tịch Lưu}. Sau khi thi triển, bản thân tiến vào trạng thái {Mộc Trạch}, cầm {Dao Châu Trượng}. Khi sử dụng kỹ năng sẽ tiêu hao {Tịch Lưu} để tăng thêm {Khắc Chế Môn Phái} và {Phòng Ngự Môn Phái} cho cả đội trong {5 giây} (thời gian duy trì có thể cộng dồn), đồng thời điều khiển {Dao Hoa Châu} hồi máu cho bản thân. Khi có trên {4} người chơi phe địch ở xung quanh, hiệu quả hồi máu sẽ được tăng mạnh.`,
+  detail: `• Tăng Khắc Chế Môn Phái/Phòng Ngự Môn Phái: {6%}.
+• Thời gian duy trì: {5 giây}.
+• Lượng hồi máu: {2%} Khí Huyết tối đa của bản thân.
+• Lượng hồi máu khi được cường hóa: {4%} Khí Huyết tối đa của bản thân.
+• Giảm sát thương: {20%}.
+• Hồi chiêu: {18 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-mon-phai/trieu-quang/bich-hai-linh-huu.png',
+},
+{
+  name: 'Liên Ba',
+  nameZh: '涟波',
+  category: 'Kỹ năng',
+  monPhai: 'Triều Quang',
+  itemType: 'PVE - PVP',
+  stats: ['Thông Dụng'],
+  tags: ['Thông Dụng'],
+  details: `Liên tục vung dòng nước về phía trước, gây sát thương.
+• {Linh Du}: Sau khi tích lũy {6} lần sử dụng {Liên Ba}, lần sử dụng tiếp theo sẽ được thay thế bằng {Liên Ba Cường Hóa}, gây sát thương liên tục lên khu vực phía trước.
+• {Tịch Lưu}: Sau khi tung đòn đánh thứ {3} hoặc sử dụng {Liên Ba Cường Hóa}, nhận {1} tầng {Tịch Lưu}.`,
+  detail: `• Sát thương đòn 1: {788} sát thương nội công.
+• Sát thương đòn 2: {788} sát thương nội công.
+• Sát thương đòn 3: {1314} sát thương nội công.
+• Sát thương Liên Ba Cường Hóa: {9402} sát thương nội công.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-mon-phai/trieu-quang/lien-ba.png',
+},
+{
+  name: 'Phù Sinh Phao Ảnh',
+  nameZh: '浮生泡影',
+  category: 'Kỹ năng',
+  monPhai: 'Triều Quang',
+  itemType: 'PVE - PVP',
+  stats: ['Thông Dụng', 'Khiên', 'Giải Khống'],
+  tags: ['Thông Dụng', 'Khiên', 'Giải Khống'],
+  details: `Giải trừ Khống Chế, lập tức nhận sự che chở của {Sứa Biển}. Trong thời gian duy trì, bản thân nhận {Bá Thể}, {Khiên} và {Giảm Sát Thương}.
+• {Che Chở}: Khi chịu sát thương sẽ nhận {Khiên}, tối đa kích hoạt {1} lần mỗi giây. {Khiên} sẽ bắt đầu suy giảm sau khi kỹ năng kết thúc và duy trì trong {2 giây}.
+• {Phao Ảnh}: Có thể thi triển lần {2} để kết thúc sớm trạng thái {Che Chở}.
+• {Quần Chiến}: Trong thời gian duy trì, nếu xung quanh có trên {5} người chơi phe địch, bản thân nhận thêm {20% Giảm Sát Thương}.`,
+  detail: `• Thời gian duy trì: {4 giây}.
+• Giảm sát thương: {30%}.
+• Giá trị Khiên: {5%} Khí Huyết tối đa ({15%} trong {Quần Chiến}).
+• Khi chịu sát thương nhận {Khiên}: {5%} Khí Huyết tối đa ({15%} trong {Quần Chiến}).
+• Hồi chiêu: {22 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-mon-phai/trieu-quang/phu-sinh-phao-anh.png',
+},
+{
+  name: 'Hãn Hải Lưu Thâm',
+  nameZh: '瀚海流深',
+  category: 'Kỹ năng',
+  monPhai: 'Triều Quang',
+  itemType: 'Bị Động',
+  stats: ['Thông Dụng'],
+  tags: ['Thông Dụng', 'Bị Động'],
+  details: `Triều Quang tăng {5%} sát thương kỹ năng môn phái. Khi Triều Quang ở trạng thái {Kiếm Phong} hoặc {Mộc Trạch}, thi triển kỹ năng môn phái sẽ tăng hiệu ứng này lên {9%} trong {5 giây}.
+Đây là kỹ năng {Bị Động} của Triều Quang, không cần trang bị.`,
+  detail: `• Tăng sát thương kỹ năng môn phái: {5%}.
+• Khi ở trạng thái Kiếm Phong}/{Mộc Trạch: tăng lên {9%}.
+• Thời gian duy trì hiệu ứng cường hóa: {5 giây}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-mon-phai/trieu-quang/han-hai-luu-tham.png',
+},
+{
+  name: 'Thương Minh Viễn',
+  nameZh: '沧溟远',
+  category: 'Kỹ năng',
+  monPhai: 'Triều Quang',
+  itemType: 'Bị Động',
+  stats: ['Thông Dụng'],
+  tags: ['Thông Dụng', 'Bị Động'],
+  details: `Kỹ năng của {Triều Quang} được chia thành hai hệ: {Hí Ngư} và {Hóa Nhận}. Khi Triều Quang trang bị từ {3} kỹ năng trở lên thuộc cùng một hệ, sát thương của các kỹ năng thuộc hệ đó gây lên {Quái Vật} sẽ được tăng.
+• {Hí Ngư}: Linh Đồn, Phi Sa, Tịch Hải Dao Ca, Châu Vũ, Thanh Tuyền.
+• {Hóa Nhận}: Kinh Đào/Kiếm Quang Như Triều, Phi Hoa Tiễn Lệ, Chú Kính, Thủy Nhận, Khuynh Hà.
+Đây là kỹ năng {Bị Động} của Triều Quang, không cần trang bị.`,
+  detail: `• Sát thương kỹ năng gây lên Quái Vật: +{20%}.`,
+  upgrade: ``,
+  imageUrl: '/images/ky-nang-mon-phai/trieu-quang/thuong-minh-vien.png',
 },
 ];
