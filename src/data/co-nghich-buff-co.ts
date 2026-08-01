@@ -199,5 +199,53 @@ export const buffCoData: BuffCo[] = [
     "mo_ta": "Trong chiến đấu, các quân cờ không trang bị được tăng {20%} Khí huyết và {20%} Phòng thủ.",
     "image_url": "/images/co-nghich-thuy-han/tam-ngo/bo-y-thiet-cot.png",
     "id": "1784008990275"
+  },
+  {
+    "ten": "Tái Ông Thất Mã",
+    "ten_zh": "塞翁失马",
+    "do_hiem": "Xanh",
+    "mo_ta": "• Khi quân cờ của bạn bị hạ gục, có {35%} xác suất nhận {1} vàng.",
+    "image_url": "/images/co-nghich-thuy-han/tam-ngo/xanh/tai-ong-that-ma.png",
+    "id": "1785564336187"
+  },
+  {
+    "ten": "Võ Lâm Tân Tú",
+    "ten_zh": "武林新秀",
+    "do_hiem": "Xanh",
+    "mo_ta": "• Nhận ngẫu nhiên {2} quân cờ {1} vàng, {1} sao, đồng thời vĩnh viễn tăng {15%} Tấn công.\n• Khi thăng lên {2} sao, hiệu quả tăng Tấn công được nhân {300%}, đồng thời nhận {5} vàng.",
+    "image_url": "/images/co-nghich-thuy-han/tam-ngo/xanh/vo-lam-tan-tu.png",
+    "id": "1785564779786"
+  },
+  {
+    "ten": "Người Đông Thế Mạnh",
+    "ten_zh": "人多势众",
+    "do_hiem": "Xanh",
+    "mo_ta": "• Trong các trận đối đầu giữa kỳ thủ, nếu số lượng quân cờ ra trận của bạn nhiều hơn đối thủ, nhận {2/4/6} điểm kinh nghiệm. Nếu chọn hiệu ứng này ở giai đoạn 2, sẽ nhận thêm {4} điểm kinh nghiệm.",
+    "image_url": "/images/co-nghich-thuy-han/tam-ngo/xanh/nguoi-dong-the-manh.png",
+    "id": "1785564888995"
+  },
+  {
+    "ten": "Dưỡng Tinh Súc Nhuệ",
+    "ten_zh": "养精蓄锐",
+    "do_hiem": "Xanh",
+    "mo_ta": "• Trong {3} hiệp tiếp theo, không được mua quân cờ hoặc nâng cấp kinh nghiệm. Sau đó, nhận {20} vàng.",
+    "image_url": "/images/co-nghich-thuy-han/tam-ngo/xanh/duong-tinh-suc-nhe.png",
+    "id": "1785565007288"
+  },
+  {
+    "ten": "Thoát Thai Hoán Cốt",
+    "ten_zh": "脱胎换骨",
+    "do_hiem": "Xanh",
+    "mo_ta": "• Toàn bộ quân cờ đang ra trận sẽ ngẫu nhiên biến thành quân cờ có giá cao hơn {1} bậc.",
+    "image_url": "/images/co-nghich-thuy-han/tam-ngo/xanh/thoat-thai-hoan-cot.png",
+    "id": "1785565094667"
+  },
+  {
+    "ten": "Tiêu Dao Du Tâm",
+    "ten_zh": "逍遥游心",
+    "do_hiem": "Xanh",
+    "mo_ta": "• Nhận {1} đồng minh viện trợ: Bộ Tiểu Hư. Cô ấy có thể triệu hồi Phi Kiếm, nhưng có thể rời trận bất cứ lúc nào.",
+    "image_url": "/images/co-nghich-thuy-han/tam-ngo/xanh/tieu-dao-du-tam.png",
+    "id": "1785565234752"
   }
 ];

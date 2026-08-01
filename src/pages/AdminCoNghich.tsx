@@ -155,6 +155,7 @@ async function loadHandleData(key: string): Promise<{ handle: FileSystemDirector
 const DIR_KEY_DEFAULTS: Record<string, string> = {
   'trang-bi': 'images/co-nghich-thuy-han/trang-bi',
   'buff-kiem': 'images/co-nghich-thuy-han/buff-kiem',
+  'buff':      'images/co-nghich-thuy-han/tam-ngo',
   'default':   'images/co-nghich-thuy-han',
 };
 
@@ -540,7 +541,7 @@ function ModalBuff({ item, onClose, onSaved }: { item: CoNghichBuffRow | null; o
         <form onSubmit={handleSubmit}>
           <div className="flex gap-5 p-5">
             <div style={{ width: 160, flexShrink: 0 }}>
-              <ImageUploader bucket="co-nghich-images" preview={form.image_url} onChange={url => setForm(p => ({ ...p, image_url: url }))} />
+              <ImageUploader bucket="co-nghich-images" dirKey="buff" preview={form.image_url} onChange={url => setForm(p => ({ ...p, image_url: url }))} />
             </div>
             <div className="flex flex-col gap-3 flex-1">
               <div>
