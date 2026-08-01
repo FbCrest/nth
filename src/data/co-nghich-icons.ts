@@ -76,6 +76,12 @@ export const coNghichIcons: CoNghichIcon[] = [
     "label": "Giảm Sát Thương",
     "image_url": "/images/co-nghich-thuy-han/icon-thuoc-tinh/giam-sat-thuong.png",
     "id": "1784049180601"
+  },
+  {
+    "slug": "tam-danh",
+    "label": "Tầm Đánh",
+    "image_url": "/images/co-nghich-thuy-han/icon-thuoc-tinh/tam-danh.png",
+    "id": "1785227022451"
   }
 ];
 

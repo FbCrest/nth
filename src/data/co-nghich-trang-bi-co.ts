@@ -1115,5 +1115,194 @@ export const trangBiCoData: TrangBiCo[] = [
     "dac_hieu": null,
     "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/vo-lam-cuu-su.png",
     "id": "1784187347495"
+  },
+  {
+    "ten": "Bách Biến Vạn Chức Thư",
+    "ten_zh": "百变万职书",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Sau khi quân cờ trang bị, khi trận đấu kết thúc, trang bị này sẽ biến thành một {Vạn Chức Thư} ngẫu nhiên (có xác suất cao hơn biến thành {Vạn Chức Thư} thuộc {Liên Kết} mà người trang bị đang sở hữu).",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/bach-bien-van-chuc-thu.png",
+    "id": "1785225364476"
+  },
+  {
+    "ten": "Cao Cấp Đồng Tâm Kính",
+    "ten_zh": "高级同心镜",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Kéo lên bất kỳ quân cờ nào để nhận 1 bản sao {1 Sao} của quân cờ đó.",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/cao-cap-dong-tam-kinh.png",
+    "id": "1785225560588"
+  },
+  {
+    "ten": "Tố Phong Trọng Đoán Khí",
+    "ten_zh": "塑锋重锻器",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Kéo lên quân cờ để ngẫu nhiên biến trang bị của quân cờ đó thành một trang bị khác có cùng {Phẩm Chất}.",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/to-phong-trong-doan-khi.png",
+    "id": "1785225694226"
+  },
+  {
+    "ten": "Bích Huyết · Kim Điêu Yên Tiên",
+    "ten_zh": "碧血·金雕鞍鞯",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Phòng Thủ{icon:phong-thu}: +{30%}.",
+    "dac_hieu": "• Tăng {20%} hiệu quả {Khiên}. Trong thời gian có {Khiên}, nhận {Miễn Khống}.\n• {Thần Binh Bích Huyết}: Tăng {7%} sát thương gây ra{icon:tang-sat-thuong} và giảm {7%} sát thương phải chịu{icon:giam-sat-thuong} cho các quân cờ thuộc {Bích Huyết Doanh}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/bich-huyet-kim-dieu-yen-tien.png",
+    "id": "1785225943974"
+  },
+  {
+    "ten": "Bích Huyết · Phá Trận Chiến Kích",
+    "ten_zh": "碧血·破阵战戟",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Khí Huyết{icon:khi-huyet}: +{15%}.\n• Hồi Phục Nội Lực{icon:hoi-phuc-noi-luc}: +{15%}.",
+    "dac_hieu": "• Khi gây {Choáng}, gây thêm {10%} Sát thương chuẩn lên mục tiêu.\n• {Thần Binh Bích Huyết}: Tăng {7%} sát thương gây ra{icon:tang-sat-thuong} và giảm {7%} sát thương phải chịu{icon:giam-sat-thuong} cho các quân cờ thuộc {Bích Huyết Doanh}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/bich-huyet-pha-tran-chien-kich.png",
+    "id": "1785226160759"
+  },
+  {
+    "ten": "Bích Huyết · Mạn Quyển Vân Đao",
+    "ten_zh": "碧血·漫卷云刀",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tốc Độ Tấn Công{icon:toc-do-tan-cong}: +{30%}.",
+    "dac_hieu": "• Tầm Đánh{icon:tam-danh}: +{1 ô}. Mỗi đòn {Đánh Thường} cộng dồn {1% Hút Máu}, tối đa {30} tầng.\n• {Thần Binh Bích Huyết}: Tăng {7%} sát thương gây ra{icon:tang-sat-thuong} và giảm {7%} sát thương phải chịu{icon:giam-sat-thuong} cho các quân cờ thuộc {Bích Huyết Doanh}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/bich-huyen-man-quyen-van-dao.png",
+    "id": "1785227102393"
+  },
+  {
+    "ten": "Bích Huyết Đan Tâm Xí Kỳ",
+    "ten_zh": "碧血丹心炽旗",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Phòng Thủ{icon:phong-thu}: +{15%}.\n• Hồi Phục Nội Lực{icon:hoi-phuc-noi-luc}: +{15%}.",
+    "dac_hieu": "• Sau khi bắt đầu trận đấu, nhận {50%} Hồi Phục Nội Lực{icon:hoi-phuc-noi-luc} trong {10 giây}.\n• {Thần Binh Bích Huyết}: Tăng {7%} sát thương gây ra{icon:tang-sat-thuong} và giảm {7%} sát thương phải chịu{icon:giam-sat-thuong} cho các quân cờ thuộc {Bích Huyết Doanh}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/bich-huyet-dan-tam-xi-ky.png",
+    "id": "1785227342611"
+  },
+  {
+    "ten": "Bích Huyết · Hoàng Sa Chiến Giáp",
+    "ten_zh": "碧血·黄沙战甲",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +{30%}.",
+    "dac_hieu": "• Phá Phòng{icon:pha-phong}: +{25}.\n• {Thần Binh Bích Huyết}: Tăng {7%} sát thương gây ra{icon:tang-sat-thuong} và giảm {7%} sát thương phải chịu{icon:giam-sat-thuong} cho các quân cờ thuộc {Bích Huyết Doanh}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/bich-huyet-hoang-sa-chien-giap.png",
+    "id": "1785227454399"
+  },
+  {
+    "ten": "Bích Huyết · Điều Binh Hổ Phù",
+    "ten_zh": "碧血·调兵虎符",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +{15%}.\n• Chí Mạng{icon:chi-mang}: +{10%}.\n• Hút Máu{icon:hut-mau}: +{10%}.",
+    "dac_hieu": "• Nhận {10%} Tăng sát thương{icon:tang-sat-thuong}. Mỗi quân cờ thuộc {Bích Huyết Doanh} bên phe ta sẽ tăng thêm {2%} hiệu ứng này.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/bich-huyet-doanh-dieu-binh-ho-phu.png",
+    "id": "1785227756040"
+  },
+  {
+    "ten": "Bích Huyết · Vô Tồi Liên Bích",
+    "ten_zh": "碧血·无摧连璧",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Khí Huyết{icon:khi-huyet}: +{15%}.\n• Phòng Thủ{icon:phong-thu}: +{15%}.",
+    "dac_hieu": "• Nhận {10%} Giảm Sát Thương{icon:giam-sat-thuong}. Mỗi quân cờ thuộc {Bích Huyết Doanh} bên phe ta sẽ tăng thêm {2%} hiệu ứng này.\n• {Thần Binh Bích Huyết}: Tăng {7%} sát thương gây ra{icon:tang-sat-thuong} và giảm {7%} sát thương phải chịu{icon:giam-sat-thuong} cho các quân cờ thuộc {Bích Huyết Doanh}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/bich-huyet-vo-toi-lien-bich.png",
+    "id": "1785228047135"
+  },
+  {
+    "ten": "Canh Mạnh Bà",
+    "ten_zh": "孟婆汤",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": null,
+    "dac_hieu": "Dùng lên quân cờ thuộc Minh Uyên, sẽ kích hoạt hiệu ứng khác nhau tùy theo Luân Hồi hiện tại.\n• {Thiên Thần Đạo}: Mất {2} điểm Khí Huyết Kỳ Thủ, quân cờ {Minh Uyên} nhận {20%} Tăng Sát Thương và {20%} Giảm Sát Thương.\n• {Địa Ngục Đạo}: Quân cờ {Minh Uyên} nhận {13%} Tăng sát thương và {13%} Giảm Sát Thương.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/canh-manh-ba.png",
+    "id": "1785228239089"
+  },
+  {
+    "ten": "Thiên Hoang Dị Văn",
+    "ten_zh": "天荒异闻",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "Kéo lên bất kỳ quân cờ nào để xem lại, có thể làm mới hiệu ứng. Khiến quân cờ Võ Lâm Phong Vân Lục mạnh nhất nhận được:",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/thien-hoang-di-van.png",
+    "id": "1785562416364"
+  },
+  {
+    "ten": "Tương Ngộ",
+    "ten_zh": "遇见",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Khí Huyết{icon:khi-huyet}: +20%",
+    "dac_hieu": "• Nếu Đàn Thấm còn sống khi trận đấu kết thúc, nhận {1} vàng. Chỉ có thể trang bị cho Đàn Thấm.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/tuong-ngo.png",
+    "id": "1785562536784"
+  },
+  {
+    "ten": "Cô Tinh",
+    "ten_zh": "孤星",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +10%\n• Phòng Thủ{icon:phong-thu}: +10%",
+    "dac_hieu": "• Khi bắt đầu trận đấu, nếu trong phạm vi {2} ô xung quanh Đàn Thấm không có quân cờ đồng minh, nhận {10%} tăng sát thươn{icon:tang-sat-thuong} và {10%} giảm sát thương{icon:giam-sat-thuong}. Chỉ có thể trang bị cho Đàn Thấm.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/co-tinh.png",
+    "id": "1785562743988"
+  },
+  {
+    "ten": "Lệnh Chú Ma Cổ",
+    "ten_zh": "魔蛊咒令",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Dùng lên quân cờ không thuộc Ma Thiên. Khi bắt đầu trận đấu, quân cờ đó sẽ nhận {300%} tăng trưởng thuộc tính của quân cờ Ma Thiên gần nhất với nó.",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/lenh-chu-ma-co.png",
+    "id": "1785562827654"
+  },
+  {
+    "ten": "Ma Chủ · Vạn Cổ Xà Trượng",
+    "ten_zh": "魔主·万蛊蛇杖",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Người mang sẽ triển khai U Minh Độc Trì, mỗi giây gây {2%} sát thương chuẩn theo Khí huyết lên các mục tiêu trong phạm vi {2} ô, đồng thời hồi {2%} Khí huyết cho bản thân mỗi giây.\n• {Bích Huyết Thần Binh}: Cung cấp cho toàn bộ quân cờ Bích Huyết Doanh {7%} tăng sát thương{icon:tang-sat-thuong} và {7%} giảm sát thương{icon:giam-sat-thuong}",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/ma-chu-van-co-xa-truong.png",
+    "id": "1785563024733"
+  },
+  {
+    "ten": "Lệnh Bài Võ Lâm Minh Chủ",
+    "ten_zh": "武林盟主令",
+    "danh_muc": "Tấn công",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +50%\n• Chí Mạng{icon:chi-mang}: +50%\n• Tốc Độ Tấn Công{icon:toc-do-tan-cong}: +30%\n• Hồi Phục Nội lực{icon:hoi-phuc-noi-luc}: +30%",
+    "dac_hieu": "• Nếu quân cờ mang trang bị này bị hạ gục, kỳ thủ sẽ trực tiếp thua trận đấu của hiệp đó.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/lenh-bai-vo-lam-minh-chu.png",
+    "id": "1785563159856"
+  },
+  {
+    "ten": "Thừa Thương Khải",
+    "ten_zh": "承殇铠",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +50%\n• Phòng Thủ{icon:phong-thu}: +50%\n• Khí Huyết{icon:khi-huyet}: +50%",
+    "dac_hieu": "• Khi quân cờ mang trang bị này bị hạ gục, quân cờ kết liễu sẽ nhận toàn bộ thuộc tính của trang bị này trong phần còn lại của hiệp đấu hiện tại.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/thua-thuong-khai.png",
+    "id": "1785563265380"
+  },
+  {
+    "ten": "Hiệp Ảnh Đan Tâm",
+    "ten_zh": "侠影丹心",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Kéo lên bất kỳ quân cờ nào để xem lại, có thể làm mới hiệu ứng. Khiến tất cả quân cờ đang ra trận nhận được:",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/hiep-anh-dan-tam.png",
+    "id": "1785563500275"
+  },
+  {
+    "ten": "Chương Liệt Trận",
+    "ten_zh": "列阵之章",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Khí Huyết{icon:khi-huyet}: +10%\n• Tấn Công{icon:tan-cong}: +10%",
+    "dac_hieu": "• Giới hạn số lượng quân cờ ra trận {+1}.",
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/chuong-liet-tran.png",
+    "id": "1785563590687"
+  },
+  {
+    "ten": "Ngũ Linh Bảo Châu",
+    "ten_zh": "五灵宝珠",
+    "danh_muc": "Đặc biệt",
+    "hieu_qua": "• Tấn Công{icon:tan-cong}: +40%\n• Khí Huyết{icon:khi-huyet}: +40%\n• Phòng Thủ{icon:phong-thu}: +40%\n• Tốc Độ Tấn Công{icon:toc-do-tan-cong}: +40%\n• Hồi Phục Nội lực{icon:hoi-phuc-noi-luc}: +40%\n• Chí Mạng{icon:chi-mang}: +40%\n• Hút Máu{icon:hut-mau}: +40%",
+    "dac_hieu": null,
+    "image_url": "/images/co-nghich-thuy-han/trang-bi/dac-biet/ngu-linh-bao-chau.png",
+    "id": "1785563721119"
   }
 ];
