@@ -128,6 +128,16 @@ function GeneralDropdown({ openDropdown, leftItems, monPhaiItems, isActive, hand
 }) {
   const [monPhaiOpen, setMonPhaiOpen] = useState(false);
   const monPhaiTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // track which phái are showing alt form: Set of ids
+  const [altMap, setAltMap] = useState<Set<string>>(new Set());
+  const toggleAlt = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setAltMap(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
 
   const openMP   = () => { if (monPhaiTimer.current) clearTimeout(monPhaiTimer.current); setMonPhaiOpen(true); };
   const closeMP  = () => { monPhaiTimer.current = setTimeout(() => setMonPhaiOpen(false), 100); };
@@ -204,29 +214,66 @@ function GeneralDropdown({ openDropdown, leftItems, monPhaiItems, isActive, hand
                     <div className="flex-1" style={{ height: 1, backgroundColor: 'rgba(0,255,170,0.18)' }} />
                   </div>
                   <motion.div initial="hidden" animate="visible" className="flex flex-col gap-0.5">
-                    {monPhaiItems.map((mp, mi) => (
-                      <motion.button
-                        key={mp.id} custom={mi} variants={itemVariants}
-                        onClick={() => handleNavigate(mp.id)}
-                        className="w-full text-left px-3 py-1.5 text-sm cursor-pointer flex items-center gap-2.5 rounded-md relative overflow-hidden"
-                        style={{
-                          color: isActive(mp.id) ? mp.color : 'rgba(255,255,255,0.72)',
-                          backgroundColor: isActive(mp.id) ? `${mp.color}18` : 'transparent',
-                          transition: 'background-color 0.15s, color 0.15s',
-                        }}
-                        whileHover={{ x: 4, color: mp.color, backgroundColor: `${mp.color}18` } as never}
-                        transition={{ duration: 0.15 }}
-                      >
-                        {isActive(mp.id) && (
-                          <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-4 rounded-r-full"
-                            style={{ backgroundColor: mp.color }} />
-                        )}
-                        <img src={mp.icon} alt={mp.label} className="relative z-10 shrink-0 rounded-sm"
-                          style={{ width: 22, height: 22, objectFit: 'contain',
-                            filter: isActive(mp.id) ? `drop-shadow(0 0 4px ${mp.color}99)` : 'brightness(0.85)' }} />
-                        <span className="relative z-10">{mp.label}</span>
-                      </motion.button>
-                    ))}
+                    {monPhaiItems.map((mp, mi) => {
+                      const isAlt = altMap.has(mp.id) && !!mp.alt;
+                      const displayLabel = isAlt ? mp.alt!.label : mp.label;
+                      const displayColor = isAlt ? mp.alt!.color : mp.color;
+                      return (
+                        <motion.div
+                          key={mp.id} custom={mi} variants={itemVariants}
+                          className="flex items-center rounded-md relative overflow-hidden group"
+                          style={{
+                            color: isActive(mp.id) ? displayColor : 'rgba(255,255,255,0.72)',
+                            backgroundColor: isActive(mp.id) ? `${displayColor}18` : 'transparent',
+                            transition: 'background-color 0.15s, color 0.15s',
+                          }}
+                        >
+                          {/* Main navigate button */}
+                          <motion.button
+                            onClick={() => handleNavigate(mp.id)}
+                            className="flex-1 flex items-center gap-2.5 px-3 py-1.5 text-sm cursor-pointer text-left"
+                            whileHover={{ x: 3, color: displayColor, backgroundColor: `${displayColor}15` } as never}
+                            transition={{ duration: 0.15 }}
+                          >
+                            {isActive(mp.id) && (
+                              <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-4 rounded-r-full"
+                                style={{ backgroundColor: displayColor }} />
+                            )}
+                            <motion.img
+                              src={mp.icon} alt={displayLabel}
+                              animate={{ rotate: isAlt ? 180 : 0, opacity: isAlt ? 0.85 : 1 }}
+                              transition={{ duration: 0.3 }}
+                              style={{ width: 22, height: 22, objectFit: 'contain', flexShrink: 0,
+                                filter: isActive(mp.id) ? `drop-shadow(0 0 4px ${displayColor}99)` : 'brightness(0.85)' }}
+                            />
+                            <motion.span
+                              animate={{ color: displayColor }}
+                              transition={{ duration: 0.2 }}
+                              className="relative z-10"
+                              style={{ color: isActive(mp.id) ? displayColor : undefined }}
+                            >
+                              {displayLabel}
+                            </motion.span>
+                          </motion.button>
+                          {/* Toggle alt button — chỉ hiện nếu có alt */}
+                          {mp.alt && (
+                            <motion.button
+                              onClick={e => toggleAlt(mp.id, e)}
+                              className="px-1.5 py-1.5 cursor-pointer shrink-0"
+                              title={isAlt ? `Đổi về ${mp.label}` : `Đổi sang ${mp.alt.label}`}
+                              whileHover={{ scale: 1.25, opacity: 1 }}
+                              whileTap={{ scale: 0.85 }}
+                              transition={{ duration: 0.15 }}
+                              style={{ color: displayColor, opacity: isAlt ? 1 : 0.45 }}
+                            >
+                              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                                <path d="M7.5 11L3 6.5L7.5 2v3H14v2H7.5v3Zm9 11L12 17.5l4.5-4.5v3H10v-2h6.5v-3L21 17.5 16.5 22Z"/>
+                              </svg>
+                            </motion.button>
+                          )}
+                        </motion.div>
+                      );
+                    })}
                   </motion.div>
                 </motion.div>
               )}
@@ -430,24 +477,48 @@ export default function Navbar({ onNavigate, currentPage }: {
                     >
                       {/* Grid 2 cột môn phái với icon + màu phái */}
                       <div className="grid grid-cols-2 gap-1 px-1 py-1.5">
-                        {monPhaiItems.map(mp => (
-                          <button
-                            key={mp.id}
-                            onClick={() => handleNavigate(mp.id)}
-                            className="flex items-center gap-2 px-3 rounded-xl text-left transition-colors"
-                            style={{
-                              minHeight: 40,
-                              color: isActive(mp.id) ? mp.color : 'rgba(255,255,255,0.72)',
-                              backgroundColor: isActive(mp.id) ? `${mp.color}18` : 'rgba(255,255,255,0.04)',
-                              border: isActive(mp.id) ? `1px solid ${mp.color}40` : '1px solid transparent',
-                            }}
-                          >
-                            <img src={mp.icon} alt={mp.label}
-                              style={{ width: 20, height: 20, objectFit: 'contain', flexShrink: 0,
-                                filter: isActive(mp.id) ? `drop-shadow(0 0 3px ${mp.color}99)` : 'brightness(0.85)' }} />
-                            <span className="text-xs font-medium leading-tight">{mp.label}</span>
-                          </button>
-                        ))}
+                        {monPhaiItems.map(mp => {
+                          const isAlt = altMap.has(mp.id) && !!mp.alt;
+                          const displayLabel = isAlt && mp.alt ? mp.alt.label : mp.label;
+                          const displayColor = isAlt && mp.alt ? mp.alt.color : mp.color;
+                          return (
+                            <div key={mp.id} className="flex items-center rounded-xl overflow-hidden"
+                              style={{
+                                backgroundColor: isActive(mp.id) ? `${displayColor}18` : 'rgba(255,255,255,0.04)',
+                                border: isActive(mp.id) ? `1px solid ${displayColor}40` : '1px solid transparent',
+                                transition: 'background-color 0.2s, border-color 0.2s',
+                              }}
+                            >
+                              <button
+                                onClick={() => handleNavigate(mp.id)}
+                                className="flex-1 flex items-center gap-2 px-3 text-left"
+                                style={{ minHeight: 40, color: isActive(mp.id) ? displayColor : 'rgba(255,255,255,0.72)' }}
+                              >
+                                <img src={mp.icon} alt={displayLabel}
+                                  style={{ width: 20, height: 20, objectFit: 'contain', flexShrink: 0,
+                                    filter: isActive(mp.id) ? `drop-shadow(0 0 3px ${displayColor}99)` : 'brightness(0.85)' }} />
+                                <span className="text-xs font-medium leading-tight"
+                                  style={{ color: isActive(mp.id) ? displayColor : undefined }}>
+                                  {displayLabel}
+                                </span>
+                              </button>
+                              {/* Alt toggle */}
+                              {mp.alt && (
+                                <button
+                                  onClick={e => toggleAlt(mp.id, e)}
+                                  title={isAlt ? `Đổi về ${mp.label}` : `Đổi sang ${mp.alt.label}`}
+                                  className="px-2 self-stretch flex items-center"
+                                  style={{ color: displayColor, opacity: isAlt ? 1 : 0.4,
+                                    borderLeft: `1px solid ${displayColor}25` }}
+                                >
+                                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+                                    <path d="M7.5 11L3 6.5L7.5 2v3H14v2H7.5v3Zm9 11L12 17.5l4.5-4.5v3H10v-2h6.5v-3L21 17.5 16.5 22Z"/>
+                                  </svg>
+                                </button>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
                     </motion.div>
                   )}

@@ -3,17 +3,36 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Copy, Check, ArrowRight, ArrowLeftRight, RefreshCw, ChevronDown } from 'lucide-react';
 
 const classes = [
-  { vn: 'Thiết Y',     zh: '铁衣', icon: '/images/icon-phai/thiet-y.png' },
+  { vn: 'Thiết Y',     zh: '铁衣', icon: '/images/icon-phai/thiet-y.png',
+    variants: [
+      { vn: 'Thiết Y',     zh: '铁衣' },
+      { vn: 'Thiết Y Phá', zh: '破铁' },
+      { vn: 'Thiết Y Ngự', zh: '御铁' },
+    ] },
   { vn: 'Cửu Linh',   zh: '九灵', icon: '/images/icon-phai/cuu-linh.png' },
-  { vn: 'Tố Vấn',     zh: '素问', icon: '/images/icon-phai/to-van.png' },
+  { vn: 'Tố Vấn',     zh: '素问', icon: '/images/icon-phai/to-van.png',
+    variants: [
+      { vn: 'Tố Vấn',   zh: '素问' },
+      { vn: 'Thiên Vấn', zh: '天问' },
+    ] },
   { vn: 'Toái Mộng',  zh: '碎梦', icon: '/images/icon-phai/toai-mong.png' },
   { vn: 'Huyết Hà',   zh: '血河', icon: '/images/icon-phai/huyet-ha.png' },
   { vn: 'Thần Tương', zh: '神相', icon: '/images/icon-phai/than-tuong.png' },
   { vn: 'Long Ngâm',  zh: '龙吟', icon: '/images/icon-phai/long-ngam.png' },
   { vn: 'Huyền Cơ',   zh: '玄机', icon: '/images/icon-phai/huyen-co.png' },
   { vn: 'Triều Quang',zh: '潮光', icon: '/images/icon-phai/trieu-quang.png' },
-  { vn: 'Thương Lan', zh: '沧澜', icon: '/images/icon-phai/thuong-lang.png' },
-  { vn: 'Hồng Âm',   zh: '鸿音', icon: '/images/icon-phai/hong-am.png' },
+  { vn: 'Thương Lan', zh: '沧澜', icon: '/images/icon-phai/thuong-lang.png',
+    variants: [
+      { vn: 'Thương Lan', zh: '沧澜' },
+      { vn: 'Cuồng Lan',  zh: '狂澜' },
+      { vn: 'Trấn Hải',   zh: '镇海' },
+    ] },
+  { vn: 'Hồng Âm',   zh: '鸿音', icon: '/images/icon-phai/hong-am.png',
+    variants: [
+      { vn: 'Hồng Âm',  zh: '鸿音' },
+      { vn: 'Kinh Hồng', zh: '惊鸿' },
+      { vn: 'Diệu Âm',  zh: '妙音' },
+    ] },
 ];
 
 type ClassType = typeof classes[0];
@@ -100,7 +119,17 @@ export default function ClassChangeCommand() {
   const [oldClass, setOldClass] = useState<ClassType | null>(null);
   const [newClass, setNewClass] = useState<ClassType | null>(null);
   const [copiedCmd, setCopiedCmd] = useState(false);
+  // variantIdx: map zh gốc → index variant hiện tại (0 = dạng gốc)
+  const [variantIdx, setVariantIdx] = useState<Map<string, number>>(new Map());
 
+  const cycleVariant = (zh: string, total: number) => {
+    setVariantIdx(prev => {
+      const next = new Map(prev);
+      const cur = next.get(zh) ?? 0;
+      next.set(zh, (cur + 1) % total);
+      return next;
+    });
+  };
   const command = oldClass && newClass
     ? `我已知流派转换的相关规则，自愿承担从${oldClass.zh}转为${newClass.zh}带来的后果和风险`
     : null;
@@ -190,22 +219,58 @@ export default function ClassChangeCommand() {
       <div>
         <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: 'var(--text-3)' }}>Danh sách môn phái</p>
         <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-          {classes.map((c, i) => (
-            <motion.div
-              key={c.zh}
-              initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.03, duration: 0.2 }}
-              className="flex flex-col items-center gap-2 p-3 rounded-xl border transition-colors duration-150"
-              style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--bg-hover)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-strong)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--bg-card)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)'; }}
-            >
-              <img src={c.icon} alt={c.vn} className="w-10 h-10 object-contain" referrerPolicy="no-referrer" />
-              <div className="text-center">
-                <div className="text-[20px] leading-tight select-text" style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 100, fontStyle: 'normal' }}>{c.vn}</div>
-                <div className="font-chinese text-[16px] leading-tight mt-0.5 select-text" style={{ color: 'var(--text-1)' }}>{c.zh}</div>
-              </div>
-            </motion.div>
-          ))}
+          {classes.map((c, i) => {
+            const idx = variantIdx.get(c.zh) ?? 0;
+            const display = c.variants ? c.variants[idx] : c;
+            const isAltActive = idx > 0;
+            return (
+              <motion.div
+                key={c.zh}
+                initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.03, duration: 0.2 }}
+                className="relative flex flex-col items-center gap-2 p-3 rounded-xl border transition-colors duration-150"
+                style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border)' }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--bg-hover)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--border-strong)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = 'var(--bg-card)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)'; }}
+              >
+                {/* Toggle button */}
+                {c.variants && (
+                  <button
+                    onClick={() => cycleVariant(c.zh, c.variants!.length)}
+                    title={`Dạng ${idx + 1}/${c.variants.length} — bấm để chuyển`}
+                    className="absolute top-2 right-2 p-1 rounded-md transition-colors"
+                    style={{
+                      color: isAltActive ? '#f59e0b' : 'var(--text-3)',
+                      backgroundColor: isAltActive ? 'rgba(245,158,11,0.12)' : 'transparent',
+                    }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(245,158,11,0.15)'; (e.currentTarget as HTMLElement).style.color = '#f59e0b'; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = isAltActive ? 'rgba(245,158,11,0.12)' : 'transparent'; (e.currentTarget as HTMLElement).style.color = isAltActive ? '#f59e0b' : 'var(--text-3)'; }}
+                  >
+                    <ArrowLeftRight size={11} />
+                  </button>
+                )}
+                <img src={c.icon} alt={display.vn} className="w-10 h-10 object-contain" referrerPolicy="no-referrer" />
+                <div className="text-center">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                      key={display.vn}
+                      initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <div className="text-[20px] leading-tight select-text"
+                        style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 100 }}>
+                        {display.vn}
+                      </div>
+                      <div className="font-chinese text-[18px] leading-tight mt-1.5 select-text font-medium"
+                        style={{ color: 'var(--text-1)' }}>
+                        {display.zh}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </motion.div>
