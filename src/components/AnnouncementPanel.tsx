@@ -102,7 +102,12 @@ function renderMarkdown(md: string) {
 }
 
 export default function AnnouncementPanel() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState<boolean>(() => {
+    // Lần đầu vào web (chưa có key) → hiện panel (false)
+    // Các lần sau → đọc từ localStorage
+    const saved = localStorage.getItem('nth-ann-collapsed');
+    return saved === null ? false : saved === 'true';
+  });
   const [panelBottom, setPanelBottom] = useState(FOOTER_H + EDGE_GAP + 120 + PANEL_GAP);
   const bodyRef = useRef<HTMLDivElement>(null);
 
@@ -257,7 +262,11 @@ export default function AnnouncementPanel() {
 
       {/* ── Toggle button ── */}
       <button
-        onClick={() => setCollapsed(c => !c)}
+        onClick={() => setCollapsed(c => {
+          const next = !c;
+          localStorage.setItem('nth-ann-collapsed', String(next));
+          return next;
+        })}
         title={collapsed ? 'Mở thông báo' : 'Thu gọn'}
         style={{
           width: 16,
