@@ -435,7 +435,7 @@ export default function VuKhiThuaAnh() {
   };
 
   const colWidths = useMemo(() => {
-    const measure = (text: string, font = '14px Nunito, sans-serif') => {
+    const measure = (text: string, font = '14px NghichThuyHan, sans-serif') => {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       if (!ctx) return text.length * 8;
@@ -443,7 +443,7 @@ export default function VuKhiThuaAnh() {
       return ctx.measureText(text).width;
     };
     const pad = 40;
-    const nameW = Math.max(measure('TÊN', 'bold 14px Nunito'), ...filteredItems.map(i => measure(i.name, 'bold 16px Nunito')), ...filteredItems.map(i => measure(i.nameZh || '', '16px serif'))) + pad;
+    const nameW = Math.max(measure('TÊN', 'bold 14px NghichThuyHan'), ...filteredItems.map(i => measure(i.name, 'bold 16px NghichThuyHan')), ...filteredItems.map(i => measure(i.nameZh || '', '16px serif'))) + pad;
     return { img: 100, name: Math.ceil(nameW) };
   }, [filteredItems]);
 

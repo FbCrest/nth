@@ -178,7 +178,7 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
 
   // Tính width các cột dựa trên nội dung thực tế
   const colWidths = useMemo(() => {
-    const measure = (text: string, font = '14px Nunito, sans-serif') => {
+    const measure = (text: string, font = '14px NghichThuyHan, sans-serif') => {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       if (!ctx) return text.length * 8;
@@ -189,21 +189,21 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
 
     // Cột Tên: tên VN dài nhất
     const nameW = Math.max(
-      measure('TÊN', 'bold 14px Nunito, sans-serif'),
-      ...filteredItems.map(i => measure(i.name, 'bold 16px Nunito, sans-serif')),
+      measure('TÊN', 'bold 14px NghichThuyHan, sans-serif'),
+      ...filteredItems.map(i => measure(i.name, 'bold 16px NghichThuyHan, sans-serif')),
       ...filteredItems.map(i => measure(i.nameZh || '', '16px FZSSKSJ, serif')),
     ) + pad;
 
     // Cột Hệ
     const elW = Math.max(
-      measure('HỆ', 'bold 14px Nunito, sans-serif'),
-      ...filteredItems.map(i => measure(i.monPhai || i.sect || i.element || '—', 'bold 12px Nunito, sans-serif')),
+      measure('HỆ', 'bold 14px NghichThuyHan, sans-serif'),
+      ...filteredItems.map(i => measure(i.monPhai || i.sect || i.element || '—', 'bold 12px NghichThuyHan, sans-serif')),
     ) + pad + 16; // badge padding
 
     // Cột Loại
     const typeW = Math.max(
-      measure('LOẠI', 'bold 14px Nunito, sans-serif'),
-      ...filteredItems.map(i => measure(i.itemType || i.sect || i.category || '—', 'bold 12px Nunito, sans-serif')),
+      measure('LOẠI', 'bold 14px NghichThuyHan, sans-serif'),
+      ...filteredItems.map(i => measure(i.itemType || i.sect || i.category || '—', 'bold 12px NghichThuyHan, sans-serif')),
     ) + pad + 16;
 
     return { img: 100, name: Math.ceil(nameW), el: Math.ceil(elW), type: Math.ceil(typeW) };
@@ -224,7 +224,7 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       if (!ctx) return undefined;
-      ctx.font = '14px Nunito, sans-serif';
+      ctx.font = '14px NghichThuyHan, sans-serif';
       const textWidth = ctx.measureText(longest).width;
       // + padding left/right (px-4 = 16px * 2) + scrollbar (8px) + buffer (8px)
       return Math.ceil(textWidth) + 48;

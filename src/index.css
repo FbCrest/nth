@@ -1,6 +1,14 @@
 @import "tailwindcss";
 
 @font-face {
+  font-family: 'NghichThuyHan';
+  src: url('/fonts/Nghich Thuy Han - VNG Bold.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'FZSSKSJ';
   src: url('/fonts/fzssksj_z.woff') format('woff');
   font-weight: normal;
@@ -18,7 +26,7 @@
 }
 
 @theme {
-  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "NghichThuyHan", sans-serif;
   --font-chinese: "FZSSKSJ", serif;
   --font-skill: "FzGameBr", serif;
 }
