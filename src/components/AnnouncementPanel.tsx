@@ -189,7 +189,7 @@ export default function AnnouncementPanel() {
               clipPath: 'polygon(0 0, 100% 0, calc(100% - 5px) 100%, 0 100%)',
               whiteSpace: 'nowrap',
               textShadow: '0 1px 3px rgba(0,0,0,0.5)',
-              fontFamily: 'FzGameBr, var(--font-skill, serif)',
+              fontFamily: 'var(--font-skill, sans-serif)',
               height: 24,
               display: 'inline-flex',
               alignItems: 'center',
@@ -202,7 +202,7 @@ export default function AnnouncementPanel() {
               letterSpacing: '0.12em',
               color: C.textSub,
               textTransform: 'uppercase',
-              fontFamily: 'FzGameBr, var(--font-skill, serif)',
+              fontFamily: 'var(--font-skill, sans-serif)',
               lineHeight: 1,
             }}>
               THÔNG BÁO

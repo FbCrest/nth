@@ -191,7 +191,7 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
     const nameW = Math.max(
       measure('TÊN', 'bold 14px NghichThuyHan, sans-serif'),
       ...filteredItems.map(i => measure(i.name, 'bold 16px NghichThuyHan, sans-serif')),
-      ...filteredItems.map(i => measure(i.nameZh || '', '16px FZSSKSJ, serif')),
+      ...filteredItems.map(i => measure(i.nameZh || '', '16px NghichThuyHan, sans-serif')),
     ) + pad;
 
     // Cột Hệ

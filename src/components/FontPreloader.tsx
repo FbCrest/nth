@@ -18,8 +18,7 @@ export default function FontPreloader() {
       }}
     >
       <span style={{ fontFamily: 'NghichThuyHan' }}>preload</span>
-      <span style={{ fontFamily: 'FzGameBr' }}>preload</span>
-      <span style={{ fontFamily: 'FZSSKSJ' }}>预载</span>
+      <span style={{ fontFamily: 'NghichThuyHan' }}>预载</span>
     </div>
   );
 }

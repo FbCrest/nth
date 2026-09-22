@@ -2,33 +2,32 @@
 
 @font-face {
   font-family: 'NghichThuyHan';
-  src: url('/fonts/Nghich Thuy Han - VNG Bold.ttf') format('truetype');
+  src: url('/fonts/Nghich Thuy Han VNG.ttf') format('truetype');
   font-weight: 400 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'FZSSKSJ';
-  src: url('/fonts/fzssksj_z.woff') format('woff');
-  font-weight: normal;
+  font-family: 'FZHBR';
+  src: url('/fonts/FZ HBR.ttf') format('truetype'), url('/fonts/Font VNG.woff2') format('woff2'), url('/fonts/Font VNG.woff') format('woff');
+  font-weight: 400 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'FzGameBr';
-  src: url('/fonts/Fz GameBr.woff2') format('woff2'),
-       url('/fonts/Fz GameBr.ttf') format('truetype');
-  font-weight: normal;
+  src: url('/fonts/Fz GameBr.ttf') format('truetype');
+  font-weight: 400 900;
   font-style: normal;
   font-display: swap;
 }
 
 @theme {
   --font-sans: "NghichThuyHan", sans-serif;
-  --font-chinese: "FZSSKSJ", serif;
-  --font-skill: "FzGameBr", serif;
+  --font-chinese: "NghichThuyHan", sans-serif;
+  --font-skill: "FZHBR", "FzGameBr", sans-serif;
 }
 
 /* Explicit class-based dark mode strategy for Tailwind 4 */

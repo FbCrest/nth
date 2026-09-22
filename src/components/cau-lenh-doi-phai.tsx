@@ -258,11 +258,11 @@ export default function ClassChangeCommand() {
                       transition={{ duration: 0.15 }}
                     >
                       <div className="text-[20px] leading-tight select-text"
-                        style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 100 }}>
+                        style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 100, marginBottom: 0 }}>
                         {display.vn}
                       </div>
-                      <div className="font-chinese text-[18px] leading-tight mt-1.5 select-text font-medium"
-                        style={{ color: 'var(--text-1)' }}>
+                      <div className="font-chinese text-[18px] leading-tight select-text font-medium"
+                        style={{ color: 'var(--text-1)', marginTop: 0 }}>
                         {display.zh}
                       </div>
                     </motion.div>
