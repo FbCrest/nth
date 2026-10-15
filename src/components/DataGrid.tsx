@@ -125,8 +125,40 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
     return Array.from(all).sort((a, b) => a.localeCompare(b, 'vi'));
   }, [items]);
 
-  const highlightText = (text: string, item?: GameItem) => {
+  const highlightText = (text: string, item?: GameItem, statisticsOnly = false) => {
     if (!text) return text;
+
+    if (statisticsOnly) {
+      const normalized = text.replace(/([^\n])•/g, '$1\n•');
+      const result: React.ReactNode[] = [];
+      normalized.split('\n').forEach((line, lineIndex) => {
+        if (lineIndex > 0) result.push(<br key={`stats-br-${lineIndex}`} />);
+        const colonIndex = line.indexOf(':');
+        if (colonIndex < 0) {
+          result.push(line.replace(/\{([^}]+)\}/g, '$1'));
+          return;
+        }
+
+        result.push(line.slice(0, colonIndex + 1));
+        const valueText = line.slice(colonIndex + 1);
+        const valuePattern = /\{[^}]*\}|[+-]?\d+(?:[.,]\d+)*(?:\s*%|\s*(?:giây|phút|điểm|lần|tầng|người|trượng|HP))?/gi;
+        let cursor = 0;
+        for (const match of valueText.matchAll(valuePattern)) {
+          const token = match[0];
+          const start = match.index ?? 0;
+          if (start > cursor) result.push(valueText.slice(cursor, start));
+          const value = token.startsWith('{') ? token.slice(1, -1) : token;
+          if (/\d/.test(value)) {
+            result.push(<span key={`stats-value-${lineIndex}-${start}`} className="text-red-600 font-bold">{value}</span>);
+          } else {
+            result.push(value);
+          }
+          cursor = start + token.length;
+        }
+        if (cursor < valueText.length) result.push(valueText.slice(cursor));
+      });
+      return result;
+    }
     
     // Cú pháp: {từ cần highlight} sẽ được highlight màu đỏ
     // \n và • (đầu dòng) sẽ được render thành <br/>
@@ -838,7 +870,7 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
                   ) : activeModalTab === 'stats' ? (
                     <>
                       <ScrollableContent label="Thông số">
-                        <p className="font-medium leading-relaxed" style={{ color: '#3b3b3b', fontSize: '14px' }}>{highlightText(selectedItem.detail || '', selectedItem)}</p>
+                        <p className="font-medium leading-relaxed" style={{ color: '#3b3b3b', fontSize: '14px' }}>{highlightText(selectedItem.detail || '', selectedItem, true)}</p>
                       </ScrollableContent>
                     </>
                   ) : (
