@@ -9,16 +9,16 @@
 }
 
 @font-face {
-  font-family: 'FZHBR';
-  src: url('/fonts/FZ HBR.ttf') format('truetype'), url('/fonts/Font VNG.woff2') format('woff2'), url('/fonts/Font VNG.woff') format('woff');
+  font-family: 'HYDiShengYingXiongTiW';
+  src: url('/fonts/HYDiShengYingXiongTiW.ttf') format('truetype');
   font-weight: 400 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'FzGameBr';
-  src: url('/fonts/Fz GameBr.ttf') format('truetype');
+  font-family: 'FzBoldGame';
+  src: url('/fonts/Fz Bold Game.ttf') format('truetype');
   font-weight: 400 900;
   font-style: normal;
   font-display: swap;
@@ -27,7 +27,7 @@
 @theme {
   --font-sans: "NghichThuyHan", sans-serif;
   --font-chinese: "NghichThuyHan", sans-serif;
-  --font-skill: "FZHBR", "FzGameBr", sans-serif;
+  --font-skill: "FzBoldGame", sans-serif;
 }
 
 /* Explicit class-based dark mode strategy for Tailwind 4 */

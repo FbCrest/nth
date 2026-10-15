@@ -11,7 +11,7 @@ export default function Home() {
         playsInline
         className="w-full h-full object-cover block"
       >
-        <source src="https://h.v.netease.com/2026/0824/03d818017e3a33127a7c44d991043b76.mp4" />
+        <source src="https://h.v.netease.com/2026/0921/0d8a43c898bb56fadd7fe751c4415812.mp4" />
       </video>
 
       {/* Hai component fixed độc lập, giống dự án Web */}

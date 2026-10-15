@@ -1,5 +1,5 @@
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Menu, X, Home, BookOpen, Swords, ChevronRight, Video, Monitor, ShieldAlert } from 'lucide-react';
 
 const ACCENT = '#00FFAA';
@@ -128,6 +128,10 @@ function GeneralDropdown({ openDropdown, leftItems, monPhaiItems, isActive, hand
 }) {
   const [monPhaiOpen, setMonPhaiOpen] = useState(false);
   const monPhaiTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    if (openDropdown !== 'general') setMonPhaiOpen(false);
+  }, [openDropdown]);
+
   // track which phái are showing alt form: Set of ids
   const [altMap, setAltMap] = useState<Set<string>>(new Set());
   const toggleAlt = (id: string, e: React.MouseEvent) => {

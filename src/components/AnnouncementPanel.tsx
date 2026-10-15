@@ -24,81 +24,78 @@ const C = {
 };
 
 const ANN = {
-  tag: 'Phiên Bản 4.0',
-  date: '26/07/2026',
-  content: `## Cập nhật trang chủ
--Cập nhật kỹ năng phái **Triều Quang**
-- Cập nhật danh sách **nội công phiên bản 4.0** mới nhât
-- Thêm trình chơi nhạc nền playlist **Nhạc Trung**
-- Thêm menu **Web Dịch Video Douyin** và **Tool Quét & Dịch Màn Hình**
-
-## Nội dung wiki
-- Bổ sung kỹ năng môn phái **Thương Lan**
-- Cập nhật hướng dẫn phó bản 12 người
-
----
-Cảm ơn anh em đã đồng hành cùng wiki! 💙`,
+  tag: 'CẬP NHẬT',
+  events: [
+    {
+      date: '15/10/2026',
+      category: 'NỘI DUNG WIKI',
+      title: 'Bổ sung kỹ năng môn phái Huyết Hà',
+      detail: 'Thêm danh sách kỹ năng, mô tả hiệu ứng và chỉ số cho phái Huyết Hà.',
+    },
+    {
+      date: '26/07/2026',
+      category: 'NỘI DUNG WIKI',
+      title: 'Bổ sung kỹ năng môn phái Thương Lan',
+      detail: 'Mở rộng dữ liệu kỹ năng và hiệu ứng cho phái Thương Lan.',
+    },
+    {
+      date: '26/07/2026',
+      category: 'PHÓ BẢN',
+      title: 'Cập nhật hướng dẫn phó bản 12 người',
+      detail: 'Bổ sung và chỉnh sửa nội dung hướng dẫn phó bản.',
+    },
+    {
+      date: '26/07/2026',
+      category: 'TRANG CHỦ',
+      title: 'Cập nhật kỹ năng phái Triều Quang',
+      detail: 'Bổ sung nội dung kỹ năng mới cho Triều Quang.',
+    },
+    {
+      date: '26/07/2026',
+      category: 'NỘI CÔNG · PHIÊN BẢN 4.0',
+      title: 'Cập nhật danh sách nội công',
+      detail: 'Bổ sung danh sách nội công phiên bản 4.0.',
+    },
+    {
+      date: '26/07/2026',
+      category: 'TRANG CHỦ',
+      title: 'Thêm playlist Nhạc Trung',
+      detail: 'Bổ sung trình phát nhạc nền playlist Nhạc Trung.',
+    },
+    {
+      date: '26/07/2026',
+      category: 'CÔNG CỤ',
+      title: 'Thêm công cụ dịch và quét màn hình',
+      detail: 'Bổ sung Web Dịch Video Douyin và Tool Quét & Dịch Màn Hình.',
+    },
+  ],
+  footer: 'Cảm ơn anh em đã đồng hành cùng wiki! 💙',
 };
 
-function renderMarkdown(md: string) {
-  const lines = md.split('\n');
-  const result: React.ReactNode[] = [];
-  let i = 0;
-
-  while (i < lines.length) {
-    const line = lines[i];
-
-    if (line.startsWith('### ')) {
-      result.push(
-        <h3 key={i} style={{ fontWeight: 700, color: C.gold, fontSize: 11.5, margin: '10px 0 4px', paddingLeft: 8, borderLeft: `2px solid ${C.red}` }}>
-          {line.slice(4)}
-        </h3>
-      );
-    } else if (line.startsWith('## ')) {
-      result.push(
-        <h2 key={i} style={{ fontWeight: 700, color: C.gold, fontSize: 12, margin: '10px 0 4px', paddingLeft: 8, borderLeft: `2px solid ${C.red}` }}>
-          {line.slice(3)}
-        </h2>
-      );
-    } else if (line.startsWith('# ')) {
-      result.push(
-        <h1 key={i} style={{ fontWeight: 800, color: C.gold, fontSize: 13, margin: '10px 0 4px', paddingLeft: 8, borderLeft: `2px solid ${C.red}` }}>
-          {line.slice(2)}
-        </h1>
-      );
-    } else if (line.startsWith('- ')) {
-      // thu thập tất cả dòng list liên tiếp
-      const items: string[] = [];
-      while (i < lines.length && lines[i].startsWith('- ')) {
-        items.push(lines[i].slice(2));
-        i++;
-      }
-      result.push(
-        <ul key={`ul-${i}`} style={{ listStyle: 'none', padding: 0, margin: '2px 0 6px' }}>
-          {items.map((it, j) => (
-            <li key={j} style={{ display: 'flex', gap: 6, marginBottom: 3, alignItems: 'flex-start' }}>
-              <span style={{ color: C.red, fontWeight: 900, fontSize: 11, lineHeight: 1.65, flexShrink: 0 }}>•</span>
-              <span
-                style={{ color: C.textMain, fontSize: 11.5, lineHeight: 1.65 }}
-                dangerouslySetInnerHTML={{ __html: it.replace(/\*\*(.+?)\*\*/g, `<strong style="color:${C.gold};font-weight:700">$1</strong>`) }}
-              />
-            </li>
-          ))}
-        </ul>
-      );
-      continue;
-    } else if (line.trim() !== '') {
-      const html = line.replace(/\*\*(.+?)\*\*/g, `<strong style="color:${C.gold};font-weight:700">$1</strong>`);
-      result.push(
-        <p key={i} style={{ display: 'flex', gap: 6, marginBottom: 4, alignItems: 'flex-start' }}>
-          <span style={{ color: C.red, fontWeight: 900, fontSize: 11, lineHeight: 1.65, flexShrink: 0 }}>•</span>
-          <span style={{ color: C.textMain, fontSize: 11.5, lineHeight: 1.65 }} dangerouslySetInnerHTML={{ __html: html }} />
-        </p>
-      );
-    }
-    i++;
-  }
-  return result;
+function renderTimeline() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      {ANN.events.map((event, index) => (
+        <article key={`${event.date}-${event.title}`} style={{ display: 'grid', gridTemplateColumns: '58px minmax(0, 1fr)', gap: 8 }}>
+          <time style={{ color: C.textSub, fontSize: 10, fontWeight: 700, lineHeight: 1.4, paddingTop: 2, whiteSpace: 'nowrap' }}>
+            {event.date}
+          </time>
+          <div style={{ position: 'relative', borderLeft: `1px solid ${C.sep}`, padding: '0 0 12px 11px' }}>
+            <span style={{ position: 'absolute', left: -4, top: 3, width: 7, height: 7, borderRadius: '50%', background: index === 0 ? C.redLight : C.gold, boxShadow: `0 0 8px ${C.redGlow}` }} />
+            <div style={{ color: C.gold, fontSize: 9.5, fontWeight: 800, letterSpacing: '0.08em', lineHeight: 1.4, marginBottom: 2 }}>
+              {event.category}
+            </div>
+            <div style={{ color: C.textMain, fontSize: 12.5, fontWeight: 700, lineHeight: 1.45, marginBottom: 2 }}>
+              {event.title}
+            </div>
+            <p style={{ color: C.textSub, fontSize: 11.5, lineHeight: 1.5, margin: 0 }}>
+              {event.detail}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
 }
 
 export default function AnnouncementPanel() {
@@ -208,9 +205,6 @@ export default function AnnouncementPanel() {
               THÔNG BÁO
             </span>
           </div>
-          <span style={{ fontSize: 11, color: C.textSub, fontStyle: 'italic', whiteSpace: 'nowrap', lineHeight: 1 }}>
-            {ANN.date}
-          </span>
         </div>
 
         {/* Separator */}
@@ -236,9 +230,7 @@ export default function AnnouncementPanel() {
             wordBreak: 'break-word',
           }}
         >
-          <div className="nth-ann-md">
-            {renderMarkdown(ANN.content.split('\n---\n')[0])}
-          </div>
+          {renderTimeline()}
         </div>
 
         {/* Closing — cố định phía dưới, không scroll */}
@@ -252,12 +244,9 @@ export default function AnnouncementPanel() {
           fontStyle: 'italic',
           letterSpacing: '0.03em',
         }}
-          dangerouslySetInnerHTML={{
-            __html: (ANN.content.split('\n---\n')[1] ?? '')
-              .replace(/\*\*(.+?)\*\*/g, `<strong style="color:${C.gold};font-weight:700">$1</strong>`)
-              .replace(/([\u{1F300}-\u{1FAFF}]|[\u2600-\u27BF])/gu, '<span class="nth-heartbeat">$1</span>'),
-          }}
-        />
+        >
+          {ANN.footer}
+        </div>
       </div>
 
       {/* ── Toggle button ── */}

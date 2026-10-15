@@ -24,6 +24,7 @@ import { GameItem } from './types';
 import { noiCongData } from './data/noi-cong';
 import { tuyetKyData } from './data/tuyet-ky';
 import { kyNangCuuLinhData } from './data/ky-nang-cuu-linh';
+import { kyNangHuyetHaData } from './data/ky-nang-huyet-ha';
 import { kyNangGiangHoData } from './data/ky-nang-giang-ho';
 import { kyNangHongAmData } from './data/ky-nang-hong-am';
 import { kyNangLongNgamData } from './data/ky-nang-long-ngam';
@@ -37,6 +38,7 @@ const mockData: Record<string, GameItem[]> = {
   'noi-cong': noiCongData,
   'tuyet-ky': tuyetKyData,
   'ky-nang-cuu-linh': kyNangCuuLinhData,
+  'ky-nang-huyet-ha': kyNangHuyetHaData,
   'ky-nang-hong-am': kyNangHongAmData,
   'ky-nang-long-ngam': kyNangLongNgamData,
   'ky-nang-than-tuong': kyNangThanTuongData,
@@ -51,6 +53,7 @@ const categoryTitles: Record<string, string> = {
   'noi-cong': 'Nội công',
   'tuyet-ky': 'Tuyệt kỹ',
   'ky-nang-cuu-linh': 'Kỹ năng Cửu Linh',
+  'ky-nang-huyet-ha': 'Kỹ năng Huyết Hà',
   'ky-nang-hong-am': 'Kỹ năng Hồng Âm',
   'ky-nang-long-ngam': 'Kỹ năng Long Ngâm',
   'ky-nang-than-tuong': 'Kỹ năng Thần Tương',
@@ -103,6 +106,7 @@ function AppLayout() {
                     path={`/${key}`}
                     element={
                       <DataGrid
+                        key={key}
                         title={categoryTitles[key] || 'Kỹ năng'}
                         items={mockData[key] as GameItem[]}
                         isNoiCong={key === 'noi-cong'}

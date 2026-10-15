@@ -125,11 +125,31 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
     return Array.from(all).sort((a, b) => a.localeCompare(b, 'vi'));
   }, [items]);
 
-  const highlightText = (text: string) => {
+  const highlightText = (text: string, item?: GameItem) => {
     if (!text) return text;
     
     // Cú pháp: {từ cần highlight} sẽ được highlight màu đỏ
     // \n và • (đầu dòng) sẽ được render thành <br/>
+    const highlightTerms: string[] = [];
+    const isSectSkill = item?.category === 'Kỹ năng' && !!item.monPhai;
+    const isNoiCongSkill = item?.category === 'Nội công';
+    if (isSectSkill || isNoiCongSkill) {
+      items.forEach(skill => highlightTerms.push(skill.name, ...(skill.stats ?? []), ...(skill.tags ?? [])));
+    }
+    if (isSectSkill) {
+      const headingPattern = /(?:^|\n)•\s*([^:\n]+):/g;
+      let headingMatch: RegExpExecArray | null;
+      while ((headingMatch = headingPattern.exec(text)) !== null) {
+        highlightTerms.push(headingMatch[1].trim());
+      }
+    }
+    const escapedTerms = [...new Set(highlightTerms)]
+      .sort((a, b) => b.length - a.length)
+      .map(term => term.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&'));
+    if (isNoiCongSkill) escapedTerms.push('\\d+(?:[.,]\\d+)?\\s*(?:%|giây|phút|điểm|lần|tầng)');
+    const termPattern = escapedTerms.length
+      ? new RegExp(`(${escapedTerms.join('|')})`, 'gi')
+      : null;
     const pattern = /\{([^}]+)\}/g;
     const parts = text.split(pattern);
     
@@ -144,7 +164,17 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
         const lines = normalized.split('\n');
         lines.forEach((line, li) => {
           if (li > 0) result.push(<br key={`${i}-br-${li}`} />);
-          if (line) result.push(line);
+          if (line) {
+            const lineParts = termPattern ? line.split(termPattern) : [line];
+            lineParts.forEach((part, pi) => {
+              if (!part) return;
+              if (termPattern && pi % 2 === 1) {
+                result.push(<span key={`${i}-${li}-${pi}`} className="text-red-600 font-bold">{part}</span>);
+              } else {
+                result.push(part);
+              }
+            });
+          }
         });
       }
     });
@@ -190,7 +220,7 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
     // Cột Tên: tên VN dài nhất
     const nameW = Math.max(
       measure('TÊN', 'bold 14px NghichThuyHan, sans-serif'),
-      ...filteredItems.map(i => measure(i.name, 'bold 16px NghichThuyHan, sans-serif')),
+      ...filteredItems.map(i => measure(i.name, '22px FzBoldGame, sans-serif')),
       ...filteredItems.map(i => measure(i.nameZh || '', '16px NghichThuyHan, sans-serif')),
     ) + pad;
 
@@ -451,8 +481,8 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
                     </td>
                     <td className="px-5 py-4 text-center" style={{ borderRight: '1px solid var(--border)' }}>
                       <div className="flex flex-col items-center gap-0.5">
-                        <span className="text-xl tracking-tight" style={{ color: 'var(--text-1)', fontFamily: 'var(--font-skill)', fontWeight: 100, fontStyle: 'normal' }}>{item.name}</span>
-                        {item.nameZh && <span className="text-base font-chinese" style={{ color: 'var(--text-1)' }}>{item.nameZh}</span>}
+                        <span className="text-[22px] tracking-tight" style={{ color: 'color-mix(in srgb, var(--text-1) 75%, var(--text-2))', fontFamily: 'var(--font-skill)', fontWeight: 100, fontStyle: 'normal' }}>{item.name}</span>
+                        {item.nameZh && <span className="text-base font-chinese" style={{ color: 'color-mix(in srgb, var(--text-1) 75%, var(--text-2))' }}>{item.nameZh}</span>}
                       </div>
                     </td>
                     {isNoiCongPage ? (
@@ -555,7 +585,7 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
                         </span>
                       </td>
                     )}
-                    <td className="px-6 py-4 font-medium leading-relaxed max-w-md" style={{ color: '#3b3b3b', fontSize: '14px' }}>{highlightText(item.details)}</td>
+                    <td className="px-6 py-4 font-medium leading-relaxed max-w-md" style={{ color: '#3b3b3b', fontSize: '14px' }}>{highlightText(item.details, item)}</td>
                   </tr>
                 );
               }) : (
@@ -563,7 +593,9 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
                   <td colSpan={4} className="px-6 py-16 text-center">
                     <div className="flex flex-col items-center gap-2">
                       <span className="text-3xl opacity-20">🔍</span>
-                      <p className="text-sm font-medium" style={{ color: 'var(--text-3)' }}>Không tìm thấy kết quả phù hợp</p>
+                      <p className="text-sm font-medium" style={{ color: 'var(--text-3)' }}>
+                        {items.length === 0 ? 'Chưa có dữ liệu kỹ năng' : 'Không tìm thấy kết quả phù hợp'}
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -800,19 +832,19 @@ export default function DataGrid({ title, items, isNoiCong = false, isTuyetKy = 
                   {activeModalTab === 'detail' ? (
                     <>
                       <ScrollableContent label="Mô tả chi tiết">
-                        <p className="font-medium leading-relaxed" style={{ color: '#3b3b3b', fontSize: '14px' }}>{highlightText(selectedItem.details)}</p>
+                        <p className="font-medium leading-relaxed" style={{ color: '#3b3b3b', fontSize: '14px' }}>{highlightText(selectedItem.details, selectedItem)}</p>
                       </ScrollableContent>
                     </>
                   ) : activeModalTab === 'stats' ? (
                     <>
                       <ScrollableContent label="Thông số">
-                        <p className="font-medium leading-relaxed" style={{ color: '#3b3b3b', fontSize: '14px' }}>{highlightText(selectedItem.detail || '')}</p>
+                        <p className="font-medium leading-relaxed" style={{ color: '#3b3b3b', fontSize: '14px' }}>{highlightText(selectedItem.detail || '', selectedItem)}</p>
                       </ScrollableContent>
                     </>
                   ) : (
                     <>
                       <ScrollableContent label="Nâng cấp kỹ năng">
-                        <p className="font-medium leading-relaxed" style={{ color: '#3b3b3b', fontSize: '14px' }}>{highlightText(selectedItem.upgrade || '')}</p>
+                        <p className="font-medium leading-relaxed" style={{ color: '#3b3b3b', fontSize: '14px' }}>{highlightText(selectedItem.upgrade || '', selectedItem)}</p>
                       </ScrollableContent>
                     </>
                   )}
