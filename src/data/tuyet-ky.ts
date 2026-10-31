@@ -141,7 +141,7 @@ Sau khi toàn bộ phi kiếm kết thúc tấn công, có thể điều khiển
 • {Quy Hạp}: Thu thập danh kiếm để nhận hiệu quả khắc chế Thủ Lĩnh và hiệu ứng cộng hưởng danh kiếm bổ sung.
 • {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, nhận toàn bộ danh kiếm và triệu hồi thêm {song đao Thừa Ảnh} để truy kích mục tiêu.
 • {Võ Học Thừa Ảnh}: Sau khi sử dụng, có thể kích hoạt kỹ năng truy kích Thừa Ảnh của vũ khí đang trang bị.
-• {Đặc Công Quái Vật}: Gây thêm sát thương lên quái vật không phải công trình, đồng thời tăng tốc quá trình vận sức của đòn kết liễu.`,
+• Gây thêm sát thương lên quái vật không phải công trình, đồng thời tăng tốc quá trình vận sức của đòn kết liễu.`,
   detail: `• Sát thương phi kiếm đợt 1: {11.660} sát thương ngoại công.
 • Sát thương phi kiếm đợt 2: {11.854} sát thương ngoại công.
 • Sát thương kết liễu: {67.043} sát thương ngoại công.
