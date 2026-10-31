@@ -4,6 +4,16 @@ export const noiCongData: GameItem[] = [
 
   // ── HỎA ──
   {
+  name: 'Khuynh Chiếu Ngân Hoa',
+  nameZh: '倾照银华',
+  category: 'Nội công',
+  element: 'Hỏa',
+  itemType: 'Hiếm',
+  stats: ['Cường Hóa Toàn Kỹ Năng', 'Tăng Trị Liệu'],
+  details: 'Khi tấn công/trị liệu, cứ mỗi 2 giây nhận 1 tầng hiệu ứng tăng cường toàn bộ kỹ năng 2.4% (tối đa 4 tầng). Khi đạt 4 tầng, hiệu ứng duy trì 6 giây rồi xóa toàn bộ số tầng (ở tư thế trị liệu chuyển thành tăng trị liệu). Sau khi nhận hiệu ứng {Linh Vận}, khi kích hoạt sẽ trực tiếp nhận đủ 4 tầng hiệu ứng tăng cường toàn bộ kỹ năng, tương đương 9.6%.',
+  imageUrl: '/images/noi-cong/hoa/khuynh-chieu-ngan-hoa.png',
+},
+  {
     name: 'Chước Tinh Quán Nhật',
     nameZh: '灼星贯日',
     category: 'Nội công',
