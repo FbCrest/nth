@@ -13,6 +13,16 @@ export type ThienPhuTab = 'DPS' | 'Tank' | 'Buff';
 
 export const thienPhuDPS: ThienPhuItem[] = [
   {
+  id: 'kich-tung-truy-anh-giac',
+  name: 'Kích Tung Truy Ảnh · Giác',
+  nameZh: '缉踪追影 · 觉',
+  monPhai: 'Giác Linh Khiếu',
+  tags: ['Tấn Công', 'Đơn Thể Tăng Sát Thương', 'Hạ Gục Tăng Sát Thương'],
+  imageUrl: '/images/thien-phu/kich-tung-truy-anh-giac.png',
+  description: `Sát thương tăng {(2.2%–3.16%)|red} / {(3.2%–4.16%)|purple} / {(4.2%–5.2%)|yellow}. Khi tấn công trúng mục tiêu đang khóa, áp dụng dấu ấn {Truy Liệp} lên mục tiêu, nhận {50%} tốc độ di chuyển và tăng sát thương gây ra cho mục tiêu đó {(2.75%–3.95%)|red} / {(4%–5.2%)|purple} / {(5.25%–6.5%)|yellow}, kéo dài {6 giây}. Thời gian hồi: {10 giây}. Trong thời gian hiệu lực, khi đánh bại hoặc tham gia đánh bại mục tiêu mang dấu ấn {Truy Liệp}, hiệu quả chỉ số Linh Khiếu mùa giải {Nguyệt Lĩnh Dao Ca} tăng {20%} / {10%}, kéo dài {10 giây}.`,
+  detail: ``,
+},
+  {
     id: 'chan-long-uyen',
     name: 'Chấn Long Uyên',
     nameZh: '震龙渊',
