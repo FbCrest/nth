@@ -34,6 +34,16 @@ export const noiCongData: GameItem[] = [
     imageUrl: '/images/noi-cong/hoa/thua-anh-phong-thuoc.png',
   },
   {
+  name: 'Nhiên Phong Nguyên',
+  nameZh: '燃枫原',
+  category: 'Nội công',
+  element: 'Hỏa',
+  itemType: 'Thường',
+  stats: ['Tăng Sát Thương', 'Tăng Trị Liệu'],
+  details: 'Tăng 3% sát thương/trị liệu. Sau khi vào trạng thái chiến đấu được 8 giây, nhận thêm 3.5% sát thương/trị liệu. Hiệu ứng bổ sung bị xóa sau khi thoát chiến đấu.',
+  imageUrl: '/images/noi-cong/hoa/nhien-phong-nguyen.png',
+},
+  {
     name: 'Chúng Diệu',
     nameZh: '众妙',
     category: 'Nội công',
