@@ -13,6 +13,16 @@ export type ThienPhuTab = 'DPS' | 'Tank' | 'Buff';
 
 export const thienPhuDPS: ThienPhuItem[] = [
   {
+  id: 'tu-vo-tuyet-giac',
+  name: 'Tư Vô Tuyệt · Giác',
+  nameZh: '思无绝、觉',
+  monPhai: 'Giác Linh Khiếu',
+  tags: ['Tấn Công', 'Tăng Sát Thương Thông Dụng', 'Cường Hóa Linh Khiếu'],
+  imageUrl: '/images/thien-phu/tu-vo-tuyet-giac.png',
+  description: `Sát thương tăng {(3.85%–5.53%)|red} / {(5.6%–7.28%)|purple} / {(7.35%–9.1%)|yellow}. Khi Linh Khiếu của bản thân gây sát thương, sát thương gây ra được tăng thêm {(1.65%–2.37%)|red} / {(2.4%–3.12%)|purple} / {(3.15%–3.9%)|yellow}, kéo dài {3 giây}.`,
+  detail: ``,
+},
+  {
   id: 'yen-giap-phi-tinh-giac',
   name: 'Yển Giáp Phi Tinh · Giác',
   nameZh: '偃甲飞星、觉',
