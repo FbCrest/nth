@@ -95,6 +95,16 @@ export const noiCongData: GameItem[] = [
     imageUrl: '/images/noi-cong/kim/thua-anh-phong-thuoc.png',
   },
   {
+  name: 'Hám Nguyệt Mang',
+  nameZh: '撼月芒',
+  category: 'Nội công',
+  element: 'Kim',
+  itemType: 'Thường',
+  stats: ['Tăng Sát Thương', 'Sát Thương Phạm Vi'],
+  details: 'Sau mỗi 3 lần gây sát thương từ Chu Thiên Nội Công và Đặc tính, tăng 2% sát thương và đòn tấn công tiếp theo sẽ kèm theo sát thương phạm vi với hệ số 300%. Thời gian hồi: 8 giây (sát thương lên quái vật được tăng cường, ở tư thế trị liệu chuyển thành trị liệu).',
+  imageUrl: '/images/noi-cong/kim/ham-nguyet-mang.png',
+},
+  {
     name: 'Phá Phủ',
     nameZh: '破釜',
     category: 'Nội công',
