@@ -134,27 +134,29 @@ export const tuyetKyData: GameItem[] = [
     category: 'Tuyệt kỹ',
     monPhai: 'Giang Hồ',
     itemType: 'PVE - PVP',
-    stats: ['Bạo Phát', 'Triệu Hồi', 'Miễn Khống Chế', 'Giảm Sát Thương'],
-    tags: ['Bạo Phát', 'Triệu Hồi', 'Miễn Khống Chế', 'Giảm Sát Thương'],
-    details: `Triệu hồi kiếm hạp và mở ra vùng tấn công. Kiếm trong hạp lần lượt bay ra tấn công, chém kẻ địch trong khu vực 3 lần. Sau khi toàn bộ phi kiếm kết thúc tấn công, có thể kích hoạt kiếm hạp mang 6 kiếm đồng loạt xuất kích, gây đòn kết liễu tại vị trí mục tiêu. Trong thời gian thi triển, nhận {miễn khống chế} và {giảm sát thương}.
-• {Tru Tà}: Tăng {90%} sát thương lên quái không phải kiến trúc, đồng thời tăng tốc độ ra đòn kết liễu.
-• {Quy Hạp}: Thu thập danh kiếm để nhận Khắc chế thủ lĩnh và hiệu ứng cộng hưởng danh kiếm bổ sung.
-• {Vô Phong}: Trong mùa Quan Sơn Tàng Phong, kỹ năng gây thêm {20%} sát thương (không hiển thị trực tiếp trong phần mô tả chỉ số).`,
-    detail: `• Sát thương phi kiếm đợt 1: {148.511} nội công Phong Thương.
-• Sát thương phi kiếm đợt 2: {150.987} nội công Phong Thương.
-• Sát thương phi kiếm đợt 3: {154.699} nội công Phong Thương.
-• Sát thương kết liễu: {853.938} nội công Phong Thương.
-• Tăng sát thương lên quái không phải kiến trúc: {90%}
-• Giảm sát thương trong quá trình thi triển: {25%}
-• Thời gian tồn tại của kiếm trận: {8 giây}
-• Nếu đòn đánh đợt 2 không trúng, hoàn trả: {45} điểm Tuyệt Kỹ
-• Khi nhiều người cùng đánh trúng mục tiêu là người chơi, sát thương sẽ bị giảm mạnh`,
-    upgrade: `• Cấp 1: Tăng sát thương dựa theo {Thân Pháp} khoảng {4%–7%}
-• Cấp 2: 3 đợt phi kiếm đầu tăng {10%} sát thương
-• Cấp 3: Sau khi triệu hồi kiếm hạp, bản thân được tăng {600} Hội tâm và {400} Mệnh trung, duy trì {45 giây}
-• Cấp 4: Khi đứng trong kiếm vực, nhận {10%} kháng sát thương tầm xa và {20%} kháng quái vật
-• Cấp 5: Đòn kết liễu tăng {15%} sát thương.`,
-    imageUrl: '/images/tuyet-ky/mndp.png',
+    stats: ['Triệu Hồi', 'Sát Thương Phạm Vi', 'Giảm Sát Thương'],
+    tags: ['Triệu Hồi', 'Sát Thương Phạm Vi', 'Giảm Sát Thương'],
+  details: `Triệu hồi hộp kiếm và triển khai kiếm trận. Những thanh kiếm bên trong hộp lần lượt bay ra, thực hiện {2 đợt} chém lên kẻ địch trong phạm vi.
+Sau khi toàn bộ phi kiếm kết thúc tấn công, có thể điều khiển hộp kiếm đưa cả {6 thanh kiếm} đồng loạt xuất kích, gây một đòn kết liễu tại vị trí mục tiêu và giải trừ kiếm trận. Trong quá trình thi triển, nhận hiệu ứng {giảm sát thương}.
+• {Quy Hạp}: Thu thập danh kiếm để nhận hiệu quả khắc chế Thủ Lĩnh và hiệu ứng cộng hưởng danh kiếm bổ sung.
+• {Thừa Ảnh Phá Cảnh}: Sau khi hoàn thành Phá Cảnh, nhận toàn bộ danh kiếm và triệu hồi thêm {song đao Thừa Ảnh} để truy kích mục tiêu.
+• {Võ Học Thừa Ảnh}: Sau khi sử dụng, có thể kích hoạt kỹ năng truy kích Thừa Ảnh của vũ khí đang trang bị.
+• {Đặc Công Quái Vật}: Gây thêm sát thương lên quái vật không phải công trình, đồng thời tăng tốc quá trình vận sức của đòn kết liễu.`,
+  detail: `• Sát thương phi kiếm đợt 1: {11.660} sát thương ngoại công.
+• Sát thương phi kiếm đợt 2: {11.854} sát thương ngoại công.
+• Sát thương kết liễu: {67.043} sát thương ngoại công.
+• Tổng sát thương song đao Thừa Ảnh: {4.049} sát thương ngoại công.
+• Sát thương lên quái vật không phải công trình tăng: {90%}.
+• Giảm sát thương trong quá trình thi triển: {25%}.
+• Thời gian duy trì kiếm trận: {18 giây}.
+• Nếu đòn đánh giai đoạn 2 không trúng mục tiêu, hoàn trả {45} điểm Tuyệt Kỹ.
+• Khi nhiều người chơi cùng đánh trúng một mục tiêu người chơi, sát thương gây ra giảm mạnh.`,
+  upgrade: `• Cấp 1: Dựa theo {Thân Pháp}, tăng sát thương khoảng {4% ~ 7%}.
+• Cấp 2: Sát thương của hai đợt phi kiếm đầu tiên tăng {10%}.
+• Cấp 3: Sau khi triệu hồi hộp kiếm, bản thân tăng {25} điểm hội tâm trong {40 giây}.
+• Cấp 4: Khi ở trong kiếm vực, nhận {10%} kháng tầm xa và {20%} kháng sát thương Thủ Lĩnh.
+• Cấp 5: Sát thương của đòn kết liễu tăng {15%}.`,
+  imageUrl: '/images/tuyet-ky/minh-nhan-diep-phong.png',
   },
   {
     name: 'Tẫn Hải Phần Liên',
