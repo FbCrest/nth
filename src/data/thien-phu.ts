@@ -126,8 +126,18 @@ export const thienPhuDPS: ThienPhuItem[] = [
 
 export const thienPhuTank: ThienPhuItem[] = [
   {
+  id: 'tu-vo-tuyet-giac',
+  name: 'Tư Vô Tuyệt',
+  nameZh: '思无绝、觉',
+  monPhai: 'Giác Linh Khiếu',
+  tags: ['Phòng Ngự', 'Tạo Khiên', 'Cường Hóa Linh Khiếu'],
+  imageUrl: '/images/thien-phu/tu-vo-tuyet-giac.png',
+  description: `Khi chịu tấn công, nhận một lá chắn có giá trị bằng {(1.1%–1.58%)|red} / {(1.6%–2.08%)|purple} / {(2.1%–2.6%)|yellow} khí huyết tối đa. Thời gian hồi: {5 giây}. Khi hiệu ứng Linh Khiếu của bản thân tạo lá chắn, đồng thời tạo thêm lá chắn có hiệu quả suy giảm cho các đồng đội ở gần.`,
+  detail: ``,
+},
+  {
   id: 'yen-giap-phi-tinh-giac',
-  name: 'Yển Giáp Phi Tinh · Giác',
+  name: 'Yển Giáp Phi Tinh',
   nameZh: '偃甲飞星、觉',
   monPhai: 'Giác Linh Khiếu',
   tags: ['Tấn Công', 'Sát Thương Bùng Nổ', 'Khống Chế'],
@@ -137,7 +147,7 @@ export const thienPhuTank: ThienPhuItem[] = [
 },
   {
   id: 'kich-tung-truy-anh-giac',
-  name: 'Kích Tung Truy Ảnh · Giác',
+  name: 'Kích Tung Truy Ảnh',
   nameZh: '缉踪追影·觉',
   monPhai: 'Giác Linh Khiếu',
   tags: ['Phòng Ngự', 'Đơn Thể Tăng Sát Thương', 'Hạ Gục Tăng Sát Thương'],
