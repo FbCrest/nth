@@ -271,6 +271,16 @@ export const noiCongData: GameItem[] = [
     imageUrl: '/images/noi-cong/tho/nhat-nguyet-luong-nghi.png',
   },
   {
+  name: 'Thừa Nhạc',
+  nameZh: '承岳',
+  category: 'Nội công',
+  element: 'Thổ',
+  itemType: 'Thường',
+  stats: ['Giảm Sát Thương'],
+  details: 'Nhận 3% giảm sát thương. Với mỗi người chơi địch ở gần, nhận thêm 1% giảm sát thương (tối đa 3%).',
+  imageUrl: '/images/noi-cong/tho/thua-nhac.png',
+},
+  {
     name: 'Chinh Bào',
     nameZh: '御千嶂',
     category: 'Nội công',
