@@ -126,6 +126,16 @@ export const thienPhuDPS: ThienPhuItem[] = [
 
 export const thienPhuTank: ThienPhuItem[] = [
   {
+  id: 'kich-tung-truy-anh-giac',
+  name: 'Kích Tung Truy Ảnh · Giác',
+  nameZh: '缉踪追影·觉',
+  monPhai: 'Giác Linh Khiếu',
+  tags: ['Phòng Ngự', 'Đơn Thể Tăng Sát Thương', 'Hạ Gục Tăng Sát Thương'],
+  imageUrl: '/images/thien-phu/kich-tung-truy-anh-giac.png',
+  description: `Tăng {(2.2%–3.16%)|red} / {(3.2%–4.16%)|purple} / {(4.2%–5.2%)|yellow} giảm sát thương nhận vào. Khi tấn công trúng mục tiêu đang khóa, áp dụng dấu ấn {Truy Liệp} lên mục tiêu, khiến sát thương gây ra của mục tiêu giảm {(1.65%–2.37%)|red} / {(2.4%–3.12%)|purple} / {(3.15%–3.9%)|yellow}, đồng thời khiến mục tiêu phải chịu thêm {(1.65%–2.37%)|red} / {(2.4%–3.12%)|purple} / {(3.15%–3.9%)|yellow} sát thương (hiệu quả giảm đối với Thủ Lĩnh và công trình), kéo dài {6 giây}. Thời gian hồi: {10 giây}.`,
+  detail: ``,
+},
+  {
     id: 'chan-long-uyen',
     name: 'Chấn Long Uyên',
     nameZh: '震龙渊',
