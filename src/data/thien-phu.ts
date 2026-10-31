@@ -14,7 +14,7 @@ export type ThienPhuTab = 'DPS' | 'Tank' | 'Buff';
 export const thienPhuDPS: ThienPhuItem[] = [
   {
   id: 'tu-vo-tuyet-giac',
-  name: 'Tư Vô Tuyệt · Giác',
+  name: 'Tư Vô Tuyệt',
   nameZh: '思无绝、觉',
   monPhai: 'Giác Linh Khiếu',
   tags: ['Tấn Công', 'Tăng Sát Thương Thông Dụng', 'Cường Hóa Linh Khiếu'],
@@ -24,7 +24,7 @@ export const thienPhuDPS: ThienPhuItem[] = [
 },
   {
   id: 'yen-giap-phi-tinh-giac',
-  name: 'Yển Giáp Phi Tinh · Giác',
+  name: 'Yển Giáp Phi Tinh',
   nameZh: '偃甲飞星、觉',
   monPhai: 'Giác Linh Khiếu',
   tags: ['Tấn Công', 'Sát Thương Bùng Nổ', 'Chí Mạng Khi Máu Thấp'],
@@ -34,7 +34,7 @@ export const thienPhuDPS: ThienPhuItem[] = [
 },
   {
   id: 'kich-tung-truy-anh-giac',
-  name: 'Kích Tung Truy Ảnh · Giác',
+  name: 'Kích Tung Truy Ảnh',
   nameZh: '缉踪追影 · 觉',
   monPhai: 'Giác Linh Khiếu',
   tags: ['Tấn Công', 'Đơn Thể Tăng Sát Thương', 'Hạ Gục Tăng Sát Thương'],
