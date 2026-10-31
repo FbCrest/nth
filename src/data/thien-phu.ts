@@ -126,6 +126,16 @@ export const thienPhuDPS: ThienPhuItem[] = [
 
 export const thienPhuTank: ThienPhuItem[] = [
   {
+  id: 'yen-giap-phi-tinh-giac',
+  name: 'Yển Giáp Phi Tinh · Giác',
+  nameZh: '偃甲飞星、觉',
+  monPhai: 'Giác Linh Khiếu',
+  tags: ['Tấn Công', 'Sát Thương Bùng Nổ', 'Khống Chế'],
+  imageUrl: '/images/thien-phu/yen-giap-phi-tinh-giac.png',
+  description: `Khi tấn công, có xác suất tạo ra phi đạn khóa mục tiêu là kẻ địch gần đó có lượng khí huyết thấp nhất, gây sát thương phạm vi với hệ số {(165%–237%)|red} / {(240%–312%)|purple} / {(315%–390%)|yellow} (gây thêm sát thương lên quái vật). Đồng thời áp dụng hiệu ứng {Làm Chậm} với tỷ lệ {(13.75%–19.75%)|red} / {(20%–26%)|purple} / {(26.25%–32.5%)|yellow} và hiệu ứng {Trọng Thương} lên mục tiêu trúng đòn, kéo dài {3 giây}. Thời gian hồi: {10 giây}.`,
+  detail: ``,
+},
+  {
   id: 'kich-tung-truy-anh-giac',
   name: 'Kích Tung Truy Ảnh · Giác',
   nameZh: '缉踪追影·觉',
