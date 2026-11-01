@@ -239,6 +239,36 @@ export const thienPhuTank: ThienPhuItem[] = [
 
 export const thienPhuBuff: ThienPhuItem[] = [
   {
+  id: 'tu-vo-tuyet-giac',
+  name: 'Tư Vô Tuyệt',
+  nameZh: '思无绝、觉',
+  monPhai: 'Giác Linh Khiếu',
+  tags: ['Hỗ Trợ', 'Thông Dụng', 'Trị Liệu Theo Thời Gian'],
+  imageUrl: '/images/thien-phu/tu-vo-tuyet-giac.png',
+  description: `Khi trị liệu, hồi phục khí huyết cho mục tiêu theo thời gian với hệ số mỗi giây {(38.5%–55.3%)|red} / {(56%–72.8%)|purple} / {(73.5%–91%)|yellow}. Khi Linh Khiếu của bản thân thực hiện trị liệu, đồng thời kích hoạt thêm {1 lần} trị liệu lên mục tiêu ban đầu với hệ số {(16.5%–23.7%)|red} / {(24%–31.2%)|purple} / {(31.5%–39%)|yellow}.`,
+  detail: ``,
+},
+  {
+  id: 'yen-giap-phi-tinh-giac',
+  name: 'Yển Giáp Phi Tinh',
+  nameZh: '偃甲飞星、觉',
+  monPhai: 'Giác Linh Khiếu',
+  tags: ['Hỗ Trợ', 'Thông Dụng', 'Trị Liệu'],
+  imageUrl: '/images/thien-phu/yen-giap-phi-tinh-giac.png',
+  description: `Khi trị liệu, có xác suất tạo ra phi đạn khóa đồng đội ở gần có lượng khí huyết thấp nhất, gây hiệu quả trị liệu phạm vi với hệ số {(137.5%–197.5%)|red} / {(200%–260%)|purple} / {(262.5%–325%)|yellow}. Nếu khí huyết của mục tiêu thấp hơn {30%}, hiệu quả trị liệu của phi đạn chắc chắn gây hội tâm, đồng thời cấp hiệu ứng {giảm sát thương} kéo dài {3 giây} với tỷ lệ {(1.65%–2.37%)|red} / {(2.4%–3.12%)|purple} / {(3.15%–3.9%)|yellow}. Thời gian hồi: {5 giây}.`,
+  detail: ``,
+},
+  {
+  id: 'kich-tung-truy-anh-giac',
+  name: 'Kích Tung Truy Ảnh',
+  nameZh: '缉踪追影、觉',
+  monPhai: 'Giác Linh Khiếu',
+  tags: ['Hỗ Trợ', 'Thông Dụng', 'Tăng Trị Liệu'],
+  imageUrl: '/images/thien-phu/kich-tung-truy-anh-giac.png',
+  description: `Hiệu quả trị liệu tăng {(3.3%–4.74%)|red} / {(4.8%–6.24%)|purple} / {(6.3%–7.8%)|yellow}. Khi trị liệu cho đồng đội đang được khóa mục tiêu, khiến họ tiến vào trạng thái {Tập Ác}, nhận {50%} tốc độ di chuyển, đồng thời tăng {(1.65%–2.37%)|red} / {(2.4%–3.12%)|purple} / {(3.15%–3.9%)|yellow} sát thương gây ra và giảm sát thương nhận vào, kéo dài {6 giây}. Thời gian hồi: {10 giây}.`,
+  detail: ``,
+},
+  {
     id: 'chan-long-uyen',
     name: 'Chấn Long Uyên',
     nameZh: '震龙渊',
